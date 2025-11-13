@@ -3,7 +3,7 @@ import CategoryButton from './CategoryButton';
 
 
 
-function CategoryContainer() {
+const CategoryContainer = () => {
     return (
         <div className="category-container-wrapper">
             <div className="category-container">

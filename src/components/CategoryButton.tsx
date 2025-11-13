@@ -1,24 +1,36 @@
-//import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../style/CategoryButton.css';
-//import type { Work } from '../api/api';
+import type { Work } from '../api/api';
 
 type categoryProps = {
     name: string;
-    /* work: Work; */
+    work?: Work;
 }
 
 
-function CategoryButton({name, /* work */}: categoryProps) {
+const CategoryButton = ({name, /* work */}: categoryProps) => {
 
   // gestione dello stato del bottone selezionato in base alla categoria
-  //const [isSelected, setIsSelected] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
 
   // funzione per gestire il click sul bottone
-  //const handleClick = () => {
-    //setIsSelected(!isSelected);
-    
+  const handleClick = () => {
+    setIsSelected(!isSelected);
+      if(!isSelected){
+        console.log(`Categoria selezionata: ${name}`);
+      } else {
+        console.log(`Categoria deselezionata: ${name}`);
+      }
     // qui puoi aggiungere ulteriori logiche per filtrare i lavori in base alla categoria
-  //};
+  };
+  
+
+  useEffect(() => {
+    document.title = `Hai cliccato su ${name}`;
+    handleClick();
+  }), [isSelected];
+
+  
 
   return (
     <div className='category-button'>
@@ -28,4 +40,5 @@ function CategoryButton({name, /* work */}: categoryProps) {
     </div>
   )
 }
+
 export default CategoryButton;

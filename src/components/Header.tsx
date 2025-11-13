@@ -1,21 +1,18 @@
 import Voice from "./Voice"
 import '../style/Header.css'
 
-function Header() {
+const Header = () => {
     return (
-        <>
-            <header className="header">
-                <nav>
-                    <ul>
-                        <Voice value="HOME" path="/" />
-                        <Voice value="INFO" path="/info" />
-                        <Voice value="CONTACT" path="/giftart" />
-                    </ul>
-
-                </nav>
-                <hr className="divider" />
-            </header>
-        </>
+        <header className="header">
+            <nav>
+                <ul>
+                    <Voice value="HOME" path="/" />
+                    <Voice value="INFO" path="/info" />
+                    <Voice value="CONTACT" path="/giftart" />
+                </ul>
+            </nav>
+            <hr className="divider" />
+        </header>
     )
 }
 

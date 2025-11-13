@@ -4,7 +4,7 @@ import type { Work } from "../api/api";
 import WorkCard from "./WorkCard";
 import "../style/WorksGrid.css";
 
-export default function WorksGrid() {
+const WorksGrid = () => {
   const [works, setWorks] = useState<Work[]>([]);
 
   useEffect(() => {
@@ -19,3 +19,5 @@ export default function WorksGrid() {
     </div>
   );
 }
+
+export default  WorksGrid;

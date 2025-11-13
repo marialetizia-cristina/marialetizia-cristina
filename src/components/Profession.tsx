@@ -1,6 +1,6 @@
 import '../style/Profession.css';
 
-function Profession() {
+const Profession = () => {
     return (
         <div className="profession">
             <hr />

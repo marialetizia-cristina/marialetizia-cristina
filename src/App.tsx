@@ -1,3 +1,4 @@
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Illustrations from "./pages/GraphicDesign";
@@ -17,8 +18,21 @@ function App() {
           <Route path="/category/illustrations" element={<Illustrations />} />
           <Route path="/category/all" element={<All />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   )
 }
 export default App;
+
+// Utilizzo
+/* function App() {
+  return (
+    <Layout
+      header={<Header />}
+      sidebar={<Sidebar />}
+      main={<MainContent />}
+      footer={<Footer />}
+    />
+  )
+} */

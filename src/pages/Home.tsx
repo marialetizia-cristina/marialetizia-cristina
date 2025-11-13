@@ -4,7 +4,7 @@ import Title from '../components/Title';
 import Profession from '../components/Profession';
 import CategoryContainer from '../components/CategoryContainer';
 
-function Home() {
+const Home = () => {
   return (
     <div className='home'>
       <Title text="MARIALETIZIA CRISTINA" />

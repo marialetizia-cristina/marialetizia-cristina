@@ -6,7 +6,7 @@ interface WorkCardProps {
   work: Work;
 }
 
-export default function WorkCard({ work }: WorkCardProps) {
+const WorkCard = ({ work }: WorkCardProps) => {
   // Array di immagini: per ora prendo solo la featured_media come cover
   const images = work._embedded?.['wp:featuredmedia']?.map(img => img.source_url) || [];
 
@@ -17,3 +17,5 @@ export default function WorkCard({ work }: WorkCardProps) {
     </div>
   );
 }
+
+export default WorkCard;

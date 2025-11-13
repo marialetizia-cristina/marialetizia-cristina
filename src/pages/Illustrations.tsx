@@ -1,6 +1,6 @@
 function Illustrations() {
   return (
-    <div>illustrations</div>
+    <div>Illustrations</div>
   )
 }
 

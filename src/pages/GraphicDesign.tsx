@@ -1,6 +1,6 @@
 function GraphicDesign() {
   return (
-    <div>illustrations</div>
+    <div>GraphicDesign</div>
   )
 }
 

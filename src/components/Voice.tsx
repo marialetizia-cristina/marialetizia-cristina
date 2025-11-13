@@ -6,7 +6,7 @@ interface VoiceProps {
   path: string;
 }
 
-function Voice({ value, path }: VoiceProps) {
+const Voice = ({ value, path }: VoiceProps) => {
   return (
     <li>
       <Link to={path}>{value}</Link>

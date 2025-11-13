@@ -1,6 +1,6 @@
 function All() {
   return (
-    <div>illustrations</div>
+    <div>All</div>
   )
 }
 
