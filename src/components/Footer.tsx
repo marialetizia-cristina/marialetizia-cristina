@@ -3,16 +3,16 @@ import '../style/Footer.css'
 
 const Footer = () => {
     return (
-        <footer className="footer">
+        <div className="footer">
             <hr className="divider" />
             <nav>
                 <ul>
-                    <Voice value="cc" path="/" />
-                    <Voice value="ccc" path="/cc" />
-                    <Voice value="cccc" path="/ccc" />
+                    <Voice value="MARIALETIZIA CRISTINA" path="/" />
+                    <Voice value="SERVICES" path="/cc" />
+                    <Voice value="COME BACKUP" path="/ccc" />
                 </ul>
             </nav>
-        </footer>
+        </div>
     )
 }
 

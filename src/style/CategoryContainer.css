@@ -5,10 +5,11 @@
     width: 100%;
     padding: 0 8em;
     margin: 3em 0 1em 0;
+    box-sizing: border-box;
 }
 
 .category-container-wrapper hr {
     flex-grow: 1;
-    border: 1px solid black;
+    border: 2px solid black;
     align-self: center;
 }

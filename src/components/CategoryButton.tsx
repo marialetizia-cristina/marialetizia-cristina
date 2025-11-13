@@ -26,15 +26,16 @@ const CategoryButton = ({name, /* work */}: categoryProps) => {
   
 
   useEffect(() => {
-    document.title = `Hai cliccato su ${name}`;
-    handleClick();
-  }), [isSelected];
+    document.title = isSelected
+      ? `Hai cliccato su ${name}`
+      : "Maria Letizia Cristina";
+  }, [isSelected, name]);
 
   
 
   return (
     <div className='category-button'>
-        <button>
+        <button onClick={handleClick}>
             {name}
         </button>
     </div>

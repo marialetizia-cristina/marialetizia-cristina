@@ -1,8 +1,9 @@
 .profession {
     text-align: center;
+    color: black;
 }
 
 .profession hr {
-    border: 1px solid black;
+    border: 2px solid black;
     margin: 10px auto;
 }

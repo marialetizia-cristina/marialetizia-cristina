@@ -3,7 +3,7 @@ import '../style/Header.css'
 
 const Header = () => {
     return (
-        <header className="header">
+        <div className="header">
             <nav>
                 <ul>
                     <Voice value="HOME" path="/" />
@@ -12,7 +12,7 @@ const Header = () => {
                 </ul>
             </nav>
             <hr className="divider" />
-        </header>
+        </div>
     )
 }
 

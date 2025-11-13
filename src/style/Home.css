@@ -3,7 +3,25 @@
     text-align: center;
     font-size: 10.5em;
     font-family: 'Anton', sans-serif;
-    ;
     font-weight: 900;
     color: black;
+    margin: 0;
+}
+
+.home .divider {
+    background-color: black;
+    height: 2px;
+}
+
+.about-me {
+    display: flex;
+    color: black;
+    margin: 2em 0;
+    gap: 3em;
+}
+
+.about-me h3 {
+    font-size: 70px;
+    font-weight: bold;
+    font-family: 'anton';
 }

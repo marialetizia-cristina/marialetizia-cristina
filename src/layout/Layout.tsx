@@ -1,3 +1,5 @@
+import '../style/Layout.css'
+
 // Componente che accetta componenti come props
 interface LayoutProps {
   header: React.ReactNode
