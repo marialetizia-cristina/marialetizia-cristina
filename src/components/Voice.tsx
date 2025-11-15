@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import '../style/Voice.css';
 
 interface VoiceProps {
@@ -9,7 +8,7 @@ interface VoiceProps {
 const Voice = ({ value, path }: VoiceProps) => {
   return (
     <li>
-      <Link to={path}>{value}</Link>
+      <a href={path}>{value}</a>
     </li>
   );
 }

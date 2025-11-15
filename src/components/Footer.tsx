@@ -8,8 +8,8 @@ const Footer = () => {
             <nav>
                 <ul>
                     <Voice value="MARIALETIZIA CRISTINA" path="/" />
-                    <Voice value="SERVICES" path="/cc" />
-                    <Voice value="COME BACKUP" path="/ccc" />
+                    <Voice value="SERVICES" path="#services" />
+                    <Voice value="COME BACKUP" path="#" />
                 </ul>
             </nav>
         </div>

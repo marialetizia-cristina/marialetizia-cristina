@@ -7,8 +7,8 @@ const Header = () => {
             <nav>
                 <ul>
                     <Voice value="HOME" path="/" />
-                    <Voice value="INFO" path="/info" />
-                    <Voice value="CONTACT" path="/giftart" />
+                    <Voice value="INFO" path="#about" />
+                    <Voice value="CONTACT" path="#contact" />
                 </ul>
             </nav>
             <hr className="divider" />

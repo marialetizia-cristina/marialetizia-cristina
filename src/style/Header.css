@@ -4,12 +4,11 @@
     top: 0;
     left: 0;
     background-color: #fff9f0;
-    padding: 0 2em;
+    padding: 0 2.5em;
     box-sizing: border-box;
     z-index: 1000;
     margin: 0;
 }
-
 
 .header ul {
     padding: 0;
@@ -24,7 +23,8 @@
 }
 
 .divider {
-    padding: 0 2em;
+    margin: 0;
+    padding: 0;
     background-color: black;
     height: 2px;
 }

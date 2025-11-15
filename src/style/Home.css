@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .title {
     width: 100%;
     text-align: center;
@@ -6,6 +10,19 @@
     font-weight: 900;
     color: black;
     margin: 0;
+}
+
+
+#about {
+  scroll-margin-top: 23em; /* cambia come vuoi */
+}
+
+#services   {
+  scroll-margin-top: 20em; /* cambia come vuoi */
+}
+
+#contact   {
+  scroll-margin-top: 20em; /* cambia come vuoi */
 }
 
 .home .divider {
@@ -24,4 +41,8 @@
     font-size: 70px;
     font-weight: bold;
     font-family: 'anton';
+}
+
+.about-container .title-container {
+  margin-bottom: 3em;
 }
