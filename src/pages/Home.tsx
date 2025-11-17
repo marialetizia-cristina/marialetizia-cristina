@@ -27,11 +27,11 @@ const Home = () => {
   return (
     <div className='home'>
       <Title text="MARIALETIZIA CRISTINA" />
-      <Profession />
+      <Profession name="GRAPHIC DESIGNER AND ILLUSTRATOR"/>
       <CategoryContainer />
 
       <div className='works'>
-        <WorksGrid />
+        <WorksGrid limits={20} category="FEATURED" />
       </div>
 
       <div className="about-container">
@@ -52,7 +52,7 @@ const Home = () => {
         <Section page={pages[0]} id="services" />
       </div>
 
-      <div className="services-container">
+      <div className="contact-container">
         <div className="title-container">
           <hr className='divider' />
           <Title text="CONTACT" />

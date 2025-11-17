@@ -1,10 +1,15 @@
 import '../style/Profession.css';
 
-const Profession = () => {
+interface ProfessionProps {
+    name: string;
+}
+
+
+const Profession = ({ name }: ProfessionProps) => {
     return (
         <div className="profession">
             <hr />
-            <h2>GRAPHIC DESIGNER AND ILLUSTRATOR</h2>
+            <h2>{name}</h2>
             <hr />
         </div>
     )

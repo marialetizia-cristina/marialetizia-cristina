@@ -3,46 +3,107 @@ html {
 }
 
 .title {
-    width: 100%;
-    text-align: center;
-    font-size: 10.5em;
-    font-family: 'Anton', sans-serif;
-    font-weight: 900;
-    color: black;
-    margin: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 10.5em;
+  font-family: 'Anton', sans-serif;
+  font-weight: 900;
+  color: black;
+  margin: 0;
 }
 
 
 #about {
-  scroll-margin-top: 23em; /* cambia come vuoi */
+  scroll-margin-top: 23em;
+  /* cambia come vuoi */
 }
 
-#services   {
-  scroll-margin-top: 20em; /* cambia come vuoi */
+#services {
+  scroll-margin-top: 20em;
+  /* cambia come vuoi */
 }
 
-#contact   {
-  scroll-margin-top: 20em; /* cambia come vuoi */
+#contact {
+  scroll-margin-top: 20em;
+  /* cambia come vuoi */
+}
+
+.home {
+  padding: 2rem 0;
 }
 
 .home .divider {
-    background-color: black;
-    height: 2px;
+  background-color: black;
+  height: 2px;
 }
 
 .about-me {
-    display: flex;
-    color: black;
-    margin: 2em 0;
-    gap: 3em;
+  display: flex;
+  color: black;
+  margin: 2em 0;
+  gap: 3em;
 }
 
 .about-me h3 {
-    font-size: 70px;
-    font-weight: bold;
-    font-family: 'anton';
+  font-size: 70px;
+  font-weight: bold;
+  font-family: 'anton';
 }
 
 .about-container .title-container {
   margin-bottom: 3em;
+}
+
+/* Hero / intro */
+.home .hero {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Stack on small screens */
+@media (max-width: 900px) {
+  .home .hero {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .home {
+    padding: 1.25rem 0;
+    width: 100%;
+  }
+
+  .title {
+    font-size: 4.5em;
+    text-align: center;
+  }
+}
+
+/* Reduce hero text and image sizes on narrow phones */
+@media (max-width: 420px) {
+  .home {
+    padding: 0.9rem 0;
+  }
+
+  .home .hero {
+    gap: 0.75rem;
+  }
+
+  .home .hero .intro {
+    font-size: 0.95rem;
+  }
+
+  .home .hero img {
+    max-height: 220px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .title {
+    font-size: 4.5em;
+    text-align: center;
+  }
 }

@@ -1,30 +1,35 @@
-.header {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #fff9f0;
-    padding: 0 2.5em;
-    box-sizing: border-box;
-    z-index: 1000;
-    margin: 0;
-}
-
-.header ul {
-    padding: 0;
-}
-
 .header nav ul {
-    list-style: none;
+    width: 100%;
+    background: transparent;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    padding: 0;
     flex-direction: row;
 }
 
-.divider {
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    height: 2px;
+.header .brand {
+    font-weight: 700;
+    font-size: 1.125rem;
+    letter-spacing: 0.2px;
+}
+
+.header nav ul{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Mobile: stack nav under brand and center */
+@media (max-width: 700px) {
+    .header {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: stretch;
+        text-align: center;
+    }
+    .header nav ul {
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
 }

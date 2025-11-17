@@ -7,9 +7,34 @@
     margin-top: 2em;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    box-sizing: border-box;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    align-items: stretch;
+}
+
+/* Larger gap on desktop */
+@media (min-width: 1025px) {
+    .works-grid {
+        gap: 1.25rem;
+    }
+}
+
+/* Ensure inner cards fill column height consistently */
+.works-grid .work-card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* On small screens prefer single column or tighter min width */
+@media (max-width: 480px) {
+    .works {
+        padding: 0;
+        width: 100%;
+    }
+    .works-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 0.75rem;
+    }
 }
 
 @media (max-width: 1200px) {
