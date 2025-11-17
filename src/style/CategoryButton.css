@@ -1,0 +1,70 @@
+.category-button {
+  cursor: pointer;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: transparent;
+  font-size: 0.95rem;
+  transition: background .18s, transform .12s;
+}
+.category-button:hover { transform: translateY(-2px); }
+
+/* Smaller on narrow screens */
+@media (max-width: 480px) {
+  .category-button { padding: 0.4rem 0.6rem; font-size: 0.88rem; }
+}
+
+.category-button {
+    border: none;
+}
+
+.category-button a {
+    display: block;
+    border: none;
+    width: 15em;
+    padding: 1em 0em;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid black;
+    color: black;
+    font-weight: 900;
+    transition: all 0.5s ease-in-out;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.category-button:nth-child(1) a {
+    background-color: transparent;
+}
+
+.category-button:nth-child(2) a {
+    background-color: rgba(0, 251, 255, 1);
+}
+
+.category-button:nth-child(3) a {
+    background-color: rgba(255, 0, 144, 1);
+}
+
+.category-button a:hover {
+    background-color: black;
+    color: white;
+}
+
+.all .category-button:nth-child(1) a {
+    background-color: black;
+    color: white;
+}
+
+.graphic-design .category-button:nth-child(2) a {
+    background-color: black;
+    color: white;
+}
+
+
+.illustration .category-button:nth-child(3) a {
+    background-color: black;
+    color: white;
+}
