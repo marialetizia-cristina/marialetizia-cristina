@@ -9,6 +9,7 @@
 }
 .category-button:hover { transform: translateY(-2px); }
 
+
 /* Smaller on narrow screens */
 @media (max-width: 480px) {
   .category-button { padding: 0.4rem 0.6rem; font-size: 0.88rem; }
