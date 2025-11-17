@@ -9,12 +9,12 @@ interface WorksGridProps {
 }
 
 const WorksGrid = ({ category = "ALL", limits }: WorksGridProps) => {
-  const [works, setWorks] = useState<Work[]>([]);
+  //const [works, setWorks] = useState<Work[]>([]);
   const [filteredWorks, setFilteredWorks] = useState<Work[]>([]);
 
   useEffect(() => {
     fetchWorks().then(data => {
-      setWorks(data);
+      //setWorks(data);
 
       if (category === "ALL") {
         setFilteredWorks(data);
