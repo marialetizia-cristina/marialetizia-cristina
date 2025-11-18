@@ -9,7 +9,7 @@ interface LayoutProps {
 
 const Layout = ({ header, main, footer }: LayoutProps) => {
   return (
-    <div className="layout">
+    <div className="layout" id="top">
       <header className="layout-header">{header}</header>
       <div className="layout-content">
         <main className="layout-main">{main}</main>

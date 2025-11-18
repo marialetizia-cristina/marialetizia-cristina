@@ -11,7 +11,7 @@ function All() {
       <CategoryContainer />
 
       <div className='works'>
-        <WorksGrid category="ALL" limits={19} />
+        <WorksGrid category="ALL" limits={19} returnPath="/category/all" />
       </div>
     </div>
   )

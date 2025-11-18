@@ -31,7 +31,7 @@ const Home = () => {
       <CategoryContainer />
 
       <div className='works'>
-        <WorksGrid limits={20} category="FEATURED" />
+        <WorksGrid limits={20} category="FEATURED" returnPath="/" />
       </div>
 
       <div className="about-container">

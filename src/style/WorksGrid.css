@@ -28,7 +28,6 @@
 /* On small screens prefer single column or tighter min width */
 @media (max-width: 480px) {
     .works {
-        padding: 0;
         width: 100%;
     }
     .works-grid {
@@ -38,6 +37,9 @@
 }
 
 @media (max-width: 1200px) {
+    .works {
+        padding: 0;
+    }
     .works-grid {
         grid-template-columns: repeat(3, 1fr);
     }

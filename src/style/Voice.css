@@ -6,7 +6,7 @@
     color: black;
 }
 
-.header a:hover {
+.header a:hover, .footer a:hover {
     color: #5b5b5b;
 }
 

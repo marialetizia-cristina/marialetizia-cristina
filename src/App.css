@@ -7,7 +7,7 @@
 :root{
   --max-width: 1200px;
   --gap: 1rem;
-  --bg: #fff;
+  --bg: #fff9f0;
   --text: #000;
   --muted: #666;
   --radius: 8px;
@@ -23,6 +23,10 @@ html, body, #root {
   font-size: var(--base-font);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
+}
+
+body {
+  margin-top: 0 !important;
 }
 
 /* Global responsive container */

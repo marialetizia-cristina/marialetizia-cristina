@@ -9,16 +9,20 @@
 }
 
 /* Ensure good spacing on mobile */
-@media (max-width: 600px) {
+@media (max-width: 1200px) {
     .category-container {
         justify-content: center;
         gap: 0.5rem;
         padding: 0.5rem 0;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: nowrap;
     }
 }
 
 .category-container-wrapper hr {
     flex-grow: 1;
-    border: 2px solid black;
+    height: 2px;
+    background-color: black;
     align-self: center;
 }

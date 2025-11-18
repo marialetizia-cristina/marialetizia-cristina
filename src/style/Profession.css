@@ -9,12 +9,17 @@
 }
 
 .profession hr {
-  border: 2px solid black;
+  height: 2px;
+  background-color: black;
   margin: 0;
   width: 100%;
 }
 
 /* Stack on mobile */
 @media (max-width: 700px) {
-  .profession { flex-direction: column; gap: 0.5rem; text-align: center; }
+  .profession {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
 }

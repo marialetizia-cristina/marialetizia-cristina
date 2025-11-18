@@ -20,7 +20,8 @@ export interface Page {
   grid: string;
 }
 
-const API_POSTS_URL = "https://marialetizia.netsons.org/wp-json/wp/v2/posts?_embed";
+const API_POSTS_BASE_URL = "https://marialetizia.netsons.org/wp-json/wp/v2/posts";
+const API_POSTS_URL = `${API_POSTS_BASE_URL}?_embed`;
 const API_PAGES_URL = "https://marialetizia.netsons.org/wp-json/wp/v2/pages?include=808,810,811&_embed";
 
 /**
@@ -35,6 +36,21 @@ export async function fetchWorks(): Promise<Work[]> {
   } catch (error) {
     console.error("Error fetching works:", error);
     return [];
+  }
+}
+
+export async function fetchWorkById(workId: number): Promise<Work | null> {
+  if (!Number.isFinite(workId)) return null;
+
+  try {
+    const res = await fetch(`${API_POSTS_BASE_URL}/${workId}?_embed`);
+    if (res.status === 404) return null;
+    if (!res.ok) throw new Error(`Failed to fetch work ${workId}: ${res.statusText}`);
+    const data = await res.json();
+    return data as Work;
+  } catch (error) {
+    console.error(`Error fetching work ${workId}:`, error);
+    return null;
   }
 }
 

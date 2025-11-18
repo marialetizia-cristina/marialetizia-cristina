@@ -11,7 +11,7 @@ function Illustrations() {
       <CategoryContainer />
 
       <div className='works'>
-        <WorksGrid category="ILLUSTRATIONS" limits={19} />
+        <WorksGrid category="ILLUSTRATIONS" limits={19} returnPath="/category/illustrations" />
       </div>
     </div>
   )

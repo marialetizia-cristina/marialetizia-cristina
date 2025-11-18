@@ -68,3 +68,14 @@
     background-color: black;
     color: white;
 }
+
+@media (max-width: 1200px) {
+    .category-button a {
+        width: auto;
+        padding: 1em 0.4em;
+    }
+    .category-button {
+        padding: 0;
+    }
+    
+}

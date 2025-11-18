@@ -6,15 +6,16 @@ import "../style/WorksGrid.css";
 interface WorksGridProps {
   category?: "ALL" | "GRAPHIC DESIGN" | "ILLUSTRATIONS" | "FEATURED";
   limits?: number;
+  returnPath?: string;
 }
 
-const WorksGrid = ({ category = "ALL", limits }: WorksGridProps) => {
-  const [works, setWorks] = useState<Work[]>([]);
+const WorksGrid = ({ category = "ALL", limits, returnPath = "/category/all" }: WorksGridProps) => {
+  //const [works, setWorks] = useState<Work[]>([]);
   const [filteredWorks, setFilteredWorks] = useState<Work[]>([]);
 
   useEffect(() => {
     fetchWorks().then(data => {
-      setWorks(data);
+      //setWorks(data);
 
       if (category === "ALL") {
         setFilteredWorks(data);
@@ -47,10 +48,10 @@ const WorksGrid = ({ category = "ALL", limits }: WorksGridProps) => {
     <div className="works-grid">
       {filteredWorks.length > 0 ? (
         (limits ? filteredWorks.slice(0, limits) : filteredWorks).map(work => (
-          <WorkCard key={work.id} work={work} />
+          <WorkCard key={work.id} work={work} returnPath={returnPath} />
         ))
       ) : (
-        <p>Nessun lavoro disponibile.</p>
+        <p>No works available.</p>
       )}
     </div>
   );
