@@ -1,0 +1,22 @@
+.header a {
+    font-size: 1em;
+    font-weight: bold;
+    color: inherit;
+    text-decoration: none;
+    color: black;
+}
+
+.header a:hover, .footer a:hover {
+    color: #5b5b5b;
+}
+
+.voice {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* On mobile make voice block vertical */
+@media (max-width: 700px) {
+  .voice { flex-direction: column; text-align: center; gap: 0.5rem; }
+}

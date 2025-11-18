@@ -1,0 +1,56 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 2rem 0 2rem;
+    z-index: 1000;
+    background-color: #fff9f0;
+}
+
+.header .divider {
+    height: 2px;
+    background-color: black;
+    margin: 0;
+}
+
+.header nav ul {
+    width: 100%;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    flex-direction: row;
+    margin-top: 0;
+}
+
+.header .brand {
+    font-weight: 700;
+    font-size: 1.125rem;
+    letter-spacing: 0.2px;
+}
+
+.header nav ul{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.header nav ul li {
+    list-style: none;
+}
+
+/* Mobile: stack nav under brand and center */
+@media (max-width: 700px) {
+    .header {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: stretch;
+        text-align: center;
+    }
+    .header nav ul {
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}

@@ -1,0 +1,102 @@
+    #about .section-grid {
+        display: flex;
+        flex-direction: row;
+        color: black;
+        gap: 3em;
+    }
+
+    #contact .section-grid {
+        display: flex;
+        color: black;
+        gap: 3em;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    #services .section-grid {
+        color: black;
+        gap: 3em;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #contact .section-grid p {
+        text-align: center;
+    }
+
+    #services .section-grid .main-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+    }
+
+    #services img {
+        width: 10em !important;
+        height: auto !important;
+    }
+
+    #contact a {
+        color: black;
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+
+    #contact a:hover {
+        color: #5b5b5b;
+    }
+
+
+
+    .section {
+        padding: 2rem 0;
+        width: 100%;
+    }
+
+    @media (max-width: 1200px) {
+        #about .section-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        #services .section-grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+    }
+
+
+    /* Tighter spacing on mobile */
+    @media (max-width: 600px) {
+        .section {
+            padding: 1rem 0;
+        }
+
+        #about .section-grid,
+        #contact .section-grid {
+            flex-direction: column;
+            gap: 1.5em;
+        }
+
+        #about .section-grid img {
+            width: 100% !important;
+            height: auto !important;
+        }
+
+        #about h1 {
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        #services .section-grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+    }
