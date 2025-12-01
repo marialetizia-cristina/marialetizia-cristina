@@ -25,6 +25,20 @@ html, body, #root {
   -moz-osx-font-smoothing:grayscale;
 }
 
+/* img {
+  border: 1px solid #000;
+} */
+
+#about h2 {
+  font-family: 'anton', sans-serif;
+  font-weight: bold;
+  font-size: 5em;
+}
+
+body p {
+  line-height: 1em !important; 
+}
+
 body {
   margin-top: 0 !important;
 }

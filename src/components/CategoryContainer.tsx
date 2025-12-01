@@ -8,6 +8,7 @@ const CategoryContainer = () => {
                 <CategoryButton name='ALL' path='/category/all'/>
                 <CategoryButton name='GRAPHIC DESIGN' path='/category/graphic-design'/>
                 <CategoryButton name='ILLUSTRATIONS' path='/category/illustrations'/>
+                <CategoryButton name='GIFT ART' path='/category/gift-art'/>
             </div>
             <hr />
         </div>

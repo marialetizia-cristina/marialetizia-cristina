@@ -48,6 +48,10 @@
     background-color: rgba(255, 0, 144, 1);
 }
 
+.category-button:nth-child(4) a {
+    background-color: rgba(0, 255, 6, 100);
+}
+
 .category-button a:hover {
     background-color: black;
     color: white;
@@ -64,7 +68,7 @@
 }
 
 
-.illustration .category-button:nth-child(3) a {
+.illustrations .category-button:nth-child(3) a {
     background-color: black;
     color: white;
 }
@@ -78,4 +82,14 @@
         padding: 0;
     }
     
+}
+
+@media (min-width: 1025px) {
+    .category-container .category-button {
+        flex: 1 1 0;
+    }
+
+    .category-container .category-button a {
+        width: 100%;
+    }
 }

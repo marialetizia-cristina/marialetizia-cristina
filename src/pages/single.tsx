@@ -38,13 +38,36 @@ const SinglePage = () => {
         })();
     }, [workId]);
 
-    const galleryImages = useMemo(() => {
+    const contentHtml = work?.content?.rendered ?? "";
+    const workTitle = work?.title?.rendered ?? "";
+    const isCaseStudy = work?.categories?.includes(15) ?? false;
+
+    const featuredImage = useMemo(() => {
+        return work?._embedded?.["wp:featuredmedia"]?.[0]?.source_url ?? null;
+    }, [work]);
+
+    const featuredAlt = useMemo(() => {
+        const stripped = workTitle.replace(/<[^>]*>/g, "").trim();
+        return stripped || "Featured image";
+    }, [workTitle]);
+
+    const contentIncludesFeatured = useMemo(() => {
+        if (!featuredImage) return false;
+        return contentHtml.includes(featuredImage);
+    }, [contentHtml, featuredImage]);
+
+    const additionalImages = useMemo(() => {
         if (!work) return [] as string[];
 
-        const featured = work._embedded?.["wp:featuredmedia"]?.map(img => img.source_url) ?? [];
         const attachments = work._embedded?.["wp:attachment"]?.map(img => img.source_url) ?? [];
-        return [...featured, ...attachments].filter((url, index, arr) => url && arr.indexOf(url) === index);
-    }, [work]);
+        const merged = [...attachments];
+
+        return merged
+            .filter((url): url is string => Boolean(url))
+            .filter((url, index, arr) => arr.indexOf(url) === index)
+            .filter(url => url !== featuredImage)
+            .filter(url => !contentHtml.includes(url));
+    }, [work, featuredImage, contentHtml]);
 
     const { backPath, backLabel } = useMemo(() => {
         const fromState = (location.state as { from?: string } | undefined)?.from;
@@ -73,8 +96,8 @@ const SinglePage = () => {
     if (error) {
         return (
             <div className="single container">
-                <p className="single__error">{error}</p>
                 <Link className="single__back" to={backPath}>&larr; {backLabel}</Link>
+                <p className="single__error">{error}</p>
             </div>
         );
     }
@@ -89,17 +112,22 @@ const SinglePage = () => {
 
             <header className="single__header">
                 <div className="single__title" dangerouslySetInnerHTML={{ __html: work.title.rendered }} />
+                {!isCaseStudy && featuredImage && !contentIncludesFeatured && (
+                    <figure className="single__featured">
+                        <img src={featuredImage} alt={featuredAlt} />
+                    </figure>
+                )}
             </header>
 
-            {galleryImages.length > 0 && (
-                <div className="single__media">
-                    <ImageSlider images={galleryImages} />
+            {!isCaseStudy && additionalImages.length > 0 && (
+                <div className="single__gallery">
+                    <ImageSlider images={additionalImages} autoPlay className="single__gallery-slider" />
                 </div>
             )}
 
             <article
-                className="single__content"
-                dangerouslySetInnerHTML={{ __html: work.content.rendered }}
+                className={`single__content${isCaseStudy ? " single__content--blocks" : ""}`}
+                dangerouslySetInnerHTML={{ __html: contentHtml }}
             />
         </div>
     );

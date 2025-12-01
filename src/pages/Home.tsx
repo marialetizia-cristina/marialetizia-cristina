@@ -28,9 +28,10 @@ const Home = () => {
     <div className='home'>
       <Title text="MARIALETIZIA CRISTINA" />
       <Profession name="GRAPHIC DESIGNER AND ILLUSTRATOR"/>
+      {/* <Section page={pages[0]} id="first-section" /> */}
       <CategoryContainer />
 
-      <div className='works'>
+      <div className='works' id="works">
         <WorksGrid limits={20} category="FEATURED" returnPath="/" />
       </div>
 

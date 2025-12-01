@@ -7,8 +7,11 @@ interface HomeButtonProps {
 
 const HomeButton = ({ label = "Back to Home" }: HomeButtonProps) => {
   const location = useLocation();
+  const fromState = (location.state as { from?: string } | undefined)?.from;
+  const isHome = location.pathname === "/";
+  const cameFromHomeToSingle = location.pathname.startsWith("/single") && fromState === "/";
 
-  if (location.pathname === "/") {
+  if (isHome || cameFromHomeToSingle) {
     return null;
   }
 

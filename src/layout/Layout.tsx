@@ -10,7 +10,7 @@ interface LayoutProps {
 const Layout = ({ header, main, footer }: LayoutProps) => {
   return (
     <div className="layout" id="top">
-      <header className="layout-header">{header}</header>
+      {header ? <header className="layout-header">{header}</header> : null}
       <div className="layout-content">
         <main className="layout-main">{main}</main>
       </div>

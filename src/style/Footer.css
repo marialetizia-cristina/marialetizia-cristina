@@ -1,6 +1,6 @@
 .footer {
     width: 100%;
-    padding: 1.25rem 0;
+    padding: 0 0 1.25rem 0;
     background-color: #fff9f0;
     text-align: center;
     color: var(--muted);
@@ -29,7 +29,7 @@
 
 .divider {
     background-color: black;
-    height: 2px;
+    height: 1px;
 }
 
 /* stack content on small screens */
