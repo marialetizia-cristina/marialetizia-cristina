@@ -13,7 +13,6 @@ html {
   line-height: 1.2em;
 }
 
-
 #about {
   scroll-margin-top: 20em;
   /* cambia come vuoi */
@@ -29,38 +28,27 @@ html {
   /* cambia come vuoi */
 }
 
-.home {
-  padding: 2rem 0;
-}
-
-.home .divider {
-  background-color: black;
-  height: 1px;
-}
-
-.about-me {
-  display: flex;
-  color: black;
-  margin: 2em 0;
-  gap: 3em;
-}
-
-.about-me h3 {
-  font-size: 70px;
-  font-weight: bold;
-  font-family: 'anton';
-}
-
-.about-container .title-container {
+/* .about-container .title-container,
+.services-container .title-container,
+.contact-container .title-container {
   margin-bottom: 3em;
-}
+} */
 
 /* Hero / intro */
 .home .hero {
+  flex-direction: column;
   display: flex;
   gap: 2rem;
   align-items: center;
   justify-content: space-between;
+}
+
+@media (max-width: 1200px) {
+  .about-container,
+  .services-container,
+  .contact-container {
+    padding: 0;
+  }
 }
 
 /* Stack on small screens */

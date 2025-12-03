@@ -9,11 +9,6 @@
 }
 .category-button:hover { transform: translateY(-2px); }
 
-/* Smaller on narrow screens */
-@media (max-width: 480px) {
-  .category-button { padding: 0.4rem 0.6rem; font-size: 0.88rem; }
-}
-
 .category-button {
     border: none;
 }
@@ -73,6 +68,11 @@
     color: white;
 }
 
+.gift-art .category-button:nth-child(4) a {
+    background-color: black;
+    color: white;
+}
+
 @media (max-width: 1200px) {
     .category-button a {
         width: auto;
@@ -82,6 +82,15 @@
         padding: 0;
     }
     
+}
+
+@media (max-width: 700px) {
+    .category-button a {
+        font-size: 1rem;
+        padding: 0.7rem 1rem;
+        width: 100%;
+        min-height: 2.75rem;
+    }
 }
 
 @media (min-width: 1025px) {

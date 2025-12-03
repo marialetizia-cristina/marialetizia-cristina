@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { fetchWorks, type Work } from "../api/api";
 import WorkCard from "./WorkCard";
 import "../style/WorksGrid.css";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface WorksGridProps {
   category?: "ALL" | "GRAPHIC DESIGN" | "ILLUSTRATIONS" | "FEATURED";
@@ -15,6 +16,14 @@ const WorksGrid = ({ category = "ALL", limits, returnPath = "/category/all" }: W
   const [filteredWorks, setFilteredWorks] = useState<Work[]>([]);
   const [seeAllHeight, setSeeAllHeight] = useState<number | null>(null);
   const gridRef = useRef<HTMLDivElement | null>(null);
+  const { t } = useTranslation();
+  const seeMoreLines = useMemo(() => {
+    const lines = t("works.seeMoreLines", { returnObjects: true }) as unknown;
+    if (Array.isArray(lines)) {
+      return lines as string[];
+    }
+    return [String(lines ?? "SEE MORE")];
+  }, [t]);
 
   useEffect(() => {
     fetchWorks().then(data => {
@@ -97,21 +106,15 @@ const WorksGrid = ({ category = "ALL", limits, returnPath = "/category/all" }: W
               to="/category/all"
               style={seeAllHeight ? { height: `${seeAllHeight}px` } : undefined}
             >
-              <span>
-                SEE
-                <br />
-                MORE
-                <br />
-                PRO
-                <br />
-                JECTS
-              </span>
+              <span
+                dangerouslySetInnerHTML={{ __html: seeMoreLines.join("<br />") }}
+              />
             </Link>
           </div>
         </>
 
       ) : (
-        <p>No works available.</p>
+        <p>{t("works.empty")}</p>
       )}
     </div>
   );

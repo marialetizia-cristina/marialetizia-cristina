@@ -13,6 +13,7 @@ export interface Work {
 
 export interface Page {
   id: number;
+  slug: string;
   title: { rendered: string };
   content: { rendered: string };
   excerpt?: { rendered: string };

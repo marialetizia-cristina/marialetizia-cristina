@@ -1,26 +1,29 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ImageSlider from "../components/ImageSlider";
 import { fetchWorkById, type Work } from "../api/api";
 import "../style/Single.css";
+import LoadingState from "../components/LoadingState";
+import { useTranslation } from "react-i18next";
+import CaseStudyContent from "../components/CaseStudyContent";
 
 const SinglePage = () => {
     const { workId } = useParams<{ workId: string }>();
-    const location = useLocation();
     const [work, setWork] = useState<Work | null>(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [errorKey, setErrorKey] = useState<"noSelection" | "invalidId" | "notFound" | null>(null);
+    const { t } = useTranslation();
 
     useEffect(() => {
         if (!workId) {
-            setError("No work selected.");
+            setErrorKey("noSelection");
             setLoading(false);
             return;
         }
 
         const parsedId = Number.parseInt(workId, 10);
         if (Number.isNaN(parsedId)) {
-            setError("Invalid work identifier.");
+            setErrorKey("invalidId");
             setLoading(false);
             return;
         }
@@ -29,10 +32,10 @@ const SinglePage = () => {
             setLoading(true);
             const result = await fetchWorkById(parsedId);
             if (!result) {
-                setError("Unable to find the requested work.");
+                setErrorKey("notFound");
             } else {
                 setWork(result);
-                setError(null);
+                setErrorKey(null);
             }
             setLoading(false);
         })();
@@ -46,10 +49,8 @@ const SinglePage = () => {
         return work?._embedded?.["wp:featuredmedia"]?.[0]?.source_url ?? null;
     }, [work]);
 
-    const featuredAlt = useMemo(() => {
-        const stripped = workTitle.replace(/<[^>]*>/g, "").trim();
-        return stripped || "Featured image";
-    }, [workTitle]);
+    const strippedTitle = workTitle.replace(/<[^>]*>/g, "").trim();
+    const featuredAlt = strippedTitle || t("single.featuredAlt");
 
     const contentIncludesFeatured = useMemo(() => {
         if (!featuredImage) return false;
@@ -69,35 +70,16 @@ const SinglePage = () => {
             .filter(url => !contentHtml.includes(url));
     }, [work, featuredImage, contentHtml]);
 
-    const { backPath, backLabel } = useMemo(() => {
-        const fromState = (location.state as { from?: string } | undefined)?.from;
-
-        switch (fromState) {
-            case "/":
-                return { backPath: "/", backLabel: "Back to Home" };
-            case "/category/all":
-                return { backPath: "/category/all", backLabel: "Back to Works" };
-            case "/category/graphic-design":
-                return { backPath: "/category/graphic-design", backLabel: "Back to Graphic Design" };
-            case "/category/illustrations":
-                return { backPath: "/category/illustrations", backLabel: "Back to Illustrations" };
-            default:
-                if (typeof fromState === "string") {
-                    return { backPath: fromState, backLabel: "Back to previous page" };
-                }
-                return { backPath: "/category/all", backLabel: "Back to Works" };
-        }
-    }, [location.state]);
+    const errorMessage = errorKey ? t(`single.errors.${errorKey}`) : null;
 
     if (loading) {
-        return <div className="single container">Loading...</div>;
+        return <LoadingState className="single container" message={t("loaders.loadingProject")} />;
     }
 
-    if (error) {
+    if (errorMessage) {
         return (
             <div className="single container">
-                <Link className="single__back" to={backPath}>&larr; {backLabel}</Link>
-                <p className="single__error">{error}</p>
+                <p className="single__error">{errorMessage}</p>
             </div>
         );
     }
@@ -108,8 +90,6 @@ const SinglePage = () => {
 
     return (
         <div className="single container">
-            <Link className="single__back" to={backPath}>&larr; {backLabel}</Link>
-
             <header className="single__header">
                 <div className="single__title" dangerouslySetInnerHTML={{ __html: work.title.rendered }} />
                 {!isCaseStudy && featuredImage && !contentIncludesFeatured && (
@@ -125,10 +105,11 @@ const SinglePage = () => {
                 </div>
             )}
 
-            <article
-                className={`single__content${isCaseStudy ? " single__content--blocks" : ""}`}
-                dangerouslySetInnerHTML={{ __html: contentHtml }}
-            />
+            {isCaseStudy ? (
+                <CaseStudyContent html={contentHtml} className="single__content single__content--blocks" />
+            ) : (
+                <article className="single__content" dangerouslySetInnerHTML={{ __html: contentHtml }} />
+            )}
         </div>
     );
 };

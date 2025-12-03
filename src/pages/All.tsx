@@ -2,12 +2,14 @@ import CategoryContainer from "../components/CategoryContainer";
 import Profession from "../components/Profession";
 import Title from "../components/Title";
 import WorksGrid from "../components/WorksGrid";
+import { useTranslation } from "react-i18next";
 
 function All() {
+  const { t } = useTranslation();
   return (
     <div className="all">
-      <Title text="ALL" />
-      <Profession name="PORTFOLIO" />
+      <Title text={t("portfolio.titleAll")} />
+      <Profession name={t("portfolio.headline")} />
       <CategoryContainer />
 
       <div className='works'>

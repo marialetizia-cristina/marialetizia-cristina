@@ -5,7 +5,6 @@
   overflow: hidden;
   position: relative;
   /* border-radius: var(--radius); */
-  border: 1px solid #000;
 }
 
 /* slider images responsive */
@@ -41,6 +40,45 @@
 .slider__image--active {
   opacity: 1;
   position: relative;
+}
+
+.image-slider.image-slider--modal,
+.slider.image-slider--modal,
+.image-slider--modal.slider--auto {
+  border: none;
+  overflow: visible;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-slider--modal img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.image-slider--modal .slider__image {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.image-slider--modal .slider__image--active {
+  position: relative;
+  transform: none;
+  top: auto;
+  left: auto;
 }
 
 /* Optional height control for different viewports */

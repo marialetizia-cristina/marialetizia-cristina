@@ -1,12 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
 import "../style/HomeButton.css";
+import { useTranslation } from "react-i18next";
 
 interface HomeButtonProps {
   label?: string;
 }
 
-const HomeButton = ({ label = "Back to Home" }: HomeButtonProps) => {
+const HomeButton = ({ label }: HomeButtonProps) => {
   const location = useLocation();
+  const { t } = useTranslation();
   const fromState = (location.state as { from?: string } | undefined)?.from;
   const isHome = location.pathname === "/";
   const cameFromHomeToSingle = location.pathname.startsWith("/single") && fromState === "/";
@@ -17,7 +19,7 @@ const HomeButton = ({ label = "Back to Home" }: HomeButtonProps) => {
 
   return (
     <Link to="/" className="home-button">
-      {label}
+      {label ?? t("nav.backHome")}
     </Link>
   );
 };

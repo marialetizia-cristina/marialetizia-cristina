@@ -8,6 +8,24 @@
     justify-content: center;
 }
 
+@media (max-width: 700px) {
+    .category-container {
+        padding: 0.75rem 1.5rem;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.9rem;
+    }
+
+    .category-container .category-button {
+        width: 100%;
+    }
+
+    .category-container .category-button a {
+        width: 100%;
+    }
+}
+
 /* Ensure good spacing on mobile */
 @media (min-width: 1025px) {
     .category-container {

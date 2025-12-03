@@ -26,6 +26,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  border-radius: inherit;
 }
 
 .work-card__media img {
@@ -69,6 +70,7 @@
 .work-card {
   background: #fff;
   border-radius: var(--radius);
+  border: 1px solid #000;
   overflow: hidden;
   box-shadow: 0 6px 18px rgba(0,0,0,0.06);
   display: flex;
@@ -79,30 +81,4 @@
 .work-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 28px rgba(0,0,0,0.08);
-}
-
-.work-card .thumb {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-}
-
-/* Body/content */
-.work-card .content {
-  padding: 0.85rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-/* Make sure cards are compact on small screens */
-@media (max-width: 480px) {
-  .work-card .content { padding: 0.6rem; }
-  .work-card .thumb { max-height: 140px; width: 100%; object-fit: cover; }
-}
-
-/* Very small phones */
-@media (max-width: 360px) {
-  .work-card .thumb { max-height: 120px; }
 }

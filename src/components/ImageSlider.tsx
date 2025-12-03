@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "../style/ImageSlider.css";
 
 interface ImageSliderProps {
@@ -13,21 +13,32 @@ const ImageSlider = ({ images, autoPlay = false, intervalMs = 3000, className = 
   const [currentIndex, setCurrentIndex] = useState(0);
   const timerRef = useRef<number | null>(null);
 
-  useEffect(() => {
+  const stopAutoPlay = useCallback(() => {
+    if (timerRef.current !== null) {
+      window.clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+  }, []);
+
+  const startAutoPlay = useCallback(() => {
     if (!autoPlay || validImages.length <= 1) {
+      stopAutoPlay();
       return;
     }
 
+    stopAutoPlay();
     timerRef.current = window.setInterval(() => {
       setCurrentIndex(prev => (prev + 1) % validImages.length);
     }, intervalMs);
+  }, [autoPlay, intervalMs, stopAutoPlay, validImages.length]);
+
+  useEffect(() => {
+    startAutoPlay();
 
     return () => {
-      if (timerRef.current) {
-        window.clearInterval(timerRef.current);
-      }
+      stopAutoPlay();
     };
-  }, [autoPlay, intervalMs, validImages.length]);
+  }, [startAutoPlay, stopAutoPlay]);
 
   useEffect(() => {
     if (currentIndex >= validImages.length) {
@@ -49,8 +60,38 @@ const ImageSlider = ({ images, autoPlay = false, intervalMs = 3000, className = 
   }
 
   if (autoPlay) {
+    const handleMouseEnter = () => {
+      stopAutoPlay();
+    };
+
+    const handleMouseLeave = () => {
+      startAutoPlay();
+    };
+    const handleNext = () => {
+      if (validImages.length > 1) {
+        setCurrentIndex(prev => (prev + 1) % validImages.length);
+        startAutoPlay();
+      }
+    };
+
     return (
-      <div className={`image-slider slider slider--auto ${className}`.trim()}>
+      <div
+        className={`image-slider slider slider--auto ${className}`.trim()}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onFocus={handleMouseEnter}
+        onBlur={handleMouseLeave}
+        onClick={handleNext}
+        onKeyDown={event => {
+          if (event.key === "Enter" || event.key === " " || event.key === "Spacebar") {
+            event.preventDefault();
+            handleNext();
+          }
+        }}
+        role="button"
+        tabIndex={0}
+        aria-label="Avanza all'immagine successiva"
+      >
         {validImages.map((img, idx) => (
           <img
             key={idx}

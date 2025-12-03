@@ -152,6 +152,82 @@
   margin-top: 1rem;
 }
 
+.case-study {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 5vw, 3.5rem);
+}
+
+.case-study__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  padding: clamp(1rem, 3vw, 1.75rem) 0;
+  position: relative;
+}
+
+.case-study__text::before,
+.case-study__text::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: calc(100vw - 5rem);
+  border-top: 1px solid #0d0d0d;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.case-study__text::before {
+  top: 0;
+}
+
+.case-study__text::after {
+  bottom: 0;
+}
+
+.case-study__text :where(p, h1, h2, h3, h4, h5, h6, ul, ol, blockquote) {
+  margin: 0;
+}
+
+.case-study__text :where(a) {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+.case-study__text :where(a:hover) {
+  color: #5b5b5b;
+}
+
+.case-study__gallery {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.case-study__gallery figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.case-study__gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  display: block;
+}
+
+.case-study__gallery figcaption {
+  font-size: 0.875rem;
+  color: var(--muted);
+  text-align: center;
+}
+
 @media (max-width: 900px) {
   .single {
     padding: 4.5rem 0 2.5rem;
@@ -163,6 +239,10 @@
 
   .single__title {
     font-size: 1.7rem;
+  }
+
+  .case-study__gallery {
+    gap: 1rem;
   }
 }
 
@@ -184,6 +264,23 @@
   .single__gallery-slider {
     max-height: 320px;
   }
+
+  .case-study__text {
+    font-size: 0.95rem;
+    gap: 1rem;
+    padding: 1rem 0;
+    position: relative;
+  }
+
+  .case-study__text::before,
+  .case-study__text::after {
+    width: min(calc(100vw - 4rem), calc(100% + 4rem));
+  }
+
+  .case-study__gallery {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.85rem;
+  }
 }
 
 @media (max-width: 420px) {
@@ -202,5 +299,9 @@
 
   .single__back {
     margin-bottom: 0.5rem;
+  }
+
+  .case-study__gallery {
+    grid-template-columns: 1fr;
   }
 }

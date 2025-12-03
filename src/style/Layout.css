@@ -5,13 +5,19 @@
 }
 
 /* Main content area grows */
-.main {
+.layout-content {
   flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-main {
+  flex: 1 1 auto;
   width: 100%;
 }
 
 /* Ensure footer sticks to bottom when content short */
-footer {
+.layout-footer {
   flex-shrink: 0;
 }
 

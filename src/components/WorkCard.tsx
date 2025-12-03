@@ -31,6 +31,17 @@ const WorkCard = ({ work, returnPath = "/category/all" }: WorkCardProps) => {
   }, [featured, attachments, contentImages]);
 
   const isCaseStudy = work.categories?.includes(15);
+  const heroImages = useMemo(() => {
+    if (!images.length) {
+      return images;
+    }
+
+    if (isCaseStudy) {
+      return [images[0]];
+    }
+
+    return images;
+  }, [images, isCaseStudy]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -46,11 +57,13 @@ const WorkCard = ({ work, returnPath = "/category/all" }: WorkCardProps) => {
     }
   };
 
-  const content = (
-    <div className="work-card__media">
-      <ImageSlider images={images} autoPlay={!isCaseStudy} />
-      <div className="work-card__overlay">
-        <h3 dangerouslySetInnerHTML={{ __html: work.title.rendered }} />
+  const cardMarkup = (
+    <div className="work-card">
+      <div className="work-card__media">
+        <ImageSlider images={heroImages} autoPlay={!isCaseStudy} />
+        <div className="work-card__overlay">
+          <h3 dangerouslySetInnerHTML={{ __html: work.title.rendered }} />
+        </div>
       </div>
     </div>
   );
@@ -59,7 +72,7 @@ const WorkCard = ({ work, returnPath = "/category/all" }: WorkCardProps) => {
     <div className="masonry-item">
       {isCaseStudy ? (
         <Link to={`/single/${work.id}`} state={{ from: returnPath }}>
-          {content}
+          {cardMarkup}
         </Link>
       ) : (
         <div
@@ -69,7 +82,7 @@ const WorkCard = ({ work, returnPath = "/category/all" }: WorkCardProps) => {
           onClick={handleOpenModal}
           onKeyDown={handleKeyDown}
         >
-          {content}
+          {cardMarkup}
         </div>
       )}
       {!isCaseStudy && isModalOpen && (

@@ -9,14 +9,3 @@
 .header a:hover, .footer a:hover {
     color: #5b5b5b;
 }
-
-/* .voice {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-} */
-
-/* On mobile make voice block vertical */
-/* @media (max-width: 700px) {
-  .header { flex-direction: column; text-align: center; gap: 0.5rem; }
-} */

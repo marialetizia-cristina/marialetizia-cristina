@@ -1,0 +1,68 @@
+.gift-art {
+    width: 100%;
+}
+
+.gift-art__notice-wrapper {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.gift-art__notice {
+    width: 100%;
+    max-width: 640px;
+    padding: 3rem 2.5rem;
+    border: 1px solid #0d0d0d;
+    border-radius: 1.5rem;
+    background-color: #f6f6f6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.gift-art__notice-title {
+    margin: 0;
+    font-size: 1.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.gift-art__notice-body {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 32rem;
+}
+
+.gift-art__cta {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border: 1px solid #0d0d0d;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    color: #0d0d0d;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.gift-art__cta:hover {
+    background-color: #0d0d0d;
+    color: #ffffff;
+}
+
+@media (max-width: 600px) {
+    .gift-art {
+        padding: 0;
+    }
+
+    .gift-art__notice {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .gift-art__notice-title {
+        font-size: 1.5rem;
+    }
+}

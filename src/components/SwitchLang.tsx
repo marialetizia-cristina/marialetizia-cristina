@@ -1,35 +1,32 @@
-import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import "../style/SwitchLang.css";
 
 const SwitchLang = () => {
-    const [lang, setLang] = useState<"EN" | "IT">("EN");
+    const { i18n } = useTranslation();
+    const normalizedLanguage = i18n.language.startsWith("it") ? "IT" : "EN";
+    const nextLanguage = normalizedLanguage === "EN" ? "it" : "en";
+    const nextLabel = normalizedLanguage === "EN" ? "IT" : "EN";
 
-    const toggleLang = (selectedLang: "EN" | "IT") => {
-        setLang(selectedLang);
-        
-    };
-
-    const mainSwitchLangButton = () => {
-        if (lang === "EN") {
-            return (
-                <button className="switch-lang__button" onClick={() => toggleLang("IT")}>
-                    IT
-                </button>
-            );
-        } else {
-            return (
-                <button className="switch-lang__button" onClick={() => toggleLang("EN")}>
-                    EN
-                </button>
-            );
-        }
+    const handleToggle = () => {
+        void i18n.changeLanguage(nextLanguage);
     };
 
     return (
         <div className="switch-lang">
-            {mainSwitchLangButton()}
+            <button
+                className="switch-lang__button"
+                type="button"
+                onClick={handleToggle}
+                aria-label={
+                    normalizedLanguage === "EN"
+                        ? "Switch language to Italian"
+                        : "Cambia lingua in inglese"
+                }
+            >
+                {nextLabel}
+            </button>
         </div>
     );
-}
+};
 
 export default SwitchLang;
