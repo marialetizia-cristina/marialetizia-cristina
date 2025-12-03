@@ -7,6 +7,7 @@ interface CaseStudyBlockText {
     html: string;
 }
 
+
 interface CaseStudyBlockGallery {
     kind: "gallery";
     images: ParsedImage[];
