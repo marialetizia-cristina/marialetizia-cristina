@@ -4,6 +4,7 @@ import WorkCard from "./WorkCard";
 import "../style/WorksGrid.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { getLanguageCategoryId } from "../utils/languagePreference";
 
 interface WorksGridProps {
   category?: "ALL" | "GRAPHIC DESIGN" | "ILLUSTRATIONS" | "FEATURED";
@@ -16,7 +17,7 @@ const WorksGrid = ({ category = "ALL", limits, returnPath = "/category/all" }: W
   const [filteredWorks, setFilteredWorks] = useState<Work[]>([]);
   const [seeAllHeight, setSeeAllHeight] = useState<number | null>(null);
   const gridRef = useRef<HTMLDivElement | null>(null);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const seeMoreLines = useMemo(() => {
     const lines = t("works.seeMoreLines", { returnObjects: true }) as unknown;
     if (Array.isArray(lines)) {
@@ -27,20 +28,27 @@ const WorksGrid = ({ category = "ALL", limits, returnPath = "/category/all" }: W
 
   useEffect(() => {
     fetchWorks().then(data => {
-      //setWorks(data);
+      const languageCategoryId = getLanguageCategoryId(i18n.language);
+
+      const byLanguage = data.filter(work => {
+        if (!languageCategoryId) {
+          return true;
+        }
+        return work.categories?.includes(languageCategoryId) ?? false;
+      });
 
       if (category === "ALL") {
-        setFilteredWorks(data);
+        setFilteredWorks(byLanguage);
       } else {
-        // Filtra in base alla categoria
+        const categoryId = getCategoryId(category);
         setFilteredWorks(
-          data.filter(work =>
-            work.categories?.includes(getCategoryId(category))
+          byLanguage.filter(work =>
+            categoryId ? work.categories?.includes(categoryId) : true
           )
         );
       }
     });
-  }, [category]);
+  }, [category, i18n.language]);
 
   // Funzione per mappare i nomi categoria agli ID di WP
   const getCategoryId = (cat: string): number => {

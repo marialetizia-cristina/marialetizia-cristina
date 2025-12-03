@@ -53,7 +53,7 @@ const resources = {
         errors: {
           noSelection: "No work selected.",
           invalidId: "Invalid work identifier.",
-          notFound: "Unable to find the requested work.",
+          notFound: "Oops! This project is playing hide and seek. Feel free to explore the other works in the meantime.",
         },
         featuredAlt: "Featured image",
         back: {
@@ -117,7 +117,7 @@ const resources = {
         errors: {
           noSelection: "Nessun progetto selezionato.",
           invalidId: "Identificatore del progetto non valido.",
-          notFound: "Impossibile trovare il progetto richiesto.",
+          notFound: "Ops! Questo progetto si sta facendo desiderare. Nel frattempo esplora pure gli altri lavori.",
         },
         featuredAlt: "Immagine in evidenza",
         back: {

@@ -6,10 +6,9 @@ import GraphicDesign from './pages/GraphicDesign';
 import Illustrations from './pages/Illustrations';
 import All from './pages/All';
 import GiftArt from './pages/GiftArt';
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import SinglePage from './pages/single';
-import HomeButton from './components/HomeButton';
 
 function App() {
   return (
@@ -20,17 +19,12 @@ function App() {
 }
 
 const AppContent = () => {
-  const location = useLocation();
-  const isSingleRoute = location.pathname.startsWith("/single");
-  const showHomeButton = isSingleRoute;
-
   return (
     <Layout
       header={<Header />}
       footer={<Footer />}
       main={
         <>
-          {showHomeButton ? <HomeButton /> : null}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/category/graphic-design" element={<GraphicDesign />} />
