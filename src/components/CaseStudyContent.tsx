@@ -6,7 +6,7 @@ interface CaseStudyBlockText {
     kind: "text";
     html: string;
 }
-
+ 
 
 interface CaseStudyBlockGallery {
     kind: "gallery";
