@@ -3,6 +3,11 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App'
 import './i18n'
+import { syncSiteIcons } from './utils/siteIcon'
+
+if (typeof window !== 'undefined') {
+  void syncSiteIcons()
+}
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
