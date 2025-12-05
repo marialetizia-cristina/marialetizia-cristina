@@ -12,7 +12,7 @@ const SwitchLang = () => {
     };
 
     return (
-        <div className="switch-lang">
+        <li className="switch-lang" role="none">
             <button
                 className="switch-lang__button"
                 type="button"
@@ -25,7 +25,7 @@ const SwitchLang = () => {
             >
                 {nextLabel}
             </button>
-        </div>
+        </li>
     );
 };
 
