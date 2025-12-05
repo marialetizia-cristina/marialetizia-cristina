@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
 .single {
-  padding: 5rem 0 3rem;
+  padding-top: 2rem;
   min-height: calc(100vh - 4rem);
   display: flex;
   flex-direction: column;
@@ -22,9 +24,13 @@
 }
 
 .single__title {
-  font-size: 2rem;
-  line-height: 1.2;
-  font-weight: 600;
+  font-family: "Anton", sans-serif;
+  font-size: clamp(3rem, 7vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .single__featured {
@@ -35,7 +41,8 @@
   width: 100%;
   height: auto;
   display: block;
-  border-radius: var(--radius);
+  border: 1px solid #000;
+  border-radius: 0;
 }
 
 .single__gallery {
@@ -44,6 +51,17 @@
 
 .single__gallery-slider {
   max-height: 540px;
+}
+
+.single .image-slider,
+.single .slider {
+  border-radius: 0;
+}
+
+.single .image-slider img,
+.single .slider__image {
+  border: 1px solid #000;
+  border-radius: 0;
 }
 
 .single__content {
@@ -65,15 +83,17 @@
   height: auto;
 }
 
+.single__content img {
+  border: 1px solid #000;
+  border-radius: 0;
+  display: block;
+}
+
 .single__content figure {
   margin: 0;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-}
-
-.single__content figure img {
-  border-radius: var(--radius);
 }
 
 .single__content figcaption {
@@ -121,7 +141,7 @@
 
 .single__content--blocks .wp-block-image img {
   width: 100%;
-  border-radius: var(--radius, 0);
+  border-radius: 0;
 }
 
 .single__content--blocks .has-text-align-center {
@@ -187,6 +207,10 @@
   bottom: 0;
 }
 
+.case-study__text--no-bottom::after {
+  display: none;
+}
+
 .case-study__text :where(p, h1, h2, h3, h4, h5, h6, ul, ol, blockquote) {
   margin: 0;
 }
@@ -218,7 +242,8 @@
 .case-study__gallery img {
   width: 100%;
   height: auto;
-  border-radius: var(--radius);
+  border-radius: 0;
+  border: 1px solid #000;
   display: block;
 }
 
@@ -230,15 +255,11 @@
 
 @media (max-width: 900px) {
   .single {
-    padding: 4.5rem 0 2.5rem;
+    padding-top: 1.75rem;
   }
 
   .single__gallery-slider {
     max-height: 420px;
-  }
-
-  .single__title {
-    font-size: 1.7rem;
   }
 
   .case-study__gallery {
@@ -248,12 +269,8 @@
 
 @media (max-width: 600px) {
   .single {
-    padding: 4rem 0 2.5rem;
+    padding-top: 1.5rem;
     min-height: calc(100vh - 3rem);
-  }
-
-  .single__title {
-    font-size: 1.4rem;
   }
 
   .single__content {
@@ -285,12 +302,8 @@
 
 @media (max-width: 420px) {
   .single {
-    padding: 3.75rem 0 2rem;
+    padding-top: 1.25rem;
     min-height: calc(100vh - 2.5rem);
-  }
-
-  .single__title {
-    font-size: 1.28rem;
   }
 
   .single__gallery-slider {

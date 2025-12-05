@@ -36,7 +36,7 @@ const resources = {
       },
       works: {
         seeMoreLines: ["SEE", "MORE", "PROJ", "ECT"],
-        empty: "No works available.",
+        empty: "No projects here right now — come back soon for fresh work!",
       },
       giftArt: {
         notice: {
@@ -100,7 +100,7 @@ const resources = {
       },
       works: {
         seeMoreLines: ["VEDI", "ALTRI", "PRO", "GETTI"],
-        empty: "Nessun lavoro disponibile.",
+        empty: "Al momento non c’è nulla da mostrare qui: torna presto per nuovi lavori!",
       },
       giftArt: {
         notice: {

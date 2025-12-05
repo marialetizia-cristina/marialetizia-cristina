@@ -15,6 +15,22 @@ interface CaseStudyBlockGallery {
 
 type CaseStudyBlock = CaseStudyBlockText | CaseStudyBlockGallery;
 
+const isParagraphOnly = (html: string): boolean => {
+    if (typeof window === "undefined") {
+        return false;
+    }
+
+    const template = document.createElement("template");
+    template.innerHTML = html.trim();
+    const elements = Array.from(template.content.children);
+
+    if (elements.length === 0) {
+        return false;
+    }
+
+    return elements.every(element => element.tagName.toLowerCase() === "p");
+};
+
 const isRenderableNode = (node: Node): boolean => {
     if (node.nodeType === Node.TEXT_NODE) {
         return Boolean(node.textContent?.trim());
@@ -170,10 +186,19 @@ const CaseStudyContent = ({ html, className = "" }: CaseStudyContentProps) => {
         <div className={`case-study ${className}`.trim()}>
             {blocks.map((block, index) => {
                 if (block.kind === "text") {
+                    const isLastBlock = index === blocks.length - 1;
+                    const onlyParagraphs = isParagraphOnly(block.html);
+                    const textClassName = [
+                        "case-study__text",
+                        isLastBlock && onlyParagraphs ? "case-study__text--no-bottom" : null,
+                    ]
+                        .filter(Boolean)
+                        .join(" ");
+
                     return (
                         <div
                             key={`text-${index}`}
-                            className="case-study__text"
+                            className={textClassName}
                             dangerouslySetInnerHTML={{ __html: block.html }}
                         />
                     );
