@@ -7,8 +7,8 @@ export type LanguagePreference = {
 // Adjust them if the taxonomy configuration changes in the future.
 
 const LANGUAGE_PREFERENCES: LanguagePreference[] = [
-  { categoryId: 36, prefixes: ["en", "en-us", "en-gb"] },
-  { categoryId: 37, prefixes: ["it", "it-it"] },
+  { categoryId: 37, prefixes: ["en", "en-us", "en-gb"] },
+  { categoryId: 36, prefixes: ["it", "it-it"] },
 ];
 
 export const getLanguagePreference = (languageCode?: string): LanguagePreference => {
