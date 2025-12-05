@@ -3,7 +3,7 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+ 
 :root{
   --max-width: 1200px;
   --gap: 1rem;
