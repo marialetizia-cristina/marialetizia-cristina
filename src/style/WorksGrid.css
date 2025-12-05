@@ -1,14 +1,19 @@
 .works {
-    padding: 0 8em;
-    margin-bottom: 2em;
+    padding: var(--home-section-gap, clamp(2.5rem, 4vw, 4rem)) 8em;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    box-sizing: border-box;
 }
 
 .works-grid {
-    margin-top: 2em;
+    margin: 0;
     min-height: 50vh;
     display: grid;
     gap: 1.25rem;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    --work-card-min: 260px;
+    grid-template-columns: repeat(auto-fit, minmax(var(--work-card-min), 1fr));
     align-items: stretch;
 }
 
@@ -89,36 +94,48 @@
 /* On small screens prefer single column or tighter min width */
 @media (max-width: 1200px) {
     .works {
-        padding: 0;
+        padding-inline: clamp(1.5rem, 5vw, 3rem);
     }
     .works-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        --work-card-min: 220px;
     }
 }
 
 @media (max-width: 900px) {
     .works-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        --work-card-min: 180px;
         gap: 1rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .works {
+        padding-inline: clamp(1.25rem, 6vw, 2rem);
+    }
+    .works-grid {
+        --work-card-min: 150px;
     }
 }
 
 @media (max-width: 600px) {
     .works {
-        width: 100%;
-        padding: 0 1rem;
-        margin-top: -0.5rem;
+        padding-inline: 1rem;
     }
     .works-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        --work-card-min: 140px;
         gap: 0.75rem;
-        margin-top: 0.75rem;
     }
 }
 
 @media (max-width: 480px) {
     .works-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        --work-card-min: 110px;
         gap: 0.5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .works-grid {
+        --work-card-min: 96px;
     }
 }

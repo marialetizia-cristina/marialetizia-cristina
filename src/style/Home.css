@@ -2,6 +2,16 @@ html {
   scroll-behavior: smooth;
 }
 
+.home {
+  --home-section-gap: clamp(2.5rem, 4vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  /* gap: var(--home-section-gap); */
+  width: 100%;
+  padding-top: var(--home-section-gap);
+  box-sizing: border-box;
+}
+
 .title {
   width: 100%;
   text-align: center;
@@ -60,8 +70,8 @@ html {
   }
 
   .home {
-    padding: 1.25rem 0;
-    width: 100%;
+    --home-section-gap: clamp(1.75rem, 6vw, 3rem);
+    padding-top: var(--home-section-gap);
   }
 
   .title {
@@ -73,7 +83,8 @@ html {
 /* Reduce hero text and image sizes on narrow phones */
 @media (max-width: 420px) {
   .home {
-    padding: 0.9rem 0;
+    --home-section-gap: clamp(1.25rem, 7vw, 2.25rem);
+    padding-top: var(--home-section-gap) 0;
   }
 
 /*   .home .hero {

@@ -205,13 +205,14 @@
   margin: 0;
   width: 100%;
   align-self: end;
+  justify-self: start;
   max-height: var(--service-card-visual-height);
 }
 
 .service-card__progress--secondary {
   display: flex;
   align-items: flex-end;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 @media (min-width: 1025px) {
@@ -397,8 +398,8 @@
   }
 
   .service-card__progress {
-    justify-self: end;
-    width: 100%;
+    justify-self: start;
+    width: clamp(90px, 28vw, 140px);
     grid-column: 2;
     grid-row: 2;
   }
@@ -430,6 +431,10 @@
     align-items: flex-start;
     text-align: left;
   }
+
+  .service-card__progress {
+    justify-self: start;
+  }
 }
 
 @media (max-width: 900px) {
@@ -460,7 +465,8 @@
 
   .service-card__progress--secondary {
     max-width: 120px;
-    margin: 0 auto;
+    margin: 0;
+    align-self: flex-start;
   }
 
   .service-card__progress--secondary img {

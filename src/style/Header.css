@@ -6,6 +6,7 @@
     padding: 1rem 2rem 0 2rem;
     z-index: 1000;
     background-color: #fff9f0;
+    box-sizing: border-box;
 }
 
 .header .divider {
@@ -16,50 +17,80 @@
 
 .header nav ul {
     width: 100%;
-    background: transparent;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0;
-    flex-direction: row;
-    margin-top: 0;
-}
-
-.header .brand {
-    font-weight: 700;
-    font-size: 1.125rem;
-}
-
-.header nav ul{
-    display: flex;
     gap: 1rem;
-    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 .header nav ul li {
     list-style: none;
 }
 
-.header nav ul li a {
+.header nav ul li a,
+.header nav ul li button {
     font-size: 0.95rem;
     font-weight: 600;
     color: black;
     text-decoration: none;
     padding: 0.5rem 0.75rem;
     text-transform: uppercase;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: color 0.2s ease;
+    background: transparent;
+    border: none;
+    display: inline-flex;
+    align-items: center;
 }
 
-/* Mobile: stack nav under brand and center */
-@media (max-width: 700px) {
+.header nav ul li a:hover,
+.header nav ul li button:hover {
+    color: #5b5b5b;
+}
+
+/* Mobile adjustments */
+@media (max-width: 900px) {
     .header {
-        flex-direction: column;
-        gap: 0.75rem;
-        align-items: stretch;
-        text-align: center;
+        padding: 0.85rem 1.25rem 0;
     }
+
     .header nav ul {
-        justify-content: space-between;
-        flex-wrap: wrap;
+        gap: 0.65rem;
+    }
+
+    .header nav ul li a,
+    .header nav ul li button {
+        font-size: 0.82rem;
+        padding: 0.4rem 0.55rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .header nav ul {
+        gap: 0.45rem;
+    }
+
+    .header nav ul li a,
+    .header nav ul li button {
+        font-size: 0.72rem;
+        padding: 0.35rem 0.45rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .header {
+        padding: 0.75rem 1rem 0;
+    }
+
+    .header nav ul {
+        gap: 0.35rem;
+    }
+
+    .header nav ul li a,
+    .header nav ul li button {
+        font-size: 0.68rem;
+        padding: 0.3rem 0.35rem;
     }
 }
