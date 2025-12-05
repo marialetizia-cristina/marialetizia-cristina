@@ -5,6 +5,7 @@ import ImageSlider from "./ImageSlider";
 import ImageModal from "./ImageModal";
 import type { Work } from "../api/api";
 import "../style/WorkCard.css";
+import { isCaseStudyCategory } from "../utils/categories";
 
 interface WorkCardProps {
   work: Work;
@@ -30,7 +31,7 @@ const WorkCard = ({ work, returnPath = "/category/all" }: WorkCardProps) => {
     return merged.filter((url, index, arr) => url && arr.indexOf(url) === index);
   }, [featured, attachments, contentImages]);
 
-  const isCaseStudy = work.categories?.includes(15);
+  const isCaseStudy = isCaseStudyCategory(work.categories ?? []);
   const heroImages = useMemo(() => {
     if (!images.length) {
       return images;

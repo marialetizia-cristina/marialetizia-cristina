@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import ImageSlider from "../components/ImageSlider";
-import { fetchWorkById, fetchWorksByTagAndCategory, type Work } from "../api/api";
+import { fetchWorkById, type Work } from "../api/api";
 import "../style/Single.css";
 import LoadingState from "../components/LoadingState";
 import { useTranslation } from "react-i18next";
 import CaseStudyContent from "../components/CaseStudyContent";
-import { getLanguagePreference } from "../utils/languagePreference";
+import { normalizeLanguage, resolveTranslationId } from "../utils/language";
+import { isCaseStudyCategory } from "../utils/categories";
+import { useContentStore } from "../store/useContentStore";
 
 const SinglePage = () => {
     const { workId } = useParams<{ workId: string }>();
@@ -17,6 +19,17 @@ const SinglePage = () => {
     const [loading, setLoading] = useState(true);
     const [errorKey, setErrorKey] = useState<"noSelection" | "invalidId" | "notFound" | null>(null);
     const { t, i18n } = useTranslation();
+    const getWorkById = useContentStore(state => state.getWorkById);
+    const upsertWork = useContentStore(state => state.upsertWork);
+    const loadWorks = useContentStore(state => state.loadWorks);
+    const worksLoaded = useContentStore(state => state.worksLoaded);
+    const worksLoading = useContentStore(state => state.worksLoading);
+
+    useEffect(() => {
+        if (!worksLoaded && !worksLoading) {
+            void loadWorks();
+        }
+    }, [worksLoaded, worksLoading, loadWorks]);
 
     useEffect(() => {
         if (!workId) {
@@ -40,7 +53,15 @@ const SinglePage = () => {
             setLoading(true);
             setErrorKey(null);
 
-            const baseWork = await fetchWorkById(parsedId);
+            let baseWork = getWorkById(parsedId) ?? null;
+
+            if (!baseWork) {
+                baseWork = await fetchWorkById(parsedId);
+                if (!isCancelled && baseWork) {
+                    upsertWork(baseWork);
+                }
+            }
+
             if (isCancelled) {
                 return;
             }
@@ -52,34 +73,35 @@ const SinglePage = () => {
                 return;
             }
 
-            const { categoryId } = getLanguagePreference(i18n.language);
-            const hasDesiredCategory = (candidate: Work | null): boolean =>
-                candidate?.categories?.includes(categoryId) ?? false;
+            const preferredLanguage = normalizeLanguage(i18n.language) || "it";
+            const baseLanguage = normalizeLanguage(baseWork.polylang?.lang);
 
-            if (hasDesiredCategory(baseWork)) {
+            if (baseLanguage === preferredLanguage) {
                 setWork(baseWork);
                 setLoading(false);
                 return;
             }
 
-            const tagIds = baseWork.tags ?? [];
-            for (const tagId of tagIds) {
-                const relatedWorks = await fetchWorksByTagAndCategory(tagId, categoryId);
+            const translationId = resolveTranslationId(baseWork.polylang?.translations, preferredLanguage);
+
+            if (translationId && translationId !== baseWork.id) {
+                const translated = await fetchWorkById(translationId);
                 if (isCancelled) {
                     return;
                 }
 
-                const matchedByTag = relatedWorks.find(candidate => candidate.id !== baseWork.id);
-                if (matchedByTag) {
-                    if (matchedByTag.id !== parsedId) {
-                        navigate(`/single/${matchedByTag.id}`, {
+                if (translated) {
+                    upsertWork(translated);
+                    if (translationId !== parsedId) {
+                        navigate(`/single/${translationId}`, {
                             replace: true,
                             state: fromState ? { from: fromState } : undefined,
                         });
-                    } else {
-                        setWork(matchedByTag);
-                        setLoading(false);
+                        return;
                     }
+
+                    setWork(translated);
+                    setLoading(false);
                     return;
                 }
             }
@@ -93,11 +115,11 @@ const SinglePage = () => {
         return () => {
             isCancelled = true;
         };
-    }, [workId, i18n.language, navigate, fromState]);
+    }, [workId, i18n.language, navigate, fromState, getWorkById, upsertWork]);
 
     const contentHtml = work?.content?.rendered ?? "";
     const workTitle = work?.title?.rendered ?? "";
-    const isCaseStudy = work?.categories?.includes(15) ?? false;
+    const isCaseStudy = isCaseStudyCategory(work?.categories ?? []);
 
     const featuredImage = useMemo(() => {
         return work?._embedded?.["wp:featuredmedia"]?.[0]?.source_url ?? null;

@@ -6,7 +6,6 @@ type categoryProps = {
   path: string;
 }
 
-
 const CategoryButton = ({ name, path }: categoryProps) => {
   return (
     <div className='category-button'>

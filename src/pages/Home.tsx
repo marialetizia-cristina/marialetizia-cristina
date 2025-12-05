@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { fetchPages } from "../api/api";
+import { normalizeLanguage } from "../utils/language";
 import type { Page } from "../api/api";
+import { useContentStore } from "../store/useContentStore";
 
 import '../style/Home.css';
 import WorksGrid from '../components/WorksGrid';
@@ -13,78 +14,129 @@ import Section from '../components/Section';
 import LoadingState from "../components/LoadingState";
 
 const Home = () => {
-
-  const [pages, setPages] = useState<Page[]>([]);
-  const [loading, setLoading] = useState(true);
+  const pages = useContentStore(state => state.pages);
+  const pagesLoaded = useContentStore(state => state.pagesLoaded);
+  const pagesLoading = useContentStore(state => state.pagesLoading);
+  const loadPages = useContentStore(state => state.loadPages);
   const location = useLocation();
   const { hash } = location;
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const preferredLanguage = normalizeLanguage(i18n.language) || "it";
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    (async () => {
-      const result = await fetchPages();
-      setPages(result);
-      setLoading(false);
-    })();
-  }, []);
+    void loadPages();
+  }, [loadPages]);
 
-  const findBySlug = useMemo(() => {
-    const map = new Map<string, Page>();
+  const { lookupBySlugs, lookupByKeywords } = useMemo(() => {
+    const pagesById = new Map<number, Page>();
+    const pagesBySlug = new Map<string, Page>();
+
     pages.forEach((page) => {
-      map.set(page.slug.toLowerCase(), page);
+      pagesById.set(page.id, page);
+      pagesBySlug.set(page.slug.toLowerCase(), page);
     });
-    return (slugs: string[]) => {
-      for (const slug of slugs) {
-        const match = map.get(slug);
-        if (match) return match;
+
+    const pickLocalizedVariant = (page?: Page): Page | undefined => {
+      if (!page) {
+        return undefined;
+      }
+
+      const pageLanguage = normalizeLanguage(page.polylang?.lang);
+
+      if (pageLanguage === preferredLanguage) {
+        return page;
+      }
+
+      const translationId = page.polylang?.translations?.[preferredLanguage];
+      if (translationId) {
+        const translated = pagesById.get(translationId);
+        if (translated) {
+          return translated;
+        }
+      }
+
+      if (!pageLanguage) {
+        return page;
+      }
+
+      return page;
+    };
+
+    const lookupBySlugs = (slugs: string[]) => {
+      for (const rawSlug of slugs) {
+        const slug = rawSlug.toLowerCase();
+        const candidate = pagesBySlug.get(slug);
+        const localized = pickLocalizedVariant(candidate);
+        if (localized) {
+          return localized;
+        }
       }
       return undefined;
     };
-  }, [pages]);
 
-  const findByTitleKeyword = useMemo(() => {
-    return (keywords: string[]) => {
-      const lowerKeywords = keywords.map((keyword) => keyword.toLowerCase());
-      return pages.find((page) => {
+    const lookupByKeywords = (keywords: string[]) => {
+      const lowered = keywords.map((keyword) => keyword.toLowerCase());
+      const candidate = pages.find((page) => {
         const title = page.title.rendered.toLowerCase();
-        return lowerKeywords.some((keyword) => title.includes(keyword));
+        return lowered.some((keyword) => title.includes(keyword));
       });
+
+      return pickLocalizedVariant(candidate);
     };
-  }, [pages]);
+
+    return { lookupBySlugs, lookupByKeywords };
+  }, [pages, preferredLanguage]);
 
   const aboutPage = useMemo(() => {
     return (
-      findBySlug(["about-me", "about", "chi-sono"]) ??
-      findByTitleKeyword(["about", "chi sono", "bio"])
+      lookupBySlugs(["about-me", "about", "chi-sono"]) ??
+      lookupByKeywords(["about", "chi sono", "bio"])
     );
-  }, [findBySlug, findByTitleKeyword]);
+  }, [lookupBySlugs, lookupByKeywords]);
 
   const servicesPage = useMemo(() => {
     return (
-      findBySlug(["services", "servizi", "service"]) ??
-      findByTitleKeyword(["services", "servizi", "service"])
+      lookupBySlugs(["services", "servizi", "service"]) ??
+      lookupByKeywords(["services", "servizi", "service"])
     );
-  }, [findBySlug, findByTitleKeyword]);
+  }, [lookupBySlugs, lookupByKeywords]);
 
   const contactPage = useMemo(() => {
     return (
-      findBySlug(["contact", "contatti", "contacts"]) ??
-      findByTitleKeyword(["contact", "contatti", "contacts"])
+      lookupBySlugs(["contact", "contatti", "contacts"]) ??
+      lookupByKeywords(["contact", "contatti", "contacts"])
     );
-  }, [findBySlug, findByTitleKeyword]);
+  }, [lookupBySlugs, lookupByKeywords]);
+
+  const loading = !pagesLoaded && (pagesLoading || pages.length === 0);
 
   useEffect(() => {
     if (loading) {
       return;
     }
 
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
     if (!hash) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
 
     const target = document.querySelector(hash);
     if (target instanceof HTMLElement) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      const header = document.querySelector(".header");
+      const headerHeight = header instanceof HTMLElement ? header.getBoundingClientRect().height : 0;
+      const offset = Math.max(headerHeight + 16, 0);
+      const targetTop = target.getBoundingClientRect().top + window.scrollY;
+
+      window.scrollTo({
+        top: Math.max(targetTop - offset, 0),
+        behavior: "smooth",
+      });
     }
   }, [loading, hash]);
 
@@ -102,7 +154,7 @@ const Home = () => {
       <CategoryContainer />
 
       <div className='works' id="works">
-        <WorksGrid limits={20} category="FEATURED" returnPath="/" />
+        <WorksGrid limits={20} category="FEATURED" returnPath="/" showSeeAll />
       </div>
 
       <div className="about-container">

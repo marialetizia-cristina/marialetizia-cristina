@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import type { Page } from "../api/api";
 import "../style/Section.css";
 import { stripWpClasses, toParsedImage, type ParsedImage } from "../utils/wpDom";
-import { useTranslation } from "react-i18next";
 
 interface SectionProps {
   page?: Page;
@@ -277,8 +276,6 @@ const parseGenericContent = (html: string): GenericContent => {
 
 const Section = ({ page, id }: SectionProps) => {
   const contentHtml = page?.content?.rendered ?? "";
-  const { i18n } = useTranslation();
-  const isEnglish = i18n.language?.toLowerCase().startsWith("en") ?? false;
 
   const parsed = useMemo<SectionData>(() => {
     if (!contentHtml) {
@@ -303,7 +300,10 @@ const Section = ({ page, id }: SectionProps) => {
 
   if (parsed.kind === "about") {
     const { image, textHtml } = parsed.content;
-    const shouldOverrideText = isEnglish;
+
+    if (!image && !textHtml) {
+      return null;
+    }
 
     return (
       <section className="section section--about" id={id}>
@@ -314,25 +314,11 @@ const Section = ({ page, id }: SectionProps) => {
                 <img src={image.src} alt={image.alt} loading="lazy" />
               </figure>
             )}
-            {shouldOverrideText ? (
-              <div className="section-about__text">
-                <h2>
-                  GRAPHIC DESIGNER
-                  <br />
-                  AND ILLUSTRATOR
-                </h2>
-                <p>
-                  Dopo aver frequentato il liceo artistico di Pavia, ho deciso di intraprendere la strada del graphic
-                  design frequentando la Scuola Mohole a Milano. Ora sono graphic designer e illustratrice.
-                </p>
-              </div>
-            ) : (
-              textHtml && (
-                <div
-                  className="section-about__text"
-                  dangerouslySetInnerHTML={{ __html: textHtml }}
-                />
-              )
+            {textHtml && (
+              <div
+                className="section-about__text"
+                dangerouslySetInnerHTML={{ __html: textHtml }}
+              />
             )}
           </div>
         </div>

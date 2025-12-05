@@ -31,8 +31,12 @@
     display: flex;
 }
 
-.category-button:nth-child(1) a {
+/* .category-button:nth-child(1) a {
     background-color: transparent;
+} */
+
+.category-button:nth-child(1) a {
+    background-color: rgb(255, 126, 0);
 }
 
 .category-button:nth-child(2) a {
@@ -48,29 +52,33 @@
 }
 
 .category-button a:hover {
-    background-color: black;
+    background-color: black !important;
     color: white;
+}
+
+.home .category-button:nth-child(1) a {
+    background-color: transparent;
 }
 
 .all .category-button:nth-child(1) a {
-    background-color: black;
-    color: white;
+    background-color: transparent;
+    color: black;
 }
 
 .graphic-design .category-button:nth-child(2) a {
-    background-color: black;
-    color: white;
+    background-color: transparent;
+    color: black;
 }
 
 
 .illustrations .category-button:nth-child(3) a {
-    background-color: black;
-    color: white;
+    background-color: transparent;
+    color: black;
 }
 
 .gift-art .category-button:nth-child(4) a {
-    background-color: black;
-    color: white;
+    background-color: transparent;
+    color: black;
 }
 
 @media (max-width: 1200px) {

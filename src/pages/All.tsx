@@ -13,7 +13,7 @@ function All() {
       <CategoryContainer />
 
       <div className='works'>
-        <WorksGrid category="ALL" limits={19} returnPath="/category/all" />
+        <WorksGrid category="ALL" limits={190} returnPath="/category/all" />
       </div>
     </div>
   )

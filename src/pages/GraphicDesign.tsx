@@ -13,7 +13,7 @@ function GraphicDesign() {
       <CategoryContainer />
 
       <div className='works'>
-        <WorksGrid category="GRAPHIC DESIGN" limits={19} returnPath="/category/graphic-design" />
+        <WorksGrid category="GRAPHIC DESIGN" limits={190} returnPath="/category/graphic-design" />
       </div>
     </div>
   )

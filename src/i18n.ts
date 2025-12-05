@@ -6,6 +6,7 @@ const resources = {
     translation: {
       nav: {
         works: "Works",
+        home: "Home",
         about: "About",
         services: "Services",
         contact: "Contact",
@@ -70,6 +71,7 @@ const resources = {
     translation: {
       nav: {
         works: "Lavori",
+        home: "Home",
         about: "Chi sono",
         services: "Servizi",
         contact: "Contatti",

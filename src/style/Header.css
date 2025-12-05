@@ -41,6 +41,17 @@
     list-style: none;
 }
 
+.header nav ul li a {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: black;
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
 /* Mobile: stack nav under brand and center */
 @media (max-width: 700px) {
     .header {

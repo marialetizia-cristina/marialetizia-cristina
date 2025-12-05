@@ -13,7 +13,7 @@ function Illustrations() {
       <CategoryContainer />
 
       <div className='works'>
-        <WorksGrid category="ILLUSTRATIONS" limits={19} returnPath="/category/illustrations" />
+        <WorksGrid category="ILLUSTRATIONS" limits={190} returnPath="/category/illustrations" />
       </div>
     </div>
   )
