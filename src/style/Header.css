@@ -28,7 +28,6 @@
 .header .brand {
     font-weight: 700;
     font-size: 1.125rem;
-    letter-spacing: 0.2px;
 }
 
 .header nav ul{
@@ -48,7 +47,6 @@
     text-decoration: none;
     padding: 0.5rem 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 

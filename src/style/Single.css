@@ -27,7 +27,6 @@
   font-family: "Anton", sans-serif;
   font-size: clamp(3rem, 7vw, 5rem);
   line-height: 1.05;
-  letter-spacing: 0.02em;
   font-weight: 400;
   text-transform: uppercase;
   text-align: center;
