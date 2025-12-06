@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { normalizeLanguage } from "../utils/language";
 import type { Page } from "../api/api";
 import { useContentStore } from "../store/useContentStore";
-
+ 
 import '../style/Home.css';
 import WorksGrid from '../components/WorksGrid';
 import Title from '../components/Title';
