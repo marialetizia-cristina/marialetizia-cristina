@@ -1,10 +1,11 @@
 import { createPortal } from "react-dom";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import ImageSlider from "./ImageSlider";
+import type { SliderImage } from "../types/media";
 import "../style/ImageModal.css";
 
 interface ImageModalProps {
-  images: string[];
+  images: SliderImage[];
   onClose: () => void;
 }
 
@@ -12,6 +13,11 @@ const ImageModal = ({ images, onClose }: ImageModalProps) => {
   if (typeof document === "undefined") {
     return null;
   }
+
+  const modalImages = useMemo(() => {
+    const fallbackSizes = "(min-width: 768px) 80vw, 100vw";
+    return images.map(image => (image.sizes ? image : { ...image, sizes: fallbackSizes }));
+  }, [images]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -40,7 +46,7 @@ const ImageModal = ({ images, onClose }: ImageModalProps) => {
           &times;
         </button>
         <div className="image-modal__content">
-          <ImageSlider images={images} autoPlay intervalMs={1500} className="image-slider--modal" />
+          <ImageSlider images={modalImages} autoPlay intervalMs={1500} className="image-slider--modal" />
         </div>
       </div>
     </div>,

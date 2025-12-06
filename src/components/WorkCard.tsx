@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import ImageSlider from "./ImageSlider";
 import ImageModal from "./ImageModal";
 import type { Work, WPEmbeddedMedia } from "../api/api";
+import type { SliderImage } from "../types/media";
+import { buildSliderImage, dedupeSliderImages } from "../utils/wpMedia";
 import "../style/WorkCard.css";
 import { isCaseStudyCategory } from "../utils/categories";
 
@@ -13,47 +15,56 @@ interface WorkCardProps {
 }
 
 const WorkCard = ({ work, returnPath = "/category/all" }: WorkCardProps) => {
+  const sliderSizes = "(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw";
+
+  const plainTitle = useMemo(() => {
+    return work.title.rendered.replace(/<[^>]*>/g, "").trim();
+  }, [work.title.rendered]);
+
   const contentImages = useMemo(() => {
-    if (typeof window === "undefined") return [] as string[];
-    if (!work.content?.rendered) return [] as string[];
+    if (typeof window === "undefined") return [] as SliderImage[];
+    if (!work.content?.rendered) return [] as SliderImage[];
 
     const template = document.createElement("template");
     template.innerHTML = work.content.rendered;
     const nodes = Array.from(template.content.querySelectorAll<HTMLImageElement>("img"));
-    return nodes.map(node => node.src).filter(Boolean);
-  }, [work.content?.rendered]);
+    return nodes
+      .map(node => {
+        const src = node.src || node.getAttribute("src") || "";
+        if (!src) {
+          return null;
+        }
 
-  const extractResponsive = (media: WPEmbeddedMedia | undefined): string | null => {
-    if (!media) return null;
-    const sizes = media.media_details?.sizes;
-    if (!sizes) return media.source_url ?? null;
+        const altAttribute = node.getAttribute("alt")?.trim();
+        const image: SliderImage = {
+          src,
+          alt: altAttribute || plainTitle || undefined,
+          sizes: sliderSizes,
+        };
 
-    const preferredOrder = ["medium_large", "large", "medium", "thumbnail"];
-    for (const key of preferredOrder) {
-      const size = sizes[key];
-      if (size?.source_url) {
-        return size.source_url;
-      }
-    }
+        return image;
+      })
+      .filter((image): image is SliderImage => Boolean(image));
+  }, [work.content?.rendered, plainTitle, sliderSizes]);
 
-    const fallback = Object.values(sizes).find(size => Boolean(size?.source_url));
-    return fallback?.source_url ?? media.source_url ?? null;
+  const buildMediaImage = (media: WPEmbeddedMedia | undefined): SliderImage | null => {
+    return buildSliderImage(media, { fallbackAlt: plainTitle, sizes: sliderSizes });
   };
 
   const featuredMedia = work._embedded?.["wp:featuredmedia"] ?? [];
   const attachmentsMedia = work._embedded?.["wp:attachment"] ?? [];
 
   const featured = featuredMedia
-    .map(extractResponsive)
-    .filter((url): url is string => Boolean(url));
+    .map(buildMediaImage)
+    .filter((image): image is SliderImage => Boolean(image));
 
   const attachments = attachmentsMedia
-    .map(extractResponsive)
-    .filter((url): url is string => Boolean(url));
+    .map(buildMediaImage)
+    .filter((image): image is SliderImage => Boolean(image));
 
   const images = useMemo(() => {
     const merged = [...featured, ...attachments, ...contentImages];
-    return merged.filter((url, index, arr) => url && arr.indexOf(url) === index);
+    return dedupeSliderImages(merged);
   }, [featured, attachments, contentImages]);
 
   const isCaseStudy = isCaseStudyCategory(work.categories ?? []);

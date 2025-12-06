@@ -1,15 +1,16 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import type { SliderImage } from "../types/media";
 import "../style/ImageSlider.css";
 
 interface ImageSliderProps {
-  images: string[];
+  images: SliderImage[];
   autoPlay?: boolean;
   intervalMs?: number;
   className?: string;
 }
 
 const ImageSlider = ({ images, autoPlay = false, intervalMs = 3000, className = "" }: ImageSliderProps) => {
-  const validImages = useMemo(() => images.filter(Boolean), [images]);
+  const validImages = useMemo(() => images.filter(image => Boolean(image?.src)), [images]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const timerRef = useRef<number | null>(null);
 
@@ -54,7 +55,14 @@ const ImageSlider = ({ images, autoPlay = false, intervalMs = 3000, className = 
   if (!autoPlay && validImages.length === 1) {
     return (
       <div className={`image-slider ${className}`.trim()}>
-        <img src={validImages[0]} alt="work" />
+        <img
+          src={validImages[0].src}
+          srcSet={validImages[0].srcSet}
+          sizes={validImages[0].sizes}
+          alt={validImages[0].alt ?? "work"}
+          loading="eager"
+          decoding="async"
+        />
       </div>
     );
   }
@@ -92,13 +100,15 @@ const ImageSlider = ({ images, autoPlay = false, intervalMs = 3000, className = 
         tabIndex={0}
         aria-label="Avanza all'immagine successiva"
       >
-        {validImages.map((img, idx) => (
+        {validImages.map((image, idx) => (
           <img
-            key={idx}
-            src={img}
+            key={image.src}
+            src={image.src}
+            srcSet={image.srcSet}
+            sizes={image.sizes}
             loading={idx === currentIndex ? "eager" : "lazy"}
             decoding="async"
-            alt={`work ${idx + 1}`}
+            alt={image.alt ?? `work ${idx + 1}`}
             className={idx === currentIndex ? "slider__image slider__image--active" : "slider__image"}
           />
         ))}
@@ -108,8 +118,16 @@ const ImageSlider = ({ images, autoPlay = false, intervalMs = 3000, className = 
 
   return (
     <div className={`image-slider slider ${className}`.trim()}>
-      {validImages.map((img, idx) => (
-        <img key={idx} src={img} loading={idx === 0 ? "eager" : "lazy"} decoding="async" alt={`work ${idx + 1}`} />
+      {validImages.map((image, idx) => (
+        <img
+          key={image.src}
+          src={image.src}
+          srcSet={image.srcSet}
+          sizes={image.sizes}
+          loading={idx === 0 ? "eager" : "lazy"}
+          decoding="async"
+          alt={image.alt ?? `work ${idx + 1}`}
+        />
       ))}
     </div>
   );

@@ -1,4 +1,3 @@
-import CustomCursor from '../components/CustomCursor'
 import '../style/Layout.css'
 
 // Componente che accetta componenti come props
@@ -11,7 +10,6 @@ interface LayoutProps {
 const Layout = ({ header, main, footer }: LayoutProps) => {
   return (
     <div className="layout" id="top">
-      <CustomCursor />
       {header ? <header className="layout-header">{header}</header> : null}
       <div className="layout-content">
         <main className="layout-main">{main}</main>

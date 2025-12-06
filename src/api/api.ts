@@ -7,7 +7,13 @@ export interface WPImageSize {
 
 export interface WPEmbeddedMedia {
   source_url: string;
+  alt_text?: string;
+  title?: {
+    rendered: string;
+  };
   media_details?: {
+    width?: number;
+    height?: number;
     sizes?: Record<string, WPImageSize>;
   };
 }
