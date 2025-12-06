@@ -96,6 +96,8 @@ const ImageSlider = ({ images, autoPlay = false, intervalMs = 3000, className = 
           <img
             key={idx}
             src={img}
+            loading={idx === currentIndex ? "eager" : "lazy"}
+            decoding="async"
             alt={`work ${idx + 1}`}
             className={idx === currentIndex ? "slider__image slider__image--active" : "slider__image"}
           />
@@ -107,7 +109,7 @@ const ImageSlider = ({ images, autoPlay = false, intervalMs = 3000, className = 
   return (
     <div className={`image-slider slider ${className}`.trim()}>
       {validImages.map((img, idx) => (
-        <img key={idx} src={img} alt={`work ${idx + 1}`} />
+        <img key={idx} src={img} loading={idx === 0 ? "eager" : "lazy"} decoding="async" alt={`work ${idx + 1}`} />
       ))}
     </div>
   );

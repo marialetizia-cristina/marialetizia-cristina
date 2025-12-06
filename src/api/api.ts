@@ -1,4 +1,17 @@
 // api.ts
+export interface WPImageSize {
+  source_url: string;
+  width: number;
+  height: number;
+}
+
+export interface WPEmbeddedMedia {
+  source_url: string;
+  media_details?: {
+    sizes?: Record<string, WPImageSize>;
+  };
+}
+
 export interface Work {
   id: number;
   date?: string;
@@ -7,8 +20,8 @@ export interface Work {
   content: { rendered: string };
   excerpt: { rendered: string };
   _embedded?: {
-    "wp:featuredmedia"?: { source_url: string }[];
-    "wp:attachment"?: { source_url: string }[];
+    "wp:featuredmedia"?: WPEmbeddedMedia[];
+    "wp:attachment"?: WPEmbeddedMedia[];
   };
   categories?: number[];
   tags?: number[];

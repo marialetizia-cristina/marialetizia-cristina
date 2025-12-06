@@ -3,7 +3,7 @@ import type { KeyboardEvent } from "react";
 import { Link } from "react-router-dom";
 import ImageSlider from "./ImageSlider";
 import ImageModal from "./ImageModal";
-import type { Work } from "../api/api";
+import type { Work, WPEmbeddedMedia } from "../api/api";
 import "../style/WorkCard.css";
 import { isCaseStudyCategory } from "../utils/categories";
 
@@ -23,8 +23,33 @@ const WorkCard = ({ work, returnPath = "/category/all" }: WorkCardProps) => {
     return nodes.map(node => node.src).filter(Boolean);
   }, [work.content?.rendered]);
 
-  const featured = work._embedded?.["wp:featuredmedia"]?.map(img => img.source_url) || [];
-  const attachments = work._embedded?.["wp:attachment"]?.map(img => img.source_url) || [];
+  const extractResponsive = (media: WPEmbeddedMedia | undefined): string | null => {
+    if (!media) return null;
+    const sizes = media.media_details?.sizes;
+    if (!sizes) return media.source_url ?? null;
+
+    const preferredOrder = ["medium_large", "large", "medium", "thumbnail"];
+    for (const key of preferredOrder) {
+      const size = sizes[key];
+      if (size?.source_url) {
+        return size.source_url;
+      }
+    }
+
+    const fallback = Object.values(sizes).find(size => Boolean(size?.source_url));
+    return fallback?.source_url ?? media.source_url ?? null;
+  };
+
+  const featuredMedia = work._embedded?.["wp:featuredmedia"] ?? [];
+  const attachmentsMedia = work._embedded?.["wp:attachment"] ?? [];
+
+  const featured = featuredMedia
+    .map(extractResponsive)
+    .filter((url): url is string => Boolean(url));
+
+  const attachments = attachmentsMedia
+    .map(extractResponsive)
+    .filter((url): url is string => Boolean(url));
 
   const images = useMemo(() => {
     const merged = [...featured, ...attachments, ...contentImages];

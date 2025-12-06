@@ -51,8 +51,8 @@
     background-color: rgba(0, 255, 6, 100);
 }
 
-.category-button a:hover {
-    background-color: black !important;
+.category-container .category-button a:hover {
+    background-color: black;
     color: white;
 }
 
