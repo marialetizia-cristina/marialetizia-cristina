@@ -12,6 +12,7 @@
 }
 
 .layout-main {
+  padding-top: 1rem;
   flex: 1 1 auto;
   width: 100%;
 }
@@ -24,4 +25,5 @@
 /* Small screens: reduce horizontal padding */
 @media (max-width: 600px) {
   .layout { padding: 0; }
+  .layout-main { padding-top: 0; }
 }

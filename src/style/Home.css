@@ -8,7 +8,7 @@ html {
   flex-direction: column;
   /* gap: var(--home-section-gap); */
   width: 100%;
-  padding-top: var(--home-section-gap);
+  /* padding-top: var(--home-section-gap); */
   box-sizing: border-box;
 }
 
@@ -71,7 +71,7 @@ html {
 
   .home {
     --home-section-gap: clamp(1.75rem, 6vw, 3rem);
-    padding-top: var(--home-section-gap);
+    /* padding-top: var(--home-section-gap); */
   }
 
   .title {
