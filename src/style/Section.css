@@ -11,6 +11,10 @@
   gap: clamp(2rem, 4vw, 3.75rem);
 }
 
+.section--first {
+  padding: 3rem 0;
+}
+
 .section__inner--first {
   padding: 0;
 }
@@ -35,9 +39,9 @@
   text-align: left;
 }
 
-.section-first__text--end {
+/* .section-first__text--end {
   text-align: right;
-}
+} */
 
 .section-first__text > * {
   margin: 0;
