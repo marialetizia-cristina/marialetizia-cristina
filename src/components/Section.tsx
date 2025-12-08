@@ -44,10 +44,17 @@ interface GenericContent {
   html: string;
 }
 
+interface FirstSectionContent {
+  leftHtml: string;
+  centerImage: ParsedImage | null;
+  rightHtml: string;
+}
+
 type SectionData =
   | { kind: "about"; content: AboutContent }
   | { kind: "services"; content: ServicesContent }
   | { kind: "contact"; content: ContactContent }
+  | { kind: "first"; content: FirstSectionContent }
   | { kind: "generic"; content: GenericContent }
   | { kind: "empty" };
 
@@ -274,6 +281,64 @@ const parseGenericContent = (html: string): GenericContent => {
   return { html: template.innerHTML.trim() };
 };
 
+const parseFirstSectionContent = (html: string): FirstSectionContent => {
+  if (!html) {
+    return { leftHtml: "", centerImage: null, rightHtml: "" };
+  }
+
+  if (typeof window === "undefined") {
+    return { leftHtml: html, centerImage: null, rightHtml: "" };
+  }
+
+  const template = document.createElement("template");
+  template.innerHTML = html;
+
+  const columnsContainer = template.content.querySelector("div");
+  const columnElements = columnsContainer
+    ? Array.from(columnsContainer.children).filter((node): node is HTMLElement => node instanceof HTMLElement)
+    : [];
+
+  const leftColumn = columnElements[0] ?? null;
+  const centerColumn = columnElements[1] ?? null;
+  const rightColumn = columnElements[2] ?? null;
+
+  let centerImage: ParsedImage | null = null;
+  if (centerColumn) {
+    const figure = centerColumn.querySelector("figure") ?? centerColumn.querySelector("img")?.closest("figure");
+    if (figure) {
+      centerImage = toParsedImage(figure.querySelector("img"));
+    } else {
+      centerImage = toParsedImage(centerColumn.querySelector("img"));
+    }
+  }
+
+  const extractHtml = (element: HTMLElement | null): string => {
+    if (!element) {
+      return "";
+    }
+
+    const clone = element.cloneNode(true) as HTMLElement;
+    stripWpClasses(clone);
+
+    const figure = clone.querySelector("figure");
+    if (figure) {
+      figure.remove();
+    }
+
+    const img = clone.querySelector("img");
+    if (img) {
+      img.remove();
+    }
+
+    return clone.innerHTML.trim();
+  };
+
+  const leftHtml = extractHtml(leftColumn);
+  const rightHtml = extractHtml(rightColumn);
+
+  return { leftHtml, centerImage, rightHtml };
+};
+
 const Section = ({ page, id }: SectionProps) => {
   const contentHtml = page?.content?.rendered ?? "";
 
@@ -289,6 +354,8 @@ const Section = ({ page, id }: SectionProps) => {
         return { kind: "services", content: parseServicesContent(contentHtml) };
       case "contact":
         return { kind: "contact", content: parseContactContent(contentHtml) };
+      case "first-section":
+        return { kind: "first", content: parseFirstSectionContent(contentHtml) };
       default:
         return { kind: "generic", content: parseGenericContent(contentHtml) };
     }
@@ -296,6 +363,40 @@ const Section = ({ page, id }: SectionProps) => {
 
   if (!page || parsed.kind === "empty") {
     return null;
+  }
+
+  if (parsed.kind === "first") {
+    const { leftHtml, centerImage, rightHtml } = parsed.content;
+
+    if (!leftHtml && !centerImage && !rightHtml) {
+      return null;
+    }
+
+    return (
+      <section className="section section--first" id={id}>
+        <div className="section__inner section__inner--first">
+          <div className="section-first__grid">
+            {leftHtml && (
+              <div
+                className="section-first__text section-first__text--start"
+                dangerouslySetInnerHTML={{ __html: leftHtml }}
+              />
+            )}
+            {centerImage && (
+              <figure className="section-first__media">
+                <img src={centerImage.src} alt={centerImage.alt} loading="lazy" />
+              </figure>
+            )}
+            {rightHtml && (
+              <div
+                className="section-first__text section-first__text--end"
+                dangerouslySetInnerHTML={{ __html: rightHtml }}
+              />
+            )}
+          </div>
+        </div>
+      </section>
+    );
   }
 
   if (parsed.kind === "about") {

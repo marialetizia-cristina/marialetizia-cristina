@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { use, useEffect, useMemo, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { normalizeLanguage } from "../utils/language";
@@ -109,6 +109,13 @@ const Home = () => {
     );
   }, [lookupBySlugs, lookupByKeywords]);
 
+  const firstSection = useMemo(() => {
+    return (
+      lookupBySlugs(["home-intro", "home-introduction", "introduzione", "first-section"]) ??
+      lookupByKeywords(["introduction", "introduzione", "welcome", "benvenuto"])
+    );
+  }, [lookupBySlugs, lookupByKeywords]);
+
   const loading = !pagesLoaded && (pagesLoading || pages.length === 0);
 
   useEffect(() => {
@@ -150,7 +157,7 @@ const Home = () => {
         <Title text="MARIALETIZIA CRISTINA" />
         <Profession name={t("hero.subtitle").toUpperCase()} />
       </div>
-      {/* <Section page={pages[0]} id="first-section" /> */}
+      <Section page={firstSection} id="first-section" />
       <CategoryContainer />
 
       <div className='works' id="works">

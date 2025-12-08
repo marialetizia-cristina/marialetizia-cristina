@@ -9,6 +9,8 @@ import CaseStudyContent from "../components/CaseStudyContent";
 import { normalizeLanguage, resolveTranslationId } from "../utils/language";
 import { isCaseStudyCategory } from "../utils/categories";
 import { useContentStore } from "../store/useContentStore";
+import type { SliderImage } from "../types/media";
+import { buildSliderImage, dedupeSliderImages } from "../utils/wpMedia";
 
 const SinglePage = () => {
     const { workId } = useParams<{ workId: string }>();
@@ -119,32 +121,59 @@ const SinglePage = () => {
 
     const contentHtml = work?.content?.rendered ?? "";
     const workTitle = work?.title?.rendered ?? "";
-    const isCaseStudy = isCaseStudyCategory(work?.categories ?? []);
-
-    const featuredImage = useMemo(() => {
-        return work?._embedded?.["wp:featuredmedia"]?.[0]?.source_url ?? null;
-    }, [work]);
-
     const strippedTitle = workTitle.replace(/<[^>]*>/g, "").trim();
-    const featuredAlt = strippedTitle || t("single.featuredAlt");
+    const isCaseStudy = isCaseStudyCategory(work?.categories ?? []);
+    const sliderSizes = "(min-width: 1280px) 60vw, (min-width: 768px) 80vw, 100vw";
+    const gallerySizes = "(min-width: 768px) 80vw, 100vw";
+
+    const featuredMedia = work?._embedded?.["wp:featuredmedia"]?.[0] ?? null;
+    const featuredImage = useMemo(() => {
+        return buildSliderImage(featuredMedia, { fallbackAlt: strippedTitle, sizes: sliderSizes });
+    }, [featuredMedia, strippedTitle]);
+
+    const featuredSrc = featuredImage?.src ?? null;
+    const featuredAlt = featuredImage?.alt ?? (strippedTitle || t("single.featuredAlt"));
 
     const contentIncludesFeatured = useMemo(() => {
-        if (!featuredImage) return false;
-        return contentHtml.includes(featuredImage);
-    }, [contentHtml, featuredImage]);
+        if (!featuredSrc) return false;
+        return contentHtml.includes(featuredSrc);
+    }, [contentHtml, featuredSrc]);
+
+    const attachmentImages = useMemo(() => {
+        if (!work) return [] as SliderImage[];
+
+        const attachments = work._embedded?.["wp:attachment"] ?? [];
+        const built = attachments
+            .map(media => buildSliderImage(media, { fallbackAlt: strippedTitle, sizes: gallerySizes }))
+            .filter((image): image is SliderImage => Boolean(image));
+
+        return dedupeSliderImages(built);
+    }, [work, strippedTitle]);
 
     const additionalImages = useMemo(() => {
-        if (!work) return [] as string[];
+        if (attachmentImages.length === 0) {
+            return [] as SliderImage[];
+        }
 
-        const attachments = work._embedded?.["wp:attachment"]?.map(img => img.source_url) ?? [];
-        const merged = [...attachments];
+        const filtered = attachmentImages.filter(image => {
+            const src = image.src;
+            if (!src) {
+                return false;
+            }
 
-        return merged
-            .filter((url): url is string => Boolean(url))
-            .filter((url, index, arr) => arr.indexOf(url) === index)
-            .filter(url => url !== featuredImage)
-            .filter(url => !contentHtml.includes(url));
-    }, [work, featuredImage, contentHtml]);
+            if (featuredSrc && src === featuredSrc) {
+                return false;
+            }
+
+            if (contentHtml.includes(src)) {
+                return false;
+            }
+
+            return true;
+        });
+
+        return dedupeSliderImages(filtered);
+    }, [attachmentImages, featuredSrc, contentHtml]);
 
     const errorMessage = errorKey ? t(`single.errors.${errorKey}`) : null;
 
@@ -170,7 +199,14 @@ const SinglePage = () => {
                 <div className="single__title" dangerouslySetInnerHTML={{ __html: work.title.rendered }} />
                 {!isCaseStudy && featuredImage && !contentIncludesFeatured && (
                     <figure className="single__featured">
-                        <img src={featuredImage} alt={featuredAlt} />
+                        <img
+                            src={featuredImage.src}
+                            srcSet={featuredImage.srcSet}
+                            sizes={featuredImage.sizes}
+                            alt={featuredAlt}
+                            loading="eager"
+                            decoding="async"
+                        />
                     </figure>
                 )}
             </header>

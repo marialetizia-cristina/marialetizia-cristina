@@ -55,7 +55,6 @@ export interface Page {
 
 const API_POSTS_BASE_URL = "https://marialetizia.netsons.org/wp-json/wp/v2/posts";
 const API_PAGES_BASE_URL = "https://marialetizia.netsons.org/wp-json/wp/v2/pages";
-const CORE_PAGE_IDS = [808, 810, 811];
 
 const EMBED_RESOURCES = "wp:featuredmedia,wp:attachment";
 
@@ -123,68 +122,43 @@ export async function fetchWorkById(workId: number): Promise<Work | null> {
 }
 
 export async function fetchPages(): Promise<Page[]> {
+  const collected = new Map<number, Page>();
+
   try {
-    const baseUrl = new URL(API_PAGES_BASE_URL);
-    baseUrl.searchParams.set("include", CORE_PAGE_IDS.join(","));
-    baseUrl.searchParams.set("_embed", EMBED_RESOURCES);
+    let page = 1;
+    let totalPages = 1;
 
-    const res = await fetch(baseUrl.toString());
-    if (!res.ok) throw new Error(`Failed to fetch: ${res.statusText}`);
-    const corePages = (await res.json()) as Page[];
+    do {
+      const url = new URL(API_PAGES_BASE_URL);
+      url.searchParams.set("_embed", EMBED_RESOURCES);
+      url.searchParams.set("per_page", "100");
+      url.searchParams.set("page", String(page));
+      url.searchParams.set("lang", "all");
 
-    const pagesById = new Map<number, Page>();
-    corePages.forEach(page => {
-      pagesById.set(page.id, page);
-    });
-
-    const translationIds = new Set<number>();
-    corePages.forEach(page => {
-      const translations = page.polylang?.translations;
-      if (translations) {
-        Object.values(translations).forEach(value => {
-          const numericId = typeof value === "string" ? Number.parseInt(value, 10) : value;
-          if (Number.isFinite(numericId) && typeof numericId === "number" && !pagesById.has(numericId)) {
-            translationIds.add(numericId);
-          }
-        });
-      }
-    });
-
-    const translationIdsArray = Array.from(translationIds);
-    if (translationIdsArray.length === 0) {
-      return Array.from(pagesById.values());
-    }
-
-    try {
-      const translationPages: Page[] = [];
-      const chunkSize = 50;
-
-      for (let index = 0; index < translationIdsArray.length; index += chunkSize) {
-        const chunk = translationIdsArray.slice(index, index + chunkSize);
-        const translationUrl = new URL(API_PAGES_BASE_URL);
-        translationUrl.searchParams.set("include", chunk.join(","));
-        translationUrl.searchParams.set("_embed", EMBED_RESOURCES);
-
-        const translationRes = await fetch(translationUrl.toString());
-        if (!translationRes.ok) {
-          throw new Error(`Failed to fetch translations chunk: ${translationRes.statusText}`);
-        }
-
-        const chunkPages = (await translationRes.json()) as Page[];
-        translationPages.push(...chunkPages);
+      const res = await fetch(url.toString());
+      if (!res.ok) {
+        throw new Error(`Failed to fetch pages page ${page}: ${res.statusText}`);
       }
 
-      translationPages.forEach(page => {
-        pagesById.set(page.id, page);
+      const data = (await res.json()) as Page[];
+      data.forEach(pageData => {
+        collected.set(pageData.id, pageData);
       });
-    } catch (error) {
-      console.error("Error fetching page translations:", error);
-      return Array.from(pagesById.values());
-    }
 
-    return Array.from(pagesById.values());
+      if (page === 1) {
+        const header = res.headers.get("X-WP-TotalPages");
+        const parsedTotal = header ? Number.parseInt(header, 10) : NaN;
+        if (Number.isFinite(parsedTotal) && parsedTotal > 0) {
+          totalPages = parsedTotal;
+        }
+      }
+
+      page += 1;
+    } while (page <= totalPages);
+
+    return Array.from(collected.values());
   } catch (error) {
-    console.error("Error fetching works:", error);
-    return [];
+    console.error("Error fetching pages:", error);
+    return Array.from(collected.values());
   }
 }
