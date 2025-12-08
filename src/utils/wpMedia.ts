@@ -67,17 +67,87 @@ export const buildSliderImage = (
 export const dedupeSliderImages = (images: SliderImage[]): SliderImage[] => {
   const deduped = new Map<string, SliderImage>();
 
+  const normalizeSrcSet = (value?: string): string | undefined => {
+    if (!value) {
+      return undefined;
+    }
+
+    const parts = value
+      .split(",")
+      .map(part => part.trim())
+      .filter(Boolean);
+
+    return parts.length ? parts.join(", ") : undefined;
+  };
+
+  const mergeSrcSet = (first?: string, second?: string): string | undefined => {
+    const normalize = (value?: string): Array<{ url: string; descriptor?: string; width?: number }> => {
+      if (!value) {
+        return [];
+      }
+
+      return value
+        .split(",")
+        .map(entry => entry.trim())
+        .filter(Boolean)
+        .map(entry => {
+          const [url, descriptor] = entry.split(/\s+/);
+          const width = descriptor ? Number.parseInt(descriptor, 10) : undefined;
+
+          return { url, descriptor, width: Number.isFinite(width) ? width : undefined };
+        })
+        .filter(item => Boolean(item.url));
+    };
+
+    const catalog = new Map<string, { descriptor?: string; width?: number }>();
+
+    normalize(first).forEach(item => {
+      catalog.set(item.url, { descriptor: item.descriptor, width: item.width });
+    });
+
+    normalize(second).forEach(item => {
+      const existing = catalog.get(item.url);
+      if (!existing || (item.width && (!existing.width || item.width > existing.width))) {
+        catalog.set(item.url, { descriptor: item.descriptor, width: item.width });
+      }
+    });
+
+    const merged = Array.from(catalog.entries())
+      .map(([url, meta]) => ({ url, descriptor: meta.descriptor, width: meta.width ?? 0 }))
+      .sort((a, b) => (a.width ?? 0) - (b.width ?? 0))
+      .map(item => (item.descriptor ? `${item.url} ${item.descriptor}` : item.url));
+
+    return merged.length ? merged.join(", ") : undefined;
+  };
+
   images.forEach(image => {
     const src = image?.src?.trim();
     if (!src) {
       return;
     }
 
+    const normalized: SliderImage = {
+      ...image,
+      src,
+      alt: image.alt?.trim() || undefined,
+      sizes: image.sizes?.trim() || undefined,
+      srcSet: normalizeSrcSet(image.srcSet),
+    };
+
     const existing = deduped.get(src);
     if (existing) {
-      deduped.set(src, { ...existing, ...image, src });
+      const merged: SliderImage = {
+        ...existing,
+        ...normalized,
+        src,
+        alt: normalized.alt ?? existing.alt,
+        sizes: normalized.sizes ?? existing.sizes,
+        srcSet: mergeSrcSet(existing.srcSet, normalized.srcSet),
+      };
+
+      deduped.set(src, merged);
     } else {
-      deduped.set(src, { ...image, src });
+      deduped.set(src, normalized);
     }
   });
 

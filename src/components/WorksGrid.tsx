@@ -60,7 +60,6 @@ const WorksGrid = ({
     const preferredLanguage = normalizeLanguage(i18n.language) || "it";
 
     type WorkGroup = {
-      fallback: Work;
       variants: Map<string, Work>;
       categoryIds: Set<number>;
     };
@@ -83,7 +82,7 @@ const WorksGrid = ({
       }
 
       const key = `poly:${Array.from(idSet).sort((a, b) => a - b).join(":")}`;
-      const langCode = normalizeLanguage(work.polylang?.lang);
+      const langCode = normalizeLanguage(work.polylang?.lang || work.lang);
       const categories = work.categories ?? [];
 
       if (!groups.has(key)) {
@@ -96,16 +95,19 @@ const WorksGrid = ({
         categories.forEach(id => categoryIds.add(id));
 
         groups.set(key, {
-          fallback: work,
           variants,
           categoryIds,
         });
         order.push(key);
       } else {
         const group = groups.get(key)!;
-        if (langCode && !group.variants.has(langCode)) {
-          group.variants.set(langCode, work);
+        if (langCode) {
+          const existing = group.variants.get(langCode);
+          if (!existing) {
+            group.variants.set(langCode, work);
+          }
         }
+
         categories.forEach(id => group.categoryIds.add(id));
       }
     });
@@ -120,8 +122,7 @@ const WorksGrid = ({
         return;
       }
 
-      const preferredWork = group.variants.get(preferredLanguage);
-      const candidate = preferredWork ?? group.fallback;
+      const candidate = group.variants.get(preferredLanguage);
       if (!candidate) {
         return;
       }
@@ -132,7 +133,6 @@ const WorksGrid = ({
 
       if (category !== "ALL" && categoryIds.length > 0) {
         const categoryMatches = new Set<number>();
-        (candidate.categories ?? []).forEach(id => categoryMatches.add(id));
         group.categoryIds.forEach(id => categoryMatches.add(id));
 
         const hasMatch = categoryIds.some(id => categoryMatches.has(id));
