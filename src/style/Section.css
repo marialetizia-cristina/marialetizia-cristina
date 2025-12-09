@@ -22,17 +22,32 @@
 .section-first__grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 3fr) minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 4rem);
+  gap: clamp(1.25rem, 3.5vw, 2.5rem);
   align-items: start;
   width: 100%;
 }
 
 .section-first__text {
   display: flex;
+}
+
+/* Stretch the first meaningful block even when WP inserts an empty wrapper. */
+.section-about__text> :first-child {
+  height: 100%;
+}
+
+.section-about__text> :first-child> :first-child {
+  display: none !important;
+}
+
+.section-about__text> :first-child:nth-child(1) div {
+  height: 100%;
   flex-direction: column;
   gap: clamp(1rem, 2.5vw, 1.75rem);
   font-size: clamp(0.9rem, 1.2vw, 1.05rem);
   line-height: 1.7;
+  display: flex;
+  justify-content: space-between;
 }
 
 .section-first__text--start {
@@ -43,7 +58,7 @@
   text-align: right;
 } */
 
-.section-first__text > * {
+.section-first__text>* {
   margin: 0;
 }
 
@@ -119,6 +134,7 @@
 .contact-link__anchor:focus-visible {
   color: #444;
 }
+
 .section-about {
   display: grid;
   grid-template-columns: minmax(200px, clamp(240px, 30vw, 320px)) minmax(0, 1fr);
@@ -148,11 +164,17 @@
   display: flex;
   flex-direction: column;
   gap: clamp(1.25rem, 3vw, 2rem);
+  height: 100%;
 }
 
-.section-about__text > * {
+.section-about__text>* {
   margin: 0;
 }
+
+.section-about__text:nth-child(1) {
+  height: 100%;
+}
+
 .section-about__text h1,
 .section-about__text h2,
 .section-about__text h3,
@@ -163,7 +185,7 @@
 }
 
 .section-about__text h2 {
-  font-size: clamp(3.2rem, 5vw, 3.75rem);
+  /*font-size: clamp(10rem, 10vw, 5.75rem);*/
   margin: 0;
 }
 
@@ -180,32 +202,33 @@
 .services-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(1.75rem, 4vw, 3rem);
 }
 
 .service-card {
-  display: grid;
-  grid-template-columns: minmax(160px, 240px) minmax(0, 1fr);
-  grid-template-rows: auto auto;
-  column-gap: clamp(1rem, 3vw, 2rem);
-  row-gap: clamp(0.75rem, 2vw, 1.25rem);
-  padding: clamp(1.5rem, 3vw, 2.5rem);
-  align-items: start;
-  --service-card-visual-height: clamp(200px, 28vw, 320px);
+  display: flex;
+  flex-direction: row;
+  gap: clamp(1rem, 3vw, 2.25rem);
+  padding: 0 clamp(1.5rem, 3vw, 2.5rem);
+  align-items: stretch;
+  --service-card-media-width: clamp(140px, 22vw, 200px);
+  --service-card-visual-height: clamp(160px, 22vw, 260px);
 }
 
 .service-card__icon {
-  grid-column: 1;
-  grid-row: 1 / span 2;
   margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 var(--service-card-media-width);
+  max-width: var(--service-card-media-width);
+  width: 100%;
+  height: auto;
+  align-self: flex-start;
 }
 
 .service-card__icon--primary {
   border-radius: 0.5rem;
-  /* padding: clamp(0.35rem, 1vw, 0.85rem); */
+  padding: clamp(0.25rem, 0.75vw, 0.6rem);
 }
 
 .section--services .service-card__icon img {
@@ -217,17 +240,25 @@
   border: 1px solid #0f0f0f;
 }
 
+.service-card__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  min-width: min(260px, 100%);
+}
+
 .service-card__body {
-  grid-column: 2;
-  grid-row: 1;
   font-size: 1rem;
   line-height: 1.6;
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
+  width: min-content;
 }
 
-.service-card__body > * {
+.service-card__body>* {
   margin: 0;
 }
 
@@ -251,25 +282,23 @@
 }
 
 .service-card__progress {
-  grid-column: 2;
-  grid-row: 2;
   margin: 0;
-  width: 100%;
-  align-self: end;
-  justify-self: start;
   max-height: var(--service-card-visual-height);
 }
 
 .service-card__progress--secondary {
   display: flex;
   align-items: flex-end;
-  justify-content: flex-start;
+  justify-content: flex-end;
+  align-self: flex-end;
+  width: clamp(90px, 20vw, 140px);
 }
 
 @media (min-width: 1025px) {
   .service-card__progress--secondary {
-    width: 160px;
-    max-width: 160px;
+    width: clamp(90px, 12vw, 140px);
+    max-width: 100px;
+    align-self: auto;
   }
 
   .service-card__progress--secondary img {
@@ -320,20 +349,21 @@
   min-width: min(340px, 100%);
   display: flex;
   flex-direction: column;
-/*   gap: clamp(0.75rem, 2.5vw, 1.35rem);
+  /*   gap: clamp(0.75rem, 2.5vw, 1.35rem);
   padding: clamp(0.75rem, 2vw, 1.25rem) 0;
- */}
+ */
+}
 
 .contact-board__text {
   font-size: 1.05rem;
   line-height: 1.7;
 }
 
-.contact-board__text > * {
+.contact-board__text>* {
   margin: 0;
 }
 
-.contact-board__text > * + * {
+.contact-board__text>*+* {
   margin-top: 1.1rem;
 }
 
@@ -399,7 +429,7 @@
   transform: translateX(-50%);
 }
 
-.section--generic .section__text > * + * {
+.section--generic .section__text>*+* {
   margin-top: 1.1rem;
 }
 
@@ -447,34 +477,28 @@
     gap: clamp(1.5rem, 5vw, 2.75rem);
   }
 
-  .services-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
   .service-card {
-    grid-template-columns: minmax(140px, 32vw) minmax(0, 1fr);
-    grid-template-rows: auto auto;
-    column-gap: clamp(0.85rem, 4vw, 1.5rem);
-    row-gap: clamp(0.75rem, 3.5vw, 1.1rem);
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: clamp(0.75rem, 4vw, 1.25rem);
+    /* --service-card-media-width: clamp(110px, 35vw, 160px); */
+    --service-card-visual-height: clamp(140px, 35vw, 200px);
   }
 
   .service-card__icon {
-    justify-self: stretch;
-    max-width: 100%;
-    grid-column: 1;
-    grid-row: 1 / span 2;
-  }
-
-  .service-card__body {
-    grid-column: 2;
-    grid-row: 1;
+    flex: 0 0 var(--service-card-media-width);
+    max-width: var(--service-card-media-width);
   }
 
   .service-card__progress {
-    justify-self: start;
-    width: clamp(90px, 28vw, 140px);
-    grid-column: 2;
-    grid-row: 2;
+    width: clamp(70px, 28vw, 110px);
+    align-self: flex-end;
+  }
+
+  .service-card__content {
+    min-width: 0;
+    height: 100%;
   }
 
   .contact-board {
@@ -505,8 +529,29 @@
     text-align: left;
   }
 
+  .service-card {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(0.85rem, 6vw, 1.5rem);
+    padding: clamp(1.25rem, 5vw, 1.75rem);
+    /* --service-card-media-width: clamp(160px, 60vw, 220px); */
+    --service-card-visual-height: clamp(160px, 60vw, 240px);
+  }
+
+  .service-card__icon {
+    align-self: center;
+  }
+
+  .service-card__content {
+    width: 100%;
+    align-items: flex-start;
+    text-align: left;
+  }
+
   .service-card__progress {
-    justify-self: start;
+    align-self: center;
+    width: clamp(90px, 40vw, 140px);
   }
 }
 

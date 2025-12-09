@@ -76,7 +76,8 @@ const SinglePage = () => {
             }
 
             const preferredLanguage = normalizeLanguage(i18n.language) || "it";
-            const baseLanguage = normalizeLanguage(baseWork.polylang?.lang);
+            const baseLanguage = normalizeLanguage(baseWork.polylang?.lang ?? baseWork.lang);
+            const translationsMap = baseWork.polylang?.translations ?? baseWork.translations;
 
             if (baseLanguage === preferredLanguage) {
                 setWork(baseWork);
@@ -84,7 +85,7 @@ const SinglePage = () => {
                 return;
             }
 
-            const translationId = resolveTranslationId(baseWork.polylang?.translations, preferredLanguage);
+            const translationId = resolveTranslationId(translationsMap, preferredLanguage);
 
             if (translationId && translationId !== baseWork.id) {
                 const translated = await fetchWorkById(translationId);

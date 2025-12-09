@@ -452,16 +452,20 @@ const Section = ({ page, id }: SectionProps) => {
                       <img src={card.icon.src} alt={card.icon.alt} loading="lazy" />
                     </figure>
                   )}
-                  {card.textHtml && (
-                    <div
-                      className="service-card__body"
-                      dangerouslySetInnerHTML={{ __html: card.textHtml }}
-                    />
-                  )}
-                  {card.progress && (
-                    <figure className="service-card__progress service-card__progress--secondary">
-                      <img src={card.progress.src} alt={card.progress.alt} loading="lazy" />
-                    </figure>
+                  {(card.textHtml || card.progress) && (
+                    <div className="service-card__content">
+                      {card.textHtml && (
+                        <div
+                          className="service-card__body"
+                          dangerouslySetInnerHTML={{ __html: card.textHtml }}
+                        />
+                      )}
+                      {card.progress && (
+                        <figure className="service-card__progress service-card__progress--secondary">
+                          <img src={card.progress.src} alt={card.progress.alt} loading="lazy" />
+                        </figure>
+                      )}
+                    </div>
                   )}
                 </article>
               ))}
