@@ -77,7 +77,12 @@ const SinglePage = () => {
 
             const preferredLanguage = normalizeLanguage(i18n.language) || "it";
             const baseLanguage = normalizeLanguage(baseWork.polylang?.lang ?? baseWork.lang);
-            const translationsMap = baseWork.polylang?.translations ?? baseWork.translations;
+            const translationsSource = baseWork.polylang?.translations ?? baseWork.translations;
+            const translationsMap = translationsSource
+                ? Object.fromEntries(
+                      Object.entries(translationsSource).map(([key, value]) => [key, value ?? null])
+                  )
+                : undefined;
 
             if (baseLanguage === preferredLanguage) {
                 setWork(baseWork);
