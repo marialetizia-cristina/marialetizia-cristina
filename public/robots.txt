@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://marialetizia.netsons.org/sitemap_index.xml
+Sitemap: https://marialetiziacristina.vercel.app/sitemap.xml

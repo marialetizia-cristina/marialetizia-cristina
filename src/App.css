@@ -36,6 +36,10 @@ body p {
   line-height: 1em !important; 
 }
 
+/* body::-webkit-scrollbar {
+  display: none;
+} */
+
 body {
   margin-top: 0 !important;
 }
