@@ -494,12 +494,6 @@ const Section = ({ page, id }: SectionProps) => {
             )}
             {(textHtml || links.length > 0) && (
               <div className="contact-board__details">
-                {/* {textHtml && (
-                  <div
-                    className="contact-board__text"
-                    dangerouslySetInnerHTML={{ __html: textHtml }}
-                  />
-                )} */}
                 {links.length > 0 && (
                   <div className="contact-links">
                     {links.map((link, index) => (
@@ -534,6 +528,12 @@ const Section = ({ page, id }: SectionProps) => {
             <figure className="contact-banner contact-banner--absolute">
               <img src={bannerImage.src} alt={bannerImage.alt} loading="lazy" />
             </figure>
+          )}
+          {textHtml && (
+            <div
+              className="contact-board__text"
+              dangerouslySetInnerHTML={{ __html: textHtml }}
+            />
           )}
         </div>
       </section>

@@ -1,12 +1,12 @@
 .footer {
     width: 100%;
-    padding: 0 0 1.25rem 0;
+    padding: 0 0 3rem 0;
     background-color: #fff9f0;
     text-align: center;
     color: var(--muted);
     font-size: 0.95rem;
-    border-top: 1px solid rgba(0,0,0,0.04);
-    
+    border-top: 1px solid rgba(0, 0, 0, 0.04);
+
 }
 
 .footer nav ul {
@@ -14,7 +14,7 @@
     display: flex;
     gap: 1em;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: row;
     box-sizing: border-box;
     padding: 0;
@@ -32,7 +32,15 @@
     height: 1px;
 }
 
+
+.footer-credits span a:hover {
+    color: red;
+}
+
 /* stack content on small screens */
 @media (max-width: 600px) {
-  .footer { font-size: 0.9rem; padding: 0.9rem 0; }
+    .footer {
+        font-size: 0.9rem;
+        padding: 0.9rem 0;
+    }
 }

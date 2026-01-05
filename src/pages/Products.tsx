@@ -48,6 +48,8 @@ const Products = () => {
     fetchProducts();
   }, []);
 
+  // Contenuto originale commentato per "under construction"
+  /*
   if (loading) return <div>Caricamento prodotti...</div>;
   if (error) return <div>Errore: {error}</div>;
 
@@ -89,6 +91,13 @@ const Products = () => {
           </div>
         ))}
       </div>
+    </div>
+  );
+  */
+
+  return (
+    <div style={{ padding: 48, textAlign: 'center', fontSize: 28, color: '#222', fontWeight: 700 }}>
+      Under construction
     </div>
   );
 };

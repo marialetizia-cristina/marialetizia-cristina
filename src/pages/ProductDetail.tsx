@@ -57,20 +57,11 @@ const ProductDetail = () => {
     fetchProduct();
   }, [productId, t]);
 
-<<<<<<< HEAD
   if (loading) return <div className="product-detail-container"><div className="loading">{t('product.loading')}</div></div>;
   if (error) return <div className="product-detail-container"><div className="error">{t('product.error')}: {error}</div></div>;
   if (!product) return <div className="product-detail-container"><div className="error">{t('product.notFound')}</div></div>;
 
   // Check if product is in cart
-=======
-
-  if (loading) return <div>Caricamento prodotto...</div>;
-  if (error) return <div>Errore: {error}</div>;
-  if (!product) return <div>Prodotto non trovato.</div>;
-
-  // Simula "acquisto" locale: se il prodotto è nel carrello, mostra download, altrimenti solo anteprima
->>>>>>> 7fc0db0 (feat: add ShopHeader component and update routing for products page; refactor GiftArt to redirect to products)
   const isInCart = items.some(item => item.id === product.id);
 
   // Se il prodotto ha download digitali
@@ -82,9 +73,9 @@ const ProductDetail = () => {
       <Link to="/products" className="back-link">← {t('product.backToProducts')}</Link>
       <h1 className="product-title">{product.name}</h1>
       {product.images && product.images[0] && (
-        <img 
-          src={product.images[0].src} 
-          alt={product.images[0].alt || product.name} 
+        <img
+          src={product.images[0].src}
+          alt={product.images[0].alt || product.name}
           className="product-main-image"
         />
       )}

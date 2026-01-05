@@ -25,11 +25,11 @@ function App() {
 
 const AppContent = () => {
   const location = useLocation();
-  // Usa ShopHeader solo per la pagina /products
-  const isShop = location.pathname === "/products";
+  // Usa sempre Header, ShopHeader commentato temporaneamente
+  // const isShop = location.pathname === "/products";
   return (
     <Layout
-      header={isShop ? <ShopHeader /> : <Header />}
+      header={<Header />}
       footer={<Footer />}
       main={
         <>
