@@ -54,7 +54,7 @@ const ProductDetail = () => {
       }
     };
     fetchProduct();
-  }, [productId]);
+  }, [productId, t]);
 
   if (loading) return <div className="product-detail-container"><div className="loading">{t('product.loading')}</div></div>;
   if (error) return <div className="product-detail-container"><div className="error">{t('product.error')}: {error}</div></div>;
