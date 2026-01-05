@@ -42,6 +42,19 @@ const resources = {
         seeMoreLines: ["SEE", "MORE", "PROJ", "ECT"],
         empty: "No projects here right now — come back soon for fresh work!",
       },
+      product: {
+        backToProducts: "Back to products",
+        loading: "Loading product...",
+        error: "Error",
+        loadError: "Error loading product",
+        notFound: "Product not found.",
+        digitalPreview: "Digital file preview",
+        previewAlt: "Preview",
+        purchaseToUnlock: "Purchase to unlock download",
+        downloadFile: "Download file",
+        addToCart: "Add to cart",
+        addedToCart: "Added to cart",
+      },
       giftArt: {
         notice: {
           title: "This space is under construction",
@@ -109,6 +122,19 @@ const resources = {
       works: {
         seeMoreLines: ["VEDI", "ALTRI", "PRO", "GETTI"],
         empty: "Al momento non c’è nulla da mostrare qui: torna presto per nuovi lavori!",
+      },
+      product: {
+        backToProducts: "Torna ai prodotti",
+        loading: "Caricamento prodotto...",
+        error: "Errore",
+        loadError: "Errore nel caricamento del prodotto",
+        notFound: "Prodotto non trovato.",
+        digitalPreview: "Anteprima file digitale",
+        previewAlt: "Anteprima",
+        purchaseToUnlock: "Acquista per sbloccare il download",
+        downloadFile: "Scarica file",
+        addToCart: "Aggiungi al carrello",
+        addedToCart: "Aggiunto al carrello",
       },
       giftArt: {
         notice: {

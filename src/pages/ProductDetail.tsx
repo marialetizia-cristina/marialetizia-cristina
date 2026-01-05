@@ -1,14 +1,39 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useCartStore } from "../store/useCartStore";
+import "../style/ProductDetail.css";
+import { useTranslation } from "react-i18next";
+
+interface ProductImage {
+  src: string;
+  alt?: string;
+}
+
+interface ProductDownload {
+  id: string;
+  name: string;
+  file: string;
+}
+
+interface Product {
+  id: number;
+  name: string;
+  description: string;
+  price: string;
+  images: ProductImage[];
+  downloads?: ProductDownload[];
+  permalink: string;
+}
 
 const ProductDetail = () => {
+  const { t } = useTranslation();
   const { productId } = useParams();
-  const [product, setProduct] = useState<any>(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const addToCart = useCartStore(state => state.addToCart);
+  const items = useCartStore(state => state.items);
 
   useEffect(() => {
     if (!productId) return;
@@ -22,8 +47,8 @@ const ProductDetail = () => {
         if (!res.ok) throw new Error("Errore nel recupero prodotto");
         const data = await res.json();
         setProduct(data);
-      } catch (e: any) {
-        setError(e.message || "Errore generico");
+      } catch (e) {
+        setError(e instanceof Error ? e.message : t('product.loadError'));
       } finally {
         setLoading(false);
       }
@@ -31,65 +56,50 @@ const ProductDetail = () => {
     fetchProduct();
   }, [productId]);
 
-  if (loading) return <div>Caricamento prodotto...</div>;
-  if (error) return <div>Errore: {error}</div>;
-  if (!product) return <div>Prodotto non trovato.</div>;
+  if (loading) return <div className="product-detail-container"><div className="loading">{t('product.loading')}</div></div>;
+  if (error) return <div className="product-detail-container"><div className="error">{t('product.error')}: {error}</div></div>;
+  if (!product) return <div className="product-detail-container"><div className="error">{t('product.notFound')}</div></div>;
 
-  // Simula "acquisto" locale: se il prodotto è nel carrello, mostra download, altrimenti solo anteprima
-  const isInCart = useCartStore(state => state.items.some(item => item.id === product.id));
+  // Check if product is in cart
+  const isInCart = items.some(item => item.id === product.id);
 
   // Se il prodotto ha download digitali
   const hasDownload = Array.isArray(product.downloads) && product.downloads.length > 0;
-  const download = hasDownload ? product.downloads[0] : null;
+  const download = hasDownload && product.downloads ? product.downloads[0] : null;
 
   return (
-    <div style={{ padding: 24 }}>
-      <Link to="/products" style={{ marginBottom: 16, display: 'inline-block' }}>← Torna ai prodotti</Link>
-      <h1>{product.name}</h1>
+    <div className="product-detail-container">
+      <Link to="/products" className="back-link">← {t('product.backToProducts')}</Link>
+      <h1 className="product-title">{product.name}</h1>
       {product.images && product.images[0] && (
-        <img src={product.images[0].src} alt={product.images[0].alt || product.name} style={{ width: 400, maxWidth: '100%', borderRadius: 8, marginBottom: 24 }} />
+        <img 
+          src={product.images[0].src} 
+          alt={product.images[0].alt || product.name} 
+          className="product-main-image"
+        />
       )}
-      <div dangerouslySetInnerHTML={{ __html: product.description }} />
-      <div style={{ fontWeight: 'bold', margin: '16px 0' }}>€ {product.price}</div>
+      <div className="product-description" dangerouslySetInnerHTML={{ __html: product.description }} />
+      <div className="product-price">€ {product.price}</div>
 
       {/* Se è un prodotto digitale, mostra anteprima e download se acquistato */}
-      {hasDownload && (
-        <div style={{ margin: '24px 0' }}>
-          <h3>Anteprima file digitale</h3>
+      {hasDownload && download && (
+        <div className="digital-file-section">
+          <h3>{t('product.digitalPreview')}</h3>
           <img
             src={download.file}
-            alt={download.name || 'Anteprima'}
-            style={{
-              width: 500,
-              maxWidth: '100%',
-              borderRadius: 8,
-              marginBottom: 12,
-              pointerEvents: 'none',
-              userSelect: 'none',
-              filter: isInCart ? 'none' : 'blur(2px) grayscale(0.3)',
-              opacity: isInCart ? 1 : 0.7
-            }}
+            alt={download.name || t('product.previewAlt')}
+            className={`preview-image ${isInCart ? 'unlocked' : 'locked'}`}
             draggable={false}
             onContextMenu={e => !isInCart && e.preventDefault()}
           />
-          {!isInCart && <div style={{ color: '#888', fontSize: 14 }}>Acquista per sbloccare il download</div>}
+          {!isInCart && <div className="preview-notice">{t('product.purchaseToUnlock')}</div>}
           {isInCart && (
             <a
               href={download.file}
               download
-              style={{
-                display: 'inline-block',
-                marginTop: 12,
-                color: '#fff',
-                background: '#0070f3',
-                border: 'none',
-                borderRadius: 4,
-                padding: '8px 16px',
-                textDecoration: 'none',
-                fontWeight: 'bold'
-              }}
+              className="download-button"
             >
-              Download file
+              {t('product.downloadFile')}
             </a>
           )}
         </div>
@@ -97,7 +107,7 @@ const ProductDetail = () => {
 
       {/* Bottone acquista/aggiungi al carrello */}
       <button
-        style={{ color: "#0070f3", background: 'none', border: '1px solid #0070f3', borderRadius: 4, padding: '6px 12px', cursor: 'pointer', marginTop: 8 }}
+        className="add-to-cart-button"
         onClick={() => addToCart({
           id: product.id,
           name: product.name,
@@ -107,7 +117,7 @@ const ProductDetail = () => {
         })}
         disabled={isInCart}
       >
-        {isInCart ? 'Aggiunto al carrello' : 'Aggiungi al carrello'}
+        {isInCart ? t('product.addedToCart') : t('product.addToCart')}
       </button>
     </div>
   );

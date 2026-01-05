@@ -2,7 +2,7 @@ import Voice from "./Voice";
 import SwitchLang from "./SwitchLang";
 import "../style/Header.css";
 import { useTranslation } from "react-i18next";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
     const { t } = useTranslation();
