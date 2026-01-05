@@ -246,7 +246,7 @@
   flex-direction: column;
   justify-content: space-around;
   gap: clamp(1rem, 3vw, 1.5rem);
-  min-width: min(260px, 100%);
+  min-width: min(200px, 100%);
 }
 
 .service-card__body {
@@ -255,7 +255,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
-  width: min-content;
+  width: 100%;
 }
 
 .service-card__body>* {

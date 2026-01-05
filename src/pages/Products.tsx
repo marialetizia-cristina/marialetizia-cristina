@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useCartStore } from "../store/useCartStore";
 import { useNavigate } from "react-router-dom";
+//import SwitchLang from "../components/SwitchLang";
 
 interface Product {
   id: number;
@@ -24,8 +25,8 @@ const Products = () => {
       setLoading(true);
       setError(null);
       try {
-          const consumerKey = import.meta.env.VITE_WC_KEY;
-          const consumerSecret = import.meta.env.VITE_WC_SECRET;
+        const consumerKey = import.meta.env.VITE_WC_KEY;
+        const consumerSecret = import.meta.env.VITE_WC_SECRET;
         const res = await fetch(`https://marialetizia.netsons.org/wp-json/wc/v3/products?consumer_key=${consumerKey}&consumer_secret=${consumerSecret}`);
         if (!res.ok) throw new Error("Errore nel recupero prodotti");
         const data = await res.json();

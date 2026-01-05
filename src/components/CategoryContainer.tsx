@@ -11,7 +11,7 @@ const CategoryContainer = () => {
                 <CategoryButton name={t("categories.all")?.toUpperCase()} path="/category/all" />
                 <CategoryButton name={t("categories.graphicDesign")?.toUpperCase()} path="/category/graphic-design" />
                 <CategoryButton name={t("categories.illustrations")?.toUpperCase()} path="/category/illustrations" />
-                <CategoryButton name={t("categories.giftArt")?.toUpperCase()} path="/category/gift-art" />
+                <CategoryButton name={t("categories.giftArt")?.toUpperCase()} path="/products" />
             </div>
             <hr />
         </div>

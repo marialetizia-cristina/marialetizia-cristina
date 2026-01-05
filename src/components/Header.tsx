@@ -27,3 +27,7 @@ const Header = () => {
 };
 
 export default Header;
+
+//TODO: sistemare dettaglio prodotto
+//TODO: sistemare gift art
+//TODO: sistemare primary section homepage

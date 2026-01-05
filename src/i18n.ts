@@ -27,7 +27,7 @@ const resources = {
         all: "All",
         graphicDesign: "Graphic Design",
         illustrations: "Illustrations",
-        giftArt: "Gift Art",
+        giftArt: "Gift Ideas",
         featured: "Featured",
       },
       portfolio: {
@@ -35,7 +35,7 @@ const resources = {
         titleAll: "ALL",
         titleGraphic: "GRAPHIC DESIGN",
         titleIllustrations: "ILLUSTRATIONS",
-        titleGift: "GIFT ART",
+        titleGift: "GIFT IDEAS",
         titlePrivacyAndPolicy: "PRIVACY AND POLICY",
       },
       works: {
@@ -108,7 +108,7 @@ const resources = {
         all: "Tutti",
         graphicDesign: "Graphic design",
         illustrations: "Illustrazioni",
-        giftArt: "Gift art",
+        giftArt: "Gift ideas",
         featured: "In evidenza",
       },
       portfolio: {
@@ -116,7 +116,7 @@ const resources = {
         titleAll: "TUTTI",
         titleGraphic: "GRAPHIC DESIGN",
         titleIllustrations: "ILLUSTRAZIONI",
-        titleGift: "GIFT ART",
+        titleGift: "GIFT IDEAS",
         titlePrivacyAndPolicy: "PRIVACY E POLICY",
       },
       works: {

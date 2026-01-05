@@ -12,7 +12,7 @@ const Footer = () => {
                 <ul>
                     <Voice value="MARIALETIZIA CRISTINA" path="/" />
                     <Voice value="BACK TO TOP" path="#top" />
-                    <Voice value={t("nav.privecyPolicy")} path="/privacyandpolicy" />
+                    <Voice value={t("nav.privecyPolicy").toUpperCase()} path="/privacyandpolicy" />
                 </ul>
             </nav>
         </div>
