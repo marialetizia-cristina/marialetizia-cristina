@@ -7,8 +7,12 @@ import Illustrations from './pages/Illustrations';
 import All from './pages/All';
 import GiftArt from './pages/GiftArt';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Products from './pages/Products';
+import Cart from './pages/Cart';
+import ProductDetail from './pages/ProductDetail';
 import './App.css';
 import SinglePage from './pages/single';
+import PrivacyAndPolicy from './pages/Privacy&policy';
 
 function App() {
   return (
@@ -32,6 +36,10 @@ const AppContent = () => {
             <Route path="/category/gift-art" element={<GiftArt />} />
             <Route path="/category/all" element={<All />} />
             <Route path="/single/:workId" element={<SinglePage />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:productId" element={<ProductDetail />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/privacyandpolicy" element={<PrivacyAndPolicy />} />
           </Routes>
         </>
       }

@@ -12,6 +12,8 @@ const resources = {
         contact: "Contact",
         backTop: "Back to top",
         backHome: "Back to Home",
+        privecyPolicy: "Privacy and Policy",
+        products: "Products",
       },
       hero: {
         subtitle: "Graphic designer and illustrator",
@@ -34,6 +36,7 @@ const resources = {
         titleGraphic: "GRAPHIC DESIGN",
         titleIllustrations: "ILLUSTRATIONS",
         titleGift: "GIFT ART",
+        titlePrivacyAndPolicy: "PRIVACY AND POLICY",
       },
       works: {
         seeMoreLines: ["SEE", "MORE", "PROJ", "ECT"],
@@ -77,6 +80,8 @@ const resources = {
         contact: "Contatti",
         backTop: "Torna su",
         backHome: "Torna alla home",
+        privecyPolicy: "Privacy e Policy",
+        products: "Prodotti",
       },
       hero: {
         subtitle: "Graphic designer e illustratrice",
@@ -99,6 +104,7 @@ const resources = {
         titleGraphic: "GRAPHIC DESIGN",
         titleIllustrations: "ILLUSTRAZIONI",
         titleGift: "GIFT ART",
+        titlePrivacyAndPolicy: "PRIVACY E POLICY",
       },
       works: {
         seeMoreLines: ["VEDI", "ALTRI", "PRO", "GETTI"],
