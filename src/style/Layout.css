@@ -15,6 +15,7 @@
   padding-top: 1rem;
   flex: 1 1 auto;
   width: 100%;
+  min-height: 0;
 }
 
 /* Ensure footer sticks to bottom when content short */
@@ -24,6 +25,11 @@
 
 /* Small screens: reduce horizontal padding */
 @media (max-width: 600px) {
-  .layout { padding: 0; }
-  .layout-main { padding-top: 0; }
+  .layout {
+    padding: 0;
+  }
+
+  .layout-main {
+    padding-top: 0;
+  }
 }

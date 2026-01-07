@@ -246,7 +246,7 @@
   flex-direction: column;
   justify-content: space-around;
   gap: clamp(1rem, 3vw, 1.5rem);
-  min-width: min(260px, 100%);
+  min-width: min(200px, 100%);
 }
 
 .service-card__body {
@@ -255,7 +255,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
-  width: min-content;
+  width: 100%;
 }
 
 .service-card__body>* {
@@ -419,6 +419,20 @@
   border: 1px solid #0f0f0f;
 }
 
+.contact-banner__tribute {
+  position: absolute;
+  top: auto;
+  left: 0.5rem;
+  bottom: 1;
+  transform: translate(-0.35rem, 115%);
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  pointer-events: none;
+}
+
 .contact-banner--absolute {
   display: block;
   width: calc(100vw - 2 * clamp(1.5rem, 4vw, 3rem));
@@ -512,6 +526,15 @@
 
   .contact-links__item a {
     justify-content: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .contact-banner__tribute {
+    position: static;
+    margin-top: 0.5rem;
+    text-align: left;
+    pointer-events: auto;
   }
 }
 

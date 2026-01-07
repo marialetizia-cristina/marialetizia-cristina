@@ -38,6 +38,7 @@ interface ContactContent {
   textHtml: string;
   links: ContactLink[];
   bannerImage: ParsedImage | null;
+  tributeHtml: string;
 }
 
 interface GenericContent {
@@ -183,11 +184,11 @@ const parseServicesContent = (html: string): ServicesContent => {
 
 const parseContactContent = (html: string): ContactContent => {
   if (!html) {
-    return { introImage: null, textHtml: "", links: [], bannerImage: null };
+    return { introImage: null, textHtml: "", links: [], bannerImage: null, tributeHtml: "" };
   }
 
   if (typeof window === "undefined") {
-    return { introImage: null, textHtml: html, links: [], bannerImage: null };
+    return { introImage: null, textHtml: html, links: [], bannerImage: null, tributeHtml: "" };
   }
 
   const container = document.createElement("div");
@@ -234,6 +235,19 @@ const parseContactContent = (html: string): ContactContent => {
 
   stripWpClasses(container);
 
+  const tributeCandidate = Array.from(container.querySelectorAll<HTMLParagraphElement>("p"))
+    .reverse()
+    .find(paragraph => {
+      const text = (paragraph.textContent ?? "").toLowerCase();
+      return text.includes("milton") && text.includes("glaser");
+    });
+
+  let tributeHtml = "";
+  if (tributeCandidate) {
+    tributeHtml = tributeCandidate.innerHTML.trim();
+    tributeCandidate.remove();
+  }
+
   const remainingImages = Array.from(container.querySelectorAll<HTMLImageElement>("img"));
   const firstImage = remainingImages[0] ?? null;
   const lastImage = remainingImages.length > 1 ? remainingImages[remainingImages.length - 1] : null;
@@ -262,6 +276,7 @@ const parseContactContent = (html: string): ContactContent => {
     textHtml: container.innerHTML.trim(),
     links,
     bannerImage,
+    tributeHtml,
   };
 };
 
@@ -477,7 +492,7 @@ const Section = ({ page, id }: SectionProps) => {
   }
 
   if (parsed.kind === "contact") {
-    const { introImage, textHtml, links, bannerImage } = parsed.content;
+    const { introImage, textHtml, links, bannerImage, tributeHtml } = parsed.content;
 
     if (!introImage && !textHtml && links.length === 0 && !bannerImage) {
       return null;
@@ -494,12 +509,6 @@ const Section = ({ page, id }: SectionProps) => {
             )}
             {(textHtml || links.length > 0) && (
               <div className="contact-board__details">
-                {/* {textHtml && (
-                  <div
-                    className="contact-board__text"
-                    dangerouslySetInnerHTML={{ __html: textHtml }}
-                  />
-                )} */}
                 {links.length > 0 && (
                   <div className="contact-links">
                     {links.map((link, index) => (
@@ -533,7 +542,19 @@ const Section = ({ page, id }: SectionProps) => {
           {bannerImage && (
             <figure className="contact-banner contact-banner--absolute">
               <img src={bannerImage.src} alt={bannerImage.alt} loading="lazy" />
+              {tributeHtml && (
+                <figcaption
+                  className="contact-banner__tribute"
+                  dangerouslySetInnerHTML={{ __html: tributeHtml }}
+                />
+              )}
             </figure>
+          )}
+          {textHtml && (
+            <div
+              className="contact-board__text"
+              dangerouslySetInnerHTML={{ __html: textHtml }}
+            />
           )}
         </div>
       </section>

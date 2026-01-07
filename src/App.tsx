@@ -1,5 +1,6 @@
 import Layout from './layout/Layout';
 import Header from './components/Header';
+// import ShopHeader from './components/ShopHeader';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import GraphicDesign from './pages/GraphicDesign';
@@ -7,8 +8,12 @@ import Illustrations from './pages/Illustrations';
 import All from './pages/All';
 import GiftArt from './pages/GiftArt';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Products from './pages/Products';
+import Cart from './pages/Cart';
+import ProductDetail from './pages/ProductDetail';
 import './App.css';
 import SinglePage from './pages/single';
+import PrivacyAndPolicy from './pages/Privacy&policy';
 
 function App() {
   return (
@@ -19,6 +24,9 @@ function App() {
 }
 
 const AppContent = () => {
+  // const location = useLocation();
+  // Usa sempre Header, ShopHeader commentato temporaneamente
+  // const isShop = location.pathname === "/products";
   return (
     <Layout
       header={<Header />}
@@ -32,6 +40,10 @@ const AppContent = () => {
             <Route path="/category/gift-art" element={<GiftArt />} />
             <Route path="/category/all" element={<All />} />
             <Route path="/single/:workId" element={<SinglePage />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:productId" element={<ProductDetail />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/privacyandpolicy" element={<PrivacyAndPolicy />} />
           </Routes>
         </>
       }
