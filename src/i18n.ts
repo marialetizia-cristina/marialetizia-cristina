@@ -63,6 +63,8 @@ const resources = {
         },
       },
       credits: {
+        designLabel: "Graphic project",
+        devLabel: "Website development",
         design: "Graphic project: Marialetizia Cristina",
         dev: "Website development: Niccolò Maffioli",
       },
@@ -148,6 +150,8 @@ const resources = {
         },
       },
       credits: {
+        designLabel: "Progetto grafico",
+        devLabel: "Programmazione sito",
         design: "Progetto grafico: Marialetizia Cristina",
         dev: "Programmazione sito: Niccolò Maffioli",
       },

@@ -12,8 +12,12 @@ const Footer = () => {
         <>
             {isHome && (
                 <div style={{ textAlign: 'center', marginBottom: 8, fontSize: 12, color: '#000', letterSpacing: 0.5, gap: '2rem', display: 'flex', justifyContent: 'center' }} className="footer-credits">
-                    <span>Progetto grafico: <a href="#" style={{ color: "#000", textDecoration: "none" }}>Marialetizia Cristina</a></span>
-                    <span>Programmazione sito: <a href="https://niccolo.dev" target="_blank" style={{ color: "#000", textDecoration: "none" }}>Niccolò Maffioli</a></span>
+                    <span>
+                        {t("credits.designLabel")}: <a className="footer-credits__link" href="#">Marialetizia Cristina</a>
+                    </span>
+                    <span>
+                        {t("credits.devLabel")}: <a className="footer-credits__link" href="https://niccolo.dev" target="_blank" rel="noreferrer">Niccolò Maffioli</a>
+                    </span>
                 </div>
             )}
             <div className="footer">
