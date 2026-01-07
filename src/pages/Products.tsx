@@ -96,7 +96,7 @@ const Products = () => {
   */
 
   return (
-    <div style={{ padding: 48, textAlign: 'center', fontSize: 28, color: '#222', fontWeight: 700 }}>
+    <div style={{ padding: 48, textAlign: 'center', fontSize: 28, color: '#222', fontWeight: 700, width: 100%, display: 'flex', align-items: 'center' }}>
       Under construction
     </div>
   );
