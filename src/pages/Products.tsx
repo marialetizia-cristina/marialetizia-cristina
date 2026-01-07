@@ -1,52 +1,52 @@
-import { useEffect, useState } from "react";
-import { useCartStore } from "../store/useCartStore";
-import { useNavigate } from "react-router-dom";
+// import { useEffect, useState } from "react";
+// import { useCartStore } from "../store/useCartStore";
+// import { useNavigate } from "react-router-dom";
 //import SwitchLang from "../components/SwitchLang";
 
-interface Product {
-  id: number;
-  name: string;
-  price: string;
-  images: { src: string; alt?: string }[];
-  permalink: string;
-  description: string;
-}
+// interface Product {
+//   id: number;
+//   name: string;
+//   price: string;
+//   images: { src: string; alt?: string }[];
+//   permalink: string;
+//   description: string;
+// }
 
 const Products = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  // const [products, setProducts] = useState<Product[]>([]);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState<string | null>(null);
 
-  const addToCart = useCartStore(state => state.addToCart);
-  const navigate = useNavigate();
+  // const addToCart = useCartStore(state => state.addToCart);
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const consumerKey = import.meta.env.VITE_WC_KEY;
-        const consumerSecret = import.meta.env.VITE_WC_SECRET;
-        const res = await fetch(`https://marialetizia.netsons.org/wp-json/wc/v3/products?consumer_key=${consumerKey}&consumer_secret=${consumerSecret}`);
-        if (!res.ok) throw new Error("Errore nel recupero prodotti");
-        const data = await res.json();
-        const mapped = data.map((item: any) => ({
-          id: item.id,
-          name: item.name,
-          price: item.price,
-          images: (item.images || []).map((img: any) => ({ src: img.src, alt: img.alt })),
-          permalink: item.permalink,
-          description: item.description,
-        }));
-        setProducts(mapped);
-      } catch (e: any) {
-        setError(e.message || "Errore generico");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProducts();
-  }, []);
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     setLoading(true);
+  //     setError(null);
+  //     try {
+  //       const consumerKey = import.meta.env.VITE_WC_KEY;
+  //       const consumerSecret = import.meta.env.VITE_WC_SECRET;
+  //       const res = await fetch(`https://marialetizia.netsons.org/wp-json/wc/v3/products?consumer_key=${consumerKey}&consumer_secret=${consumerSecret}`);
+  //       if (!res.ok) throw new Error("Errore nel recupero prodotti");
+  //       const data = await res.json();
+  //       const mapped = data.map((item: any) => ({
+  //         id: item.id,
+  //         name: item.name,
+  //         price: item.price,
+  //         images: (item.images || []).map((img: any) => ({ src: img.src, alt: img.alt })),
+  //         permalink: item.permalink,
+  //         description: item.description,
+  //       }));
+  //       setProducts(mapped);
+  //     } catch (e: any) {
+  //       setError(e.message || "Errore generico");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchProducts();
+  // }, []);
 
   // Contenuto originale commentato per "under construction"
   /*
