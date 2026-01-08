@@ -12,7 +12,7 @@
   --text: #000;
   --muted: #666;
   --border-width: 1px;
-  --divider-height: 1.5px;
+  --divider-height: 1px;
   --radius: 8px;
   --container-padding: 1rem;
   --base-font: 16px;
@@ -69,7 +69,7 @@ video {
 
 hr {
   background-color: black;
-  height: var(--divider-height, 1.5px);
+  height: var(--divider-height, 1px);
   border: none;
   width: 100%;
   display: block;
