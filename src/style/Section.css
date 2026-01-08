@@ -30,10 +30,12 @@
 .section-first__text {
   display: block;
   font-family: serif;
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  /* aumentato proporzionalmente */
 }
 
 .section-first__text p {
-  line-height: 25px !important;
+  line-height: 1.8 !important;
 }
 
 /* Stretch the first meaningful block even when WP inserts an empty wrapper. */
@@ -92,21 +94,6 @@
 
 .section-first__text>* {
   margin: 0;
-}
-
-.section-first__media {
-  margin: 0;
-  border: var(--border-width, 1px) solid #0f0f0f;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.section-first__media img {
-  width: 100%;
-  height: auto;
-  display: block;
 }
 
 .section__intro {
