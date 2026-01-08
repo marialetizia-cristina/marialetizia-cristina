@@ -39,7 +39,7 @@ const resources = {
         titlePrivacyAndPolicy: "PRIVACY AND POLICY",
       },
       works: {
-        seeMoreLines: ["SEE", "MORE", "PROJ", "ECT"],
+        seeMoreLines: ["SEE", "MORE"],
         empty: "No projects here right now — come back soon for fresh work!",
       },
       product: {
@@ -126,7 +126,7 @@ const resources = {
         titlePrivacyAndPolicy: "PRIVACY E POLICY",
       },
       works: {
-        seeMoreLines: ["VEDI", "ALTRI", "PRO", "GETTI"],
+        seeMoreLines: ["VEDI", "ALTRO"],
         empty: "Al momento non c’è nulla da mostrare qui: torna presto per nuovi lavori!",
       },
       product: {

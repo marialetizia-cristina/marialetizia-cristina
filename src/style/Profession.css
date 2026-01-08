@@ -9,11 +9,11 @@
 }
 
 .profession h2 {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .profession hr {
-  height: 1px;
+  height: var(--divider-height, 1px);
   background-color: black;
   margin: 0;
   width: 100%;

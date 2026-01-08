@@ -40,7 +40,7 @@
   width: 100%;
   height: auto;
   display: block;
-  border: 1px solid #000;
+  border: var(--border-width, 1px) solid #000;
   border-radius: 0;
 }
 
@@ -59,7 +59,7 @@
 
 .single .image-slider img,
 .single .slider__image {
-  border: 1px solid #000;
+  border: var(--border-width, 1px) solid #000;
   border-radius: 0;
 }
 
@@ -83,7 +83,7 @@
 }
 
 .single__content img {
-  border: 1px solid #000;
+  border: var(--border-width, 1px) solid #000;
   border-radius: 0;
   display: block;
 }

@@ -47,7 +47,6 @@ interface GenericContent {
 
 interface FirstSectionContent {
   leftHtml: string;
-  centerImage: ParsedImage | null;
   rightHtml: string;
 }
 
@@ -298,34 +297,41 @@ const parseGenericContent = (html: string): GenericContent => {
 
 const parseFirstSectionContent = (html: string): FirstSectionContent => {
   if (!html) {
-    return { leftHtml: "", centerImage: null, rightHtml: "" };
+    return { leftHtml: "", rightHtml: "" };
   }
 
   if (typeof window === "undefined") {
-    return { leftHtml: html, centerImage: null, rightHtml: "" };
+    return { leftHtml: html, rightHtml: "" };
   }
 
   const template = document.createElement("template");
   template.innerHTML = html;
 
-  const columnsContainer = template.content.querySelector("div");
+  const columnsContainer =
+    template.content.querySelector<HTMLElement>(".wp-block-columns") ??
+    Array.from(template.content.querySelectorAll<HTMLElement>("div")).find(div => {
+      const children = Array.from(div.children).filter((node): node is HTMLElement => node instanceof HTMLElement);
+      if (children.length < 2) {
+        return false;
+      }
+
+      return children.some(child => child.classList.contains("wp-block-column"));
+    }) ??
+    Array.from(template.content.querySelectorAll<HTMLElement>("div")).find(div => {
+      const children = Array.from(div.children).filter((node): node is HTMLElement => node instanceof HTMLElement);
+      return children.length >= 2;
+    }) ??
+    null;
+
   const columnElements = columnsContainer
     ? Array.from(columnsContainer.children).filter((node): node is HTMLElement => node instanceof HTMLElement)
     : [];
 
-  const leftColumn = columnElements[0] ?? null;
-  const centerColumn = columnElements[1] ?? null;
-  const rightColumn = columnElements[2] ?? null;
+  const wpColumns = columnElements.filter(el => el.classList.contains("wp-block-column"));
+  const columns = wpColumns.length > 0 ? wpColumns : columnElements;
 
-  let centerImage: ParsedImage | null = null;
-  if (centerColumn) {
-    const figure = centerColumn.querySelector("figure") ?? centerColumn.querySelector("img")?.closest("figure");
-    if (figure) {
-      centerImage = toParsedImage(figure.querySelector("img"));
-    } else {
-      centerImage = toParsedImage(centerColumn.querySelector("img"));
-    }
-  }
+  const leftColumn = columns[0] ?? null;
+  const rightColumn = columns[1] ?? null;
 
   const extractHtml = (element: HTMLElement | null): string => {
     if (!element) {
@@ -335,23 +341,13 @@ const parseFirstSectionContent = (html: string): FirstSectionContent => {
     const clone = element.cloneNode(true) as HTMLElement;
     stripWpClasses(clone);
 
-    const figure = clone.querySelector("figure");
-    if (figure) {
-      figure.remove();
-    }
-
-    const img = clone.querySelector("img");
-    if (img) {
-      img.remove();
-    }
-
     return clone.innerHTML.trim();
   };
 
   const leftHtml = extractHtml(leftColumn);
   const rightHtml = extractHtml(rightColumn);
 
-  return { leftHtml, centerImage, rightHtml };
+  return { leftHtml, rightHtml };
 };
 
 const Section = ({ page, id }: SectionProps) => {
@@ -381,9 +377,9 @@ const Section = ({ page, id }: SectionProps) => {
   }
 
   if (parsed.kind === "first") {
-    const { leftHtml, centerImage, rightHtml } = parsed.content;
+    const { leftHtml, rightHtml } = parsed.content;
 
-    if (!leftHtml && !centerImage && !rightHtml) {
+    if (!leftHtml && !rightHtml) {
       return null;
     }
 
@@ -396,11 +392,6 @@ const Section = ({ page, id }: SectionProps) => {
                 className="section-first__text section-first__text--start"
                 dangerouslySetInnerHTML={{ __html: leftHtml }}
               />
-            )}
-            {centerImage && (
-              <figure className="section-first__media">
-                <img src={centerImage.src} alt={centerImage.alt} loading="lazy" />
-              </figure>
             )}
             {rightHtml && (
               <div

@@ -7,6 +7,7 @@ const CategoryContainer = () => {
 
     return (
         <div className="category-container-wrapper">
+            <hr />
             <div className="category-container">
                 <CategoryButton name={t("categories.all")?.toUpperCase()} path="/category/all" />
                 <CategoryButton name={t("categories.graphicDesign")?.toUpperCase()} path="/category/graphic-design" />

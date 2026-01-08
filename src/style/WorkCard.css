@@ -82,9 +82,9 @@
 
 .work-card {
   background: #fff;
-  border: 1px solid #000;
+  border: var(--border-width, 1px) solid #000;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   display: flex;
   flex-direction: column;
   transition: transform .16s ease, box-shadow .16s;
@@ -93,5 +93,5 @@
 
 .work-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
 }

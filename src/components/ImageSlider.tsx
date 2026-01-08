@@ -9,7 +9,7 @@ interface ImageSliderProps {
   className?: string;
 }
 
-const ImageSlider = ({ images, autoPlay = false, intervalMs = 3000, className = "" }: ImageSliderProps) => {
+const ImageSlider = ({ images, autoPlay = false, intervalMs = 4500, className = "" }: ImageSliderProps) => {
   const validImages = useMemo(() => images.filter(image => Boolean(image?.src)), [images]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const timerRef = useRef<number | null>(null);

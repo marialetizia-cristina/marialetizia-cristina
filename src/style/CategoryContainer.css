@@ -3,7 +3,7 @@
     gap: 0.75rem;
     align-items: center;
     flex-wrap: wrap;
-    padding: 4vw 7em 0.75rem 7em;
+    padding: 0.75rem 7em;
     width: 100%;
     justify-content: center;
 }
@@ -36,7 +36,7 @@
 
 .category-container-wrapper hr {
     flex-grow: 1;
-    height: 1px;
+    height: var(--divider-height, 1px);
     background-color: black;
     align-self: center;
 }

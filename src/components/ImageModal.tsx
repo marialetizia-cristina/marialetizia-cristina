@@ -46,7 +46,7 @@ const ImageModal = ({ images, onClose }: ImageModalProps) => {
           &times;
         </button>
         <div className="image-modal__content">
-          <ImageSlider images={modalImages} autoPlay intervalMs={1500} className="image-slider--modal" />
+          <ImageSlider images={modalImages} autoPlay intervalMs={2500} className="image-slider--modal" />
         </div>
       </div>
     </div>,

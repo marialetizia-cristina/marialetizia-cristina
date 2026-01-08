@@ -12,7 +12,7 @@
 }
 
 .section--first {
-  padding: 3rem 0;
+  padding: 1rem 8rem;
 }
 
 .section__inner--first {
@@ -21,14 +21,19 @@
 
 .section-first__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr) minmax(0, 1fr);
-  gap: clamp(1.25rem, 3.5vw, 2.5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1.25rem, 10vw, 10rem);
   align-items: start;
   width: 100%;
 }
 
 .section-first__text {
-  display: flex;
+  display: block;
+  font-family: serif;
+}
+
+.section-first__text p {
+  line-height: 25px !important;
 }
 
 /* Stretch the first meaningful block even when WP inserts an empty wrapper. */
@@ -54,6 +59,33 @@
   text-align: left;
 }
 
+.section--first .section-first__text--start p:first-of-type {
+  padding-left: 0.12em;
+  text-indent: 0;
+}
+
+/* Prefer true drop-caps when supported. */
+@supports (initial-letter: 2) {
+  .section--first .section-first__text--start p:first-of-type::first-letter {
+    initial-letter: 2;
+    margin-right: 0.12em;
+    font-size: 1em;
+    line-height: 1;
+  }
+}
+
+/* Fallback drop-cap implementation. */
+@supports not (initial-letter: 2) {
+  .section--first .section-first__text--start p:first-of-type::first-letter {
+    float: left;
+    font-size: clamp(2.4rem, 4.8vw, 3.6rem);
+    line-height: 0.9;
+    margin-left: 0;
+    margin-right: 0.12em;
+    padding-top: 0.05em;
+  }
+}
+
 /* .section-first__text--end {
   text-align: right;
 } */
@@ -64,7 +96,7 @@
 
 .section-first__media {
   margin: 0;
-  border: 1px solid #0f0f0f;
+  border: var(--border-width, 1px) solid #0f0f0f;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -148,7 +180,7 @@
   width: 100%;
   max-width: clamp(240px, 30vw, 320px);
   aspect-ratio: 1 / 1;
-  border: 1px solid #0f0f0f;
+  border: var(--border-width, 1px) solid #0f0f0f;
   border-radius: 0.4rem;
   overflow: hidden;
 }
@@ -237,7 +269,7 @@
   max-height: var(--service-card-visual-height);
   display: block;
   border-radius: 0.4rem;
-  border: 1px solid #0f0f0f;
+  border: var(--border-width, 1px) solid #0f0f0f;
 }
 
 .service-card__content {
@@ -426,9 +458,9 @@
   bottom: 1;
   transform: translate(-0.35rem, 115%);
   margin: 0;
-  font-size: 0.75rem;
+  font-size: 1rem;
   line-height: 1.1;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 0.06em;
   pointer-events: none;
 }
