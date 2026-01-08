@@ -12,12 +12,12 @@
   font-weight: 500;
 }
 
-.profession hr {
+/* .profession hr {
   height: var(--divider-height, 1px);
   background-color: black;
   margin: 0;
   width: 100%;
-}
+} */
 
 /* Stack on mobile */
 @media (max-width: 700px) {

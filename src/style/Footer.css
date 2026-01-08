@@ -33,11 +33,6 @@
     font-size: 1em;
 }
 
-.divider {
-    background-color: black;
-    height: var(--divider-height, 1px);
-}
-
 
 footer hr {
     margin-bottom: 12px;

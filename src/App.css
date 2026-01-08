@@ -66,6 +66,15 @@ video {
   display: block;
 }
 
+
+hr {
+  background-color: black;
+  height: var(--divider-height, 2px);
+  border: none;
+  width: 100%;
+  display: block;
+}
+
 /* Utility */
 .row {
   display: flex;
