@@ -4,7 +4,7 @@
   color: #0f0f0f;
   box-sizing: border-box;
 }
-
+ 
 .section__inner {
   display: flex;
   flex-direction: column;
