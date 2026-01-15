@@ -166,27 +166,27 @@ const Home = () => {
 
       <div className="about-container">
         <div className="title-container">
-          <hr className='divider' />
+          <div className='divider' />
           <Title text={t("sections.about")} />
-          <hr className='divider' />
+          <div className='divider' />
         </div>
         {aboutPage && <Section page={aboutPage} id="about" />}
       </div>
 
       <div className="services-container">
         <div className="title-container">
-          <hr className='divider' />
+          <div className='divider' />
           <Title text={t("sections.services")} />
-          <hr className='divider' />
+          <div className='divider' />
         </div>
         {servicesPage && <Section page={servicesPage} id="services" />}
       </div>
 
       <div className="contact-container">
         <div className="title-container">
-          <hr className='divider' />
+          <div className='divider' />
           <Title text={t("sections.contact")} />
-          <hr className='divider' />
+          <div className='divider' />
         </div>
         {contactPage && <Section page={contactPage} id="contact" />}
       </div>

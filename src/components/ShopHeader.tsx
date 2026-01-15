@@ -27,7 +27,7 @@ const ShopHeader = () => {
                     <SwitchLang />
                 </ul>
             </nav>
-            <hr className="divider" />
+            <div className="divider" />
         </div>
     );
 };

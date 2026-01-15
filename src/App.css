@@ -67,11 +67,13 @@ video {
 }
 
 
-hr {
-  background-color: black;
-  height: var(--divider-height, 1px);
-  border: none;
+.divider {
   width: 100%;
+  border: none;
+  border-bottom: 1px solid black;
+  height: 0;
+  min-height: 0;
+  max-height: 0;
   display: block;
 }
 

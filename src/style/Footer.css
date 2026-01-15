@@ -34,7 +34,7 @@
 }
 
 
-footer hr {
+footer .divider {
     margin-bottom: 12px;
     /* piccolo margine tra divider e scritte */
 }

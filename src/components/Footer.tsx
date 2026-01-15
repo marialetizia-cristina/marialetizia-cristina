@@ -21,7 +21,7 @@ const Footer = () => {
                 </div>
             )}
             <div className="footer">
-                <hr className="divider" />
+                <div className="divider" />
                 <nav>
                     <ul>
                         <li style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>

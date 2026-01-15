@@ -8,9 +8,9 @@ interface ProfessionProps {
 const Profession = ({ name }: ProfessionProps) => {
     return (
         <div className="profession">
-            <hr />
+            <div className="divider" />
             <h2>{name}</h2>
-            <hr />
+            <div className="divider" />
         </div>
     )
 }
