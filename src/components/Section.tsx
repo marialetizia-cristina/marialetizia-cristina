@@ -532,14 +532,16 @@ const Section = ({ page, id }: SectionProps) => {
           </div>
           {bannerImage && (
             <figure className="contact-banner contact-banner--absolute">
-              <img src={bannerImage.src} alt={bannerImage.alt} loading="lazy" />
-              {tributeHtml && (
-                <figcaption
-                  className="contact-banner__tribute"
-                  dangerouslySetInnerHTML={{ __html: tributeHtml }}
-                />
-              )}
+              <div className="contact-banner__media">
+                <img src={bannerImage.src} alt={bannerImage.alt} loading="lazy" />
+              </div>
             </figure>
+          )}
+          {tributeHtml && (
+            <div
+              className="contact-banner__tribute contact-banner__tribute--standalone"
+              dangerouslySetInnerHTML={{ __html: tributeHtml }}
+            />
           )}
           {textHtml && (
             <div
