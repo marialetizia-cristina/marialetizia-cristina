@@ -50,7 +50,7 @@ const Header = () => {
 
     const toggleMenu = () => setIsMenuOpen((prev) => !prev);
     const closeMenu = () => setIsMenuOpen(false);
-    const iconSize = isMenuOpen ? 30 : 30;
+    //const iconSize = isMenuOpen ? 30 : 30;
 
     const renderNavItems = (onItemClick?: () => void) => (
         <>
