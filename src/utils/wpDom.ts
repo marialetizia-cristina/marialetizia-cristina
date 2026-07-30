@@ -52,6 +52,12 @@ export const stripWpClasses = (root: ParentNode) => {
     }
 };
 
+export const replaceLineBreaksWithSpaces = (root: ParentNode) => {
+    root.querySelectorAll("br").forEach(br => {
+        br.replaceWith(document.createTextNode(" "));
+    });
+};
+
 export const toParsedImage = (img: HTMLImageElement | null): ParsedImage | null => {
     if (!img) {
         return null;

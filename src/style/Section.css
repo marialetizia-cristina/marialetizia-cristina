@@ -5,10 +5,8 @@
   box-sizing: border-box;
 }
 
-
-
 .section--first {
-  padding: 2rem 8rem;
+  padding: 2rem clamp(1.5rem, 5vw, 5rem);
 }
 
 .section__inner--first {
@@ -18,23 +16,23 @@
 .section-first__grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(1.25rem, 10vw, 10rem);
+  gap: clamp(1.5rem, 6vw, 4rem);
   align-items: start;
   width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .section-first__text {
   display: block;
   font-family: serif;
   font-size: clamp(1.2rem, 1.5vw, 1.5rem);
-  /* aumentato proporzionalmente */
 }
 
 .section-first__text p {
   line-height: 1.4 !important;
 }
 
-/* Stretch the first meaningful block even when WP inserts an empty wrapper. */
 .section-about__text> :first-child {
   height: 100%;
 }
@@ -68,7 +66,6 @@
   text-indent: 0;
 }
 
-/* Prefer true drop-caps when supported. */
 @supports (initial-letter: 2) {
   .section--first .section-first__text--start p:first-of-type::first-letter {
     initial-letter: 2;
@@ -78,7 +75,6 @@
   }
 }
 
-/* Fallback drop-cap implementation. */
 @supports not (initial-letter: 2) {
   .section--first .section-first__text--start p:first-of-type::first-letter {
     float: left;
@@ -89,10 +85,6 @@
     padding-top: 0.05em;
   }
 }
-
-/* .section-first__text--end {
-  text-align: right;
-} */
 
 .section-first__text>* {
   margin: 0;
@@ -119,7 +111,6 @@
 .contact-links {
   display: flex;
   flex-direction: column;
-  /* gap: clamp(0.65rem, 2vw, 1rem); */
 }
 
 .contact-link {
@@ -206,7 +197,6 @@
 }
 
 .section-about__text h2 {
-  /*font-size: clamp(10rem, 10vw, 5.75rem);*/
   margin: 0;
 }
 
@@ -333,7 +323,6 @@
   height: auto;
   max-height: 100%;
   display: block;
-  /* border: 1px solid #0f0f0f; */
   border-radius: 0.4rem;
 }
 
@@ -411,7 +400,6 @@
 .contact-links {
   display: flex;
   flex-direction: column;
-  /* gap: 0.85rem; */
   list-style: none;
   margin: 0;
   padding: 0;
@@ -420,7 +408,6 @@
 .contact-links__item a {
   display: flex;
   align-items: center;
-  /* gap: 0.85rem; */
   padding: 0.95rem 1.15rem;
   text-decoration: none;
   color: inherit;
@@ -459,7 +446,6 @@
   display: block;
   width: calc(100vw - 2 * clamp(1.5rem, 4vw, 3rem));
   max-width: none;
-  /* margin: clamp(2.5rem, 7vw, 5rem) 0 0; */
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -476,6 +462,7 @@
 
   .section-first__grid {
     grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
   }
 
   .section-first__media {
@@ -518,7 +505,6 @@
     align-items: flex-start;
     flex-wrap: nowrap;
     gap: clamp(0.75rem, 4vw, 1.25rem);
-    /* --service-card-media-width: clamp(110px, 35vw, 160px); */
     --service-card-visual-height: clamp(140px, 35vw, 200px);
   }
 
@@ -571,7 +557,6 @@
     flex-wrap: wrap;
     gap: clamp(0.85rem, 6vw, 1.5rem);
     padding: clamp(1.25rem, 5vw, 1.75rem);
-    /* --service-card-media-width: clamp(160px, 60vw, 220px); */
     --service-card-visual-height: clamp(160px, 60vw, 240px);
   }
 

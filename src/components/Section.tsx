@@ -1,7 +1,12 @@
 import { useMemo } from "react";
 import type { Page } from "../api/api";
 import "../style/Section.css";
-import { stripWpClasses, toParsedImage, type ParsedImage } from "../utils/wpDom";
+import {
+  replaceLineBreaksWithSpaces,
+  stripWpClasses,
+  toParsedImage,
+  type ParsedImage,
+} from "../utils/wpDom";
 
 interface SectionProps {
   page?: Page;
@@ -340,6 +345,7 @@ const parseFirstSectionContent = (html: string): FirstSectionContent => {
 
     const clone = element.cloneNode(true) as HTMLElement;
     stripWpClasses(clone);
+    replaceLineBreaksWithSpaces(clone);
 
     return clone.innerHTML.trim();
   };

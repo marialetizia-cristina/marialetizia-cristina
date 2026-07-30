@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { coerceNumericId, normalizeLanguage } from "../utils/language";
 import { Link } from "react-router-dom";
 import { useContentStore } from "../store/useContentStore";
+import LoadingState from "./LoadingState";
 
 interface WorksGridProps {
   category?: "ALL" | "GRAPHIC DESIGN" | "ILLUSTRATIONS" | "FEATURED";
@@ -47,7 +48,6 @@ const WorksGrid = ({
     void loadWorks();
   }, [loadWorks]);
 
-  // Funzione per mappare i nomi categoria agli ID di WP
   const getCategoryIds = (cat: WorksGridCategory): number[] => {
     return CATEGORY_ID_MAP[cat] ?? [];
   };
@@ -189,7 +189,7 @@ const WorksGrid = ({
         </>
       ) : (
         <>
-          {isLoading && <p className="works-grid__loading">{t("loaders.preparingPortfolio")}</p>}
+          {isLoading && <LoadingState message={t("loaders.preparingPortfolio")} className="works-grid__loading-state" />}
           {!isLoading && showEmptyMessage && <p>{t("works.empty")}</p>}
         </>
       )}

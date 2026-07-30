@@ -11,13 +11,12 @@ import Title from '../components/Title';
 import Profession from '../components/Profession';
 import CategoryContainer from '../components/CategoryContainer';
 import Section from '../components/Section';
-import LoadingState from "../components/LoadingState";
 
 const Home = () => {
   const pages = useContentStore(state => state.pages);
   const pagesLoaded = useContentStore(state => state.pagesLoaded);
   const pagesLoading = useContentStore(state => state.pagesLoading);
-  const loadPages = useContentStore(state => state.loadPages);
+  const loadAll = useContentStore(state => state.loadAll);
   const location = useLocation();
   const { hash } = location;
   const { t, i18n } = useTranslation();
@@ -25,8 +24,8 @@ const Home = () => {
   const isFirstRender = useRef(true);
 
   useEffect(() => {
-    void loadPages();
-  }, [loadPages]);
+    void loadAll();
+  }, [loadAll]);
 
   const { lookupBySlugs, lookupByKeywords } = useMemo(() => {
     const pagesById = new Map<number, Page>();
@@ -147,10 +146,6 @@ const Home = () => {
     }
   }, [loading, hash]);
 
-  if (loading) {
-    return <LoadingState message={t("loaders.preparingPortfolio")} />;
-  }
-
   return (
     <div className='home'>
       <div className="hero">
@@ -190,8 +185,8 @@ const Home = () => {
         </div>
         {contactPage && <Section page={contactPage} id="contact" />}
       </div>
-      
-      
+
+
 
     </div>
   );

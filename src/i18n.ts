@@ -66,11 +66,11 @@ const resources = {
         designLabel: "Graphic project",
         devLabel: "Website development",
         design: "Graphic project: Marialetizia Cristina",
-        dev: "Website development: Niccolò Maffioli",
+        dev: "Website development: Niccolò Maffioli, Riccardo Marchesi",
       },
       loaders: {
-        preparingPortfolio: "I’m setting up the portfolio, just a moment…",
-        loadingProject: "Fetching the project, one sec…",
+        preparingPortfolio: "Loading works...",
+        loadingProject: "Fetching the project...",
       },
       single: {
         errors: {
@@ -153,11 +153,11 @@ const resources = {
         designLabel: "Progetto grafico",
         devLabel: "Programmazione sito",
         design: "Progetto grafico: Marialetizia Cristina",
-        dev: "Programmazione sito: Niccolò Maffioli",
+        dev: "Programmazione sito: Niccolò Maffioli, Riccardo Marchesi",
       },
       loaders: {
-        preparingPortfolio: "Sto allestendo il portfolio, un attimo di pazienza…",
-        loadingProject: "Sto recuperando il progetto, arrivo subito…",
+        preparingPortfolio: "Caricamento lavori in corso...",
+        loadingProject: "Caricamento progetto...",
       },
       single: {
         errors: {

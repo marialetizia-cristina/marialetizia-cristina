@@ -10,7 +10,6 @@ const Profession = ({ name }: ProfessionProps) => {
         <div className="profession">
             <div className="divider" />
             <h2>{name}</h2>
-            <div className="divider" />
         </div>
     )
 }

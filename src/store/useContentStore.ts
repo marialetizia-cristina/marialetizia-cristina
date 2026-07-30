@@ -13,6 +13,7 @@ interface ContentStoreState {
   pagesLoaded: boolean;
   loadWorks: () => Promise<Work[]>;
   loadPages: () => Promise<Page[]>;
+  loadAll: () => Promise<Page[]>;
   getWorkById: (id: number) => Work | undefined;
   upsertWork: (work: Work) => void;
 }
@@ -68,6 +69,11 @@ export const useContentStore = create<ContentStoreState>((set, get) => ({
         pagesPromise = null;
       });
 
+    return pagesPromise;
+  },
+  async loadAll() {
+    const pagesPromise = get().loadPages();
+    void get().loadWorks();
     return pagesPromise;
   },
   getWorkById(id) {
