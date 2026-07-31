@@ -11,9 +11,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Products from './pages/Products';
 import Cart from './pages/Cart';
 import ProductDetail from './pages/ProductDetail';
+import EcommerceUnderConstruction from './pages/EcommerceUnderConstruction';
 import './App.css';
 import SinglePage from './pages/single';
 import PrivacyAndPolicy from './pages/Privacy&policy';
+import { ECOMMERCE_ENABLED } from './config/features';
 
 function App() {
   return (
@@ -40,9 +42,9 @@ const AppContent = () => {
             <Route path="/category/gift-art" element={<GiftArt />} />
             <Route path="/category/all" element={<All />} />
             <Route path="/single/:workId" element={<SinglePage />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/products/:productId" element={<ProductDetail />} />
-            <Route path="/cart" element={<Cart />} />
+            <Route path="/products" element={ECOMMERCE_ENABLED ? <Products /> : <EcommerceUnderConstruction />} />
+            <Route path="/products/:productId" element={ECOMMERCE_ENABLED ? <ProductDetail /> : <EcommerceUnderConstruction />} />
+            <Route path="/cart" element={ECOMMERCE_ENABLED ? <Cart /> : <EcommerceUnderConstruction />} />
             <Route path="/privacyandpolicy" element={<PrivacyAndPolicy />} />
           </Routes>
         </>
