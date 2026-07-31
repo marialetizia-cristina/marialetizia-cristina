@@ -1,13 +1,13 @@
 import Layout from './layout/Layout';
 import Header from './components/Header';
-// import ShopHeader from './components/ShopHeader';
+import ShopHeader from './components/ShopHeader';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import GraphicDesign from './pages/GraphicDesign';
 import Illustrations from './pages/Illustrations';
 import All from './pages/All';
 import GiftArt from './pages/GiftArt';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Products from './pages/Products';
 import Cart from './pages/Cart';
 import ProductDetail from './pages/ProductDetail';
@@ -24,12 +24,12 @@ function App() {
 }
 
 const AppContent = () => {
-  // const location = useLocation();
-  // Usa sempre Header, ShopHeader commentato temporaneamente
-  // const isShop = location.pathname === "/products";
+  const location = useLocation();
+  const isShop = location.pathname.startsWith("/products") || location.pathname === "/cart";
+
   return (
     <Layout
-      header={<Header />}
+      header={isShop ? <ShopHeader /> : <Header />}
       footer={<Footer />}
       main={
         <>

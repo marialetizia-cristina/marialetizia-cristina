@@ -73,7 +73,7 @@ const Header = () => {
             <Voice value={t("nav.about")} path="#about" onClick={onItemClick} />
             <Voice value={t("nav.services")} path="#services" onClick={onItemClick} />
             <Voice value={t("nav.contact")} path="#contact" onClick={onItemClick} />
-            <Voice value={t("nav.products")} path="products" onClick={onItemClick} />
+            <Voice value={t("nav.products")} path="/products" onClick={onItemClick} />
             <li className="switch-lang-wrapper">
                 <SwitchLang />
             </li>
@@ -139,7 +139,3 @@ const Header = () => {
 };
 
 export default Header;
-
-//TODO: sistemare dettaglio prodotto
-//TODO: sistemare gift art
-//TODO: sistemare primary section homepage
