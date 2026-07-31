@@ -16,7 +16,7 @@ const Footer = () => {
                         {t("credits.designLabel")}: <a className="footer-credits__link" href="#">Marialetizia Cristina</a>
                     </span>
                     <span>
-                        {t("credits.devLabel")}: <a className="footer-credits__link" href="https://niccolo.dev" target="_blank" rel="noreferrer">Niccolò Maffioli</a>
+                        {t("credits.devLabel")}: <a className="footer-credits__link" href="https://niccolomaffioli.dev" target="_blank" rel="noreferrer">Niccolò Maffioli</a>
                     </span>
                 </div>
             )}
