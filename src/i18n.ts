@@ -66,7 +66,7 @@ const resources = {
         designLabel: "Graphic project",
         devLabel: "Website development",
         design: "Graphic project: Marialetizia Cristina",
-        dev: "Website development: Niccolò Maffioli, Riccardo Marchesi",
+        dev: "Website development: Niccolò Maffioli",
       },
       loaders: {
         preparingPortfolio: "Loading works...",
@@ -153,7 +153,7 @@ const resources = {
         designLabel: "Progetto grafico",
         devLabel: "Programmazione sito",
         design: "Progetto grafico: Marialetizia Cristina",
-        dev: "Programmazione sito: Niccolò Maffioli, Riccardo Marchesi",
+        dev: "Programmazione sito: Niccolò Maffioli",
       },
       loaders: {
         preparingPortfolio: "Caricamento lavori in corso...",
