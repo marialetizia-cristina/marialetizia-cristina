@@ -16,6 +16,8 @@ const resources = {
         privecyPolicy: "Privacy and Policy",
         products: "Products",
         ecommerce: "E-commerce",
+        favorites: "Favorites",
+        account: "Account",
         cart: "Cart",
         cartWithCount: "Cart, {{count}} items",
         toggleMenu: "Open or close menu",
@@ -115,6 +117,18 @@ const resources = {
         noPaymentBody: "Checkout is temporarily unavailable because no WooCommerce payment method is active for this order.",
       },
       notFound: { title: "Page not found", body: "The page you requested does not exist or has been moved.", home: "Back to home" },
+      shopPlaceholder: {
+        status: "Under construction",
+        backToProducts: "Back to products",
+        account: {
+          title: "Account",
+          description: "The personal account area is currently under construction.",
+        },
+        favorites: {
+          title: "Favorites",
+          description: "The area for saving your favorite products is currently under construction.",
+        },
+      },
       request: {
         flowLabel: "Custom request · Quote required",
         cardTitle: "Create a custom gift",
@@ -214,6 +228,8 @@ const resources = {
         privecyPolicy: "Privacy e Policy",
         products: "Prodotti",
         ecommerce: "E-commerce",
+        favorites: "Preferiti",
+        account: "Account",
         cart: "Carrello",
         cartWithCount: "Carrello, {{count}} articoli",
         toggleMenu: "Apri o chiudi il menu",
@@ -313,6 +329,18 @@ const resources = {
         noPaymentBody: "Il checkout è temporaneamente non disponibile perché nessun metodo di pagamento WooCommerce è attivo per questo ordine.",
       },
       notFound: { title: "Pagina non trovata", body: "La pagina richiesta non esiste oppure è stata spostata.", home: "Torna alla home" },
+      shopPlaceholder: {
+        status: "In costruzione",
+        backToProducts: "Torna ai prodotti",
+        account: {
+          title: "Account",
+          description: "L’area personale è attualmente in costruzione.",
+        },
+        favorites: {
+          title: "Preferiti",
+          description: "L’area per salvare i prodotti preferiti è attualmente in costruzione.",
+        },
+      },
       request: {
         flowLabel: "Richiesta personalizzata · Preventivo necessario",
         cardTitle: "Crea un regalo personalizzato",

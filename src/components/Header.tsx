@@ -17,6 +17,8 @@ const Header = () => {
     const isShop = location.pathname.startsWith("/products")
         || location.pathname.startsWith("/cart")
         || location.pathname.startsWith("/checkout")
+        || location.pathname.startsWith("/account")
+        || location.pathname.startsWith("/favorites")
         || location.pathname.startsWith("/request/custom-gift");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(() => getIsMobile());
@@ -73,6 +75,8 @@ const Header = () => {
                             <span className="header-cart-count" aria-hidden="true">{cartCount}</span>
                         </Link>
                     </li>
+                    <Voice value={t("nav.favorites")} path="/favorites" onClick={onItemClick} />
+                    <Voice value={t("nav.account")} path="/account" onClick={onItemClick} />
                     <li className="switch-lang-wrapper">
                         <SwitchLang />
                     </li>

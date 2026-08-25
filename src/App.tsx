@@ -20,6 +20,7 @@ import CustomGiftRequest from './pages/CustomGiftRequest';
 import ProductQuoteRequest from './pages/ProductQuoteRequest';
 import Checkout from './pages/Checkout';
 import NotFound from './pages/NotFound';
+import ShopPlaceholder from './pages/ShopPlaceholder';
 
 function App() {
   return (
@@ -51,6 +52,8 @@ const AppContent = () => {
             <Route path="/products/:productId/request" element={<ProductQuoteRequest />} />
             <Route path="/cart" element={ECOMMERCE_ENABLED ? <Cart /> : <EcommerceUnderConstruction />} />
             <Route path="/checkout" element={ECOMMERCE_ENABLED ? <Checkout /> : <EcommerceUnderConstruction />} />
+            <Route path="/account" element={<ShopPlaceholder section="account" />} />
+            <Route path="/favorites" element={<ShopPlaceholder section="favorites" />} />
             <Route path="/request/custom-gift" element={<CustomGiftRequest />} />
             <Route path="/privacyandpolicy" element={<PrivacyAndPolicy />} />
             <Route path="*" element={<NotFound />} />

@@ -23,3 +23,56 @@
 .shop-preview .product-card {
   width: min(100%, 18rem);
 }
+
+.shop-placeholder {
+  box-sizing: border-box;
+  display: grid;
+  gap: 1.25rem;
+  width: min(calc(100% - 2rem), 76rem);
+  min-height: 62vh;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 5rem) 0;
+  align-content: start;
+}
+
+.shop-placeholder__eyebrow {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.shop-placeholder h1 {
+  margin: 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #0d0d0d;
+  font-family: "Anton", sans-serif;
+  font-size: clamp(4rem, 12vw, 9rem);
+  font-weight: 400;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.shop-placeholder > p:not(.shop-placeholder__eyebrow) {
+  max-width: 42rem;
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.shop-placeholder a {
+  justify-self: start;
+  padding: 0.7rem 1.25rem;
+  border: 1px solid #0d0d0d;
+  background: #ff7900;
+  color: #0d0d0d;
+  font-family: "Anton", sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.shop-placeholder a:hover {
+  transform: translateY(-3px);
+  box-shadow: 5px 5px 0 #0d0d0d;
+}
