@@ -172,7 +172,7 @@ const resources = {
           attachmentsHelp: "Optional. JPG, PNG, WebP or PDF. Large files will later be handled via direct email.",
           attachmentsConfiguredHelp: "Optional. Up to {{count}} files, maximum {{mb}} MB each. For larger files, contact Letizia directly by email.",
           privacy: "Privacy",
-          privacyConsent: "I have read the privacy policy and consent to the processing of data needed to handle this request.",
+          privacyConsent: "I confirm that I have read the privacy policy.",
         },
         errors: {
           email: "Enter a valid email address.",
@@ -384,7 +384,7 @@ const resources = {
           attachmentsHelp: "Facoltativo. JPG, PNG, WebP o PDF. I file molto grandi verranno successivamente gestiti via email diretta.",
           attachmentsConfiguredHelp: "Facoltativo. Fino a {{count}} file, massimo {{mb}} MB ciascuno. Per file più grandi, contatta direttamente Letizia via email.",
           privacy: "Privacy",
-          privacyConsent: "Ho letto la privacy policy e acconsento al trattamento dei dati necessario per gestire questa richiesta.",
+          privacyConsent: "Dichiaro di aver letto l’informativa privacy.",
         },
         errors: {
           email: "Inserisci un indirizzo email valido.",

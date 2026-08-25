@@ -52,8 +52,13 @@
 
 .privacy-and-policy__content h3 {
   margin-top: 1rem;
-  font-size: clamp(1.25rem, 3vw, 1.65rem);
-  line-height: 1.2;
+  padding: 0.35rem 0 0.35rem 0.75rem;
+  border-left: 0.4rem solid #00fbff;
+  font-family: "Anton", sans-serif;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 400;
+  line-height: 1.1;
+  text-transform: uppercase;
 }
 
 .privacy-and-policy__content h4 {
