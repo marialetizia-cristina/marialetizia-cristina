@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiMenu, FiShoppingBag, FiX } from "react-icons/fi";
 import Voice from "./Voice";
 import SwitchLang from "./SwitchLang";
 import "../style/Header.css";
 import { useTranslation } from "react-i18next";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useCartStore } from "../store/useCartStore";
 
 const getIsMobile = () =>
     typeof window !== "undefined" ? window.innerWidth <= 768 : false;
@@ -12,10 +13,16 @@ const getIsMobile = () =>
 const Header = () => {
     const { t } = useTranslation();
     const location = useLocation();
-    const navigate = useNavigate();
     const isHome = location.pathname === "/";
+    const isShop = location.pathname.startsWith("/products")
+        || location.pathname.startsWith("/cart")
+        || location.pathname.startsWith("/checkout")
+        || location.pathname.startsWith("/request/custom-gift");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(() => getIsMobile());
+    const cart = useCartStore((state) => state.cart);
+    const loadCart = useCartStore((state) => state.loadCart);
+    const cartCount = cart?.items_count ?? 0;
     const ICON_SIZE = 32;
 
     useEffect(() => {
@@ -34,6 +41,8 @@ const Header = () => {
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
+
+    useEffect(() => { void loadCart(); }, [loadCart]);
 
     useEffect(() => {
         if (!isMobile || typeof document === "undefined") {
@@ -54,29 +63,40 @@ const Header = () => {
 
     const renderNavItems = (onItemClick?: () => void) => (
         <>
-            {isHome ? (
+            {isShop ? (
+                <>
+                    <Voice value={t("nav.portfolio")} path="/" onClick={onItemClick} />
+                    <Voice value={t("nav.products")} path="/products" onClick={onItemClick} />
+                    <li className="header-cart-item">
+                        <Link to="/cart" onClick={onItemClick} aria-label={t("nav.cartWithCount", { count: cartCount })}>
+                            {t("nav.cart")}
+                            <span className="header-cart-count" aria-hidden="true">{cartCount}</span>
+                        </Link>
+                    </li>
+                    <li className="switch-lang-wrapper">
+                        <SwitchLang />
+                    </li>
+                </>
+            ) : isHome ? (
                 <Voice value={t("nav.works")} path="#works" onClick={onItemClick} />
             ) : (
                 <li>
-                    <button
-                        onClick={() => {
-                            navigate(-1);
-                            onItemClick?.();
-                        }}
-                        className="header-back-btn"
-                        style={{ color: "#111", textTransform: "uppercase" }}
-                    >
+                    <Link to="/" onClick={onItemClick} className="header-back-btn">
                         {t("nav.backHome").toUpperCase()}
-                    </button>
+                    </Link>
                 </li>
             )}
-            <Voice value={t("nav.about")} path="#about" onClick={onItemClick} />
-            <Voice value={t("nav.services")} path="#services" onClick={onItemClick} />
-            <Voice value={t("nav.contact")} path="#contact" onClick={onItemClick} />
-            <Voice value={t("nav.products")} path="products" onClick={onItemClick} />
-            <li className="switch-lang-wrapper">
-                <SwitchLang />
-            </li>
+            {!isShop && (
+                <>
+                    <Voice value={t("nav.about")} path="#about" onClick={onItemClick} />
+                    <Voice value={t("nav.services")} path="#services" onClick={onItemClick} />
+                    <Voice value={t("nav.contact")} path="#contact" onClick={onItemClick} />
+                    <Voice value={t("nav.ecommerce")} path="/products" onClick={onItemClick} />
+                    <li className="switch-lang-wrapper">
+                        <SwitchLang />
+                    </li>
+                </>
+            )}
         </>
     );
 
@@ -84,29 +104,23 @@ const Header = () => {
         <div className="header">
             <div className="header-content">
                 {isMobile ? (
-                    <button
-                        className={`hamburger-toggle ${isMenuOpen ? "active" : ""}`}
-                        onClick={toggleMenu}
-                        aria-expanded={isMenuOpen}
-                        aria-label="Toggle menu"
-                        type="button"
-                    >
-                        {isMenuOpen ? (
-                            <FiX
-                                className="hamburger-icon"
-                                aria-hidden="true"
-                                size={ICON_SIZE}
-                                strokeWidth={1.75}
-                            />
-                        ) : (
-                            <FiMenu
-                                className="hamburger-icon"
-                                aria-hidden="true"
-                                size={ICON_SIZE}
-                                strokeWidth={1.75}
-                            />
+                    <div className="header-mobile-actions">
+                        {isShop && (
+                            <Link className="header-cart-shortcut" to="/cart" aria-label={t("nav.cartWithCount", { count: cartCount })}>
+                                <FiShoppingBag aria-hidden="true" size={24} />
+                                <span>{cartCount}</span>
+                            </Link>
                         )}
-                    </button>
+                        <button
+                            className={`hamburger-toggle ${isMenuOpen ? "active" : ""}`}
+                            onClick={toggleMenu}
+                            aria-expanded={isMenuOpen}
+                            aria-label={t("nav.toggleMenu")}
+                            type="button"
+                        >
+                            {isMenuOpen ? <FiX className="hamburger-icon" aria-hidden="true" size={ICON_SIZE} strokeWidth={1.75} /> : <FiMenu className="hamburger-icon" aria-hidden="true" size={ICON_SIZE} strokeWidth={1.75} />}
+                        </button>
+                    </div>
                 ) : (
                     <nav className="header-nav">
                         <ul>{renderNavItems()}</ul>

@@ -1,0 +1,63 @@
+.checkout-page {
+  box-sizing: border-box;
+  display: grid;
+  gap: 1.5rem;
+  width: min(calc(100% - 2rem), 56rem);
+  margin: 0 auto;
+  padding: 1rem 0 clamp(4rem, 8vw, 7rem);
+}
+
+.checkout-page h1,
+.checkout-page p {
+  margin: 0;
+}
+
+.checkout-page > h1 {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #0d0d0d;
+  font-family: "Anton", sans-serif;
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 400;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.checkout-page > a {
+  justify-self: start;
+  color: #0d0d0d;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.checkout-page > a:hover {
+  text-decoration: underline;
+}
+
+.checkout-page > .dynamic-form {
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  border: 1px solid #0d0d0d;
+}
+
+.checkout-page__state {
+  width: min(calc(100% - 2rem), 56rem);
+  margin: 0 auto;
+  padding: 2rem;
+  border: 1px solid #0d0d0d;
+  text-align: center;
+}
+
+.checkout-page__error {
+  padding: 1rem;
+  border: 1px solid #0d0d0d;
+  border-radius: 0;
+  background: #f5008f;
+}
+
+.checkout-page__error h2 {
+  margin: 0 0 0.5rem;
+  font-family: "Anton", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}

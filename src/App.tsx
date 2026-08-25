@@ -16,6 +16,10 @@ import './App.css';
 import SinglePage from './pages/single';
 import PrivacyAndPolicy from './pages/Privacy&policy';
 import { ECOMMERCE_ENABLED } from './config/features';
+import CustomGiftRequest from './pages/CustomGiftRequest';
+import ProductQuoteRequest from './pages/ProductQuoteRequest';
+import Checkout from './pages/Checkout';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -44,8 +48,12 @@ const AppContent = () => {
             <Route path="/single/:workId" element={<SinglePage />} />
             <Route path="/products" element={ECOMMERCE_ENABLED ? <Products /> : <EcommerceUnderConstruction />} />
             <Route path="/products/:productId" element={ECOMMERCE_ENABLED ? <ProductDetail /> : <EcommerceUnderConstruction />} />
+            <Route path="/products/:productId/request" element={<ProductQuoteRequest />} />
             <Route path="/cart" element={ECOMMERCE_ENABLED ? <Cart /> : <EcommerceUnderConstruction />} />
+            <Route path="/checkout" element={ECOMMERCE_ENABLED ? <Checkout /> : <EcommerceUnderConstruction />} />
+            <Route path="/request/custom-gift" element={<CustomGiftRequest />} />
             <Route path="/privacyandpolicy" element={<PrivacyAndPolicy />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </>
       }

@@ -10,16 +10,13 @@ interface ImageModalProps {
 }
 
 const ImageModal = ({ images, onClose }: ImageModalProps) => {
-  if (typeof document === "undefined") {
-    return null;
-  }
-
   const modalImages = useMemo(() => {
     const fallbackSizes = "(min-width: 768px) 80vw, 100vw";
     return images.map(image => (image.sizes ? image : { ...image, sizes: fallbackSizes }));
   }, [images]);
 
   useEffect(() => {
+    if (typeof document === "undefined") return;
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         onClose();
@@ -35,6 +32,8 @@ const ImageModal = ({ images, onClose }: ImageModalProps) => {
       document.body.style.overflow = previousOverflow;
     };
   }, [onClose]);
+
+  if (typeof document === "undefined") return null;
 
   return createPortal(
     <div className="image-modal__overlay" role="dialog" aria-modal="true" onClick={onClose}>

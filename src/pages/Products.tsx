@@ -1,106 +1,116 @@
-// import { useEffect, useState } from "react";
-// import { useCartStore } from "../store/useCartStore";
-// import { useNavigate } from "react-router-dom";
-//import SwitchLang from "../components/SwitchLang";
+import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { fetchProducts, type CatalogProduct } from "../api/api";
+import { FlowOneCard } from "../components/FlowOneCard";
+import "../style/Products.css";
+import { usePageMeta } from "../utils/usePageMeta";
 
-// interface Product {
-//   id: number;
-//   name: string;
-//   price: string;
-//   images: { src: string; alt?: string }[];
-//   permalink: string;
-//   description: string;
-// }
+type CategoryFilter = "all" | "graphic-design" | "illustrations" | "gift-ideas";
+type TagFilter = "all" | "caricature" | "carte-da-gioco" | "album" | "calendari" | "illustrazioni" | "copertine";
+
+const categoryFilters: CategoryFilter[] = ["all", "graphic-design", "illustrations", "gift-ideas"];
+const tagFilters: TagFilter[] = ["all", "caricature", "carte-da-gioco", "album", "calendari", "illustrazioni", "copertine"];
+
+const categoryAliases: Record<Exclude<CategoryFilter, "all">, string[]> = {
+  "graphic-design": ["graphic-design"],
+  illustrations: ["illustrations", "illustrazioni"],
+  "gift-ideas": ["gift-ideas", "idee-regalo", "gift-art"],
+};
+
+const tagAliases: Record<Exclude<TagFilter, "all">, string[]> = {
+  caricature: ["caricature"],
+  "carte-da-gioco": ["carte-da-gioco", "playing-cards"],
+  album: ["album"],
+  calendari: ["calendari", "calendars"],
+  illustrazioni: ["illustrazioni", "illustrations"],
+  copertine: ["copertine", "covers"],
+};
 
 const Products = () => {
-  // const [products, setProducts] = useState<Product[]>([]);
-  // const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState<string | null>(null);
+  const { t, i18n } = useTranslation();
+  const [products, setProducts] = useState<CatalogProduct[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [category, setCategory] = useState<CategoryFilter>("all");
+  const [tag, setTag] = useState<TagFilter>("all");
+  usePageMeta(t("products.title"), t("products.intro"), "/products");
 
-  // const addToCart = useCartStore(state => state.addToCart);
-  // const navigate = useNavigate();
+  useEffect(() => {
+    fetchProducts()
+      .then(setProducts)
+      .catch((reason: unknown) => setError(reason instanceof Error ? reason.message : t("products.loadError")))
+      .finally(() => setLoading(false));
+  }, [t]);
 
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     setLoading(true);
-  //     setError(null);
-  //     try {
-  //       const consumerKey = import.meta.env.VITE_WC_KEY;
-  //       const consumerSecret = import.meta.env.VITE_WC_SECRET;
-  //       const res = await fetch(`https://marialetizia.netsons.org/wp-json/wc/v3/products?consumer_key=${consumerKey}&consumer_secret=${consumerSecret}`);
-  //       if (!res.ok) throw new Error("Errore nel recupero prodotti");
-  //       const data = await res.json();
-  //       const mapped = data.map((item: any) => ({
-  //         id: item.id,
-  //         name: item.name,
-  //         price: item.price,
-  //         images: (item.images || []).map((img: any) => ({ src: img.src, alt: img.alt })),
-  //         permalink: item.permalink,
-  //         description: item.description,
-  //       }));
-  //       setProducts(mapped);
-  //     } catch (e: any) {
-  //       setError(e.message || "Errore generico");
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-  //   fetchProducts();
-  // }, []);
+  const languageTag = (i18n.resolvedLanguage ?? i18n.language).startsWith("it") ? "lang-it" : "lang-en";
 
-  // Contenuto originale commentato per "under construction"
-  /*
-  if (loading) return <div>Caricamento prodotti...</div>;
-  if (error) return <div>Errore: {error}</div>;
+  const filteredProducts = useMemo(() => products.filter((product) => {
+    const languageMatches = (product.tags ?? []).some((term) => term.slug === languageTag);
+    const categoryMatches = category === "all"
+      || (product.categories ?? []).some((term) => categoryAliases[category].includes(term.slug));
+    const tagMatches = tag === "all"
+      || (product.tags ?? []).some((term) => tagAliases[tag].includes(term.slug));
+    return languageMatches && categoryMatches && tagMatches;
+  }), [category, languageTag, products, tag]);
+
+  const showGiftRequest = (category === "all" || category === "gift-ideas") && tag === "all";
+  const visibleCount = filteredProducts.length + (showGiftRequest ? 1 : 0);
 
   return (
-    <div style={{ padding: 24 }}>
-      <h1>Prodotti digitali</h1>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 24 }}>
-        {products.map((product) => (
-          <div
-            key={product.id}
-            style={{ border: "1px solid #ccc", borderRadius: 8, padding: 16, width: 300, cursor: 'pointer' }}
-            onClick={e => {
-              // Evita che il click sul bottone aggiunga anche la navigazione
-              if ((e.target as HTMLElement).tagName === 'BUTTON') return;
-              navigate(`/products/${product.id}`);
-            }}
-          >
-            {product.images[0] && (
-              <img src={product.images[0].src} alt={product.images[0].alt || product.name} style={{ width: "100%", height: 200, objectFit: "cover" }} />
-            )}
-            <h2>{product.name}</h2>
-            <div dangerouslySetInnerHTML={{ __html: product.description }} />
-            <div style={{ fontWeight: "bold", margin: "8px 0" }}>€ {product.price}</div>
+    <section className="products-page">
+      <header className="products-page__header">
+        <h1>{t("products.title")}</h1>
+        <p>{t("products.subtitle")}</p>
+      </header>
+      <div className="product-filters">
+        <div className="product-filters__categories" aria-label={t("products.categoryFilterLabel")}>
+          {categoryFilters.map((value) => (
             <button
-              style={{ color: "#0070f3", background: 'none', border: '1px solid #0070f3', borderRadius: 4, padding: '6px 12px', cursor: 'pointer', marginTop: 8 }}
-              onClick={e => {
-                e.stopPropagation();
-                addToCart({
-                  id: product.id,
-                  name: product.name,
-                  price: product.price,
-                  image: product.images[0]?.src,
-                  permalink: product.permalink
-                });
-              }}
+              key={value}
+              type="button"
+              className={`product-filter product-filter--${value}`}
+              aria-pressed={category === value}
+              onClick={() => setCategory(value)}
             >
-              Aggiungi al carrello
+              {t(`products.categories.${value}`)}
             </button>
-          </div>
+          ))}
+        </div>
+        <div className="product-filters__tags" aria-label={t("products.tagFilterLabel")}>
+          {tagFilters.map((value) => (
+            <button key={value} type="button" aria-pressed={tag === value} onClick={() => setTag(value)}>
+              {t(`products.tags.${value}`)}
+            </button>
+          ))}
+        </div>
+      </div>
+      {loading && <p className="products-page__state" role="status">{t("products.loading")}</p>}
+      {error && <p className="products-page__state" role="alert">{error}</p>}
+      {!loading && !error && visibleCount === 0 && <p className="products-page__state">{t("products.noFilterResults")}</p>}
+      <div className="products-list">
+        {showGiftRequest && <FlowOneCard />}
+        {filteredProducts.map((product) => (
+          <article className="product-card" key={product.id}>
+            <Link className="product-card__link" to={`/products/${product.id}`} aria-label={product.name}>
+              <div className="product-card__media">
+                {product.image
+                  ? <img src={product.image.src} alt={product.image.alt || product.name} loading="lazy" />
+                  : <span className="product-card__placeholder" aria-hidden="true">PL</span>}
+              </div>
+              <h2>{product.name}</h2>
+              <div className="product-card__price">
+                {product.flow === "variable_quote"
+                  ? product.indicative_price_range || t("products.priceOnRequest")
+                  : product.price_html
+                    ? <span dangerouslySetInnerHTML={{ __html: product.price_html }} />
+                    : t("products.unavailable")}
+              </div>
+            </Link>
+          </article>
         ))}
       </div>
-    </div>
-  );
-  */
-
-  return (
-    <div style={{
-      padding: 48, textAlign: 'center', fontSize: 28, color: '#222', fontWeight: 700, width: "100%", display: 'flex', alignItems: 'center', height: '80vh', justifyContent: 'center'
-    }}>
-      Under construction
-    </div >
+    </section>
   );
 };
 

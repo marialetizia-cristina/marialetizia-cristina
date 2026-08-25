@@ -1,19 +1,12 @@
+import { FlowOneCard } from "../components/FlowOneCard";
+import "../style/FlowOne.css";
+
 const EcommerceUnderConstruction = () => {
   return (
-    <div style={{
-      padding: 48,
-      textAlign: "center",
-      fontSize: 28,
-      color: "#222",
-      fontWeight: 700,
-      width: "100%",
-      display: "flex",
-      alignItems: "center",
-      height: "80vh",
-      justifyContent: "center",
-    }}>
-      Under construction
-    </div>
+    <section className="shop-preview">
+      <p className="shop-preview__status">Under construction</p>
+      <FlowOneCard />
+    </section>
   );
 };
 

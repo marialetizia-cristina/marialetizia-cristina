@@ -22,8 +22,8 @@ const PrivacyAndPolicy = () => {
                 } else {
                     setError("Pagina privacy non trovata.");
                 }
-            } catch (e: any) {
-                setError(e.message || "Errore caricamento pagina.");
+            } catch (e: unknown) {
+                setError(e instanceof Error ? e.message : "Errore caricamento pagina.");
             } finally {
                 setLoading(false);
             }

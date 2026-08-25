@@ -1,126 +1,94 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import { useCartStore } from "../store/useCartStore";
-import "../style/ProductDetail.css";
+import { Link, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-
-interface ProductImage {
-  src: string;
-  alt?: string;
-}
-
-interface ProductDownload {
-  id: string;
-  name: string;
-  file: string;
-}
-
-interface Product {
-  id: number;
-  name: string;
-  description: string;
-  price: string;
-  images: ProductImage[];
-  downloads?: ProductDownload[];
-  permalink: string;
-}
+import { fetchAttachmentConfig, fetchProduct, uploadAttachments, type AttachmentConfig, type CatalogProduct } from "../api/api";
+import { useCartStore } from "../store/useCartStore";
+import { FileInput } from "../components/form";
+import "../style/ProductDetail.css";
 
 const ProductDetail = () => {
   const { t } = useTranslation();
   const { productId } = useParams();
-  const [product, setProduct] = useState<Product | null>(null);
+  const [product, setProduct] = useState<CatalogProduct | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-
-  const addToCart = useCartStore(state => state.addToCart);
-  const items = useCartStore(state => state.items);
+  const [customization, setCustomization] = useState("");
+  const [added, setAdded] = useState(false);
+  const [attachmentConfig, setAttachmentConfig] = useState<AttachmentConfig | null>(null);
+  const [attachments, setAttachments] = useState<FileList | null>(null);
+  const addToCart = useCartStore((state) => state.addToCart);
+  const cartLoading = useCartStore((state) => state.loading);
+  const cartError = useCartStore((state) => state.error);
 
   useEffect(() => {
-    if (!productId) return;
-    const fetchProduct = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const consumerKey = import.meta.env.VITE_WC_KEY;
-        const consumerSecret = import.meta.env.VITE_WC_SECRET;
-        const res = await fetch(`https://marialetizia.netsons.org/wp-json/wc/v3/products/${productId}?consumer_key=${consumerKey}&consumer_secret=${consumerSecret}`);
-        if (!res.ok) throw new Error("Errore nel recupero prodotto");
-        const data = await res.json();
-        setProduct(data);
-      } catch (e) {
-        setError(e instanceof Error ? e.message : t('product.loadError'));
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProduct();
+    const id = Number(productId);
+    if (!Number.isInteger(id) || id <= 0) {
+      setError(t("product.notFound"));
+      setLoading(false);
+      return;
+    }
+    fetchProduct(id)
+      .then(setProduct)
+      .catch((reason: unknown) => setError(reason instanceof Error ? reason.message : t("product.loadError")))
+      .finally(() => setLoading(false));
   }, [productId, t]);
+  useEffect(() => { fetchAttachmentConfig().then(setAttachmentConfig).catch(() => setAttachmentConfig(null)); }, []);
 
-  if (loading) return <div className="product-detail-container"><div className="loading">{t('product.loading')}</div></div>;
-  if (error) return <div className="product-detail-container"><div className="error">{t('product.error')}: {error}</div></div>;
-  if (!product) return <div className="product-detail-container"><div className="error">{t('product.notFound')}</div></div>;
+  if (loading) return <div className="product-detail-container"><p className="loading">{t("product.loading")}</p></div>;
+  if (error || !product) return <div className="product-detail-container"><p className="error">{error ?? t("product.notFound")}</p></div>;
 
-  // Check if product is in cart
-  const isInCart = items.some(item => item.id === product.id);
-
-  // Se il prodotto ha download digitali
-  const hasDownload = Array.isArray(product.downloads) && product.downloads.length > 0;
-  const download = hasDownload && product.downloads ? product.downloads[0] : null;
+  const isQuoteProduct = product.flow === "variable_quote";
 
   return (
-    <div className="product-detail-container">
-      <Link to="/products" className="back-link">← {t('product.backToProducts')}</Link>
+    <article className="product-detail-container">
+      <Link to="/products" className="back-link">← {t("product.backToProducts")}</Link>
       <h1 className="product-title">{product.name}</h1>
-      {product.images && product.images[0] && (
-        <img
-          src={product.images[0].src}
-          alt={product.images[0].alt || product.name}
-          className="product-main-image"
-        />
-      )}
+      {product.image && <img src={product.image.src} alt={product.image.alt || product.name} className="product-main-image" />}
       <div className="product-description" dangerouslySetInnerHTML={{ __html: product.description }} />
-      <div className="product-price">€ {product.price}</div>
-
-      {/* Se è un prodotto digitale, mostra anteprima e download se acquistato */}
-      {hasDownload && download && (
-        <div className="digital-file-section">
-          <h3>{t('product.digitalPreview')}</h3>
-          <img
-            src={download.file}
-            alt={download.name || t('product.previewAlt')}
-            className={`preview-image ${isInCart ? 'unlocked' : 'locked'}`}
-            draggable={false}
-            onContextMenu={e => !isInCart && e.preventDefault()}
-          />
-          {!isInCart && <div className="preview-notice">{t('product.purchaseToUnlock')}</div>}
-          {isInCart && (
-            <a
-              href={download.file}
-              download
-              className="download-button"
-            >
-              {t('product.downloadFile')}
-            </a>
+      {isQuoteProduct ? (
+        <>
+          <p className="product-price">{product.indicative_price_range || t("products.priceOnRequest")}</p>
+          <p className="product-quote-notice">{t("product.quoteNotice")}</p>
+          <Link className="add-to-cart-button" to={`/products/${product.id}/request`}>{t("product.requestQuote")}</Link>
+        </>
+      ) : (
+        <>
+          <div className="product-price" dangerouslySetInnerHTML={{ __html: product.price_html }} />
+          <label className="product-customization">
+            <span>{t("product.customizationLabel")}</span>
+            <textarea value={customization} rows={5} required placeholder={t("product.customizationPlaceholder")} onChange={(event) => setCustomization(event.target.value)} />
+          </label>
+          {attachmentConfig?.enabled && (
+            <FileInput
+              type="file"
+              name="attachments"
+              label={t("request.fields.attachments")}
+              description={t("request.fields.attachmentsConfiguredHelp", { count: attachmentConfig.max_files, mb: Math.floor(attachmentConfig.max_bytes / 1048576) })}
+              accept={attachmentConfig.accepted_mime_types.join(",")}
+              multiple={attachmentConfig.max_files > 1}
+              onChange={setAttachments}
+            />
           )}
-        </div>
+          {cartError && <p className="error" role="alert">{cartError}</p>}
+          <button
+            className="add-to-cart-button"
+            onClick={async () => {
+              if (!customization.trim()) return;
+              try {
+                const attachmentTokens = await uploadAttachments(attachments, attachmentConfig?.max_files);
+                await addToCart(product.id, { description: customization.trim() }, attachmentTokens);
+                setAdded(true);
+              } catch {
+                // Lo store espone già il messaggio restituito da WooCommerce.
+              }
+            }}
+            disabled={added || cartLoading || !customization.trim() || !product.purchasable || !product.in_stock}
+          >
+            {added ? t("product.addedToCart") : cartLoading ? t("product.addingToCart") : t("product.addToCart")}
+          </button>
+        </>
       )}
-
-      {/* Bottone acquista/aggiungi al carrello */}
-      <button
-        className="add-to-cart-button"
-        onClick={() => addToCart({
-          id: product.id,
-          name: product.name,
-          price: product.price,
-          image: product.images && product.images[0]?.src,
-          permalink: product.permalink
-        })}
-        disabled={isInCart}
-      >
-        {isInCart ? t('product.addedToCart') : t('product.addToCart')}
-      </button>
-    </div>
+    </article>
   );
 };
 

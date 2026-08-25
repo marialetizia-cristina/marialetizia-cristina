@@ -1,1 +1,1 @@
-export const ECOMMERCE_ENABLED = false;
+export const ECOMMERCE_ENABLED = true;

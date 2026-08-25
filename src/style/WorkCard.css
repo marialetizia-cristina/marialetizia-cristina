@@ -84,14 +84,16 @@
   background: #fff;
   border: var(--border-width, 1px) solid #000;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  box-shadow: none;
   display: flex;
   flex-direction: column;
-  transition: transform .16s ease, box-shadow .16s;
+  transition: transform 180ms ease, box-shadow 180ms ease;
   border-radius: 0;
 }
 
-.work-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+.work-card:hover,
+.masonry-item a:focus-visible .work-card,
+.work-card__modal-trigger:focus-visible .work-card {
+  transform: translateY(-3px);
+  box-shadow: 5px 5px 0 #0d0d0d;
 }

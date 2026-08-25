@@ -56,6 +56,11 @@
     color: #111;
 }
 
+.header-mobile-actions { display: flex; align-items: center; gap: 0.5rem; margin-left: auto; }
+.header-cart-shortcut { position: relative; display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.45rem; color: #111; }
+.header-cart-shortcut span, .header-cart-count { display: inline-grid; place-items: center; min-width: 1.35rem; height: 1.35rem; padding: 0 0.2rem; border-radius: 999px; background: #0d0d0d; color: #fff; font-size: 0.75rem; line-height: 1; }
+.header-cart-item a { gap: 0.4rem; }
+
 .hamburger-icon {
     width: 2rem;
     height: 2rem;

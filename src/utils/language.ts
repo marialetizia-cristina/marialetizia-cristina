@@ -4,7 +4,7 @@ export const normalizeLanguage = (value?: string | null): string => {
   }
 
   const lower = value.toLowerCase();
-  const [primary] = lower.split(/[\-_]/);
+  const [primary] = lower.split(/[-_]/);
   return primary || lower;
 };
 

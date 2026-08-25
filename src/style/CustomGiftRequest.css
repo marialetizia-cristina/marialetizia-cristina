@@ -1,0 +1,112 @@
+.custom-request-page {
+  box-sizing: border-box;
+  display: grid;
+  gap: 2rem;
+  width: min(calc(100% - 2rem), 56rem);
+  margin: 0 auto;
+  padding: 1rem 0 clamp(4rem, 8vw, 7rem);
+}
+
+.custom-request-page__header {
+  display: grid;
+  gap: 0.9rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #0d0d0d;
+}
+
+.custom-request-page__header h1,
+.custom-request-page__header p {
+  margin: 0;
+}
+
+.custom-request-page__header h1 {
+  max-width: 14ch;
+  font-family: "Anton", sans-serif;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 400;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.custom-request-page__back {
+  justify-self: start;
+  color: #0d0d0d;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.custom-request-page__back:hover {
+  text-decoration: underline;
+}
+
+.custom-request-page__eyebrow {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.custom-request-page__notice,
+.custom-request-page__error {
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid #0d0d0d;
+  line-height: 1.5;
+}
+
+.custom-request-page__notice {
+  margin-top: 0.5rem !important;
+  background: #00fbff;
+}
+
+.custom-request-page__error {
+  background: #f5008f;
+  font-weight: 700;
+}
+
+.custom-request-page__form,
+.custom-request-page > .dynamic-form,
+.custom-request-page__success {
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  border: 1px solid #0d0d0d;
+  border-radius: 0;
+  background: transparent;
+}
+
+.custom-request-page__success {
+  display: grid;
+  gap: 1rem;
+  background: #00ed24;
+}
+
+.custom-request-page__success h2,
+.custom-request-page__success p {
+  margin: 0;
+}
+
+.custom-request-page__success h2 {
+  font-family: "Anton", sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.custom-request-page__success button {
+  justify-self: start;
+  padding: 0.7rem 1.25rem;
+  border: 1px solid #0d0d0d;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.custom-request-page__success button:hover {
+  transform: translateY(-3px);
+  box-shadow: 5px 5px 0 #0d0d0d;
+}
