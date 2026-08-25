@@ -28,7 +28,9 @@ const Footer = () => {
                             <Voice value="MARIALETIZIA CRISTINA" path="/" />
                             <span style={{ color: '#222', marginTop: 2, textAlign: "left" }}>P.IVA 03018010185</span>
                         </li>
-                        <Voice value="BACK TO TOP" path="#top" />
+                        <li>
+                            <a href="#top">{t("nav.backTop").toUpperCase()}</a>
+                        </li>
                         <Voice value={t("nav.privecyPolicy").toUpperCase()} path="/privacyandpolicy" />
                     </ul>
                 </nav>

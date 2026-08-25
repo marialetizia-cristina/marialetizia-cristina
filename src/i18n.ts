@@ -10,7 +10,7 @@ const resources = {
         about: "About",
         services: "Services",
         contact: "Contact",
-        backTop: "Back",
+        backTop: "Back to top",
         backHome: "Back",
         portfolio: "Portfolio",
         privecyPolicy: "Privacy and Policy",

@@ -1,0 +1,133 @@
+.privacy-and-policy {
+  box-sizing: border-box;
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  width: min(calc(100% - 2rem), 76rem);
+  margin: 0 auto;
+  padding: 1rem 0 clamp(4rem, 8vw, 7rem);
+}
+
+.privacy-and-policy__title {
+  margin: 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #0d0d0d;
+  font-family: "Anton", sans-serif;
+  font-size: clamp(3.75rem, 10vw, 8rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.privacy-and-policy__content {
+  width: min(100%, 56rem);
+}
+
+.privacy-and-policy__content > div {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.privacy-and-policy__content h2,
+.privacy-and-policy__content h3,
+.privacy-and-policy__content h4,
+.privacy-and-policy__content p,
+.privacy-and-policy__content ul,
+.privacy-and-policy__content ol,
+.privacy-and-policy__content blockquote,
+.privacy-and-policy__content table {
+  margin: 0;
+}
+
+.privacy-and-policy__content h2 {
+  margin-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #0d0d0d;
+  font-family: "Anton", sans-serif;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.privacy-and-policy__content h3 {
+  margin-top: 1rem;
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  line-height: 1.2;
+}
+
+.privacy-and-policy__content h4 {
+  margin-top: 0.75rem;
+  font-size: 1.05rem;
+}
+
+.privacy-and-policy__content p,
+.privacy-and-policy__content li {
+  line-height: 1.65;
+}
+
+.privacy-and-policy__content ul,
+.privacy-and-policy__content ol {
+  display: grid;
+  gap: 0.55rem;
+  padding-left: 1.5rem;
+}
+
+.privacy-and-policy__content a {
+  color: #0d0d0d;
+  font-weight: 700;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.privacy-and-policy__content a:hover {
+  background: #00fbff;
+}
+
+.privacy-and-policy__content blockquote {
+  padding: 1rem;
+  border: 1px solid #0d0d0d;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.privacy-and-policy__content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.privacy-and-policy__content th,
+.privacy-and-policy__content td {
+  padding: 0.7rem;
+  border: 1px solid #0d0d0d;
+  text-align: left;
+  vertical-align: top;
+}
+
+.privacy-and-policy__content th {
+  background: #00fbff;
+}
+
+.privacy-and-policy__message {
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid #0d0d0d;
+  background: #00fbff;
+}
+
+.privacy-and-policy__message--error {
+  background: #f5008f;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .privacy-and-policy {
+    gap: 2rem;
+  }
+
+  .privacy-and-policy__content p,
+  .privacy-and-policy__content li {
+    line-height: 1.55;
+  }
+}
