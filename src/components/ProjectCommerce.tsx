@@ -38,6 +38,9 @@ const ProjectCommerce = ({ product, showDescription = true }: ProjectCommercePro
         {product.flow === "variable_quote" ? t("products.quoteProduct") : t("products.fixedProduct")}
       </p>
       <h2 id="project-commerce-title">{product.name}</h2>
+      {(product.flow === "variable_quote" || product.flow === "fixed_purchase") && (
+        <p className="project-commerce__commission-note">{t("product.commissionNotice")}</p>
+      )}
       {showDescription && product.description && (
         <div className="product-description" dangerouslySetInnerHTML={{ __html: product.description }} />
       )}

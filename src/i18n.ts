@@ -78,6 +78,9 @@ const resources = {
         customizationPlaceholder: "Text, names, colours and other useful details…",
         quoteNotice: "The final price depends on the requested customization and will be provided after review.",
         requestQuote: "Request a quote",
+        commissionNotice: "Made to order according to the instructions and materials provided.",
+        priceLabel: "Price",
+        indicativePriceLabel: "Indicative price",
       },
       products: {
         eyebrow: "Portfolio Letizia shop",
@@ -310,6 +313,9 @@ const resources = {
         customizationPlaceholder: "Testo, nomi, colori e altri dettagli utili…",
         quoteNotice: "Il prezzo finale dipende dalla personalizzazione richiesta e verrà comunicato dopo la valutazione.",
         requestQuote: "Richiedi un preventivo",
+        commissionNotice: "Realizzato su commissione in base alle indicazioni e ai materiali forniti.",
+        priceLabel: "Prezzo",
+        indicativePriceLabel: "Prezzo indicativo",
       },
       products: {
         eyebrow: "Shop Portfolio Letizia",

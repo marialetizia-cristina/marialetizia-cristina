@@ -9,6 +9,7 @@ import { buildSliderImage, dedupeSliderImages } from "../utils/wpMedia";
 import "../style/WorkCard.css";
 import { isCaseStudyCategory } from "../utils/categories";
 import ProjectCommerce from "./ProjectCommerce";
+import { useTranslation } from "react-i18next";
 
 interface WorkCardProps {
   work: Work;
@@ -17,6 +18,7 @@ interface WorkCardProps {
 }
 
 const WorkCard = ({ work, product, returnPath = "/category/all" }: WorkCardProps) => {
+  const { t } = useTranslation();
   const sliderSizes = "(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw";
 
   const plainTitle = useMemo(() => {
@@ -70,6 +72,7 @@ const WorkCard = ({ work, product, returnPath = "/category/all" }: WorkCardProps
   }, [featured, attachments, contentImages]);
 
   const isCaseStudy = isCaseStudyCategory(work.categories ?? []);
+  const isCommercial = product?.flow === "variable_quote" || product?.flow === "fixed_purchase";
   const heroImages = useMemo(() => {
     if (!images.length) {
       return images;
@@ -102,17 +105,25 @@ const WorkCard = ({ work, product, returnPath = "/category/all" }: WorkCardProps
         <ImageSlider images={heroImages} autoPlay={!isCaseStudy} />
         <div className="work-card__overlay">
           <h3 dangerouslySetInnerHTML={{ __html: work.title.rendered }} />
-          {product?.flow === "fixed_purchase" && product.price_html && (
-            <div
-              className="work-card__price"
-              dangerouslySetInnerHTML={{ __html: product.price_html }}
-            />
-          )}
-          {product?.flow === "variable_quote" && product.indicative_price_range && (
-            <div className="work-card__price">{product.indicative_price_range}</div>
-          )}
         </div>
       </div>
+      {isCommercial && (
+        <div className="work-card__commerce-summary">
+          <div className="work-card__commerce-line">
+            <h3 dangerouslySetInnerHTML={{ __html: work.title.rendered }} />
+            <span aria-hidden="true">—</span>
+            <div className="work-card__price">
+              <span>{product.flow === "variable_quote" ? t("product.indicativePriceLabel") : t("product.priceLabel")} </span>
+              {product.flow === "fixed_purchase" && product.price_html ? (
+                <span dangerouslySetInnerHTML={{ __html: product.price_html }} />
+              ) : (
+                product.indicative_price_range || t("products.priceOnRequest")
+              )}
+            </div>
+          </div>
+          <p className="work-card__commission-note">{t("product.commissionNotice")}</p>
+        </div>
+      )}
     </div>
   );
 

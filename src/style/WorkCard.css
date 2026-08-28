@@ -79,6 +79,43 @@
   color: inherit;
 }
 
+.work-card__commission-note {
+  margin: 0;
+  font-size: clamp(0.72rem, 1vw, 0.84rem);
+  font-style: italic;
+  line-height: 1.35;
+}
+
+.work-card__commerce-summary {
+  display: grid;
+  gap: 0.45rem;
+  padding: 0.7rem;
+  border-top: var(--border-width, 1px) solid #000;
+}
+
+.work-card__commerce-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+
+.work-card__commerce-line h3,
+.work-card__commerce-line .work-card__price {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+.work-card__commerce-line .work-card__price {
+  color: #0d0d0d;
+  text-align: left;
+}
+
+.work-card__commerce-line h3 {
+  font-weight: 700;
+}
+
 .work-card__overlay h3 {
   margin: 0;
   color: #fff;
