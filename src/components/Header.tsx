@@ -15,6 +15,8 @@ const Header = () => {
     const location = useLocation();
     const isHome = location.pathname === "/" || location.pathname === "/en" || location.pathname === "/en/";
     const isShop = location.pathname.startsWith("/products")
+        || location.pathname.startsWith("/idee-regalo")
+        || location.pathname.startsWith("/en/gift-ideas")
         || location.pathname.startsWith("/cart")
         || location.pathname.startsWith("/checkout")
         || location.pathname.startsWith("/account")

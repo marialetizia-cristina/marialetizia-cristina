@@ -13,6 +13,18 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://marialetiziacristina.vercel.app/idee-regalo/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://marialetiziacristina.vercel.app/en/gift-ideas/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://marialetiziacristina.vercel.app/category/graphic-design</loc>
     <lastmod>2025-12-14</lastmod>
     <changefreq>monthly</changefreq>

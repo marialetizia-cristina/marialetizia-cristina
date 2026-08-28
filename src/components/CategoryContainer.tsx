@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 
 
 const CategoryContainer = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const location = useLocation();
     const isHome = location.pathname === "/" || location.pathname === "/en" || location.pathname === "/en/";
 
@@ -17,7 +17,7 @@ const CategoryContainer = () => {
                 <CategoryButton name={t("categories.all")?.toUpperCase()} path="/category/all" />
                 <CategoryButton name={t("categories.graphicDesign")?.toUpperCase()} path="/category/graphic-design" />
                 <CategoryButton name={t("categories.illustrations")?.toUpperCase()} path="/category/illustrations" />
-                <CategoryButton name={t("categories.giftArt")?.toUpperCase()} path="/products" />
+                <CategoryButton name={t("categories.giftArt")?.toUpperCase()} path={i18n.language.startsWith("en") ? "/en/gift-ideas/" : "/idee-regalo/"} />
             </div>
             <div className="divider" />
         </div>

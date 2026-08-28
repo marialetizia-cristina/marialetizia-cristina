@@ -21,6 +21,7 @@ import ProductQuoteRequest from './pages/ProductQuoteRequest';
 import Checkout from './pages/Checkout';
 import NotFound from './pages/NotFound';
 import ShopPlaceholder from './pages/ShopPlaceholder';
+import GiftIdeasLanding from './pages/GiftIdeasLanding';
 
 function App() {
   return (
@@ -43,6 +44,8 @@ const AppContent = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/en" element={<Home />} />
+            <Route path="/idee-regalo" element={<GiftIdeasLanding language="it" />} />
+            <Route path="/en/gift-ideas" element={<GiftIdeasLanding language="en" />} />
             <Route path="/category/graphic-design" element={<GraphicDesign />} />
             <Route path="/category/illustrations" element={<Illustrations />} />
             <Route path="/category/gift-art" element={<GiftArt />} />

@@ -444,7 +444,7 @@ const resources = {
 
 const storedLanguage = typeof window !== "undefined" ? localStorage.getItem("lang") : null;
 const pathLanguage = typeof window !== "undefined"
-  ? (/^\/en\/?$/.test(window.location.pathname)
+  ? (/^\/en(?:\/|$)/.test(window.location.pathname)
       ? "en"
       : window.location.pathname === "/"
         ? "it"

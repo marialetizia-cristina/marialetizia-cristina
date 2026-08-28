@@ -1,0 +1,137 @@
+.gift-ideas-landing {
+  width: min(calc(100% - 3rem), 76rem);
+  margin: 0 auto;
+  padding: 1rem 0 clamp(4rem, 9vw, 8rem);
+  color: #0d0d0d;
+}
+
+.gift-ideas-landing__hero {
+  max-width: 68rem;
+  padding-bottom: clamp(2rem, 5vw, 4rem);
+  border-bottom: 1px solid #0d0d0d;
+}
+
+.gift-ideas-landing__eyebrow {
+  margin-bottom: 1rem;
+  font-size: clamp(0.8rem, 1.3vw, 1rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gift-ideas-landing__hero h1 {
+  max-width: 11ch;
+  font-family: "Anton", sans-serif;
+  font-size: clamp(3.8rem, 10vw, 8.5rem);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+
+.gift-ideas-landing__lead {
+  max-width: 48rem;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  line-height: 1.4;
+}
+
+.gift-ideas-landing__intro,
+.gift-ideas-landing__custom {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 6vw, 6rem);
+  padding: clamp(2.5rem, 6vw, 5rem) 0;
+  border-bottom: 1px solid #0d0d0d;
+}
+
+.gift-ideas-landing__intro h2,
+.gift-ideas-landing__section-heading h2,
+.gift-ideas-landing__custom > div > h2 {
+  margin-bottom: 1rem;
+  font-family: "Anton", sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.gift-ideas-landing .product-card h2,
+.gift-ideas-landing .product-card h3 {
+  margin: 0;
+  padding: 0.5rem 0.65rem;
+  border-bottom: 1px solid #0d0d0d;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+.gift-ideas-landing__intro p,
+.gift-ideas-landing__custom p,
+.gift-ideas-landing__intro li {
+  line-height: 1.55;
+}
+
+.gift-ideas-landing__intro ul {
+  padding-left: 1.2rem;
+}
+
+.gift-ideas-landing__catalog {
+  padding: clamp(2.5rem, 6vw, 5rem) 0;
+  border-bottom: 1px solid #0d0d0d;
+}
+
+.gift-ideas-landing__section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.gift-ideas-landing__section-heading a,
+.gift-ideas-landing__cta {
+  color: inherit;
+  font-weight: 700;
+  text-underline-offset: 0.2em;
+}
+
+.gift-ideas-landing__custom {
+  align-items: start;
+  border-bottom: 0;
+}
+
+.gift-ideas-landing__cta {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #0d0d0d;
+  border-radius: 0.35rem;
+  background: #00ed24;
+  text-decoration: none;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.gift-ideas-landing__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 #0d0d0d;
+}
+
+@media (max-width: 680px) {
+  .gift-ideas-landing {
+    width: min(calc(100% - 2rem), 76rem);
+  }
+
+  .gift-ideas-landing__intro,
+  .gift-ideas-landing__custom {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .gift-ideas-landing__section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
