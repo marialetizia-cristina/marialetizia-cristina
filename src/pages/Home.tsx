@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { normalizeLanguage } from "../utils/language";
 import type { Page } from "../api/api";
 import { useContentStore } from "../store/useContentStore";
+import { usePageMeta } from "../utils/usePageMeta";
 
 import '../style/Home.css';
 import WorksGrid from '../components/WorksGrid';
@@ -22,6 +23,14 @@ const Home = () => {
   const { t, i18n } = useTranslation();
   const preferredLanguage = normalizeLanguage(i18n.language) || "it";
   const isFirstRender = useRef(true);
+
+  usePageMeta(
+    t("hero.subtitle"),
+    preferredLanguage === "en"
+      ? "Portfolio of Marialetizia Cristina, graphic designer and illustrator specializing in visual identity, editorial design and bespoke projects."
+      : "Portfolio di Marialetizia Cristina, graphic designer e illustratrice specializzata in visual branding, editorial design e progetti su misura.",
+    preferredLanguage === "en" ? "/en/" : "/",
+  );
 
   useEffect(() => {
     void loadAll();

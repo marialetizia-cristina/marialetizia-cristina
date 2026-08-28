@@ -10,6 +10,7 @@ interface VoiceProps {
 const Voice = ({ value, path, onClick }: VoiceProps) => {
   const location = useLocation();
   const isHashLink = path.startsWith("#");
+  const isHome = location.pathname === "/" || location.pathname === "/en" || location.pathname === "/en/";
 
   if (!isHashLink) {
     return (
@@ -22,7 +23,7 @@ const Voice = ({ value, path, onClick }: VoiceProps) => {
   }
 
   const hashTarget = path;
-  const to = location.pathname === "/"
+  const to = isHome
     ? { pathname: location.pathname, hash: hashTarget }
     : { pathname: "/", hash: hashTarget };
 

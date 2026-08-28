@@ -1,37 +1,26 @@
 .category-button {
-    cursor: pointer;
-    padding: 0.5rem 0.9rem;
-    border-radius: 999px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    background: transparent;
-    font-size: 0.95rem;
-    transition: background .18s, transform .12s;
-}
-
-.category-button:hover {
-    transform: translateY(-2px);
-}
-
-.category-button {
     border: none;
 }
 
 .category-button a {
-    display: block;
-    border: none;
-    width: 15em;
-    padding: 1em 0em;
-    cursor: pointer;
-    font-size: 1em;
-    border-radius: 5px;
-    border: var(--border-width, 1px) solid black;
-    color: black;
-    font-weight: 900;
-    transition: all 0.5s ease-in-out;
-    text-decoration: none;
+    display: flex;
     align-items: center;
     justify-content: center;
-    display: flex;
+    width: 15em;
+    min-height: 2.6rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #0d0d0d;
+    border-radius: 0.35rem;
+    background: transparent;
+    color: #0d0d0d;
+    font-family: "Anton", sans-serif;
+    font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 150ms ease, box-shadow 150ms ease;
 }
 
 /* .category-button:nth-child(1) a {
@@ -54,34 +43,20 @@
     background-color: rgba(0, 255, 6, 100);
 }
 
-.category-container .category-button a:hover {
-    background-color: black !important;
-    color: white !important;
+.category-container .category-button a:hover,
+.category-container .category-button a[aria-current="page"] {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0 #0d0d0d;
 }
 
+.category-container .category-button a[aria-current="page"],
 .home .category-button:nth-child(1) a {
     background-color: transparent;
 }
 
-.all .category-button:nth-child(1) a {
-    background-color: transparent;
-    color: black;
-}
-
-.graphic-design .category-button:nth-child(2) a {
-    background-color: transparent;
-    color: black;
-}
-
-
-.illustrations .category-button:nth-child(3) a {
-    background-color: transparent;
-    color: black;
-}
-
-.gift-art .category-button:nth-child(4) a {
-    background-color: transparent;
-    color: black;
+.category-container .category-button a:focus-visible {
+    outline: 3px solid #0d0d0d;
+    outline-offset: 3px;
 }
 
 @media (max-width: 1200px) {

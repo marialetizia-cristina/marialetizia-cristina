@@ -13,7 +13,7 @@ const getIsMobile = () =>
 const Header = () => {
     const { t } = useTranslation();
     const location = useLocation();
-    const isHome = location.pathname === "/";
+    const isHome = location.pathname === "/" || location.pathname === "/en" || location.pathname === "/en/";
     const isShop = location.pathname.startsWith("/products")
         || location.pathname.startsWith("/cart")
         || location.pathname.startsWith("/checkout")

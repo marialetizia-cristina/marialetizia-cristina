@@ -42,6 +42,7 @@ const AppContent = () => {
         <>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/en" element={<Home />} />
             <Route path="/category/graphic-design" element={<GraphicDesign />} />
             <Route path="/category/illustrations" element={<Illustrations />} />
             <Route path="/category/gift-art" element={<GiftArt />} />

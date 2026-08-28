@@ -45,6 +45,13 @@ const resources = {
         titleGift: "GIFT IDEAS",
         titlePrivacyAndPolicy: "PRIVACY AND POLICY",
       },
+      privacyPage: {
+        title: "Privacy Policy",
+        description: "Information about personal data processing and this website's privacy practices.",
+        loading: "Loading privacy policy…",
+        notFound: "Privacy policy not found.",
+        loadError: "Unable to load the privacy policy.",
+      },
       works: {
         seeMoreLines: ["SEE", "MORE"],
         empty: "No projects here right now — come back soon for fresh work!",
@@ -257,6 +264,13 @@ const resources = {
         titleGift: "GIFT IDEAS",
         titlePrivacyAndPolicy: "PRIVACY E POLICY",
       },
+      privacyPage: {
+        title: "Privacy Policy",
+        description: "Informazioni sul trattamento dei dati personali e sulle politiche di riservatezza del sito.",
+        loading: "Caricamento informativa privacy…",
+        notFound: "Pagina privacy non trovata.",
+        loadError: "Non è stato possibile caricare la pagina privacy.",
+      },
       works: {
         seeMoreLines: ["VEDI", "ALTRO"],
         empty: "Al momento non c’è nulla da mostrare qui: torna presto per nuovi lavori!",
@@ -429,12 +443,15 @@ const resources = {
 } as const;
 
 const storedLanguage = typeof window !== "undefined" ? localStorage.getItem("lang") : null;
+const pathLanguage = typeof window !== "undefined" && /^\/en\/?$/.test(window.location.pathname)
+  ? "en"
+  : null;
 
 void i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: storedLanguage ?? "it",
+    lng: pathLanguage ?? storedLanguage ?? "it",
     fallbackLng: "en",
     interpolation: {
       escapeValue: false,

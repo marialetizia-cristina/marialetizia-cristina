@@ -47,6 +47,8 @@ export interface Page {
   excerpt?: { rendered: string };
   categories?: number[];
   grid: string;
+  lang?: string;
+  translations?: Record<string, number>;
   polylang?: {
     lang?: string;
     translations?: Record<string, number>;

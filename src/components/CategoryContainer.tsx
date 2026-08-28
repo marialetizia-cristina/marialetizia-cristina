@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 const CategoryContainer = () => {
     const { t } = useTranslation();
     const location = useLocation();
-    const isHome = location.pathname === "/";
+    const isHome = location.pathname === "/" || location.pathname === "/en" || location.pathname === "/en/";
 
     return (
         <div className="category-container-wrapper">
