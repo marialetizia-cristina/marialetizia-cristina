@@ -8,6 +8,18 @@
   gap: 2rem;
 }
 
+.single--commercial {
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.single--commercial > .project-commerce {
+  margin-top: 0;
+}
+
+.single--commercial .case-study {
+  padding-bottom: 0;
+}
+
 .single__back {
   display: inline-flex;
   align-items: center;

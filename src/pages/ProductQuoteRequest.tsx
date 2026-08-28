@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ApiError, fetchAttachmentConfig, fetchProduct, submitQuoteRequest, uploadAttachments, type AttachmentConfig, type CatalogProduct } from "../api/api";
 import { DynamicForm, type FormErrors, type FormFieldConfig, type FormValue, type FormValues } from "../components/form";
@@ -12,6 +12,8 @@ function asString(value: FormValue): string {
 
 const ProductQuoteRequest = () => {
   const { productId } = useParams();
+  const location = useLocation();
+  const returnPath = (location.state as { from?: string } | null)?.from ?? "/category/all";
   const { t } = useTranslation();
   const [product, setProduct] = useState<CatalogProduct | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -105,7 +107,7 @@ const ProductQuoteRequest = () => {
   return (
     <section className="custom-request-page">
       <div className="custom-request-page__header">
-        <Link className="custom-request-page__back" to={`/products/${product.id}`}>← {t("request.backToProduct")}</Link>
+        <Link className="custom-request-page__back" to={returnPath}>← {t("request.backToProject")}</Link>
         <p className="custom-request-page__eyebrow">{t("request.variableFlowLabel")}</p>
         <h1>{t("request.quoteTitle", { product: product.name })}</h1>
         <p>{product.physical ? t("request.physicalDelivery") : t("request.digitalDelivery")}</p>

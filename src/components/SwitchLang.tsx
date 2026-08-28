@@ -18,6 +18,8 @@ const SwitchLang = () => {
         } else if (location.pathname === "/idee-regalo" || location.pathname === "/idee-regalo/"
             || location.pathname === "/en/gift-ideas" || location.pathname === "/en/gift-ideas/") {
             navigate(nextLanguage === "en" ? "/en/gift-ideas/" : "/idee-regalo/");
+        } else if (location.pathname === "/profilo" || location.pathname === "/en/profile") {
+            navigate(nextLanguage === "en" ? "/en/profile" : "/profilo");
         }
     };
 

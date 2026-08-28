@@ -70,7 +70,7 @@ const Checkout = () => {
 
   if (loading && !cart) return <p className="checkout-page__state">{t("cart.loading")}</p>;
   if (cartError && !cart) return <p className="checkout-page__state" role="alert">{cartError}</p>;
-  if (!cart || cart.items.length === 0) return <section className="checkout-page"><h1>{t("checkout.title")}</h1><p>{t("cart.empty")}</p><Link to="/products">{t("cart.continueShopping")}</Link></section>;
+  if (!cart || cart.items.length === 0) return <section className="checkout-page"><h1>{t("checkout.title")}</h1><p>{t("cart.empty")}</p><Link to="/category/all">{t("cart.continueShopping")}</Link></section>;
   if (orderNumber) return <section className="checkout-page"><h1>{t("checkout.success")}</h1><p>{t("checkout.orderNumber", { number: orderNumber })}</p></section>;
 
   const hasPaymentMethod = !cart.needs_payment || cart.payment_methods.length > 0;

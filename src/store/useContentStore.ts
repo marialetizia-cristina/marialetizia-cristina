@@ -1,8 +1,9 @@
 import { create } from "zustand";
-import { fetchPages, fetchWorks, type Page, type Work } from "../api/api";
+import { fetchPages, fetchProducts, fetchWorks, type CatalogProduct, type Page, type Work } from "../api/api";
 
 let worksPromise: Promise<Work[]> | null = null;
 let pagesPromise: Promise<Page[]> | null = null;
+let productsPromise: Promise<CatalogProduct[]> | null = null;
 
 interface ContentStoreState {
   works: Work[];
@@ -11,8 +12,12 @@ interface ContentStoreState {
   pages: Page[];
   pagesLoading: boolean;
   pagesLoaded: boolean;
+  products: CatalogProduct[];
+  productsLoading: boolean;
+  productsLoaded: boolean;
   loadWorks: () => Promise<Work[]>;
   loadPages: () => Promise<Page[]>;
+  loadProducts: () => Promise<CatalogProduct[]>;
   loadAll: () => Promise<Page[]>;
   getWorkById: (id: number) => Work | undefined;
   upsertWork: (work: Work) => void;
@@ -25,6 +30,9 @@ export const useContentStore = create<ContentStoreState>((set, get) => ({
   pages: [],
   pagesLoading: false,
   pagesLoaded: false,
+  products: [],
+  productsLoading: false,
+  productsLoaded: false,
   async loadWorks() {
     if (get().worksLoaded) {
       return get().works;
@@ -71,9 +79,31 @@ export const useContentStore = create<ContentStoreState>((set, get) => ({
 
     return pagesPromise;
   },
+  async loadProducts() {
+    if (get().productsLoaded) return get().products;
+    if (productsPromise) return productsPromise;
+
+    set({ productsLoading: true });
+    productsPromise = fetchProducts()
+      .then(data => {
+        set({ products: data, productsLoaded: true });
+        return data;
+      })
+      .catch(() => {
+        set({ products: [], productsLoaded: true });
+        return [];
+      })
+      .finally(() => {
+        set({ productsLoading: false });
+        productsPromise = null;
+      });
+
+    return productsPromise;
+  },
   async loadAll() {
     const pagesPromise = get().loadPages();
     void get().loadWorks();
+    void get().loadProducts();
     return pagesPromise;
   },
   getWorkById(id) {

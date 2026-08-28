@@ -9,7 +9,8 @@ lerna-debug.log*
 
 AGENTS.md
 
-wordpress
+wordpress/*
+!wordpress/portfolio-project-product-link.php
 
 release
 

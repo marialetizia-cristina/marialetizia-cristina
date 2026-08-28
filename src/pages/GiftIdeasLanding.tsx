@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { fetchProducts, type CatalogProduct } from "../api/api";
 import { FlowOneCard } from "../components/FlowOneCard";
+import WorksGrid from "../components/WorksGrid";
 import { usePageMeta } from "../utils/usePageMeta";
 import "../style/Products.css";
 import "../style/GiftIdeasLanding.css";
@@ -11,7 +11,7 @@ type GiftIdeasLandingProps = {
   language: "it" | "en";
 };
 
-const GIFT_CATEGORY_SLUGS = new Set(["gift-ideas", "idee-regalo", "gift-art"]);
+const GIFT_CATEGORY_SLUGS = ["gift-ideas", "idee-regalo", "gift-art"];
 
 const copy = {
   it: {
@@ -53,9 +53,6 @@ const copy = {
 const GiftIdeasLanding = ({ language }: GiftIdeasLandingProps) => {
   const { i18n } = useTranslation();
   const content = copy[language];
-  const [products, setProducts] = useState<CatalogProduct[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   const canonicalPath = language === "en" ? "/en/gift-ideas/" : "/idee-regalo/";
 
   usePageMeta(content.title, content.description, canonicalPath, false, {
@@ -69,22 +66,6 @@ const GiftIdeasLanding = ({ language }: GiftIdeasLandingProps) => {
       void i18n.changeLanguage(language);
     }
   }, [i18n, language]);
-
-  useEffect(() => {
-    fetchProducts()
-      .then(setProducts)
-      .catch(() => setError(true))
-      .finally(() => setLoading(false));
-  }, []);
-
-  const giftProducts = useMemo(() => {
-    const languageTag = language === "it" ? "lang-it" : "lang-en";
-    return products.filter((product) => {
-      const matchesLanguage = (product.tags ?? []).some((tag) => tag.slug === languageTag);
-      const matchesCategory = (product.categories ?? []).some((category) => GIFT_CATEGORY_SLUGS.has(category.slug));
-      return matchesLanguage && matchesCategory;
-    });
-  }, [language, products]);
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -124,31 +105,15 @@ const GiftIdeasLanding = ({ language }: GiftIdeasLandingProps) => {
       <section className="gift-ideas-landing__catalog" aria-labelledby="gift-catalog-title">
         <div className="gift-ideas-landing__section-heading">
           <h2 id="gift-catalog-title">{content.catalogTitle}</h2>
-          <Link to="/products">{content.allProducts}</Link>
+          <Link to="/category/all">{content.allProducts}</Link>
         </div>
-        {loading && <p role="status">{content.loading}</p>}
-        {error && <p role="alert">{content.error}</p>}
-        {!loading && !error && giftProducts.length === 0 && <p>{content.empty}</p>}
-        <div className="products-list">
-          {giftProducts.map((product) => (
-            <article className="product-card" key={product.id}>
-              <Link className="product-card__link" to={`/products/${product.id}`}>
-                <div className="product-card__media">
-                  {product.image
-                    ? <img src={product.image.src} alt={product.image.alt || product.name} loading="lazy" />
-                    : <span className="product-card__placeholder" aria-hidden="true">PL</span>}
-                </div>
-                <h3>{product.name}</h3>
-                <div className="product-card__price">
-                  {product.flow === "variable_quote"
-                    ? product.indicative_price_range || (language === "it" ? "Prezzo su richiesta" : "Price on request")
-                    : product.price_html
-                      ? <span dangerouslySetInnerHTML={{ __html: product.price_html }} />
-                      : language === "it" ? "Non disponibile" : "Unavailable"}
-                </div>
-              </Link>
-            </article>
-          ))}
+        <div className="works gift-ideas-landing__projects">
+          <WorksGrid
+            category="ALL"
+            returnPath={canonicalPath}
+            requireLinkedProduct
+            productCategorySlugs={GIFT_CATEGORY_SLUGS}
+          />
         </div>
       </section>
 

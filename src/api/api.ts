@@ -37,6 +37,15 @@ export interface Work {
     lang?: string;
     translations?: Record<string, number | string | null>;
   };
+  /** Canonical REST field exposed by the WordPress project editor. */
+  linked_product_id?: number | string | null;
+  /** ACF fallback while the backend field is being migrated. */
+  acf?: {
+    linked_product_id?: number | string | null;
+  };
+  meta?: {
+    linked_product_id?: number | string | null;
+  };
 }
 
 export interface Page {
@@ -186,6 +195,14 @@ export interface CatalogProduct {
   image: { src: string; alt: string } | null;
   categories: ProductTerm[];
   tags: ProductTerm[];
+}
+
+export function getLinkedProductId(work: Work): number | null {
+  const rawId = work.linked_product_id ?? work.acf?.linked_product_id ?? work.meta?.linked_product_id;
+  if (rawId === null || rawId === undefined || rawId === "") return null;
+
+  const productId = typeof rawId === "number" ? rawId : Number.parseInt(rawId, 10);
+  return Number.isInteger(productId) && productId > 0 ? productId : null;
 }
 
 export interface QuoteRequestPayload {

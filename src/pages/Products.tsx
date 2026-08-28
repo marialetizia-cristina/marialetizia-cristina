@@ -28,7 +28,7 @@ const tagAliases: Record<Exclude<TagFilter, "all">, string[]> = {
 };
 
 const Products = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [products, setProducts] = useState<CatalogProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -43,16 +43,13 @@ const Products = () => {
       .finally(() => setLoading(false));
   }, [t]);
 
-  const languageTag = (i18n.resolvedLanguage ?? i18n.language).startsWith("it") ? "lang-it" : "lang-en";
-
   const filteredProducts = useMemo(() => products.filter((product) => {
-    const languageMatches = (product.tags ?? []).some((term) => term.slug === languageTag);
     const categoryMatches = category === "all"
       || (product.categories ?? []).some((term) => categoryAliases[category].includes(term.slug));
     const tagMatches = tag === "all"
       || (product.tags ?? []).some((term) => tagAliases[tag].includes(term.slug));
-    return languageMatches && categoryMatches && tagMatches;
-  }), [category, languageTag, products, tag]);
+    return categoryMatches && tagMatches;
+  }), [category, products, tag]);
 
   const showGiftRequest = (category === "all" || category === "gift-ideas") && tag === "all";
   const visibleCount = filteredProducts.length + (showGiftRequest ? 1 : 0);

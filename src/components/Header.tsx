@@ -11,23 +11,17 @@ const getIsMobile = () =>
     typeof window !== "undefined" ? window.innerWidth <= 768 : false;
 
 const Header = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const location = useLocation();
     const isHome = location.pathname === "/" || location.pathname === "/en" || location.pathname === "/en/";
-    const isShop = location.pathname.startsWith("/products")
-        || location.pathname.startsWith("/idee-regalo")
-        || location.pathname.startsWith("/en/gift-ideas")
-        || location.pathname.startsWith("/cart")
-        || location.pathname.startsWith("/checkout")
-        || location.pathname.startsWith("/account")
-        || location.pathname.startsWith("/favorites")
-        || location.pathname.startsWith("/request/custom-gift");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(() => getIsMobile());
-    const cart = useCartStore((state) => state.cart);
-    const loadCart = useCartStore((state) => state.loadCart);
-    const cartCount = cart?.items_count ?? 0;
     const ICON_SIZE = 32;
+    const isEnglish = i18n.language.startsWith("en");
+    const profilePath = isEnglish ? "/en/profile" : "/profilo";
+    const cart = useCartStore(state => state.cart);
+    const loadCart = useCartStore(state => state.loadCart);
+    const cartCount = cart?.items_count ?? 0;
 
     useEffect(() => {
         if (typeof window === "undefined") {
@@ -46,7 +40,9 @@ const Header = () => {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    useEffect(() => { void loadCart(); }, [loadCart]);
+    useEffect(() => {
+        void loadCart();
+    }, [loadCart]);
 
     useEffect(() => {
         if (!isMobile || typeof document === "undefined") {
@@ -67,42 +63,35 @@ const Header = () => {
 
     const renderNavItems = (onItemClick?: () => void) => (
         <>
-            {isShop ? (
-                <>
-                    <Voice value={t("nav.portfolio")} path="/" onClick={onItemClick} />
-                    <Voice value={t("nav.products")} path="/products" onClick={onItemClick} />
-                    <li className="header-cart-item">
-                        <Link to="/cart" onClick={onItemClick} aria-label={t("nav.cartWithCount", { count: cartCount })}>
-                            {t("nav.cart")}
-                            <span className="header-cart-count" aria-hidden="true">{cartCount}</span>
-                        </Link>
-                    </li>
-                    <Voice value={t("nav.favorites")} path="/favorites" onClick={onItemClick} />
-                    <Voice value={t("nav.account")} path="/account" onClick={onItemClick} />
-                    <li className="switch-lang-wrapper">
-                        <SwitchLang />
-                    </li>
-                </>
-            ) : isHome ? (
+            {isHome ? (
                 <Voice value={t("nav.works")} path="#works" onClick={onItemClick} />
             ) : (
                 <li>
-                    <Link to="/" onClick={onItemClick} className="header-back-btn">
+                    <Link to={isEnglish ? "/en/" : "/"} onClick={onItemClick} className="header-back-btn">
                         {t("nav.backHome").toUpperCase()}
                     </Link>
                 </li>
             )}
-            {!isShop && (
-                <>
-                    <Voice value={t("nav.about")} path="#about" onClick={onItemClick} />
-                    <Voice value={t("nav.services")} path="#services" onClick={onItemClick} />
-                    <Voice value={t("nav.contact")} path="#contact" onClick={onItemClick} />
-                    <Voice value={t("nav.ecommerce")} path="/products" onClick={onItemClick} />
-                    <li className="switch-lang-wrapper">
-                        <SwitchLang />
-                    </li>
-                </>
-            )}
+            <Voice value={t("nav.about")} path="#about" onClick={onItemClick} />
+            <Voice value={t("nav.services")} path="#services" onClick={onItemClick} />
+            <Voice value={t("nav.contact")} path="#contact" onClick={onItemClick} />
+            <Voice value={t("nav.profile")} path={profilePath} onClick={onItemClick} />
+            <li className="header-cart-item header-cart-item--icon">
+                <Link
+                    to="/cart"
+                    onClick={onItemClick}
+                    aria-label={t("nav.cartWithCount", { count: cartCount })}
+                    title={t("nav.cart")}
+                >
+                    <FiShoppingBag aria-hidden="true" size={23} strokeWidth={1.75} />
+                    {cartCount > 0 && (
+                        <span className="header-cart-count" aria-hidden="true">{cartCount}</span>
+                    )}
+                </Link>
+            </li>
+            <li className="switch-lang-wrapper">
+                <SwitchLang />
+            </li>
         </>
     );
 
@@ -111,12 +100,6 @@ const Header = () => {
             <div className="header-content">
                 {isMobile ? (
                     <div className="header-mobile-actions">
-                        {isShop && (
-                            <Link className="header-cart-shortcut" to="/cart" aria-label={t("nav.cartWithCount", { count: cartCount })}>
-                                <FiShoppingBag aria-hidden="true" size={24} />
-                                <span>{cartCount}</span>
-                            </Link>
-                        )}
                         <button
                             className={`hamburger-toggle ${isMenuOpen ? "active" : ""}`}
                             onClick={toggleMenu}

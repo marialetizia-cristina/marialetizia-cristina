@@ -15,7 +15,7 @@ const Cart = () => {
 
   if (loading && !cart) return <p className="cart-page__state">{t("cart.loading")}</p>;
   if (error && !cart) return <p className="cart-page__state" role="alert">{error}</p>;
-  if (!cart || cart.items.length === 0) return <section className="cart-page"><h1>{t("cart.title")}</h1><p>{t("cart.empty")}</p><Link to="/products">{t("cart.continueShopping")}</Link></section>;
+  if (!cart || cart.items.length === 0) return <section className="cart-page"><h1>{t("cart.title")}</h1><p>{t("cart.empty")}</p><Link to="/category/all">{t("cart.continueShopping")}</Link></section>;
 
   return (
     <section className="cart-page">

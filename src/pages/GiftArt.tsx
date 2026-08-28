@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const GiftArt = () => {
     const navigate = useNavigate();
     useEffect(() => {
-        navigate("/products", { replace: true });
+        navigate("/idee-regalo/", { replace: true });
     }, [navigate]);
     return null;
 };

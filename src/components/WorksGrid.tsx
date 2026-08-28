@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import type { Work } from "../api/api";
+import { getLinkedProductId, type Work } from "../api/api";
 import WorkCard from "./WorkCard";
 import "../style/WorksGrid.css";
 import { useTranslation } from "react-i18next";
@@ -7,12 +7,16 @@ import { coerceNumericId, normalizeLanguage } from "../utils/language";
 import { Link } from "react-router-dom";
 import { useContentStore } from "../store/useContentStore";
 import LoadingState from "./LoadingState";
+import { FlowOneCard } from "./FlowOneCard";
 
 interface WorksGridProps {
   category?: "ALL" | "GRAPHIC DESIGN" | "ILLUSTRATIONS" | "FEATURED";
   limits?: number;
   returnPath?: string;
   showSeeAll?: boolean;
+  requireLinkedProduct?: boolean;
+  productCategorySlugs?: string[];
+  includeGiftRequest?: boolean;
 }
 
 type WorksGridCategory = NonNullable<WorksGridProps["category"]>;
@@ -29,12 +33,19 @@ const WorksGrid = ({
   limits,
   returnPath = "/category/all",
   showSeeAll = false,
+  requireLinkedProduct = false,
+  productCategorySlugs,
+  includeGiftRequest = false,
 }: WorksGridProps) => {
   const [showEmptyMessage, setShowEmptyMessage] = useState(false);
   const works = useContentStore(state => state.works);
   const worksLoaded = useContentStore(state => state.worksLoaded);
   const worksLoading = useContentStore(state => state.worksLoading);
   const loadWorks = useContentStore(state => state.loadWorks);
+  const products = useContentStore(state => state.products);
+  const productsLoading = useContentStore(state => state.productsLoading);
+  const productsLoaded = useContentStore(state => state.productsLoaded);
+  const loadProducts = useContentStore(state => state.loadProducts);
   const { t, i18n } = useTranslation();
   const seeMoreLines = useMemo(() => {
     const lines = t("works.seeMoreLines", { returnObjects: true }) as unknown;
@@ -46,7 +57,13 @@ const WorksGrid = ({
 
   useEffect(() => {
     void loadWorks();
-  }, [loadWorks]);
+    void loadProducts();
+  }, [loadProducts, loadWorks]);
+
+  const productsById = useMemo(
+    () => new Map(products.map(product => [product.id, product])),
+    [products],
+  );
 
   const getCategoryIds = (cat: WorksGridCategory): number[] => {
     return CATEGORY_ID_MAP[cat] ?? [];
@@ -141,16 +158,24 @@ const WorksGrid = ({
         }
       }
 
+      const productId = getLinkedProductId(candidate);
+      const linkedProduct = productId ? productsById.get(productId) : undefined;
+      if (requireLinkedProduct && !linkedProduct) return;
+      if (productCategorySlugs?.length) {
+        const matchesProductCategory = linkedProduct?.categories.some(term => productCategorySlugs.includes(term.slug));
+        if (!matchesProductCategory) return;
+      }
+
       results.push(candidate);
       seenIds.add(candidate.id);
     });
 
     return results;
-  }, [works, i18n.language, category]);
+  }, [works, i18n.language, category, productCategorySlugs, productsById, requireLinkedProduct]);
 
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
-    const isLoading = !worksLoaded && worksLoading;
+    const isLoading = (!worksLoaded && worksLoading) || (!productsLoaded && productsLoading);
 
     if (!isLoading && filteredWorks.length === 0) {
       timeoutId = setTimeout(() => {
@@ -165,16 +190,22 @@ const WorksGrid = ({
         clearTimeout(timeoutId);
       }
     };
-  }, [worksLoaded, worksLoading, filteredWorks.length]);
+  }, [worksLoaded, worksLoading, productsLoaded, productsLoading, filteredWorks.length]);
 
-  const isLoading = !worksLoaded && worksLoading;
+  const isLoading = (!worksLoaded && worksLoading) || (!productsLoaded && productsLoading);
 
   return (
     <div className="works-grid">
       {filteredWorks.length > 0 ? (
         <>
+          {includeGiftRequest && <FlowOneCard variant="project" />}
           {(limits ? filteredWorks.slice(0, limits) : filteredWorks).map(work => (
-            <WorkCard key={work.id} work={work} returnPath={returnPath} />
+            <WorkCard
+              key={work.id}
+              work={work}
+              product={productsById.get(getLinkedProductId(work) ?? -1)}
+              returnPath={returnPath}
+            />
           ))}
           {showSeeAll && (
             <div className="masonry-item works-grid__see-all">
@@ -189,8 +220,9 @@ const WorksGrid = ({
         </>
       ) : (
         <>
+          {includeGiftRequest && !isLoading && <FlowOneCard variant="project" />}
           {isLoading && <LoadingState message={t("loaders.preparingPortfolio")} className="works-grid__loading-state" />}
-          {!isLoading && showEmptyMessage && <p>{t("works.empty")}</p>}
+          {!includeGiftRequest && !isLoading && showEmptyMessage && <p>{t("works.empty")}</p>}
         </>
       )}
     </div>

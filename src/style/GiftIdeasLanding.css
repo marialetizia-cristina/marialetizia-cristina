@@ -83,6 +83,10 @@
   border-bottom: 1px solid #0d0d0d;
 }
 
+.gift-ideas-landing__projects {
+  padding: 0;
+}
+
 .gift-ideas-landing__section-heading {
   display: flex;
   align-items: baseline;

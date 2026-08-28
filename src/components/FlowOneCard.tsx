@@ -2,8 +2,29 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "../style/FlowOne.css";
 
-export function FlowOneCard() {
+type FlowOneCardProps = {
+  variant?: "product" | "project";
+};
+
+export function FlowOneCard({ variant = "product" }: FlowOneCardProps) {
   const { t } = useTranslation();
+
+  if (variant === "project") {
+    return (
+      <div className="masonry-item">
+        <Link className="flow-one-project-card" to="/request/custom-gift" aria-label={t("request.cardTitle")}>
+          <article className="work-card work-card--gift-idea">
+            <div className="work-card__media work-card__media--gift-idea" aria-hidden="true">
+              <span>{t("products.yourIdea")}</span>
+              <div className="work-card__overlay">
+                <h3>{t("request.cardTitle")}</h3>
+              </div>
+            </div>
+          </article>
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <article className="product-card product-card--gift">

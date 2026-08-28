@@ -7,8 +7,7 @@ import GraphicDesign from './pages/GraphicDesign';
 import Illustrations from './pages/Illustrations';
 import All from './pages/All';
 import GiftArt from './pages/GiftArt';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Products from './pages/Products';
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import Cart from './pages/Cart';
 import ProductDetail from './pages/ProductDetail';
 import EcommerceUnderConstruction from './pages/EcommerceUnderConstruction';
@@ -52,13 +51,15 @@ const AppContent = () => {
             <Route path="/category/gift-art" element={<GiftArt />} />
             <Route path="/category/all" element={<All />} />
             <Route path="/single/:workId" element={<SinglePage />} />
-            <Route path="/products" element={ECOMMERCE_ENABLED ? <Products /> : <EcommerceUnderConstruction />} />
+            <Route path="/products" element={<Navigate to="/category/all" replace />} />
             <Route path="/products/:productId" element={ECOMMERCE_ENABLED ? <ProductDetail /> : <EcommerceUnderConstruction />} />
             <Route path="/products/:productId/request" element={<ProductQuoteRequest />} />
             <Route path="/cart" element={ECOMMERCE_ENABLED ? <Cart /> : <EcommerceUnderConstruction />} />
             <Route path="/checkout" element={ECOMMERCE_ENABLED ? <Checkout /> : <EcommerceUnderConstruction />} />
-            <Route path="/account" element={<ShopPlaceholder section="account" />} />
-            <Route path="/favorites" element={<ShopPlaceholder section="favorites" />} />
+            <Route path="/profilo" element={<ShopPlaceholder />} />
+            <Route path="/en/profile" element={<ShopPlaceholder />} />
+            <Route path="/account" element={<Navigate to="/profilo" replace />} />
+            <Route path="/favorites" element={<Navigate to="/profilo" replace />} />
             <Route path="/request/custom-gift" element={<CustomGiftRequest />} />
             <Route path="/privacyandpolicy" element={<PrivacyAndPolicy />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />

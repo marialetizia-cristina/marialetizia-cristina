@@ -165,7 +165,7 @@ const CustomGiftRequest = () => {
   return (
     <section className="custom-request-page">
       <div className="custom-request-page__header">
-        <Link className="custom-request-page__back" to="/products">
+        <Link className="custom-request-page__back" to="/idee-regalo/">
           ← {t("request.back")}
         </Link>
         <p className="custom-request-page__eyebrow">{t("request.flowLabel")}</p>

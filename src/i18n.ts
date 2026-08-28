@@ -7,6 +7,9 @@ const resources = {
       nav: {
         works: "Works",
         home: "Home",
+        projects: "Projects",
+        giftIdeas: "Gift ideas",
+        profile: "Profile",
         about: "About",
         services: "Services",
         contact: "Contact",
@@ -59,6 +62,7 @@ const resources = {
       },
       product: {
         backToProducts: "Back to products",
+        backToProjects: "Back to projects",
         loading: "Loading product...",
         error: "Error",
         loadError: "Error loading product",
@@ -129,7 +133,11 @@ const resources = {
       notFound: { title: "Page not found", body: "The page you requested does not exist or has been moved.", home: "Back to home" },
       shopPlaceholder: {
         status: "Under construction",
-        backToProducts: "Back to products",
+        backToProjects: "Back to projects",
+        profile: {
+          title: "Profile",
+          description: "The personal area, including favorites, is currently under construction.",
+        },
         account: {
           title: "Account",
           description: "The personal account area is currently under construction.",
@@ -145,7 +153,7 @@ const resources = {
         cardDescription: "Tell Letizia about the person, occasion and idea you have in mind. The final proposal and price will be agreed after reviewing your request.",
         noPrice: "No immediate payment",
         cardCta: "Start your request",
-        back: "Back to products",
+        back: "Back to gift ideas",
         pageTitle: "Your custom gift idea",
         pageDescription: "Share the information needed to develop a bespoke graphic or illustrated gift.",
         quoteNotice: "This is a quote request: it will not add a product to the cart and no payment will be requested now.",
@@ -158,6 +166,7 @@ const resources = {
         newRequest: "Create another request",
         invalidQuoteProduct: "This product does not support quote requests.",
         backToProduct: "Back to product",
+        backToProject: "Back to project",
         variableFlowLabel: "Catalog product · Quote required",
         quoteTitle: "Customize {{product}}",
         physicalDelivery: "This is a physical product, so delivery details are required.",
@@ -229,6 +238,9 @@ const resources = {
       nav: {
         works: "Lavori",
         home: "Home",
+        projects: "Progetti",
+        giftIdeas: "Idee regalo",
+        profile: "Profilo",
         about: "Chi sono",
         services: "Servizi",
         contact: "Contatti",
@@ -281,6 +293,7 @@ const resources = {
       },
       product: {
         backToProducts: "Torna ai prodotti",
+        backToProjects: "Torna ai progetti",
         loading: "Caricamento prodotto...",
         error: "Errore",
         loadError: "Errore nel caricamento del prodotto",
@@ -351,7 +364,11 @@ const resources = {
       notFound: { title: "Pagina non trovata", body: "La pagina richiesta non esiste oppure è stata spostata.", home: "Torna alla home" },
       shopPlaceholder: {
         status: "In costruzione",
-        backToProducts: "Torna ai prodotti",
+        backToProjects: "Torna ai progetti",
+        profile: {
+          title: "Profilo",
+          description: "L’area personale, inclusi i preferiti, è attualmente in costruzione.",
+        },
         account: {
           title: "Account",
           description: "L’area personale è attualmente in costruzione.",
@@ -367,7 +384,7 @@ const resources = {
         cardDescription: "Racconta a Letizia la persona, l’occasione e l’idea che hai in mente. La proposta finale e il prezzo verranno concordati dopo aver valutato la richiesta.",
         noPrice: "Nessun pagamento immediato",
         cardCta: "Inizia la richiesta",
-        back: "Torna ai prodotti",
+        back: "Torna alle idee regalo",
         pageTitle: "La tua idea regalo personalizzata",
         pageDescription: "Condividi le informazioni necessarie per sviluppare un regalo grafico o illustrato su misura.",
         quoteNotice: "Questa è una richiesta di preventivo: non aggiungerà prodotti al carrello e non verrà richiesto alcun pagamento adesso.",
@@ -380,6 +397,7 @@ const resources = {
         newRequest: "Crea un’altra richiesta",
         invalidQuoteProduct: "Questo prodotto non prevede una richiesta di preventivo.",
         backToProduct: "Torna al prodotto",
+        backToProject: "Torna al progetto",
         variableFlowLabel: "Prodotto a catalogo · Preventivo necessario",
         quoteTitle: "Personalizza {{product}}",
         physicalDelivery: "Questo è un prodotto fisico, quindi sono necessari i dati di consegna.",

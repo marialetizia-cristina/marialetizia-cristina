@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import "../style/Voice.css";
 
 interface VoiceProps {
@@ -9,6 +10,7 @@ interface VoiceProps {
 
 const Voice = ({ value, path, onClick }: VoiceProps) => {
   const location = useLocation();
+  const { i18n } = useTranslation();
   const isHashLink = path.startsWith("#");
   const isHome = location.pathname === "/" || location.pathname === "/en" || location.pathname === "/en/";
 
@@ -25,7 +27,7 @@ const Voice = ({ value, path, onClick }: VoiceProps) => {
   const hashTarget = path;
   const to = isHome
     ? { pathname: location.pathname, hash: hashTarget }
-    : { pathname: "/", hash: hashTarget };
+    : { pathname: i18n.language.startsWith("en") ? "/en/" : "/", hash: hashTarget };
 
   return (
     <li>

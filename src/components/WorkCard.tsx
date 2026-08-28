@@ -3,18 +3,20 @@ import type { KeyboardEvent } from "react";
 import { Link } from "react-router-dom";
 import ImageSlider from "./ImageSlider";
 import ImageModal from "./ImageModal";
-import type { Work, WPEmbeddedMedia } from "../api/api";
+import type { CatalogProduct, Work, WPEmbeddedMedia } from "../api/api";
 import type { SliderImage } from "../types/media";
 import { buildSliderImage, dedupeSliderImages } from "../utils/wpMedia";
 import "../style/WorkCard.css";
 import { isCaseStudyCategory } from "../utils/categories";
+import ProjectCommerce from "./ProjectCommerce";
 
 interface WorkCardProps {
   work: Work;
+  product?: CatalogProduct;
   returnPath?: string;
 }
 
-const WorkCard = ({ work, returnPath = "/category/all" }: WorkCardProps) => {
+const WorkCard = ({ work, product, returnPath = "/category/all" }: WorkCardProps) => {
   const sliderSizes = "(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw";
 
   const plainTitle = useMemo(() => {
@@ -100,6 +102,15 @@ const WorkCard = ({ work, returnPath = "/category/all" }: WorkCardProps) => {
         <ImageSlider images={heroImages} autoPlay={!isCaseStudy} />
         <div className="work-card__overlay">
           <h3 dangerouslySetInnerHTML={{ __html: work.title.rendered }} />
+          {product?.flow === "fixed_purchase" && product.price_html && (
+            <div
+              className="work-card__price"
+              dangerouslySetInnerHTML={{ __html: product.price_html }}
+            />
+          )}
+          {product?.flow === "variable_quote" && product.indicative_price_range && (
+            <div className="work-card__price">{product.indicative_price_range}</div>
+          )}
         </div>
       </div>
     </div>
@@ -123,7 +134,9 @@ const WorkCard = ({ work, returnPath = "/category/all" }: WorkCardProps) => {
         </div>
       )}
       {!isCaseStudy && isModalOpen && (
-        <ImageModal images={images} onClose={() => setIsModalOpen(false)} />
+        <ImageModal images={images} onClose={() => setIsModalOpen(false)}>
+          {product && <ProjectCommerce product={product} />}
+        </ImageModal>
       )}
     </div>
   );

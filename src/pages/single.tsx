@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import ImageSlider from "../components/ImageSlider";
-import { fetchWorkById, type Work } from "../api/api";
+import { fetchWorkById, getLinkedProductId, type Work } from "../api/api";
 import "../style/Single.css";
 import LoadingState from "../components/LoadingState";
 import { useTranslation } from "react-i18next";
@@ -11,6 +11,7 @@ import { isCaseStudyCategory } from "../utils/categories";
 import { useContentStore } from "../store/useContentStore";
 import type { SliderImage } from "../types/media";
 import { buildSliderImage, dedupeSliderImages } from "../utils/wpMedia";
+import ProjectCommerce from "../components/ProjectCommerce";
 
 const SinglePage = () => {
     const { workId } = useParams<{ workId: string }>();
@@ -26,12 +27,18 @@ const SinglePage = () => {
     const loadWorks = useContentStore(state => state.loadWorks);
     const worksLoaded = useContentStore(state => state.worksLoaded);
     const worksLoading = useContentStore(state => state.worksLoading);
+    const products = useContentStore(state => state.products);
+    const loadProducts = useContentStore(state => state.loadProducts);
 
     useEffect(() => {
         if (!worksLoaded && !worksLoading) {
             void loadWorks();
         }
     }, [worksLoaded, worksLoading, loadWorks]);
+
+    useEffect(() => {
+        void loadProducts();
+    }, [loadProducts]);
 
     useEffect(() => {
         if (!workId) {
@@ -182,6 +189,10 @@ const SinglePage = () => {
     }, [attachmentImages, featuredSrc, contentHtml]);
 
     const errorMessage = errorKey ? t(`single.errors.${errorKey}`) : null;
+    const linkedProductId = work ? getLinkedProductId(work) : null;
+    const linkedProduct = linkedProductId
+        ? products.find(product => product.id === linkedProductId)
+        : undefined;
 
     if (loading) {
         return <LoadingState className="single container" message={t("loaders.loadingProject")} />;
@@ -200,7 +211,7 @@ const SinglePage = () => {
     }
 
     return (
-        <div className="single container">
+        <div className={`single container${linkedProduct ? " single--commercial" : ""}`}>
             <header className="single__header">
                 <div className="single__title" dangerouslySetInnerHTML={{ __html: work.title.rendered }} />
                 {!isCaseStudy && featuredImage && !contentIncludesFeatured && (
@@ -228,6 +239,8 @@ const SinglePage = () => {
             ) : (
                 <article className="single__content" dangerouslySetInnerHTML={{ __html: contentHtml }} />
             )}
+
+            {linkedProduct && <ProjectCommerce product={linkedProduct} />}
         </div>
     );
 };
