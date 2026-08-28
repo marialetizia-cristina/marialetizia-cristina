@@ -443,8 +443,12 @@ const resources = {
 } as const;
 
 const storedLanguage = typeof window !== "undefined" ? localStorage.getItem("lang") : null;
-const pathLanguage = typeof window !== "undefined" && /^\/en\/?$/.test(window.location.pathname)
-  ? "en"
+const pathLanguage = typeof window !== "undefined"
+  ? (/^\/en\/?$/.test(window.location.pathname)
+      ? "en"
+      : window.location.pathname === "/"
+        ? "it"
+        : null)
   : null;
 
 void i18n
