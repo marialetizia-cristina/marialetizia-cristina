@@ -9,18 +9,21 @@ import { formatStoreMoney } from "../utils/money";
 const Cart = () => {
   const { t } = useTranslation();
   const { cart, loading, error, loadCart, removeFromCart, updateQuantity } = useCartStore();
+  const displayError = error && /failed to fetch|networkerror|load failed/i.test(error)
+    ? t("cart.connectionError")
+    : error;
   usePageMeta(t("cart.title"), t("cart.empty"), "/cart", true);
 
   useEffect(() => { void loadCart(); }, [loadCart]);
 
   if (loading && !cart) return <p className="cart-page__state">{t("cart.loading")}</p>;
-  if (error && !cart) return <p className="cart-page__state" role="alert">{error}</p>;
+  if (displayError && !cart) return <p className="cart-page__state" role="alert">{displayError}</p>;
   if (!cart || cart.items.length === 0) return <section className="cart-page"><h1>{t("cart.title")}</h1><p>{t("cart.empty")}</p><Link to="/category/all">{t("cart.continueShopping")}</Link></section>;
 
   return (
     <section className="cart-page">
       <h1>{t("cart.title")}</h1>
-      {error && <p role="alert">{error}</p>}
+      {displayError && <p role="alert">{displayError}</p>}
       <ul className="cart-list">
         {cart.items.map((item) => (
           <li className="cart-item" key={item.key}>

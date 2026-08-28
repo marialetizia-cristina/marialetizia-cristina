@@ -23,6 +23,7 @@ const ProjectCommerce = ({ product, showDescription = true }: ProjectCommercePro
   const [added, setAdded] = useState(false);
   const [attachmentConfig, setAttachmentConfig] = useState<AttachmentConfig | null>(null);
   const [attachments, setAttachments] = useState<FileList | null>(null);
+  const [hasTriedAddToCart, setHasTriedAddToCart] = useState(false);
   const addToCart = useCartStore(state => state.addToCart);
   const cartLoading = useCartStore(state => state.loading);
   const cartError = useCartStore(state => state.error);
@@ -84,12 +85,17 @@ const ProjectCommerce = ({ product, showDescription = true }: ProjectCommercePro
               onChange={setAttachments}
             />
           )}
-          {cartError && <p className="error" role="alert">{cartError}</p>}
+          {hasTriedAddToCart && cartError && (
+            <p className="error" role="alert">
+              {/failed to fetch|networkerror|load failed/i.test(cartError) ? t("cart.connectionError") : cartError}
+            </p>
+          )}
           <button
             className="add-to-cart-button"
             type="button"
             onClick={async () => {
               if (!customization.trim()) return;
+              setHasTriedAddToCart(true);
               try {
                 const tokens = await uploadAttachments(attachments, attachmentConfig?.max_files);
                 await addToCart(product.id, { description: customization.trim() }, tokens);
