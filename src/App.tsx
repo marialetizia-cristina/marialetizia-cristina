@@ -22,6 +22,7 @@ import Checkout from './pages/Checkout';
 import NotFound from './pages/NotFound';
 import ShopPlaceholder from './pages/ShopPlaceholder';
 import GiftIdeasLanding from './pages/GiftIdeasLanding';
+import TermsAndConditions from './pages/TermsAndConditions';
 
 function App() {
   return (
@@ -60,6 +61,7 @@ const AppContent = () => {
             <Route path="/favorites" element={<ShopPlaceholder section="favorites" />} />
             <Route path="/request/custom-gift" element={<CustomGiftRequest />} />
             <Route path="/privacyandpolicy" element={<PrivacyAndPolicy />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </>

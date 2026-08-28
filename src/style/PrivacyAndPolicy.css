@@ -126,6 +126,24 @@
   font-weight: 700;
 }
 
+.terms-and-conditions__draft {
+  display: grid;
+  gap: 0.65rem;
+  padding: 1rem;
+  border: 2px solid #0d0d0d;
+  background: #ff7900;
+  color: #0d0d0d;
+}
+
+.terms-and-conditions__draft p {
+  margin: 0;
+}
+
+.terms-and-conditions .privacy-and-policy__content section {
+  display: grid;
+  gap: 0.75rem;
+}
+
 @media (max-width: 600px) {
   .privacy-and-policy {
     gap: 2rem;

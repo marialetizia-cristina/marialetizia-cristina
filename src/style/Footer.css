@@ -120,6 +120,11 @@ footer .divider {
         text-align: right;
     }
 
+    .footer nav ul > li:nth-child(4) {
+        grid-column: 1 / -1;
+        text-align: right;
+    }
+
     .footer a {
         line-height: 1.25;
     }

@@ -80,6 +80,9 @@ const Checkout = () => {
       <Link to="/cart">← {t("checkout.backToCart")}</Link>
       <h1>{t("checkout.title")}</h1>
       <p>{cart.needs_shipping ? t("checkout.shippingRequired") : t("checkout.digitalOnly")}</p>
+      <p className="checkout-page__terms">
+        {t("checkout.termsNotice")} <Link to="/terms-and-conditions">{t("checkout.termsLink")}</Link>
+      </p>
       {error && <p className="checkout-page__error" role="alert">{error}</p>}
       {!hasPaymentMethod ? (
         <div className="checkout-page__error" role="alert">

@@ -14,6 +14,7 @@ const resources = {
         backHome: "Back",
         portfolio: "Portfolio",
         privecyPolicy: "Privacy and Policy",
+        terms: "Terms and Conditions",
         products: "Products",
         ecommerce: "E-commerce",
         favorites: "Favorites",
@@ -122,6 +123,8 @@ const resources = {
         error: "Checkout could not be completed.", success: "Order received", orderNumber: "Order number: {{number}}.",
         noPaymentTitle: "No payment method available",
         noPaymentBody: "Checkout is temporarily unavailable because no WooCommerce payment method is active for this order.",
+        termsNotice: "Before placing your order, please read the Terms and Conditions of Sale.",
+        termsLink: "Read the Terms and Conditions",
       },
       notFound: { title: "Page not found", body: "The page you requested does not exist or has been moved.", home: "Back to home" },
       shopPlaceholder: {
@@ -233,6 +236,7 @@ const resources = {
         backHome: "Indietro",
         portfolio: "Portfolio",
         privecyPolicy: "Privacy e Policy",
+        terms: "Termini e condizioni",
         products: "Prodotti",
         ecommerce: "E-commerce",
         favorites: "Preferiti",
@@ -341,6 +345,8 @@ const resources = {
         error: "Non è stato possibile completare il checkout.", success: "Ordine ricevuto", orderNumber: "Numero ordine: {{number}}.",
         noPaymentTitle: "Nessun metodo di pagamento disponibile",
         noPaymentBody: "Il checkout è temporaneamente non disponibile perché nessun metodo di pagamento WooCommerce è attivo per questo ordine.",
+        termsNotice: "Prima di effettuare l’ordine, consulta i Termini e condizioni di vendita.",
+        termsLink: "Leggi i Termini e condizioni",
       },
       notFound: { title: "Pagina non trovata", body: "La pagina richiesta non esiste oppure è stata spostata.", home: "Torna alla home" },
       shopPlaceholder: {

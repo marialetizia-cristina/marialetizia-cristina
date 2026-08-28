@@ -32,6 +32,7 @@ const Footer = () => {
                             <a href="#top">{t("nav.backTop").toUpperCase()}</a>
                         </li>
                         <Voice value={t("nav.privecyPolicy").toUpperCase()} path="/privacyandpolicy" />
+                        <Voice value={t("nav.terms").toUpperCase()} path="/terms-and-conditions" />
                     </ul>
                 </nav>
             </div>
