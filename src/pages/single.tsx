@@ -240,7 +240,7 @@ const SinglePage = () => {
                 <article className="single__content" dangerouslySetInnerHTML={{ __html: contentHtml }} />
             )}
 
-            {linkedProduct && <ProjectCommerce product={linkedProduct} />}
+            {linkedProduct && <ProjectCommerce product={linkedProduct} projectTitle={strippedTitle} />}
         </div>
     );
 };

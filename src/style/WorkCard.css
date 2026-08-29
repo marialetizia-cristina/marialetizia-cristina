@@ -5,6 +5,11 @@
   cursor: pointer;
 }
 
+.masonry-item > a,
+.masonry-item > .work-card__modal-trigger {
+  height: 100%;
+}
+
 .work-card__modal-trigger:focus {
   outline: 2px solid rgba(0, 0, 0, 0.4);
   outline-offset: 4px;
@@ -86,11 +91,23 @@
   line-height: 1.35;
 }
 
+.work-card__overlay .work-card__commission-note {
+  max-width: 26rem;
+  margin-top: 0.45rem;
+  color: #fff;
+  text-align: center;
+}
+
 .work-card__commerce-summary {
   display: grid;
   gap: 0.45rem;
+  height: 5.25rem;
   padding: 0.7rem;
   border-top: var(--border-width, 1px) solid #000;
+  background: var(--bg);
+  box-sizing: border-box;
+  align-content: start;
+  overflow: hidden;
 }
 
 .work-card__commerce-line {
@@ -114,6 +131,10 @@
 
 .work-card__commerce-line h3 {
   font-weight: 700;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .work-card__overlay h3 {
@@ -142,6 +163,7 @@
   flex-direction: column;
   transition: transform 180ms ease, box-shadow 180ms ease;
   border-radius: 0;
+  height: 100%;
 }
 
 .work-card:hover,

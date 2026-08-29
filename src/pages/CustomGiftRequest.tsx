@@ -11,6 +11,7 @@ import {
 } from "../components/form";
 import "../style/CustomGiftRequest.css";
 import { usePageMeta } from "../utils/usePageMeta";
+import { todayForDateInput } from "../utils/date";
 
 function stringValue(value: FormValue): string {
   return typeof value === "string" ? value : "";
@@ -112,6 +113,14 @@ const CustomGiftRequest = () => {
         ? undefined
         : t("request.errors.description"),
     },
+    {
+      type: "date",
+      name: "desired_delivery_date",
+      label: t("request.fields.desiredDeliveryDate"),
+      description: t("request.fields.desiredDeliveryDateHelp"),
+      required: true,
+      min: todayForDateInput(),
+    },
     ...(attachmentConfig?.enabled ? [{
       type: "file" as const,
       name: "attachments",
@@ -141,6 +150,7 @@ const CustomGiftRequest = () => {
         email: stringValue(values.email),
         phone: stringValue(values.phone),
         description: stringValue(values.description),
+        desired_delivery_date: stringValue(values.desired_delivery_date),
         privacy_accepted: values.privacy === true,
         fulfillment,
         delivery: fulfillment === "physical" ? {

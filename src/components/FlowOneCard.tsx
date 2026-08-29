@@ -17,6 +17,11 @@ export function FlowOneCard({ variant = "product" }: FlowOneCardProps) {
             <div className="work-card__media work-card__media--gift-idea" aria-hidden="true">
               <span>{t("products.yourIdea")}</span>
               <div className="work-card__overlay">
+                <p className="work-card__commission-note">{t("product.commissionNotice")}</p>
+              </div>
+            </div>
+            <div className="work-card__commerce-summary">
+              <div className="work-card__commerce-line">
                 <h3>{t("request.cardTitle")}</h3>
               </div>
             </div>

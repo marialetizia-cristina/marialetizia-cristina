@@ -211,6 +211,7 @@ export interface QuoteRequestPayload {
   email: string;
   phone?: string;
   description: string;
+  desired_delivery_date: string;
   privacy_accepted: boolean;
   fulfillment?: "digital" | "physical";
   product_id?: number;

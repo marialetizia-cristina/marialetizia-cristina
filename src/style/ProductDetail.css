@@ -21,10 +21,6 @@
   text-transform: uppercase;
 }
 
-.project-commerce > h2 {
-  margin: 0;
-}
-
 .project-commerce__commission-note {
   max-width: 48rem;
   margin: 0;
@@ -178,6 +174,33 @@
   font: inherit;
   font-weight: 400;
   resize: vertical;
+}
+
+.product-delivery-date input {
+  box-sizing: border-box;
+  width: min(100%, 22rem);
+  min-height: 3rem;
+  padding: 0.75rem;
+  border: 1px solid #0d0d0d;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.62);
+  color: inherit;
+  font: inherit;
+}
+
+.product-delivery-date small {
+  max-width: 48rem;
+  color: #4f4f4f;
+  font-size: 0.86rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.product-delivery-date input:focus-visible {
+  outline: 3px solid #0d0d0d;
+  outline-offset: 3px;
+  background: #fff;
+  box-shadow: 4px 4px 0 #0d0d0d;
 }
 
 .product-customization textarea:focus-visible {

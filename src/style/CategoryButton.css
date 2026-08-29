@@ -40,7 +40,7 @@
 }
 
 .category-button:nth-child(4) a {
-    background-color: rgba(0, 255, 6, 100);
+    background-color: var(--gift-ideas-green);
 }
 
 .category-container .category-button a:hover,

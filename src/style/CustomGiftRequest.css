@@ -77,7 +77,7 @@
 .custom-request-page__success {
   display: grid;
   gap: 1rem;
-  background: #00ed24;
+  background: var(--gift-ideas-green);
 }
 
 .custom-request-page__success h2,

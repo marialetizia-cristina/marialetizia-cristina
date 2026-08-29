@@ -25,6 +25,7 @@ export function TextInput({ value, error, onChange, ...field }: TextInputProps) 
         minLength={field.minLength}
         maxLength={field.maxLength}
         pattern={field.pattern}
+        min={field.min}
         required={field.required}
         disabled={field.disabled}
         aria-invalid={Boolean(error)}

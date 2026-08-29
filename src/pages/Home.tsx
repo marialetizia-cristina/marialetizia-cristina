@@ -160,6 +160,7 @@ const Home = () => {
       <div className="hero">
         <Title text="MARIALETIZIA CRISTINA" />
         <Profession name={t("hero.subtitle").toUpperCase()} />
+        <div className="divider" />
       </div>
       <Section page={firstSection} id="first-section" />
       <CategoryContainer />

@@ -5,6 +5,7 @@ import { ApiError, fetchAttachmentConfig, fetchProduct, submitQuoteRequest, uplo
 import { DynamicForm, type FormErrors, type FormFieldConfig, type FormValue, type FormValues } from "../components/form";
 import "../style/CustomGiftRequest.css";
 import { usePageMeta } from "../utils/usePageMeta";
+import { todayForDateInput } from "../utils/date";
 
 function asString(value: FormValue): string {
   return typeof value === "string" ? value : "";
@@ -13,14 +14,16 @@ function asString(value: FormValue): string {
 const ProductQuoteRequest = () => {
   const { productId } = useParams();
   const location = useLocation();
-  const returnPath = (location.state as { from?: string } | null)?.from ?? "/category/all";
+  const navigationState = location.state as { from?: string; projectTitle?: string } | null;
+  const returnPath = navigationState?.from ?? "/category/all";
   const { t } = useTranslation();
   const [product, setProduct] = useState<CatalogProduct | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [reference, setReference] = useState<string | null>(null);
   const [attachmentConfig, setAttachmentConfig] = useState<AttachmentConfig | null>(null);
   const [fieldErrors, setFieldErrors] = useState<FormErrors>({});
-  usePageMeta(product ? t("request.quoteTitle", { product: product.name }) : t("product.loading"), t("request.quoteNotice"), `/products/${productId ?? ""}/request`, true);
+  const publicTitle = navigationState?.projectTitle || product?.name;
+  usePageMeta(publicTitle ? t("request.quoteTitle", { product: publicTitle }) : t("product.loading"), t("request.quoteNotice"), `/products/${productId ?? ""}/request`, true);
 
   useEffect(() => {
     const id = Number(productId);
@@ -63,6 +66,10 @@ const ProductQuoteRequest = () => {
         description: t("request.fields.descriptionHelp"),
         validate: (value) => asString(value).trim().length >= 20 ? undefined : t("request.errors.description"),
       },
+      {
+        type: "date", name: "desired_delivery_date", label: t("request.fields.desiredDeliveryDate"),
+        description: t("request.fields.desiredDeliveryDateHelp"), required: true, min: todayForDateInput(),
+      },
     );
     if (attachmentConfig?.enabled) common.push({
       type: "file", name: "attachments", label: t("request.fields.attachments"),
@@ -86,6 +93,7 @@ const ProductQuoteRequest = () => {
         email: asString(values.email),
         phone: asString(values.phone),
         description: asString(values.description),
+        desired_delivery_date: asString(values.desired_delivery_date),
         privacy_accepted: values.privacy === true,
         delivery: product.physical ? {
           address: asString(values.delivery_address), city: asString(values.delivery_city),
@@ -109,7 +117,7 @@ const ProductQuoteRequest = () => {
       <div className="custom-request-page__header">
         <Link className="custom-request-page__back" to={returnPath}>← {t("request.backToProject")}</Link>
         <p className="custom-request-page__eyebrow">{t("request.variableFlowLabel")}</p>
-        <h1>{t("request.quoteTitle", { product: product.name })}</h1>
+        <h1>{t("request.quoteTitle", { product: publicTitle })}</h1>
         <p>{product.physical ? t("request.physicalDelivery") : t("request.digitalDelivery")}</p>
         <p className="custom-request-page__notice">{t("request.quoteNotice")}</p>
       </div>

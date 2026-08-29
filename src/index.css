@@ -1,7 +1,12 @@
 :root {
   padding: 2rem;
+  --gift-ideas-green: rgb(0, 255, 6);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.layout-main h1 {
+  text-align: center;
 }

@@ -20,7 +20,7 @@
 }
 
 .privacy-and-policy__content {
-  width: min(100%, 56rem);
+  width: 100%;
 }
 
 .privacy-and-policy__content > div {

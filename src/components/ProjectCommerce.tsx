@@ -10,13 +10,15 @@ import {
 import { useCartStore } from "../store/useCartStore";
 import { FileInput } from "./form";
 import "../style/ProductDetail.css";
+import { todayForDateInput } from "../utils/date";
 
 type ProjectCommerceProps = {
   product: CatalogProduct;
   showDescription?: boolean;
+  projectTitle?: string;
 };
 
-const ProjectCommerce = ({ product, showDescription = true }: ProjectCommerceProps) => {
+const ProjectCommerce = ({ product, showDescription = true, projectTitle }: ProjectCommerceProps) => {
   const { t } = useTranslation();
   const location = useLocation();
   const [customization, setCustomization] = useState("");
@@ -24,6 +26,7 @@ const ProjectCommerce = ({ product, showDescription = true }: ProjectCommercePro
   const [attachmentConfig, setAttachmentConfig] = useState<AttachmentConfig | null>(null);
   const [attachments, setAttachments] = useState<FileList | null>(null);
   const [hasTriedAddToCart, setHasTriedAddToCart] = useState(false);
+  const [desiredDeliveryDate, setDesiredDeliveryDate] = useState("");
   const addToCart = useCartStore(state => state.addToCart);
   const cartLoading = useCartStore(state => state.loading);
   const cartError = useCartStore(state => state.error);
@@ -33,11 +36,10 @@ const ProjectCommerce = ({ product, showDescription = true }: ProjectCommercePro
   }, []);
 
   return (
-    <section className="project-commerce" aria-labelledby="project-commerce-title">
+    <section className="project-commerce" aria-label={t("product.commercialDetails")}>
       <p className="project-commerce__eyebrow">
         {product.flow === "variable_quote" ? t("products.quoteProduct") : t("products.fixedProduct")}
       </p>
-      <h2 id="project-commerce-title">{product.name}</h2>
       {(product.flow === "variable_quote" || product.flow === "fixed_purchase") && (
         <p className="project-commerce__commission-note">{t("product.commissionNotice")}</p>
       )}
@@ -54,7 +56,7 @@ const ProjectCommerce = ({ product, showDescription = true }: ProjectCommercePro
           <Link
             className="add-to-cart-button"
             to={`/products/${product.id}/request`}
-            state={{ from: location.pathname }}
+            state={{ from: location.pathname, projectTitle }}
           >
             {t("product.requestQuote")}
           </Link>
@@ -73,6 +75,17 @@ const ProjectCommerce = ({ product, showDescription = true }: ProjectCommercePro
               placeholder={t("product.customizationPlaceholder")}
               onChange={event => setCustomization(event.target.value)}
             />
+          </label>
+          <label className="product-customization product-delivery-date">
+            <span>{t("request.fields.desiredDeliveryDate")}</span>
+            <input
+              type="date"
+              value={desiredDeliveryDate}
+              min={todayForDateInput()}
+              required
+              onChange={event => setDesiredDeliveryDate(event.target.value)}
+            />
+            <small>{t("request.fields.desiredDeliveryDateHelp")}</small>
           </label>
           {attachmentConfig?.enabled && (
             <FileInput
@@ -101,13 +114,16 @@ const ProjectCommerce = ({ product, showDescription = true }: ProjectCommercePro
               setHasTriedAddToCart(true);
               try {
                 const tokens = await uploadAttachments(attachments, attachmentConfig?.max_files);
-                await addToCart(product.id, { description: customization.trim() }, tokens);
+                await addToCart(product.id, {
+                  description: customization.trim(),
+                  desired_delivery_date: desiredDeliveryDate,
+                }, tokens);
                 setAdded(true);
               } catch {
                 // The cart store exposes the trusted WooCommerce error message.
               }
             }}
-            disabled={added || cartLoading || !customization.trim() || !product.purchasable || !product.in_stock}
+            disabled={added || cartLoading || !customization.trim() || !desiredDeliveryDate || !product.purchasable || !product.in_stock}
           >
             {added ? t("product.addedToCart") : cartLoading ? t("product.addingToCart") : t("product.addToCart")}
           </button>

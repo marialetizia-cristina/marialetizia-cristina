@@ -53,7 +53,7 @@
 }
 
 .product-filter--gift-ideas {
-  background: #00ed24;
+  background: var(--gift-ideas-green);
 }
 
 .product-filter:hover,
@@ -227,7 +227,7 @@
 
 .product-card__media--gift {
   padding: 1.5rem;
-  background: #00ed24;
+  background: var(--gift-ideas-green);
 }
 
 .product-card h2,

@@ -19,12 +19,13 @@ interface BaseFieldConfig {
 }
 
 export interface TextFieldConfig extends BaseFieldConfig {
-  type: "text" | "email" | "tel" | "url";
+  type: "text" | "email" | "tel" | "url" | "date";
   placeholder?: string;
   autoComplete?: string;
   minLength?: number;
   maxLength?: number;
   pattern?: string;
+  min?: string;
 }
 
 export interface TextareaFieldConfig extends BaseFieldConfig {

@@ -103,14 +103,17 @@ const WorkCard = ({ work, product, returnPath = "/category/all" }: WorkCardProps
     <div className="work-card">
       <div className="work-card__media">
         <ImageSlider images={heroImages} autoPlay={!isCaseStudy} />
-        <div className="work-card__overlay">
-          <h3 dangerouslySetInnerHTML={{ __html: work.title.rendered }} />
-        </div>
+        {isCommercial && (
+          <div className="work-card__overlay">
+            <p className="work-card__commission-note">{t("product.commissionNotice")}</p>
+          </div>
+        )}
       </div>
-      {isCommercial && (
-        <div className="work-card__commerce-summary">
-          <div className="work-card__commerce-line">
-            <h3 dangerouslySetInnerHTML={{ __html: work.title.rendered }} />
+      <div className="work-card__commerce-summary">
+        <div className="work-card__commerce-line">
+          <h3 dangerouslySetInnerHTML={{ __html: work.title.rendered }} />
+          {isCommercial && (
+            <>
             <span aria-hidden="true">—</span>
             <div className="work-card__price">
               <span>{product.flow === "variable_quote" ? t("product.indicativePriceLabel") : t("product.priceLabel")} </span>
@@ -120,10 +123,16 @@ const WorkCard = ({ work, product, returnPath = "/category/all" }: WorkCardProps
                 product.indicative_price_range || t("products.priceOnRequest")
               )}
             </div>
-          </div>
-          <p className="work-card__commission-note">{t("product.commissionNotice")}</p>
+            </>
+          )}
+          {!isCommercial && (
+            <>
+              <span aria-hidden="true">—</span>
+              <div className="work-card__price">{t("product.notForSale")}</div>
+            </>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 
@@ -146,7 +155,7 @@ const WorkCard = ({ work, product, returnPath = "/category/all" }: WorkCardProps
       )}
       {!isCaseStudy && isModalOpen && (
         <ImageModal images={images} onClose={() => setIsModalOpen(false)}>
-          {product && <ProjectCommerce product={product} />}
+          {product && <ProjectCommerce product={product} projectTitle={plainTitle} />}
         </ImageModal>
       )}
     </div>
