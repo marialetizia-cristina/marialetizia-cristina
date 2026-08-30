@@ -2,7 +2,7 @@ import "../style/CategoryContainer.css";
 import CategoryButton from "./CategoryButton";
 
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 
 const CategoryContainer = () => {
@@ -17,7 +17,13 @@ const CategoryContainer = () => {
                 <CategoryButton name={t("categories.all")?.toUpperCase()} path="/category/all" />
                 <CategoryButton name={t("categories.graphicDesign")?.toUpperCase()} path="/category/graphic-design" />
                 <CategoryButton name={t("categories.illustrations")?.toUpperCase()} path="/category/illustrations" />
-                <CategoryButton name={t("categories.giftArt")?.toUpperCase()} path={i18n.language.startsWith("en") ? "/en/gift-ideas/" : "/idee-regalo/"} />
+                <CategoryButton name={t("categories.giftArt")?.toUpperCase()} path="/category/gift-art" />
+                <Link
+                    className="category-container__gift-cta"
+                    to={i18n.language.startsWith("en") ? "/en/gift-ideas/" : "/idee-regalo/"}
+                >
+                    {t("categories.createGiftIdea").toUpperCase()}
+                </Link>
             </div>
             <div className="divider" />
         </div>

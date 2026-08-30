@@ -109,12 +109,10 @@ const WorkCard = ({ work, product, returnPath = "/category/all" }: WorkCardProps
           </div>
         )}
       </div>
-      <div className="work-card__commerce-summary">
+      <div className={`work-card__commerce-summary ${isCommercial ? "work-card__commerce-summary--product" : "work-card__commerce-summary--project"}`}>
         <div className="work-card__commerce-line">
           <h3 dangerouslySetInnerHTML={{ __html: work.title.rendered }} />
           {isCommercial && (
-            <>
-            <span aria-hidden="true">—</span>
             <div className="work-card__price">
               <span>{product.flow === "variable_quote" ? t("product.indicativePriceLabel") : t("product.priceLabel")} </span>
               {product.flow === "fixed_purchase" && product.price_html ? (
@@ -123,13 +121,6 @@ const WorkCard = ({ work, product, returnPath = "/category/all" }: WorkCardProps
                 product.indicative_price_range || t("products.priceOnRequest")
               )}
             </div>
-            </>
-          )}
-          {!isCommercial && (
-            <>
-              <span aria-hidden="true">—</span>
-              <div className="work-card__price">{t("product.notForSale")}</div>
-            </>
           )}
         </div>
       </div>

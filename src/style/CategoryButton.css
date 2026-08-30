@@ -59,6 +59,36 @@
     outline-offset: 3px;
 }
 
+.category-container__gift-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    flex: 1.25 1 0;
+    min-height: 2.6rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #0d0d0d;
+    border-radius: 0.35rem;
+    background-color: rgb(255, 126, 0);
+    color: #0d0d0d;
+    font-family: "Anton", sans-serif;
+    font-size: clamp(0.95rem, 1.55vw, 1.15rem);
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.category-container__gift-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0 #0d0d0d;
+}
+
+.category-container__gift-cta:focus-visible {
+    outline: 3px solid #0d0d0d;
+    outline-offset: 3px;
+}
+
 @media (max-width: 1200px) {
     .category-button a {
         width: auto;
@@ -77,6 +107,13 @@
         padding: 0.7rem 1rem;
         width: 100%;
         min-height: 2.75rem;
+    }
+
+    .category-container__gift-cta {
+        width: 100%;
+        min-height: 2.75rem;
+        padding: 0.7rem 1rem;
+        font-size: 1rem;
     }
 }
 

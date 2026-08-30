@@ -93,9 +93,15 @@ const GiftIdeasLanding = ({ language }: GiftIdeasLandingProps) => {
         <div>
           <h2 id="gift-custom-title">{content.customTitle}</h2>
           <p>{content.customBody}</p>
-          <Link className="gift-ideas-landing__cta" to="/request/custom-gift">{content.customCta}</Link>
+          <Link
+            className="gift-ideas-landing__cta"
+            to="/request/custom-gift"
+            state={{ giftIdeasReturnPath: canonicalPath }}
+          >
+            {content.customCta}
+          </Link>
         </div>
-        <FlowOneCard />
+        <FlowOneCard giftIdeasReturnPath={canonicalPath} />
       </section>
     </main>
   );

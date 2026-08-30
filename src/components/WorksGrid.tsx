@@ -10,7 +10,7 @@ import LoadingState from "./LoadingState";
 import { FlowOneCard } from "./FlowOneCard";
 
 interface WorksGridProps {
-  category?: "ALL" | "GRAPHIC DESIGN" | "ILLUSTRATIONS" | "FEATURED";
+  category?: "ALL" | "GRAPHIC DESIGN" | "ILLUSTRATIONS" | "GIFT IDEAS" | "FEATURED";
   limits?: number;
   returnPath?: string;
   showSeeAll?: boolean;
@@ -25,7 +25,12 @@ const CATEGORY_ID_MAP: Record<WorksGridCategory, number[]> = {
   ALL: [],
   "GRAPHIC DESIGN": [13 /* EN */, 62 /* IT */],
   "ILLUSTRATIONS": [4 /* EN */, 66 /* IT */],
+  "GIFT IDEAS": [101 /* EN */, 99 /* IT */],
   "FEATURED": [14 /* EN */, 60 /* IT */],
+};
+
+const CATEGORY_SLUG_MAP: Partial<Record<WorksGridCategory, string[]>> = {
+  "GIFT IDEAS": ["gift-ideas", "idee-regalo", "gift-art"],
 };
 
 const WorksGrid = ({
@@ -79,6 +84,7 @@ const WorksGrid = ({
     type WorkGroup = {
       variants: Map<string, Work>;
       categoryIds: Set<number>;
+      categorySlugs: Set<string>;
     };
 
     const groups = new Map<string, WorkGroup>();
@@ -110,10 +116,17 @@ const WorksGrid = ({
 
         const categoryIds = new Set<number>();
         categories.forEach(id => categoryIds.add(id));
+        const categorySlugs = new Set(
+          (work._embedded?.["wp:term"] ?? [])
+            .flat()
+            .filter(term => term.taxonomy === "category")
+            .map(term => term.slug),
+        );
 
         groups.set(key, {
           variants,
           categoryIds,
+          categorySlugs,
         });
         order.push(key);
       } else {
@@ -126,10 +139,15 @@ const WorksGrid = ({
         }
 
         categories.forEach(id => group.categoryIds.add(id));
+        (work._embedded?.["wp:term"] ?? [])
+          .flat()
+          .filter(term => term.taxonomy === "category")
+          .forEach(term => group.categorySlugs.add(term.slug));
       }
     });
 
     const categoryIds = getCategoryIds(category).filter(id => Number.isFinite(id) && id > 0);
+    const categorySlugs = CATEGORY_SLUG_MAP[category] ?? [];
     const results: Work[] = [];
     const seenIds = new Set<number>();
 
@@ -148,11 +166,12 @@ const WorksGrid = ({
         return;
       }
 
-      if (category !== "ALL" && categoryIds.length > 0) {
+      if (category !== "ALL") {
         const categoryMatches = new Set<number>();
         group.categoryIds.forEach(id => categoryMatches.add(id));
 
-        const hasMatch = categoryIds.some(id => categoryMatches.has(id));
+        const hasMatch = categoryIds.some(id => categoryMatches.has(id))
+          || categorySlugs.some(slug => group.categorySlugs.has(slug));
         if (!hasMatch) {
           return;
         }

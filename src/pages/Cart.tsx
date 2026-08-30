@@ -30,20 +30,24 @@ const Cart = () => {
             {item.images[0] && <img src={item.images[0].src} alt={item.images[0].alt || item.name} />}
             <div className="cart-item__content">
               <h2>{item.name}</h2>
-              <div className="cart-item__metadata">
-                {item.item_data.map((data) => <p key={`${data.key}-${data.value}`}><strong>{data.key}:</strong> {data.value}</p>)}
-              </div>
+              {item.item_data.map((data) => (
+                <p className="cart-item__metadata" key={`${data.key}-${data.value}`}>
+                  <strong>{data.key}:</strong> {data.value}
+                </p>
+              ))}
             </div>
-            <label className="cart-item__quantity-column">
-              <span>{t("cart.quantity")}</span>
-              <span className="cart-item__quantity">
-                <button type="button" disabled={loading || item.quantity <= 1} onClick={() => void updateQuantity(item.key, item.quantity - 1)} aria-label={t("cart.decreaseQuantity", { product: item.name })}>−</button>
-                <output aria-live="polite">{item.quantity}</output>
-                <button type="button" disabled={loading} onClick={() => void updateQuantity(item.key, item.quantity + 1)} aria-label={t("cart.increaseQuantity", { product: item.name })}>+</button>
-              </span>
-            </label>
-            <p className="cart-item__price">{formatStoreMoney(item.totals.line_total, item.totals)}</p>
-            <button className="cart-item__remove" type="button" disabled={loading} onClick={() => void removeFromCart(item.key)}>{t("cart.remove")}</button>
+            <div className="cart-item__actions">
+              <label className="cart-item__quantity-column">
+                <span>{t("cart.quantity")}</span>
+                <span className="cart-item__quantity">
+                  <button type="button" disabled={loading || item.quantity <= 1} onClick={() => void updateQuantity(item.key, item.quantity - 1)} aria-label={t("cart.decreaseQuantity", { product: item.name })}>−</button>
+                  <output aria-live="polite">{item.quantity}</output>
+                  <button type="button" disabled={loading} onClick={() => void updateQuantity(item.key, item.quantity + 1)} aria-label={t("cart.increaseQuantity", { product: item.name })}>+</button>
+                </span>
+              </label>
+              <button className="cart-item__remove" type="button" disabled={loading} onClick={() => void removeFromCart(item.key)}>{t("cart.remove")}</button>
+              <p className="cart-item__price">{formatStoreMoney(item.totals.line_total, item.totals)}</p>
+            </div>
           </li>
         ))}
       </ul>

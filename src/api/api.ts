@@ -18,6 +18,13 @@ export interface WPEmbeddedMedia {
   };
 }
 
+export interface WPEmbeddedTerm {
+  id: number;
+  name: string;
+  slug: string;
+  taxonomy?: string;
+}
+
 export interface Work {
   id: number;
   date?: string;
@@ -28,6 +35,7 @@ export interface Work {
   _embedded?: {
     "wp:featuredmedia"?: WPEmbeddedMedia[];
     "wp:attachment"?: WPEmbeddedMedia[];
+    "wp:term"?: WPEmbeddedTerm[][];
   };
   categories?: number[];
   tags?: number[];
@@ -70,7 +78,7 @@ const WORDPRESS_REST_BASE_URL = (
   import.meta.env.VITE_WORDPRESS_REST_URL ?? "https://marialetizia.netsons.org/wp-json"
 ).replace(/\/$/, "");
 
-const EMBED_RESOURCES = "wp:featuredmedia,wp:attachment";
+const EMBED_RESOURCES = "wp:featuredmedia,wp:attachment,wp:term";
 
 /**
  * Fetch dei lavori dal WP REST API

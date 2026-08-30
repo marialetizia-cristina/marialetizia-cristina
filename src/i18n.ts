@@ -39,6 +39,7 @@ const resources = {
         graphicDesign: "Graphic Design",
         illustrations: "Illustrations",
         giftArt: "Gift Ideas",
+        createGiftIdea: "Create your gift idea",
         featured: "Featured",
       },
       portfolio: {
@@ -278,6 +279,7 @@ const resources = {
         graphicDesign: "Graphic design",
         illustrations: "Illustrazioni",
         giftArt: "Gift ideas",
+        createGiftIdea: "Crea la tua idea regalo",
         featured: "In evidenza",
       },
       portfolio: {

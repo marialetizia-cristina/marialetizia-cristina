@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ApiError, fetchAttachmentConfig, submitQuoteRequest, uploadAttachments, type AttachmentConfig } from "../api/api";
 import {
@@ -19,6 +19,11 @@ function stringValue(value: FormValue): string {
 
 const CustomGiftRequest = () => {
   const { t } = useTranslation();
+  const location = useLocation();
+  const requestedReturnPath = (location.state as { giftIdeasReturnPath?: unknown } | null)?.giftIdeasReturnPath;
+  const giftIdeasReturnPath = requestedReturnPath === "/idee-regalo/" || requestedReturnPath === "/en/gift-ideas/"
+    ? requestedReturnPath
+    : null;
   const [submittedValues, setSubmittedValues] = useState<FormValues | null>(null);
   const [reference, setReference] = useState("");
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -175,9 +180,11 @@ const CustomGiftRequest = () => {
   return (
     <section className="custom-request-page">
       <div className="custom-request-page__header">
-        <Link className="custom-request-page__back" to="/idee-regalo/">
-          ← {t("request.back")}
-        </Link>
+        {giftIdeasReturnPath && (
+          <Link className="custom-request-page__back" to={giftIdeasReturnPath}>
+            ← {t("request.back")}
+          </Link>
+        )}
         <p className="custom-request-page__eyebrow">{t("request.flowLabel")}</p>
         <h1>{t("request.pageTitle")}</h1>
         <p>{t("request.pageDescription")}</p>

@@ -166,7 +166,7 @@ const Home = () => {
       <CategoryContainer />
 
       <div className='works' id="works">
-        <WorksGrid limits={20} category="FEATURED" returnPath="/" showSeeAll />
+        <WorksGrid limits={20} category="FEATURED" returnPath="/" showSeeAll includeGiftRequest />
       </div>
 
       <div className="about-container">
