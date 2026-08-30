@@ -115,6 +115,7 @@ const ProjectCommerce = ({ product, showDescription = true, projectTitle }: Proj
               try {
                 const tokens = await uploadAttachments(attachments, attachmentConfig?.max_files);
                 await addToCart(product.id, {
+                  project_title: projectTitle?.trim() || product.name,
                   description: customization.trim(),
                   desired_delivery_date: desiredDeliveryDate,
                 }, tokens);

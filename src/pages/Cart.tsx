@@ -1,20 +1,47 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useCartStore } from "../store/useCartStore";
 import "../style/Cart.css";
 import { usePageMeta } from "../utils/usePageMeta";
 import { formatStoreMoney } from "../utils/money";
+import { getLinkedProductId } from "../api/api";
+import { useContentStore } from "../store/useContentStore";
+import { normalizeLanguage } from "../utils/language";
+
+const normalizeMetadataKey = (key: string) => key.trim().toLowerCase().replace(/[\s-]+/g, "_");
 
 const Cart = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { cart, loading, error, loadCart, removeFromCart, updateQuantity } = useCartStore();
+  const works = useContentStore(state => state.works);
+  const loadWorks = useContentStore(state => state.loadWorks);
   const displayError = error && /failed to fetch|networkerror|load failed/i.test(error)
     ? t("cart.connectionError")
     : error;
   usePageMeta(t("cart.title"), t("cart.empty"), "/cart", true);
 
-  useEffect(() => { void loadCart(); }, [loadCart]);
+  useEffect(() => {
+    void loadCart();
+    void loadWorks();
+  }, [loadCart, loadWorks]);
+
+  const projectTitlesByProductId = useMemo(() => {
+    const language = normalizeLanguage(i18n.language) || "it";
+    const titles = new Map<number, string>();
+
+    works.forEach(work => {
+      const productId = getLinkedProductId(work);
+      const workLanguage = normalizeLanguage(work.polylang?.lang || work.lang);
+      if (!productId || workLanguage !== language || titles.has(productId)) return;
+
+      const template = document.createElement("template");
+      template.innerHTML = work.title.rendered;
+      titles.set(productId, template.content.textContent?.trim() || work.title.rendered);
+    });
+
+    return titles;
+  }, [i18n.language, works]);
 
   if (loading && !cart) return <p className="cart-page__state">{t("cart.loading")}</p>;
   if (displayError && !cart) return <p className="cart-page__state" role="alert">{displayError}</p>;
@@ -25,12 +52,17 @@ const Cart = () => {
       <h1>{t("cart.title")}</h1>
       {displayError && <p role="alert">{displayError}</p>}
       <ul className="cart-list">
-        {cart.items.map((item) => (
-          <li className="cart-item" key={item.key}>
+        {cart.items.map((item) => {
+          const storedProjectTitle = item.item_data.find(data => normalizeMetadataKey(data.key) === "project_title")?.value;
+          const projectTitle = projectTitlesByProductId.get(item.id) || storedProjectTitle || item.name;
+          const visibleMetadata = item.item_data.filter(data => normalizeMetadataKey(data.key) !== "project_title");
+
+          return (
+          <li className={`cart-item ${item.images[0] ? "cart-item--with-image" : ""}`} key={item.key}>
             {item.images[0] && <img src={item.images[0].src} alt={item.images[0].alt || item.name} />}
             <div className="cart-item__content">
-              <h2>{item.name}</h2>
-              {item.item_data.map((data) => (
+              <h2>{projectTitle}</h2>
+              {visibleMetadata.map((data) => (
                 <p className="cart-item__metadata" key={`${data.key}-${data.value}`}>
                   <strong>{data.key}:</strong> {data.value}
                 </p>
@@ -49,7 +81,8 @@ const Cart = () => {
               <p className="cart-item__price">{formatStoreMoney(item.totals.line_total, item.totals)}</p>
             </div>
           </li>
-        ))}
+          );
+        })}
       </ul>
       <div className="cart-page__summary">
         <p><strong>{t("cart.total")}:</strong> {formatStoreMoney(cart.totals.total_price, cart.totals)}</p>
