@@ -114,10 +114,12 @@ const ProjectCommerce = ({ product, showDescription = true, projectTitle }: Proj
               setHasTriedAddToCart(true);
               try {
                 const tokens = await uploadAttachments(attachments, attachmentConfig?.max_files);
+                const attachmentNames = Array.from(attachments ?? []).map(file => file.name);
                 await addToCart(product.id, {
                   project_title: projectTitle?.trim() || product.name,
                   description: customization.trim(),
                   desired_delivery_date: desiredDeliveryDate,
+                  ...(attachmentNames.length > 0 ? { attachment_names: JSON.stringify(attachmentNames) } : {}),
                 }, tokens);
                 setAdded(true);
               } catch {

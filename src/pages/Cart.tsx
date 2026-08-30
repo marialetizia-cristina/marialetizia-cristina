@@ -10,6 +10,24 @@ import { useContentStore } from "../store/useContentStore";
 import { normalizeLanguage } from "../utils/language";
 
 const normalizeMetadataKey = (key: string) => key.trim().toLowerCase().replace(/[\s-]+/g, "_");
+const isAttachmentMetadata = (key: string) => {
+  const normalizedKey = normalizeMetadataKey(key);
+  return normalizedKey.includes("attachment") || normalizedKey.includes("allegat") || normalizedKey.includes("file");
+};
+
+const parseAttachmentNames = (values: string[]): string[] => {
+  const names = values.flatMap(value => {
+    try {
+      const parsed = JSON.parse(value) as unknown;
+      if (Array.isArray(parsed)) return parsed.filter((name): name is string => typeof name === "string");
+    } catch {
+      // Older cart data can contain a plain, separator-delimited value.
+    }
+    return value.split(/[|,\n]/);
+  });
+
+  return names.map(name => name.trim()).filter(Boolean);
+};
 
 const Cart = () => {
   const { t, i18n } = useTranslation();
@@ -68,7 +86,12 @@ const Cart = () => {
           const storedProjectTitle = item.item_data.find(data => normalizeMetadataKey(data.key) === "project_title")?.value;
           const project = projectsByProductId.get(item.id);
           const projectTitle = project?.title || storedProjectTitle || item.name;
-          const visibleMetadata = item.item_data.filter(data => normalizeMetadataKey(data.key) !== "project_title");
+          const attachmentMetadata = item.item_data.filter(data => isAttachmentMetadata(data.key));
+          const attachmentNames = parseAttachmentNames(attachmentMetadata.map(data => data.value));
+          const visibleMetadata = item.item_data.filter(data => {
+            const key = normalizeMetadataKey(data.key);
+            return key !== "project_title" && !isAttachmentMetadata(data.key);
+          });
 
           return (
           <li className={`cart-item ${project?.image ? "cart-item--with-image" : ""}`} key={item.key}>
@@ -80,6 +103,17 @@ const Cart = () => {
                   <strong>{data.key}:</strong> {data.value}
                 </p>
               ))}
+              <div className="cart-item__attachments">
+                <strong>{t("cart.attachments")}:</strong>
+                {attachmentNames.length > 0 ? (
+                  <ul>
+                    {attachmentNames.slice(0, 2).map((name, index) => <li key={`${name}-${index}`}>{name}</li>)}
+                    {attachmentNames.length > 2 && <li aria-label={t("cart.moreAttachments")}>…</li>}
+                  </ul>
+                ) : (
+                  <span>{t("cart.noAttachments")}</span>
+                )}
+              </div>
             </div>
             <div className="cart-item__actions">
               <label className="cart-item__quantity-column">

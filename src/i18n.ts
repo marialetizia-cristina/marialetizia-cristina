@@ -124,6 +124,7 @@ const resources = {
         title: "Cart", loading: "Loading cart…", empty: "There are no products in your cart yet.", continueShopping: "Continue shopping",
         connectionError: "We couldn't connect to the cart. Please try again shortly.",
         quantity: "Quantity", remove: "Remove", total: "Total", checkout: "Proceed to checkout",
+        attachments: "Attached files", noAttachments: "No files attached", moreAttachments: "More attached files",
         decreaseQuantity: "Decrease quantity for {{product}}", increaseQuantity: "Increase quantity for {{product}}",
       },
       checkout: {
@@ -364,6 +365,7 @@ const resources = {
         title: "Carrello", loading: "Caricamento carrello…", empty: "Non ci sono ancora prodotti nel carrello.", continueShopping: "Continua gli acquisti",
         connectionError: "Non siamo riusciti a collegarci al carrello. Riprova tra poco.",
         quantity: "Quantità", remove: "Rimuovi", total: "Totale", checkout: "Procedi al checkout",
+        attachments: "File allegati", noAttachments: "Nessun file allegato", moreAttachments: "Altri file allegati",
         decreaseQuantity: "Riduci la quantità di {{product}}", increaseQuantity: "Aumenta la quantità di {{product}}",
       },
       checkout: {
