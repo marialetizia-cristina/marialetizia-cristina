@@ -87,7 +87,13 @@ const Cart = () => {
           const project = projectsByProductId.get(item.id);
           const projectTitle = project?.title || storedProjectTitle || item.name;
           const attachmentMetadata = item.item_data.filter(data => isAttachmentMetadata(data.key));
-          const attachmentNames = parseAttachmentNames(attachmentMetadata.map(data => data.value));
+          const explicitAttachmentNames = attachmentMetadata.filter(data => {
+            const key = normalizeMetadataKey(data.key);
+            return key === "attachment_names" || key === "nomi_file" || key === "nomi_file_allegati";
+          });
+          const attachmentNames = parseAttachmentNames(
+            (explicitAttachmentNames.length > 0 ? explicitAttachmentNames : attachmentMetadata).map(data => data.value),
+          );
           const visibleMetadata = item.item_data.filter(data => {
             const key = normalizeMetadataKey(data.key);
             return key !== "project_title" && !isAttachmentMetadata(data.key);
