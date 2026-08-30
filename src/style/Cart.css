@@ -69,7 +69,7 @@
 
 .cart-item__content {
   display: grid;
-  grid-template-columns: minmax(9rem, 0.8fr) minmax(12rem, 1.8fr) minmax(11rem, 1fr);
+  grid-template-columns: minmax(11rem, 1fr) minmax(12rem, 1.7fr) minmax(11rem, 1fr);
   gap: clamp(1rem, 2.5vw, 2rem);
   align-items: start;
   width: 100%;
@@ -77,9 +77,14 @@
 }
 
 .cart-item__content h2 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   font-family: "Anton", sans-serif;
   font-size: clamp(1.4rem, 3vw, 2rem);
   font-weight: 400;
+  line-height: 1.15;
   text-transform: uppercase;
   overflow-wrap: anywhere;
 }

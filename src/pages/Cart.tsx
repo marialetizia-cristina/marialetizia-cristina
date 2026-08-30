@@ -26,21 +26,33 @@ const Cart = () => {
     void loadWorks();
   }, [loadCart, loadWorks]);
 
-  const projectTitlesByProductId = useMemo(() => {
+  const projectsByProductId = useMemo(() => {
     const language = normalizeLanguage(i18n.language) || "it";
-    const titles = new Map<number, string>();
+    const projects = new Map<number, { title: string; image?: { src: string; alt: string } }>();
 
     works.forEach(work => {
       const productId = getLinkedProductId(work);
       const workLanguage = normalizeLanguage(work.polylang?.lang || work.lang);
-      if (!productId || workLanguage !== language || titles.has(productId)) return;
+      if (!productId || workLanguage !== language || projects.has(productId)) return;
 
       const template = document.createElement("template");
       template.innerHTML = work.title.rendered;
-      titles.set(productId, template.content.textContent?.trim() || work.title.rendered);
+      const title = template.content.textContent?.trim() || work.title.rendered;
+      const featuredImage = work._embedded?.["wp:featuredmedia"]?.[0];
+      const preferredImage = featuredImage?.media_details?.sizes?.medium_large
+        ?? featuredImage?.media_details?.sizes?.medium
+        ?? featuredImage;
+
+      projects.set(productId, {
+        title,
+        image: preferredImage?.source_url ? {
+          src: preferredImage.source_url,
+          alt: featuredImage?.alt_text?.trim() || title,
+        } : undefined,
+      });
     });
 
-    return titles;
+    return projects;
   }, [i18n.language, works]);
 
   if (loading && !cart) return <p className="cart-page__state">{t("cart.loading")}</p>;
@@ -54,12 +66,13 @@ const Cart = () => {
       <ul className="cart-list">
         {cart.items.map((item) => {
           const storedProjectTitle = item.item_data.find(data => normalizeMetadataKey(data.key) === "project_title")?.value;
-          const projectTitle = projectTitlesByProductId.get(item.id) || storedProjectTitle || item.name;
+          const project = projectsByProductId.get(item.id);
+          const projectTitle = project?.title || storedProjectTitle || item.name;
           const visibleMetadata = item.item_data.filter(data => normalizeMetadataKey(data.key) !== "project_title");
 
           return (
-          <li className={`cart-item ${item.images[0] ? "cart-item--with-image" : ""}`} key={item.key}>
-            {item.images[0] && <img src={item.images[0].src} alt={item.images[0].alt || item.name} />}
+          <li className={`cart-item ${project?.image ? "cart-item--with-image" : ""}`} key={item.key}>
+            {project?.image && <img src={project.image.src} alt={project.image.alt} />}
             <div className="cart-item__content">
               <h2>{projectTitle}</h2>
               {visibleMetadata.map((data) => (
