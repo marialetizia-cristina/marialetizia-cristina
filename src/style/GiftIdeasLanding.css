@@ -1,58 +1,61 @@
 .gift-ideas-landing {
-  width: min(calc(100% - 3rem), 76rem);
-  margin: 0 auto;
-  padding: 1rem 0 clamp(4rem, 9vw, 8rem);
+  --gift-content-gutter: clamp(3rem, 6vw, 6rem);
+  width: 100%;
+  padding: clamp(1rem, 2vw, 2rem) 0 clamp(4rem, 9vw, 8rem);
   color: #0d0d0d;
 }
 
 .gift-ideas-landing__hero {
   width: 100%;
-  padding-bottom: clamp(2rem, 5vw, 4rem);
-  border-bottom: 1px solid #0d0d0d;
+  text-align: center;
 }
 
 .gift-ideas-landing__eyebrow {
-  margin-bottom: 1rem;
-  font-size: clamp(0.8rem, 1.3vw, 1rem);
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  margin: clamp(1rem, 2vw, 1.5rem) 0 0;
+  padding: 0.45rem 1rem;
+  border-top: 1px solid #0d0d0d;
+  border-bottom: 1px solid #0d0d0d;
+  font-size: clamp(0.8rem, 1.4vw, 1rem);
+  line-height: 1.15;
   text-transform: uppercase;
 }
 
 .gift-ideas-landing__hero h1 {
-  max-width: 11ch;
-  margin-inline: auto;
+  max-width: 10.5ch;
+  margin: 0 auto;
   font-family: "Anton", sans-serif;
-  font-size: clamp(3.8rem, 10vw, 8.5rem);
+  font-size: clamp(4.2rem, 11.5vw, 10rem);
   font-weight: 400;
-  line-height: 0.92;
-  letter-spacing: -0.025em;
+  line-height: 1;
+  letter-spacing: -0.035em;
   text-transform: uppercase;
 }
 
-.gift-ideas-landing__lead {
-  max-width: 48rem;
-  margin-top: clamp(1.5rem, 3vw, 2.5rem);
-  font-size: clamp(1.05rem, 2vw, 1.45rem);
-  line-height: 1.4;
-}
-
-.gift-ideas-landing__intro,
-.gift-ideas-landing__custom {
+.gift-ideas-landing__intro {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(2rem, 6vw, 6rem);
-  padding: clamp(2.5rem, 6vw, 5rem) 0;
+  gap: clamp(3rem, 10vw, 10rem);
+  width: 100%;
+  padding-top: clamp(3rem, 7vw, 6rem);
+  padding-right: var(--gift-content-gutter);
+  padding-bottom: clamp(3rem, 7vw, 6rem);
+  padding-left: var(--gift-content-gutter);
   border-bottom: 1px solid #0d0d0d;
+  text-align: left;
+}
+
+.gift-ideas-landing__intro > div {
+  width: 100%;
+  min-width: 0;
 }
 
 .gift-ideas-landing__intro h2,
-.gift-ideas-landing__custom > div > h2 {
+.gift-ideas-landing__custom-copy h3 {
   margin-bottom: 1rem;
   font-family: "Anton", sans-serif;
-  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-size: clamp(2rem, 3.7vw, 3.5rem);
   font-weight: 400;
-  line-height: 1.05;
+  line-height: 0.98;
   text-transform: uppercase;
 }
 
@@ -69,51 +72,70 @@
 }
 
 .gift-ideas-landing__intro p,
-.gift-ideas-landing__custom p,
+.gift-ideas-landing__custom-copy p,
 .gift-ideas-landing__intro li {
-  line-height: 1.55;
+  line-height: 1.35;
 }
 
 .gift-ideas-landing__intro ul {
   padding-left: 1.2rem;
 }
 
-.gift-ideas-landing__cta {
-  color: inherit;
-  font-weight: 700;
-  text-underline-offset: 0.2em;
-}
-
 .gift-ideas-landing__custom {
+  padding-top: clamp(1rem, 2vw, 1.5rem);
+}
+
+.gift-ideas-landing__custom-header {
+  text-align: center;
+}
+
+.gift-ideas-landing__custom-header h2 {
+  margin: 0;
+  font-family: "Anton", sans-serif;
+  font-size: clamp(4rem, 10vw, 8.5rem);
+  font-weight: 400;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.gift-ideas-landing__custom-header p {
+  margin: clamp(0.75rem, 1.5vw, 1rem) 0 0;
+  padding: 0.45rem 1rem;
+  border-top: 1px solid #0d0d0d;
+  border-bottom: 1px solid #0d0d0d;
+  font-size: clamp(0.8rem, 1.4vw, 1rem);
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.gift-ideas-landing__custom-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(3rem, 10vw, 10rem);
   align-items: start;
-  border-bottom: 0;
+  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(3rem, 6vw, 6rem) 0;
 }
 
-.gift-ideas-landing__cta {
-  display: inline-block;
-  margin-top: 1.5rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid #0d0d0d;
-  border-radius: 0.35rem;
-  background: var(--gift-ideas-green);
-  text-decoration: none;
-  transition: transform 150ms ease, box-shadow 150ms ease;
-}
-
-.gift-ideas-landing__cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 4px 4px 0 #0d0d0d;
+.gift-ideas-landing__custom-grid > .product-card {
+  width: 100%;
+  max-width: none;
 }
 
 @media (max-width: 680px) {
-  .gift-ideas-landing {
-    width: min(calc(100% - 2rem), 76rem);
-  }
-
   .gift-ideas-landing__intro,
-  .gift-ideas-landing__custom {
+  .gift-ideas-landing__custom-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+    padding-inline: 0;
+  }
+
+  .gift-ideas-landing__intro {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .gift-ideas-landing__custom-grid > .product-card {
+    max-width: none;
   }
 
 }
