@@ -6,18 +6,19 @@ import type { Page } from "../api/api";
 import { useContentStore } from "../store/useContentStore";
 import { usePageMeta } from "../utils/usePageMeta";
 
-import '../style/Home.css';
-import WorksGrid from '../components/WorksGrid';
-import Title from '../components/Title';
-import Profession from '../components/Profession';
-import CategoryContainer from '../components/CategoryContainer';
-import Section from '../components/Section';
+import "../style/Home.css";
+import WorksGrid from "../components/WorksGrid";
+import Title from "../components/Title";
+import Profession from "../components/Profession";
+import CategoryContainer from "../components/CategoryContainer";
+import Section from "../components/Section";
 
 const Home = () => {
-  const pages = useContentStore(state => state.pages);
-  const pagesLoaded = useContentStore(state => state.pagesLoaded);
-  const pagesLoading = useContentStore(state => state.pagesLoading);
-  const loadAll = useContentStore(state => state.loadAll);
+  const pages = useContentStore((state) => state.pages);
+  const pagesLoaded = useContentStore((state) => state.pagesLoaded);
+  const pagesLoading = useContentStore((state) => state.pagesLoading);
+  const loadPages = useContentStore((state) => state.loadPages);
+  const loadProducts = useContentStore((state) => state.loadProducts);
   const location = useLocation();
   const { hash } = location;
   const { t, i18n } = useTranslation();
@@ -33,8 +34,9 @@ const Home = () => {
   );
 
   useEffect(() => {
-    void loadAll();
-  }, [loadAll]);
+    void loadPages();
+    void loadProducts();
+  }, [loadPages, loadProducts]);
 
   const { lookupBySlugs, lookupByKeywords } = useMemo(() => {
     const pagesById = new Map<number, Page>();
@@ -119,7 +121,12 @@ const Home = () => {
 
   const firstSection = useMemo(() => {
     return (
-      lookupBySlugs(["home-intro", "home-introduction", "introduzione", "first-section"]) ??
+      lookupBySlugs([
+        "home-intro",
+        "home-introduction",
+        "introduzione",
+        "first-section",
+      ]) ??
       lookupByKeywords(["introduction", "introduzione", "welcome", "benvenuto"])
     );
   }, [lookupBySlugs, lookupByKeywords]);
@@ -144,7 +151,10 @@ const Home = () => {
     const target = document.querySelector(hash);
     if (target instanceof HTMLElement) {
       const header = document.querySelector(".header");
-      const headerHeight = header instanceof HTMLElement ? header.getBoundingClientRect().height : 0;
+      const headerHeight =
+        header instanceof HTMLElement
+          ? header.getBoundingClientRect().height
+          : 0;
       const offset = Math.max(headerHeight + 16, 0);
       const targetTop = target.getBoundingClientRect().top + window.scrollY;
 
@@ -156,7 +166,7 @@ const Home = () => {
   }, [loading, hash]);
 
   return (
-    <div className='home'>
+    <div className="home">
       <div className="hero">
         <Title text="MARIALETIZIA CRISTINA" />
         <Profession name={t("hero.subtitle").toUpperCase()} />
@@ -165,41 +175,45 @@ const Home = () => {
       <Section page={firstSection} id="first-section" />
       <CategoryContainer />
 
-      <div className='works' id="works">
-        <WorksGrid limits={20} category="FEATURED" returnPath="/" showSeeAll includeGiftRequest />
+      <div className="works" id="works">
+        <WorksGrid
+          limits={20}
+          category="FEATURED"
+          returnPath="/"
+          showSeeAll
+          includeGiftRequest
+          useFeaturedWorks
+        />
       </div>
 
       <div className="about-container">
         <div className="title-container">
-          <div className='divider' />
+          <div className="divider" />
           <Title text={t("sections.about")} />
-          <div className='divider' />
+          <div className="divider" />
         </div>
         {aboutPage && <Section page={aboutPage} id="about" />}
       </div>
 
       <div className="services-container">
         <div className="title-container">
-          <div className='divider' />
+          <div className="divider" />
           <Title text={t("sections.services")} />
-          <div className='divider' />
+          <div className="divider" />
         </div>
         {servicesPage && <Section page={servicesPage} id="services" />}
       </div>
 
       <div className="contact-container">
         <div className="title-container">
-          <div className='divider' />
+          <div className="divider" />
           <Title text={t("sections.contact")} />
-          <div className='divider' />
+          <div className="divider" />
         </div>
         {contactPage && <Section page={contactPage} id="contact" />}
       </div>
-
-
-
     </div>
   );
-}
+};
 
 export default Home;

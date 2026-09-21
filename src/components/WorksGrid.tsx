@@ -10,13 +10,19 @@ import LoadingState from "./LoadingState";
 import { FlowOneCard } from "./FlowOneCard";
 
 interface WorksGridProps {
-  category?: "ALL" | "GRAPHIC DESIGN" | "ILLUSTRATIONS" | "GIFT IDEAS" | "FEATURED";
+  category?:
+    | "ALL"
+    | "GRAPHIC DESIGN"
+    | "ILLUSTRATIONS"
+    | "GIFT IDEAS"
+    | "FEATURED";
   limits?: number;
   returnPath?: string;
   showSeeAll?: boolean;
   requireLinkedProduct?: boolean;
   productCategorySlugs?: string[];
   includeGiftRequest?: boolean;
+  useFeaturedWorks?: boolean;
 }
 
 type WorksGridCategory = NonNullable<WorksGridProps["category"]>;
@@ -24,9 +30,9 @@ type WorksGridCategory = NonNullable<WorksGridProps["category"]>;
 const CATEGORY_ID_MAP: Record<WorksGridCategory, number[]> = {
   ALL: [],
   "GRAPHIC DESIGN": [13 /* EN */, 62 /* IT */],
-  "ILLUSTRATIONS": [4 /* EN */, 66 /* IT */],
+  ILLUSTRATIONS: [4 /* EN */, 66 /* IT */],
   "GIFT IDEAS": [101 /* EN */, 99 /* IT */],
-  "FEATURED": [14 /* EN */, 60 /* IT */],
+  FEATURED: [14 /* EN */, 60 /* IT */],
 };
 
 const CATEGORY_SLUG_MAP: Partial<Record<WorksGridCategory, string[]>> = {
@@ -41,16 +47,32 @@ const WorksGrid = ({
   requireLinkedProduct = false,
   productCategorySlugs,
   includeGiftRequest = false,
+  useFeaturedWorks = false,
 }: WorksGridProps) => {
   const [showEmptyMessage, setShowEmptyMessage] = useState(false);
-  const works = useContentStore(state => state.works);
-  const worksLoaded = useContentStore(state => state.worksLoaded);
-  const worksLoading = useContentStore(state => state.worksLoading);
-  const loadWorks = useContentStore(state => state.loadWorks);
-  const products = useContentStore(state => state.products);
-  const productsLoading = useContentStore(state => state.productsLoading);
-  const productsLoaded = useContentStore(state => state.productsLoaded);
-  const loadProducts = useContentStore(state => state.loadProducts);
+  const works = useContentStore((state) => state.works);
+  const worksLoaded = useContentStore((state) => state.worksLoaded);
+  const worksLoading = useContentStore((state) => state.worksLoading);
+  const featuredWorks = useContentStore((state) => state.featuredWorks);
+  const featuredWorksLoaded = useContentStore(
+    (state) => state.featuredWorksLoaded,
+  );
+  const featuredWorksLoading = useContentStore(
+    (state) => state.featuredWorksLoading,
+  );
+  const loadFeaturedWorks = useContentStore((state) => state.loadFeaturedWorks);
+  const activeWorks = useFeaturedWorks ? featuredWorks : works;
+  const activeWorksLoaded = useFeaturedWorks
+    ? featuredWorksLoaded
+    : worksLoaded;
+  const activeWorksLoading = useFeaturedWorks
+    ? featuredWorksLoading
+    : worksLoading;
+  const loadWorks = useContentStore((state) => state.loadWorks);
+  const products = useContentStore((state) => state.products);
+  const productsLoading = useContentStore((state) => state.productsLoading);
+  const productsLoaded = useContentStore((state) => state.productsLoaded);
+  const loadProducts = useContentStore((state) => state.loadProducts);
   const { t, i18n } = useTranslation();
   const seeMoreLines = useMemo(() => {
     const lines = t("works.seeMoreLines", { returnObjects: true }) as unknown;
@@ -61,12 +83,17 @@ const WorksGrid = ({
   }, [t]);
 
   useEffect(() => {
-    void loadWorks();
+    if (useFeaturedWorks) {
+      void loadFeaturedWorks();
+    } else {
+      void loadWorks();
+    }
+
     void loadProducts();
-  }, [loadProducts, loadWorks]);
+  }, [useFeaturedWorks, loadFeaturedWorks, loadWorks, loadProducts]);
 
   const productsById = useMemo(
-    () => new Map(products.map(product => [product.id, product])),
+    () => new Map(products.map((product) => [product.id, product])),
     [products],
   );
 
@@ -75,7 +102,7 @@ const WorksGrid = ({
   };
 
   const filteredWorks = useMemo(() => {
-    if (!works.length) {
+    if (!activeWorks.length) {
       return [];
     }
 
@@ -90,13 +117,13 @@ const WorksGrid = ({
     const groups = new Map<string, WorkGroup>();
     const order: string[] = [];
 
-    works.forEach(work => {
+    activeWorks.forEach(work => {
       const idSet = new Set<number>();
       idSet.add(work.id);
 
       const translationValues = work.polylang?.translations;
       if (translationValues) {
-        Object.values(translationValues).forEach(value => {
+        Object.values(translationValues).forEach((value) => {
           const numericId = coerceNumericId(value);
           if (numericId !== undefined) {
             idSet.add(numericId);
@@ -104,7 +131,9 @@ const WorksGrid = ({
         });
       }
 
-      const key = `poly:${Array.from(idSet).sort((a, b) => a - b).join(":")}`;
+      const key = `poly:${Array.from(idSet)
+        .sort((a, b) => a - b)
+        .join(":")}`;
       const langCode = normalizeLanguage(work.polylang?.lang || work.lang);
       const categories = work.categories ?? [];
 
@@ -115,12 +144,12 @@ const WorksGrid = ({
         }
 
         const categoryIds = new Set<number>();
-        categories.forEach(id => categoryIds.add(id));
+        categories.forEach((id) => categoryIds.add(id));
         const categorySlugs = new Set(
           (work._embedded?.["wp:term"] ?? [])
             .flat()
-            .filter(term => term.taxonomy === "category")
-            .map(term => term.slug),
+            .filter((term) => term.taxonomy === "category")
+            .map((term) => term.slug),
         );
 
         groups.set(key, {
@@ -138,20 +167,22 @@ const WorksGrid = ({
           }
         }
 
-        categories.forEach(id => group.categoryIds.add(id));
+        categories.forEach((id) => group.categoryIds.add(id));
         (work._embedded?.["wp:term"] ?? [])
           .flat()
-          .filter(term => term.taxonomy === "category")
-          .forEach(term => group.categorySlugs.add(term.slug));
+          .filter((term) => term.taxonomy === "category")
+          .forEach((term) => group.categorySlugs.add(term.slug));
       }
     });
 
-    const categoryIds = getCategoryIds(category).filter(id => Number.isFinite(id) && id > 0);
+    const categoryIds = getCategoryIds(category).filter(
+      (id) => Number.isFinite(id) && id > 0,
+    );
     const categorySlugs = CATEGORY_SLUG_MAP[category] ?? [];
     const results: Work[] = [];
     const seenIds = new Set<number>();
 
-    order.forEach(key => {
+    order.forEach((key) => {
       const group = groups.get(key);
       if (!group) {
         return;
@@ -168,10 +199,11 @@ const WorksGrid = ({
 
       if (category !== "ALL") {
         const categoryMatches = new Set<number>();
-        group.categoryIds.forEach(id => categoryMatches.add(id));
+        group.categoryIds.forEach((id) => categoryMatches.add(id));
 
-        const hasMatch = categoryIds.some(id => categoryMatches.has(id))
-          || categorySlugs.some(slug => group.categorySlugs.has(slug));
+        const hasMatch =
+          categoryIds.some((id) => categoryMatches.has(id)) ||
+          categorySlugs.some((slug) => group.categorySlugs.has(slug));
         if (!hasMatch) {
           return;
         }
@@ -181,7 +213,9 @@ const WorksGrid = ({
       const linkedProduct = productId ? productsById.get(productId) : undefined;
       if (requireLinkedProduct && !linkedProduct) return;
       if (productCategorySlugs?.length) {
-        const matchesProductCategory = linkedProduct?.categories.some(term => productCategorySlugs.includes(term.slug));
+        const matchesProductCategory = linkedProduct?.categories.some((term) =>
+          productCategorySlugs.includes(term.slug),
+        );
         if (!matchesProductCategory) return;
       }
 
@@ -190,11 +224,20 @@ const WorksGrid = ({
     });
 
     return results;
-  }, [works, i18n.language, category, productCategorySlugs, productsById, requireLinkedProduct]);
+  }, [
+    activeWorks,
+    i18n.language,
+    category,
+    productCategorySlugs,
+    productsById,
+    requireLinkedProduct,
+  ]);
 
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
-    const isLoading = (!worksLoaded && worksLoading) || (!productsLoaded && productsLoading);
+    const isLoading =
+      (!activeWorksLoaded && activeWorksLoading) ||
+      (!productsLoaded && productsLoading);
 
     if (!isLoading && filteredWorks.length === 0) {
       timeoutId = setTimeout(() => {
@@ -209,44 +252,63 @@ const WorksGrid = ({
         clearTimeout(timeoutId);
       }
     };
-  }, [worksLoaded, worksLoading, productsLoaded, productsLoading, filteredWorks.length]);
+  }, [
+    activeWorksLoaded,
+    activeWorksLoading,
+    productsLoaded,
+    productsLoading,
+    filteredWorks.length,
+  ]);
 
-  const isLoading = (!worksLoaded && worksLoading) || (!productsLoaded && productsLoading);
+  const isLoading =
+    (!activeWorksLoaded && activeWorksLoading) ||
+    (!productsLoaded && productsLoading);
 
   return (
     <div className="works-grid">
       {filteredWorks.length > 0 ? (
         <>
           {includeGiftRequest && <FlowOneCard variant="project" />}
-          {(limits ? filteredWorks.slice(0, limits) : filteredWorks).map(work => (
-            <WorkCard
-              key={work.id}
-              work={work}
-              product={productsById.get(getLinkedProductId(work) ?? -1)}
-              returnPath={returnPath}
-            />
-          ))}
+          {(limits ? filteredWorks.slice(0, limits) : filteredWorks).map(
+            (work) => (
+              <WorkCard
+                key={work.id}
+                work={work}
+                product={productsById.get(getLinkedProductId(work) ?? -1)}
+                returnPath={returnPath}
+              />
+            ),
+          )}
           {showSeeAll && (
             <div className="masonry-item works-grid__see-all">
-              <Link
-                className="works-grid__see-all-link"
-                to="/category/all"
-              >
-                <span dangerouslySetInnerHTML={{ __html: seeMoreLines.join("<br />") }} />
+              <Link className="works-grid__see-all-link" to="/category/all">
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: seeMoreLines.join("<br />"),
+                  }}
+                />
               </Link>
             </div>
           )}
         </>
       ) : (
         <>
-          {includeGiftRequest && !isLoading && <FlowOneCard variant="project" />}
-          {isLoading && <LoadingState message={t("loaders.preparingPortfolio")} className="works-grid__loading-state" />}
-          {!includeGiftRequest && !isLoading && showEmptyMessage && <p>{t("works.empty")}</p>}
+          {includeGiftRequest && !isLoading && (
+            <FlowOneCard variant="project" />
+          )}
+          {isLoading && (
+            <LoadingState
+              message={t("loaders.preparingPortfolio")}
+              className="works-grid__loading-state"
+            />
+          )}
+          {!includeGiftRequest && !isLoading && showEmptyMessage && (
+            <p>{t("works.empty")}</p>
+          )}
         </>
       )}
     </div>
   );
-
 };
 
 export default WorksGrid;

@@ -125,6 +125,50 @@ export async function fetchWorks(): Promise<Work[]> {
   }
 }
 
+/* Fetch featured works */
+export async function fetchFeaturedWorks(): Promise<Work[]> {
+  const collected = new Map<number, Work>();
+
+  try {
+    let page = 1;
+    let totalPages = 1;
+
+    do {
+      const url = new URL(API_POSTS_BASE_URL);
+      url.searchParams.set("_embed", "wp:featuredmedia");
+      url.searchParams.set("categories", "14,60");
+      url.searchParams.set("page", String(page));
+      url.searchParams.set("per_page", "100");
+      url.searchParams.set("lang", "all");
+
+      const res = await fetch(url.toString());
+      if (!res.ok) {
+        throw new Error(`Failed to fetch posts page ${page}: ${res.statusText}`);
+      }
+
+      const data = (await res.json()) as Work[];
+      data.forEach(work => {
+        collected.set(work.id, work);
+      });
+
+      if (page === 1) {
+        const header = res.headers.get("X-WP-TotalPages");
+        const parsedTotal = header ? Number.parseInt(header, 10) : NaN;
+        if (Number.isFinite(parsedTotal) && parsedTotal > 0) {
+          totalPages = parsedTotal;
+        }
+      }
+
+      page += 1;
+    } while (page <= totalPages);
+
+    return Array.from(collected.values());
+  } catch (error) {
+      console.error("Error fetching featured works:", error);
+      return Array.from(collected.values());
+  }
+}
+
 export async function fetchWorkById(workId: number): Promise<Work | null> {
   if (!Number.isFinite(workId)) return null;
 

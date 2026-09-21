@@ -1,7 +1,16 @@
 import { create } from "zustand";
-import { fetchPages, fetchProducts, fetchWorks, type CatalogProduct, type Page, type Work } from "../api/api";
+import {
+  fetchFeaturedWorks,
+  fetchPages,
+  fetchProducts,
+  fetchWorks,
+  type CatalogProduct,
+  type Page,
+  type Work,
+} from "../api/api";
 
 let worksPromise: Promise<Work[]> | null = null;
+let featuredWorksPromise: Promise<Work[]> | null = null;
 let pagesPromise: Promise<Page[]> | null = null;
 let productsPromise: Promise<CatalogProduct[]> | null = null;
 
@@ -9,16 +18,25 @@ interface ContentStoreState {
   works: Work[];
   worksLoading: boolean;
   worksLoaded: boolean;
+
+  featuredWorks: Work[];
+  featuredWorksLoading: boolean;
+  featuredWorksLoaded: boolean;
+
   pages: Page[];
   pagesLoading: boolean;
   pagesLoaded: boolean;
+
   products: CatalogProduct[];
   productsLoading: boolean;
   productsLoaded: boolean;
+
   loadWorks: () => Promise<Work[]>;
+  loadFeaturedWorks: () => Promise<Work[]>;
   loadPages: () => Promise<Page[]>;
   loadProducts: () => Promise<CatalogProduct[]>;
   loadAll: () => Promise<Page[]>;
+
   getWorkById: (id: number) => Work | undefined;
   upsertWork: (work: Work) => void;
 }
@@ -27,6 +45,9 @@ export const useContentStore = create<ContentStoreState>((set, get) => ({
   works: [],
   worksLoading: false,
   worksLoaded: false,
+  featuredWorks: [],
+  featuredWorksLoading: false,
+  featuredWorksLoaded: false,
   pages: [],
   pagesLoading: false,
   pagesLoaded: false,
@@ -45,7 +66,7 @@ export const useContentStore = create<ContentStoreState>((set, get) => ({
     set({ worksLoading: true });
 
     worksPromise = fetchWorks()
-      .then(data => {
+      .then((data) => {
         set({ works: data, worksLoaded: true });
         return data;
       })
@@ -55,6 +76,33 @@ export const useContentStore = create<ContentStoreState>((set, get) => ({
       });
 
     return worksPromise;
+  },
+  async loadFeaturedWorks() {
+    if (get().featuredWorksLoaded) {
+      return get().featuredWorks;
+    }
+
+    if (featuredWorksPromise) {
+      return featuredWorksPromise;
+    }
+
+    set({ featuredWorksLoading: true });
+
+    featuredWorksPromise = fetchFeaturedWorks()
+      .then((data) => {
+        set({
+          featuredWorks: data,
+          featuredWorksLoaded: true,
+        });
+
+        return data;
+      })
+      .finally(() => {
+        set({ featuredWorksLoading: false });
+        featuredWorksPromise = null;
+      });
+
+    return featuredWorksPromise;
   },
   async loadPages() {
     if (get().pagesLoaded) {
@@ -68,7 +116,7 @@ export const useContentStore = create<ContentStoreState>((set, get) => ({
     set({ pagesLoading: true });
 
     pagesPromise = fetchPages()
-      .then(data => {
+      .then((data) => {
         set({ pages: data, pagesLoaded: true });
         return data;
       })
@@ -85,7 +133,7 @@ export const useContentStore = create<ContentStoreState>((set, get) => ({
 
     set({ productsLoading: true });
     productsPromise = fetchProducts()
-      .then(data => {
+      .then((data) => {
         set({ products: data, productsLoaded: true });
         return data;
       })
@@ -107,11 +155,13 @@ export const useContentStore = create<ContentStoreState>((set, get) => ({
     return pagesPromise;
   },
   getWorkById(id) {
-    return get().works.find(work => work.id === id);
+    return get().works.find((work) => work.id === id);
   },
   upsertWork(work) {
-    set(state => {
-      const existingIndex = state.works.findIndex(item => item.id === work.id);
+    set((state) => {
+      const existingIndex = state.works.findIndex(
+        (item) => item.id === work.id,
+      );
       if (existingIndex === -1) {
         return {
           works: [...state.works, work],
