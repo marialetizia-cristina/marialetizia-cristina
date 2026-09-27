@@ -1,0 +1,82 @@
+name: Sync WordPress
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Non interrompere un sync durante commit/push. Le richieste in attesa
+# possono essere accorpate: ogni sync deve rileggere tutti i dati correnti.
+concurrency:
+  group: sync-wordpress-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Sincronizza i JSON da WordPress
+    if: github.ref_type == 'branch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SYNC_BRANCH: ${{ github.ref_name }}
+      SYNC_OUTPUT_DIR: public/data/wordpress
+
+    steps:
+      - name: Checkout del branch richiesto
+        uses: actions/checkout@v4
+        with:
+          # Legge la versione attuale del branch anche dopo un'attesa in coda.
+          ref: ${{ github.ref_name }}
+
+      - name: Verifica lo script di sincronizzazione
+        shell: bash
+        run: |
+          if [ ! -f scripts/sync-wordpress.ts ]; then
+            echo "::error::Manca scripts/sync-wordpress.ts: implementare lo script di sincronizzazione WordPress."
+            exit 1
+          fi
+
+      - name: Configura pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Configura Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+
+      - name: Installa le dipendenze
+        run: pnpm install --frozen-lockfile
+
+      - name: Sincronizza WordPress
+        # Node 22 esegue TypeScript con sintassi eliminabile, senza tsx.
+        # Lo script deve scrivere in SYNC_OUTPUT_DIR e fallire se il fetch
+        # è incompleto, evitando di pubblicare snapshot parziali.
+        run: node scripts/sync-wordpress.ts
+
+      - name: Commit e push solo se i JSON cambiano
+        shell: bash
+        run: |
+          if [ ! -d "$SYNC_OUTPUT_DIR" ]; then
+            echo "::error::Lo script non ha creato la cartella dei JSON: $SYNC_OUTPUT_DIR"
+            exit 1
+          fi
+
+          # Include JSON nuovi, modificati ed eliminati, anche nelle sottocartelle.
+          # Non include package.json, lockfile o file estranei allo snapshot.
+          git add --all -- ":(glob)$SYNC_OUTPUT_DIR/**/*.json"
+
+          if git diff --cached --quiet; then
+            echo "Nessuna modifica ai JSON: nessun commit necessario."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: sync WordPress content"
+          # Senza force: se nel frattempo il branch cambia, il job fallisce
+          # e va rieseguito per generare uno snapshot dalla versione aggiornata.
+          git push origin "HEAD:refs/heads/$SYNC_BRANCH"
