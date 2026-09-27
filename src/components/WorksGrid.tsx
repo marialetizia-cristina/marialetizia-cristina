@@ -51,6 +51,7 @@ const WorksGrid = ({
 }: WorksGridProps) => {
   const [showEmptyMessage, setShowEmptyMessage] = useState(false);
   const works = useContentStore((state) => state.works);
+  const contentErrors = useContentStore((state) => state.errors);
   const worksLoaded = useContentStore((state) => state.worksLoaded);
   const worksLoading = useContentStore((state) => state.worksLoading);
   const featuredWorks = useContentStore((state) => state.featuredWorks);
@@ -263,6 +264,10 @@ const WorksGrid = ({
   const isLoading =
     (!activeWorksLoaded && activeWorksLoading) ||
     (!productsLoaded && productsLoading);
+
+  // Il messaggio e il retry sono mostrati da ContentStatus. Non presentare
+  // progetti commerciali come "non in vendita" se manca il catalogo prodotti.
+  if (contentErrors[useFeaturedWorks ? "featuredWorks" : "works"] || contentErrors.products) return null;
 
   return (
     <div className="works-grid">

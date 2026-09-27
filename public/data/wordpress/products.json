@@ -1,0 +1,24 @@
+[
+  {
+    "categories": [
+      {
+        "id": 95,
+        "name": "Senza categoria",
+        "slug": "senza-categoria"
+      }
+    ],
+    "description": "",
+    "flow": "fixed_purchase",
+    "id": 1679,
+    "image": null,
+    "in_stock": true,
+    "indicative_price_range": "",
+    "name": "prodotto acquistabile",
+    "physical": true,
+    "price": "5",
+    "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi>5,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>",
+    "purchasable": true,
+    "short_description": "",
+    "tags": []
+  }
+]

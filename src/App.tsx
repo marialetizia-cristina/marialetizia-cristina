@@ -1,4 +1,5 @@
 import Layout from './layout/Layout';
+import ContentStatus from './components/ContentStatus';
 import Header from './components/Header';
 // import ShopHeader from './components/ShopHeader';
 import Footer from './components/Footer';
@@ -41,6 +42,7 @@ const AppContent = () => {
       footer={<Footer />}
       main={
         <>
+          <ContentStatus />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/en" element={<Home />} />

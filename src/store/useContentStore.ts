@@ -14,7 +14,10 @@ let featuredWorksPromise: Promise<Work[]> | null = null;
 let pagesPromise: Promise<Page[]> | null = null;
 let productsPromise: Promise<CatalogProduct[]> | null = null;
 
+export type ContentCollection = "works" | "featuredWorks" | "pages" | "products";
+
 interface ContentStoreState {
+  errors: Partial<Record<ContentCollection, boolean>>;
   works: Work[];
   worksLoading: boolean;
   worksLoaded: boolean;
@@ -42,6 +45,7 @@ interface ContentStoreState {
 }
 
 export const useContentStore = create<ContentStoreState>((set, get) => ({
+  errors: {},
   works: [],
   worksLoading: false,
   worksLoaded: false,
@@ -63,12 +67,16 @@ export const useContentStore = create<ContentStoreState>((set, get) => ({
       return worksPromise;
     }
 
-    set({ worksLoading: true });
+    set(state => ({ worksLoading: true, errors: { ...state.errors, works: false } }));
 
     worksPromise = fetchWorks()
       .then((data) => {
         set({ works: data, worksLoaded: true });
         return data;
+      })
+      .catch(() => {
+        set(state => ({ errors: { ...state.errors, works: true } }));
+        return get().works;
       })
       .finally(() => {
         set({ worksLoading: false });
@@ -86,7 +94,7 @@ export const useContentStore = create<ContentStoreState>((set, get) => ({
       return featuredWorksPromise;
     }
 
-    set({ featuredWorksLoading: true });
+    set(state => ({ featuredWorksLoading: true, errors: { ...state.errors, featuredWorks: false } }));
 
     featuredWorksPromise = fetchFeaturedWorks()
       .then((data) => {
@@ -96,6 +104,10 @@ export const useContentStore = create<ContentStoreState>((set, get) => ({
         });
 
         return data;
+      })
+      .catch(() => {
+        set(state => ({ errors: { ...state.errors, featuredWorks: true } }));
+        return get().featuredWorks;
       })
       .finally(() => {
         set({ featuredWorksLoading: false });
@@ -113,12 +125,16 @@ export const useContentStore = create<ContentStoreState>((set, get) => ({
       return pagesPromise;
     }
 
-    set({ pagesLoading: true });
+    set(state => ({ pagesLoading: true, errors: { ...state.errors, pages: false } }));
 
     pagesPromise = fetchPages()
       .then((data) => {
         set({ pages: data, pagesLoaded: true });
         return data;
+      })
+      .catch(() => {
+        set(state => ({ errors: { ...state.errors, pages: true } }));
+        return get().pages;
       })
       .finally(() => {
         set({ pagesLoading: false });
@@ -131,15 +147,15 @@ export const useContentStore = create<ContentStoreState>((set, get) => ({
     if (get().productsLoaded) return get().products;
     if (productsPromise) return productsPromise;
 
-    set({ productsLoading: true });
+    set(state => ({ productsLoading: true, errors: { ...state.errors, products: false } }));
     productsPromise = fetchProducts()
       .then((data) => {
         set({ products: data, productsLoaded: true });
         return data;
       })
       .catch(() => {
-        set({ products: [], productsLoaded: true });
-        return [];
+        set(state => ({ errors: { ...state.errors, products: true } }));
+        return get().products;
       })
       .finally(() => {
         set({ productsLoading: false });

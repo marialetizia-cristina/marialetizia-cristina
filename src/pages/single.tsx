@@ -20,21 +20,17 @@ const SinglePage = () => {
     const fromState = (location.state as { from?: string } | undefined)?.from;
     const [work, setWork] = useState<Work | null>(null);
     const [loading, setLoading] = useState(true);
-    const [errorKey, setErrorKey] = useState<"noSelection" | "invalidId" | "notFound" | null>(null);
+    const [errorKey, setErrorKey] = useState<"noSelection" | "invalidId" | "notFound" | "loadError" | null>(null);
     const { t, i18n } = useTranslation();
     const getWorkById = useContentStore(state => state.getWorkById);
     const upsertWork = useContentStore(state => state.upsertWork);
     const loadWorks = useContentStore(state => state.loadWorks);
-    const worksLoaded = useContentStore(state => state.worksLoaded);
-    const worksLoading = useContentStore(state => state.worksLoading);
     const products = useContentStore(state => state.products);
     const loadProducts = useContentStore(state => state.loadProducts);
 
     useEffect(() => {
-        if (!worksLoaded && !worksLoading) {
-            void loadWorks();
-        }
-    }, [worksLoaded, worksLoading, loadWorks]);
+        void loadWorks();
+    }, [loadWorks]);
 
     useEffect(() => {
         void loadProducts();
@@ -125,7 +121,13 @@ const SinglePage = () => {
             setLoading(false);
         };
 
-        void resolveWork();
+        void resolveWork().catch(() => {
+            if (!isCancelled) {
+                setWork(null);
+                setErrorKey("loadError");
+                setLoading(false);
+            }
+        });
 
         return () => {
             isCancelled = true;
@@ -188,7 +190,9 @@ const SinglePage = () => {
         return dedupeSliderImages(filtered);
     }, [attachmentImages, featuredSrc, contentHtml]);
 
-    const errorMessage = errorKey ? t(`single.errors.${errorKey}`) : null;
+    const errorMessage = errorKey === "loadError"
+        ? (i18n.language.startsWith("en") ? "The project could not be loaded. Please reload the page." : "Non è stato possibile caricare il progetto. Ricarica la pagina.")
+        : errorKey ? t(`single.errors.${errorKey}`) : null;
     const linkedProductId = work ? getLinkedProductId(work) : null;
     const linkedProduct = linkedProductId
         ? products.find(product => product.id === linkedProductId)

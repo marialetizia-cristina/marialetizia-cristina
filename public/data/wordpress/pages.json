@@ -1,0 +1,1082 @@
+[
+  {
+    "_links": {
+      "about": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/users/1"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages"
+        }
+      ],
+      "curies": [
+        {
+          "href": "https://api.w.org/{rel}",
+          "name": "wp",
+          "templated": true
+        }
+      ],
+      "predecessor-version": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1456/revisions/1669",
+          "id": 1669
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/comments?post=1456"
+        }
+      ],
+      "self": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1456",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "version-history": [
+        {
+          "count": 5,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1456/revisions"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/media?parent=1456"
+        }
+      ]
+    },
+    "author": 1,
+    "class_list": [
+      "post-1456",
+      "page",
+      "type-page",
+      "status-publish",
+      "hentry"
+    ],
+    "comment_status": "closed",
+    "content": {
+      "protected": false,
+      "rendered": "\n<h3 class=\"wp-block-heading\"><strong>Last updated: 26 August 2026</strong></h3>\n\n\n\n<p class=\"wp-block-paragraph\">This Privacy Policy describes how the personal data of users who visit the Marialetizia Cristina website, available at https://marialetiziacristina.vercel.app, or use the quotation request and purchase services made available through the website, are processed.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>1. Data Controller</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">The data controller is Marialetizia Cristina, VAT No. 03018010185, with registered office at [INSERT FULL ADDRESS].</p>\n\n\n\n<p class=\"wp-block-paragraph\">For questions concerning the processing of personal data or to exercise your rights, you may write to [INSERT PRIVACY EMAIL].</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>2. Data Processed</strong></h2>\n\n\n\n<h3 class=\"wp-block-heading\"><strong>Browsing data</strong></h3>\n\n\n\n<p class=\"wp-block-paragraph\">During normal use of the website, the IT systems and infrastructure providers may process technical data such as IP address, date and time of the request, requested page, browser and device type, error information, and data necessary for the security and proper functioning of the service.</p>\n\n\n\n<h3 class=\"wp-block-heading\"><strong>Data provided in quotation requests</strong></h3>\n\n\n\n<p class=\"wp-block-paragraph\">When a user submits a request concerning a gift idea or a product with a variable price, the following data may be collected:</p>\n\n\n\n<p class=\"wp-block-paragraph\">first and last name;</p>\n\n\n\n<p class=\"wp-block-paragraph\">email address;</p>\n\n\n\n<p class=\"wp-block-paragraph\">telephone number, if provided;</p>\n\n\n\n<p class=\"wp-block-paragraph\">description of the request and desired customisation;</p>\n\n\n\n<p class=\"wp-block-paragraph\">selected product;</p>\n\n\n\n<p class=\"wp-block-paragraph\">requested delivery method;</p>\n\n\n\n<p class=\"wp-block-paragraph\">delivery address and delivery details, where the requested result is physical;</p>\n\n\n\n<p class=\"wp-block-paragraph\">images, documents and other files voluntarily attached by the user;</p>\n\n\n\n<p class=\"wp-block-paragraph\">request reference and management status.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Users are advised not to include unnecessary personal data, third-party data without authorisation, or particularly sensitive information in descriptions or attachments.</p>\n\n\n\n<h3 class=\"wp-block-heading\"><strong>Data processed for purchases</strong></h3>\n\n\n\n<p class=\"wp-block-paragraph\">When a user purchases a fixed-price product, the following data may be processed:</p>\n\n\n\n<p class=\"wp-block-paragraph\">first and last name;</p>\n\n\n\n<p class=\"wp-block-paragraph\">email address and telephone number;</p>\n\n\n\n<p class=\"wp-block-paragraph\">billing address and, where necessary, shipping address;</p>\n\n\n\n<p class=\"wp-block-paragraph\">products purchased, quantities, price and order status;</p>\n\n\n\n<p class=\"wp-block-paragraph\">customisation instructions and files associated with individual items;</p>\n\n\n\n<p class=\"wp-block-paragraph\">notes entered during checkout;</p>\n\n\n\n<p class=\"wp-block-paragraph\">selected payment method, transaction identifier and payment outcome.</p>\n\n\n\n<p class=\"wp-block-paragraph\">The website does not directly store PayPal account credentials or the full details of payment instruments managed by the payment service provider.</p>\n\n\n\n<h3 class=\"wp-block-heading\"><strong>Data stored in the browser</strong></h3>\n\n\n\n<p class=\"wp-block-paragraph\">The website uses local storage technologies to remember the selected language and maintain the connection with the WooCommerce shopping cart. More detailed information will be provided in the Cookie Policy.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>3. Purposes and Legal Bases</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">Personal data are processed for the following purposes:</p>\n\n\n\n<p class=\"wp-block-paragraph\">to enable the technical operation and security of the website and protect it against abuse or automated submissions, on the basis of the data controller’s legitimate interest;</p>\n\n\n\n<p class=\"wp-block-paragraph\">to respond to requests, assess their feasibility and prepare a quotation, in order to take pre-contractual steps requested by the user;</p>\n\n\n\n<p class=\"wp-block-paragraph\">to create the requested customisations, manage the shopping cart, and enter into and perform the sales contract;</p>\n\n\n\n<p class=\"wp-block-paragraph\">to manage payment, delivery, assistance, complaints and communications relating to requests and orders, for the performance of the contract;</p>\n\n\n\n<p class=\"wp-block-paragraph\">to comply with administrative, tax, accounting and regulatory obligations, on the basis of a legal obligation;</p>\n\n\n\n<p class=\"wp-block-paragraph\">to establish, exercise or defend legal claims, on the basis of the data controller’s legitimate interest.</p>\n\n\n\n<p class=\"wp-block-paragraph\">The website does not use data collected through requests and orders to send unsolicited promotional communications. Any future newsletter or marketing service will require separate information and consent.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>4. Nature of Data Provision</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">Fields marked as mandatory are necessary to manage the request or complete the purchase. Failure to provide such data will prevent the user from submitting the request, obtaining a quotation or completing the order.</p>\n\n\n\n<p class=\"wp-block-paragraph\">The telephone number is optional for quotation requests, unless it becomes necessary for specific delivery or assistance requirements. Attachments are optional unless the requested customisation cannot be completed without the necessary files.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>5. Processing Methods and Security</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">Data are processed using IT tools and organisational procedures appropriate to the purposes indicated. Measures are adopted to restrict access to data, protect communications, control the types and sizes of uploaded files, prevent abuse, and keep orders separate from simple quotation requests.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Administrative access to the data is restricted to the data controller and any authorised persons who require access for technical, administrative or support activities.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>6. Recipients and Service Providers</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">To the extent necessary, data may be processed by the following parties:</p>\n\n\n\n<p class=\"wp-block-paragraph\">Netsons, as the provider of WordPress hosting, WooCommerce, databases and backend storage;</p>\n\n\n\n<p class=\"wp-block-paragraph\">Vercel, as the provider of frontend hosting and distribution;</p>\n\n\n\n<p class=\"wp-block-paragraph\">the provider used for sending and delivering emails;</p>\n\n\n\n<p class=\"wp-block-paragraph\">PayPal, where selected as the payment method, to process the transaction, prevent fraud and manage disputes;</p>\n\n\n\n<p class=\"wp-block-paragraph\">any couriers and parties responsible for delivering physical products;</p>\n\n\n\n<p class=\"wp-block-paragraph\">technical, administrative, tax or legal advisers, where necessary and duly authorised;</p>\n\n\n\n<p class=\"wp-block-paragraph\">public authorities or other parties to whom disclosure is required by law.</p>\n\n\n\n<p class=\"wp-block-paragraph\">WooCommerce is used as software for managing the catalogue, shopping cart and orders on the WordPress backend. Order data are stored within the website infrastructure and may be disclosed to the providers required for payment, delivery and assistance.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>7. Transfers Outside the European Economic Area</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">Some technology or payment providers may also process data outside the European Economic Area. In such cases, transfers are carried out on the basis of the mechanisms provided for by applicable law, such as adequacy decisions, Standard Contractual Clauses or other recognised safeguards.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Information concerning the processing carried out by individual providers is available in their respective privacy policies, including those of Vercel and PayPal.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>8. Data Retention</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">Data are retained for the time necessary for the purposes for which they were collected and, subsequently, for the periods required by law or necessary to protect the rights of the data controller and the user.</p>\n\n\n\n<p class=\"wp-block-paragraph\">In particular:</p>\n\n\n\n<p class=\"wp-block-paragraph\">temporarily uploaded files that are not associated with a request or order are normally deleted within 24 hours;</p>\n\n\n\n<p class=\"wp-block-paragraph\">files attached to a request are deleted from the temporary storage area after the submission has been completed; any copies received by email follow the retention period applicable to the request;</p>\n\n\n\n<p class=\"wp-block-paragraph\">quotation requests are retained for the time necessary to manage them and, as a rule, for no longer than 24 months from closure or the last contact, unless further retention is necessary for legal obligations or disputes;</p>\n\n\n\n<p class=\"wp-block-paragraph\">orders and administrative and accounting documents are retained for the period required by applicable law, normally up to 10 years;</p>\n\n\n\n<p class=\"wp-block-paragraph\">data relating to failed, cancelled or incomplete orders are retained according to the periods configured in WooCommerce privacy settings;</p>\n\n\n\n<p class=\"wp-block-paragraph\">attachments necessary to fulfil an order are retained for the time required for processing and managing any disputes, and are then deleted or anonymised when no longer necessary;</p>\n\n\n\n<p class=\"wp-block-paragraph\">technical and security data are retained for the periods established by infrastructure providers or for the time necessary to manage anomalies and abuse.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Data may be retained for longer where necessary to comply with a legal obligation, manage a dispute or exercise a legal right.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>9. Rights of the Data Subject</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">Where provided for by applicable law, the data subject may request:</p>\n\n\n\n<p class=\"wp-block-paragraph\">confirmation as to whether personal data concerning them are being processed and access to such data;</p>\n\n\n\n<p class=\"wp-block-paragraph\">rectification of inaccurate data or completion of incomplete data;</p>\n\n\n\n<p class=\"wp-block-paragraph\">erasure of data;</p>\n\n\n\n<p class=\"wp-block-paragraph\">restriction of processing;</p>\n\n\n\n<p class=\"wp-block-paragraph\">objection to processing based on legitimate interest;</p>\n\n\n\n<p class=\"wp-block-paragraph\">data portability, where applicable;</p>\n\n\n\n<p class=\"wp-block-paragraph\">withdrawal of any consent, without affecting the lawfulness of processing carried out before the withdrawal.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Requests may be sent to [INSERT PRIVACY EMAIL]. Before responding, the data controller may request information necessary to verify the identity of the person making the request.</p>\n\n\n\n<p class=\"wp-block-paragraph\">The data subject may also lodge a complaint with the Italian Data Protection Authority (Garante per la protezione dei dati personali) using the contact details and procedures available at www.garanteprivacy.it.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>10. Minors’ Data</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">The website and its request or purchase services are not directly intended for minors who are not legally able to enter into a contract. Where data or images relating to minors are submitted for the purpose of creating a customisation, the person making the submission declares that they are authorised to provide them and have the necessary parental responsibility or authorisations.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>11. Third-Party Links and Services</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">The website may contain links to third-party services or websites. The data controller does not control processing activities carried out independently by such third parties; users are advised to review the relevant privacy policies before providing personal data.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>12. Changes to this Privacy Policy</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">This Privacy Policy may be updated following changes to the website, the services used or applicable law. The updated version will be published on this page and will indicate the date of the latest update.</p>\n"
+    },
+    "date": "2025-12-15T09:30:59",
+    "date_gmt": "2025-12-15T08:30:59",
+    "excerpt": {
+      "protected": false,
+      "rendered": "<p>Last updated: 26 August 2026 This Privacy Policy describes how the personal data of users who visit the Marialetizia Cristina website, available at https://marialetiziacristina.vercel.app, or use the quotation request and purchase services made available through the website, are processed. 1. Data Controller The data controller is Marialetizia Cristina, VAT No. 03018010185, with registered office at [&hellip;]</p>\n"
+    },
+    "featured_media": 0,
+    "guid": {
+      "rendered": "https://marialetizia.netsons.org/?page_id=1456"
+    },
+    "id": 1456,
+    "link": "https://marialetizia.netsons.org/en/chi-siamo/",
+    "menu_order": 0,
+    "meta": {
+      "footnotes": "",
+      "translation_key": ""
+    },
+    "modified": "2026-08-26T01:37:05",
+    "modified_gmt": "2026-08-25T23:37:05",
+    "parent": 0,
+    "ping_status": "closed",
+    "polylang": {
+      "lang": "en",
+      "translations": {
+        "en": 1456,
+        "it": 1453
+      }
+    },
+    "slug": "chi-siamo",
+    "status": "publish",
+    "template": "",
+    "title": {
+      "rendered": "Privacy Policy"
+    },
+    "type": "page"
+  },
+  {
+    "_links": {
+      "about": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/users/1"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages"
+        }
+      ],
+      "curies": [
+        {
+          "href": "https://api.w.org/{rel}",
+          "name": "wp",
+          "templated": true
+        }
+      ],
+      "predecessor-version": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1453/revisions/1670",
+          "id": 1670
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/comments?post=1453"
+        }
+      ],
+      "self": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1453",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "version-history": [
+        {
+          "count": 6,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1453/revisions"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/media?parent=1453"
+        }
+      ]
+    },
+    "author": 1,
+    "class_list": [
+      "post-1453",
+      "page",
+      "type-page",
+      "status-publish",
+      "hentry"
+    ],
+    "comment_status": "closed",
+    "content": {
+      "protected": false,
+      "rendered": "\n<h3 class=\"wp-block-heading\"><strong>Ultimo aggiornamento: 26 agosto 2026</strong></h3>\n\n\n\n<p class=\"wp-block-paragraph\">La presente informativa descrive come vengono trattati i dati personali degli utenti che visitano il sito Marialetizia Cristina, disponibile all’indirizzo https://marialetiziacristina.vercel.app, oppure utilizzano i servizi di richiesta di preventivo e acquisto messi a disposizione attraverso il sito.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>1. Titolare del trattamento</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">Il titolare del trattamento è Marialetizia Cristina, P. IVA 03018010185, con sede in [INSERIRE INDIRIZZO COMPLETO].</p>\n\n\n\n<p class=\"wp-block-paragraph\">Per domande relative al trattamento dei dati personali o per esercitare i propri diritti è possibile scrivere a [INSERIRE EMAIL PRIVACY].</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>2. Dati trattati</strong></h2>\n\n\n\n<h3 class=\"wp-block-heading\"><strong>Dati di navigazione</strong></h3>\n\n\n\n<p class=\"wp-block-paragraph\">Durante la normale consultazione del sito, i sistemi informatici e i fornitori dell’infrastruttura possono trattare dati tecnici quali indirizzo IP, data e ora della richiesta, pagina richiesta, tipo di browser e dispositivo, informazioni sugli errori e dati necessari alla sicurezza e al corretto funzionamento del servizio.</p>\n\n\n\n<h3 class=\"wp-block-heading\"><strong>Dati forniti nelle richieste di preventivo</strong></h3>\n\n\n\n<p class=\"wp-block-paragraph\">Quando l’utente invia una richiesta relativa a un’idea regalo o a un prodotto con prezzo variabile, possono essere raccolti:</p>\n\n\n\n<p class=\"wp-block-paragraph\">nome e cognome;</p>\n\n\n\n<p class=\"wp-block-paragraph\">indirizzo email;</p>\n\n\n\n<p class=\"wp-block-paragraph\">numero di telefono, se fornito;</p>\n\n\n\n<p class=\"wp-block-paragraph\">descrizione della richiesta e della personalizzazione desiderata;</p>\n\n\n\n<p class=\"wp-block-paragraph\">prodotto selezionato;</p>\n\n\n\n<p class=\"wp-block-paragraph\">modalità di consegna richiesta;</p>\n\n\n\n<p class=\"wp-block-paragraph\">indirizzo e dati di consegna, quando il risultato richiesto è fisico;</p>\n\n\n\n<p class=\"wp-block-paragraph\">immagini, documenti e altri file allegati volontariamente dall’utente;</p>\n\n\n\n<p class=\"wp-block-paragraph\">riferimento e stato di gestione della richiesta.</p>\n\n\n\n<p class=\"wp-block-paragraph\">L’utente è invitato a non inserire nelle descrizioni o negli allegati dati personali non necessari, dati appartenenti a terzi senza autorizzazione o informazioni particolarmente sensibili.</p>\n\n\n\n<h3 class=\"wp-block-heading\"><strong>Dati trattati per gli acquisti</strong></h3>\n\n\n\n<p class=\"wp-block-paragraph\">Quando l’utente acquista un prodotto a prezzo fisso, possono essere trattati:</p>\n\n\n\n<p class=\"wp-block-paragraph\">nome e cognome;</p>\n\n\n\n<p class=\"wp-block-paragraph\">indirizzo email e numero di telefono;</p>\n\n\n\n<p class=\"wp-block-paragraph\">indirizzo di fatturazione e, quando necessario, indirizzo di spedizione;</p>\n\n\n\n<p class=\"wp-block-paragraph\">prodotti acquistati, quantità, prezzo e stato dell’ordine;</p>\n\n\n\n<p class=\"wp-block-paragraph\">istruzioni di personalizzazione e file associati ai singoli articoli;</p>\n\n\n\n<p class=\"wp-block-paragraph\">note inserite durante il checkout;</p>\n\n\n\n<p class=\"wp-block-paragraph\">metodo di pagamento scelto, identificativo della transazione ed esito del pagamento.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Il sito non conserva direttamente le credenziali dell’account PayPal o i dati completi degli strumenti di pagamento gestiti dal fornitore del servizio di pagamento.</p>\n\n\n\n<h3 class=\"wp-block-heading\"><strong>Dati memorizzati nel browser</strong></h3>\n\n\n\n<p class=\"wp-block-paragraph\">Il sito utilizza tecnologie di memorizzazione locale per ricordare la lingua selezionata e mantenere il collegamento con il carrello WooCommerce. Informazioni più dettagliate saranno riportate nella Cookie Policy.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>3. Finalità e basi giuridiche</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">I dati personali vengono trattati per le seguenti finalità:</p>\n\n\n\n<p class=\"wp-block-paragraph\">consentire il funzionamento tecnico, la sicurezza e la protezione del sito da abusi o invii automatizzati, sulla base del legittimo interesse del titolare;</p>\n\n\n\n<p class=\"wp-block-paragraph\">rispondere alle richieste, valutarne la fattibilità e predisporre un preventivo, per adottare misure precontrattuali richieste dall’utente;</p>\n\n\n\n<p class=\"wp-block-paragraph\">realizzare le personalizzazioni richieste, gestire il carrello, concludere ed eseguire il contratto di vendita;</p>\n\n\n\n<p class=\"wp-block-paragraph\">gestire pagamento, consegna, assistenza, reclami e comunicazioni relative a richieste e ordini, per l’esecuzione del contratto;</p>\n\n\n\n<p class=\"wp-block-paragraph\">adempiere a obblighi amministrativi, fiscali, contabili e normativi, sulla base di un obbligo legale;</p>\n\n\n\n<p class=\"wp-block-paragraph\">accertare, esercitare o difendere un diritto, sulla base del legittimo interesse del titolare.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Il sito non utilizza i dati raccolti tramite richieste e ordini per inviare comunicazioni promozionali non richieste. Un eventuale servizio futuro di newsletter o marketing richiederà un’informativa e un consenso separati.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>4. Natura del conferimento</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">I campi indicati come obbligatori sono necessari per gestire la richiesta o concludere l’acquisto. Il mancato conferimento impedisce di inviare la richiesta, elaborare il preventivo o completare l’ordine.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Il numero di telefono è facoltativo nelle richieste di preventivo, salvo che diventi necessario per specifiche esigenze di consegna o assistenza. L’invio di allegati è facoltativo, salvo che la personalizzazione richiesta non possa essere realizzata senza i file necessari.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>5. Modalità del trattamento e sicurezza</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">Il trattamento avviene mediante strumenti informatici e procedure organizzative adeguate alle finalità indicate. Sono adottate misure volte a limitare l’accesso ai dati, proteggere le comunicazioni, controllare i tipi e le dimensioni dei file caricati, contrastare gli abusi e mantenere separati gli ordini dalle semplici richieste di preventivo.</p>\n\n\n\n<p class=\"wp-block-paragraph\">L’accesso amministrativo ai dati è riservato al titolare e agli eventuali soggetti autorizzati che ne abbiano necessità per attività tecniche, amministrative o di assistenza.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>6. Destinatari e fornitori</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">I dati possono essere trattati, nei limiti necessari, dai seguenti soggetti:</p>\n\n\n\n<p class=\"wp-block-paragraph\">Netsons, quale fornitore dell’hosting WordPress, WooCommerce, database e archiviazione backend;</p>\n\n\n\n<p class=\"wp-block-paragraph\">Vercel, quale fornitore dell’hosting e distribuzione del frontend;</p>\n\n\n\n<p class=\"wp-block-paragraph\">il fornitore utilizzato per l’invio e la consegna delle email;</p>\n\n\n\n<p class=\"wp-block-paragraph\">PayPal, qualora scelto come metodo di pagamento, per elaborare la transazione, prevenire frodi e gestire contestazioni;</p>\n\n\n\n<p class=\"wp-block-paragraph\">eventuali corrieri e soggetti incaricati della consegna di prodotti fisici;</p>\n\n\n\n<p class=\"wp-block-paragraph\">consulenti tecnici, amministrativi, fiscali o legali, quando necessario e debitamente autorizzati;</p>\n\n\n\n<p class=\"wp-block-paragraph\">autorità pubbliche o altri soggetti ai quali la comunicazione sia richiesta dalla legge.</p>\n\n\n\n<p class=\"wp-block-paragraph\">WooCommerce è utilizzato come software di gestione del catalogo, del carrello e degli ordini sul backend WordPress. I dati dell’ordine vengono conservati nell’infrastruttura del sito e possono essere comunicati ai fornitori necessari per pagamento, consegna e assistenza.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>7. Trasferimenti fuori dallo Spazio Economico Europeo</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">Alcuni fornitori tecnologici o di pagamento possono trattare dati anche al di fuori dello Spazio Economico Europeo. In tali casi il trasferimento avviene sulla base degli strumenti previsti dalla normativa applicabile, quali decisioni di adeguatezza, clausole contrattuali standard o altre garanzie riconosciute.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Le informazioni sul trattamento effettuato dai singoli fornitori sono disponibili nelle rispettive informative privacy, tra cui quelle di Vercel e PayPal.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>8. Conservazione dei dati</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">I dati vengono conservati per il tempo necessario alle finalità per cui sono stati raccolti e, successivamente, per i periodi richiesti dalla legge o necessari alla tutela dei diritti del titolare e dell’utente.</p>\n\n\n\n<p class=\"wp-block-paragraph\">In particolare:</p>\n\n\n\n<p class=\"wp-block-paragraph\">i file caricati temporaneamente e non associati a una richiesta o a un ordine vengono normalmente eliminati entro 24 ore;</p>\n\n\n\n<p class=\"wp-block-paragraph\">i file allegati a una richiesta vengono eliminati dall’area temporanea dopo il completamento dell’invio; eventuali copie ricevute tramite email seguono i tempi di conservazione della richiesta;</p>\n\n\n\n<p class=\"wp-block-paragraph\">le richieste di preventivo vengono conservate per il tempo necessario alla loro gestione e, di norma, per non oltre 24 mesi dalla chiusura o dall’ultimo contatto, salvo necessità di ulteriore conservazione per obblighi o contestazioni;</p>\n\n\n\n<p class=\"wp-block-paragraph\">gli ordini e i documenti amministrativi e contabili vengono conservati per il periodo richiesto dalla normativa applicabile, normalmente fino a 10 anni;</p>\n\n\n\n<p class=\"wp-block-paragraph\">i dati degli ordini falliti, annullati o non completati vengono conservati secondo i periodi configurati nelle impostazioni privacy di WooCommerce;</p>\n\n\n\n<p class=\"wp-block-paragraph\">gli allegati necessari alla realizzazione di un ordine vengono conservati per il tempo necessario alla lavorazione e alla gestione di eventuali contestazioni, quindi eliminati o anonimizzati quando non più necessari;</p>\n\n\n\n<p class=\"wp-block-paragraph\">i dati tecnici e di sicurezza vengono conservati per i tempi stabiliti dai fornitori dell’infrastruttura o per il periodo necessario alla gestione di anomalie e abusi.</p>\n\n\n\n<p class=\"wp-block-paragraph\">I dati possono essere conservati più a lungo quando ciò sia necessario per adempiere a un obbligo di legge, gestire una contestazione o esercitare un diritto.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>9. Diritti dell’interessato</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">Nei casi previsti dalla normativa, l’interessato può chiedere:</p>\n\n\n\n<p class=\"wp-block-paragraph\">conferma dell’esistenza di dati personali che lo riguardano e accesso agli stessi;</p>\n\n\n\n<p class=\"wp-block-paragraph\">rettifica dei dati inesatti o integrazione di quelli incompleti;</p>\n\n\n\n<p class=\"wp-block-paragraph\">cancellazione dei dati;</p>\n\n\n\n<p class=\"wp-block-paragraph\">limitazione del trattamento;</p>\n\n\n\n<p class=\"wp-block-paragraph\">opposizione al trattamento basato sul legittimo interesse;</p>\n\n\n\n<p class=\"wp-block-paragraph\">portabilità dei dati, quando applicabile;</p>\n\n\n\n<p class=\"wp-block-paragraph\">revoca di un eventuale consenso, senza pregiudicare la liceità del trattamento precedente alla revoca.</p>\n\n\n\n<p class=\"wp-block-paragraph\">La richiesta può essere inviata a [INSERIRE EMAIL PRIVACY]. Prima di rispondere, il titolare può richiedere informazioni necessarie a verificare l’identità del richiedente.</p>\n\n\n\n<p class=\"wp-block-paragraph\">L’interessato può inoltre proporre reclamo al Garante per la protezione dei dati personali attraverso i recapiti e le modalità disponibili sul sito www.garanteprivacy.it.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>10. Dati di minori</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">Il sito e i servizi di richiesta o acquisto non sono destinati direttamente a minori che non possano validamente concludere un contratto. Qualora vengano trasmessi dati o immagini riferiti a minori per la realizzazione di una personalizzazione, chi effettua l’invio dichiara di essere autorizzato a fornirli e di disporre delle necessarie responsabilità o autorizzazioni.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>11. Collegamenti e servizi di terzi</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">Il sito può contenere collegamenti a servizi o siti di terzi. Il titolare non controlla i trattamenti svolti autonomamente da tali soggetti; l’utente è invitato a consultarne le rispettive informative prima di fornire dati personali.</p>\n\n\n\n<h2 class=\"wp-block-heading\"><strong>12. Modifiche all’informativa</strong></h2>\n\n\n\n<p class=\"wp-block-paragraph\">La presente informativa può essere aggiornata in seguito a modifiche del sito, dei servizi utilizzati o della normativa applicabile. La versione aggiornata sarà pubblicata su questa pagina indicando la data dell’ultimo aggiornamento.</p>\n"
+    },
+    "date": "2025-12-15T09:30:21",
+    "date_gmt": "2025-12-15T08:30:21",
+    "excerpt": {
+      "protected": false,
+      "rendered": "<p>Ultimo aggiornamento: 26 agosto 2026 La presente informativa descrive come vengono trattati i dati personali degli utenti che visitano il sito Marialetizia Cristina, disponibile all’indirizzo https://marialetiziacristina.vercel.app, oppure utilizzano i servizi di richiesta di preventivo e acquisto messi a disposizione attraverso il sito. 1. Titolare del trattamento Il titolare del trattamento è Marialetizia Cristina, P. IVA [&hellip;]</p>\n"
+    },
+    "featured_media": 0,
+    "guid": {
+      "rendered": "https://marialetizia.netsons.org/?page_id=1453"
+    },
+    "id": 1453,
+    "link": "https://marialetizia.netsons.org/privacy-policy/",
+    "menu_order": 0,
+    "meta": {
+      "footnotes": "",
+      "translation_key": ""
+    },
+    "modified": "2026-08-28T22:55:40",
+    "modified_gmt": "2026-08-28T20:55:40",
+    "parent": 0,
+    "ping_status": "closed",
+    "polylang": {
+      "lang": "it",
+      "translations": {
+        "en": 1456,
+        "it": 1453
+      }
+    },
+    "slug": "privacy-policy",
+    "status": "publish",
+    "template": "",
+    "title": {
+      "rendered": "Privacy Policy"
+    },
+    "type": "page"
+  },
+  {
+    "_links": {
+      "about": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/users/1"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages"
+        }
+      ],
+      "curies": [
+        {
+          "href": "https://api.w.org/{rel}",
+          "name": "wp",
+          "templated": true
+        }
+      ],
+      "predecessor-version": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1372/revisions/1604",
+          "id": 1604
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/comments?post=1372"
+        }
+      ],
+      "self": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1372",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "version-history": [
+        {
+          "count": 8,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1372/revisions"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/media?parent=1372"
+        }
+      ]
+    },
+    "author": 1,
+    "class_list": [
+      "post-1372",
+      "page",
+      "type-page",
+      "status-publish",
+      "hentry"
+    ],
+    "comment_status": "closed",
+    "content": {
+      "protected": false,
+      "rendered": "\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<p class=\"wp-block-paragraph\">Welcome to my personal online portfolio. <br>Here you can find a collection of my projects. <br>I am fascinated by the world of publishing and print. Why? Being able to touch and observe a project in 360 </p>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<p class=\"wp-block-paragraph\">degrees gives me a special satisfaction; it&#8217;s almost like the feeling that a project can be eternal and remain through time as a still, paper object rich in graphics. <br>I also create graphic projects for creative gift ideas.</p>\n</div>\n</div>\n"
+    },
+    "date": "2025-12-12T10:58:33",
+    "date_gmt": "2025-12-12T09:58:33",
+    "excerpt": {
+      "protected": false,
+      "rendered": "<p>Welcome to my personal online portfolio. Here you can find a collection of my projects. I am fascinated by the world of publishing and print. Why? Being able to touch and observe a project in 360 degrees gives me a special satisfaction; it&#8217;s almost like the feeling that a project can be eternal and remain [&hellip;]</p>\n"
+    },
+    "featured_media": 0,
+    "guid": {
+      "rendered": "https://marialetizia.netsons.org/?page_id=1372"
+    },
+    "id": 1372,
+    "link": "https://marialetizia.netsons.org/en/first-section/",
+    "menu_order": 2,
+    "meta": {
+      "footnotes": "",
+      "translation_key": ""
+    },
+    "modified": "2026-01-08T14:23:16",
+    "modified_gmt": "2026-01-08T13:23:16",
+    "parent": 0,
+    "ping_status": "closed",
+    "polylang": {
+      "lang": "en",
+      "translations": {
+        "en": 1372,
+        "it": 1145
+      }
+    },
+    "slug": "first-section",
+    "status": "publish",
+    "template": "",
+    "title": {
+      "rendered": "First Section"
+    },
+    "type": "page"
+  },
+  {
+    "_links": {
+      "about": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/users/1"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages"
+        }
+      ],
+      "curies": [
+        {
+          "href": "https://api.w.org/{rel}",
+          "name": "wp",
+          "templated": true
+        }
+      ],
+      "predecessor-version": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1145/revisions/1643",
+          "id": 1643
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/comments?post=1145"
+        }
+      ],
+      "self": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1145",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "version-history": [
+        {
+          "count": 11,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1145/revisions"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/media?parent=1145"
+        }
+      ]
+    },
+    "author": 1,
+    "class_list": [
+      "post-1145",
+      "page",
+      "type-page",
+      "status-publish",
+      "hentry"
+    ],
+    "comment_status": "closed",
+    "content": {
+      "protected": false,
+      "rendered": "\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<p class=\"wp-block-paragraph\">Benvenuti nel mio personale portfolio <br>online. Qui potrete trovare una raccolta <br>dei miei progetti. Mi affascina il mondo <br>dell’editoria e della stampa. Perché? Poter <br>toccare e osservare a 360 gradi un progetto</p>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<p class=\"wp-block-paragraph\">mi dà particolare soddisfazione, quasi  <br>la sensazione che quel progetto possa essere<br>eterno e rimanere nel tempo un immobile <br>oggetto di carta ricco di grafica. Realizzo <br>anche progetti grafici per idee regalo creative.</p>\n</div>\n</div>\n\n\n\n<p class=\"wp-block-paragraph\"></p>\n"
+    },
+    "date": "2025-12-06T21:02:52",
+    "date_gmt": "2025-12-06T20:02:52",
+    "excerpt": {
+      "protected": false,
+      "rendered": "<p>Benvenuti nel mio personale portfolio online. Qui potrete trovare una raccolta dei miei progetti. Mi affascina il mondo dell’editoria e della stampa. Perché? Poter toccare e osservare a 360 gradi un progetto mi dà particolare soddisfazione, quasi  la sensazione che quel progetto possa essereeterno e rimanere nel tempo un immobile oggetto di carta ricco di grafica. Realizzo [&hellip;]</p>\n"
+    },
+    "featured_media": 0,
+    "guid": {
+      "rendered": "https://marialetizia.netsons.org/en/?page_id=1145"
+    },
+    "id": 1145,
+    "link": "https://marialetizia.netsons.org/prima-sezione/",
+    "menu_order": 2,
+    "meta": {
+      "footnotes": "",
+      "translation_key": ""
+    },
+    "modified": "2026-01-26T17:07:19",
+    "modified_gmt": "2026-01-26T16:07:19",
+    "parent": 0,
+    "ping_status": "closed",
+    "polylang": {
+      "lang": "it",
+      "translations": {
+        "en": 1372,
+        "it": 1145
+      }
+    },
+    "slug": "prima-sezione",
+    "status": "publish",
+    "template": "",
+    "title": {
+      "rendered": "Prima Sezione"
+    },
+    "type": "page"
+  },
+  {
+    "_links": {
+      "about": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/users/1"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages"
+        }
+      ],
+      "curies": [
+        {
+          "href": "https://api.w.org/{rel}",
+          "name": "wp",
+          "templated": true
+        }
+      ],
+      "predecessor-version": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1094/revisions/1582",
+          "id": 1582
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/comments?post=1094"
+        }
+      ],
+      "self": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1094",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "version-history": [
+        {
+          "count": 3,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1094/revisions"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/media?parent=1094"
+        }
+      ]
+    },
+    "author": 1,
+    "class_list": [
+      "post-1094",
+      "page",
+      "type-page",
+      "status-publish",
+      "hentry"
+    ],
+    "comment_status": "closed",
+    "content": {
+      "protected": false,
+      "rendered": "\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full is-resized\"><img loading=\"lazy\" decoding=\"async\" width=\"217\" height=\"216\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-96.png\" alt=\"\" class=\"wp-image-860\" style=\"aspect-ratio:1.0046339202965708;width:166px;height:auto\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-96.png 217w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-96-100x100.png 100w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-96-150x150.png 150w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-96-32x32.png 32w\" sizes=\"(max-width: 217px) 100vw, 217px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-group\"><div class=\"wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained\">\n<p class=\"services-text-container wp-block-paragraph\">Editorial design and print media services.</p>\n\n\n\n<figure class=\"wp-block-image size-full is-resized\"><img loading=\"lazy\" decoding=\"async\" width=\"130\" height=\"18\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162.png\" alt=\"\" class=\"wp-image-814\" style=\"aspect-ratio:7.231638418079096;object-fit:cover;width:80px\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162.png 130w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162-32x4.png 32w\" sizes=\"(max-width: 130px) 100vw, 130px\" /></figure>\n</div></div>\n</div>\n</div>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"216\" height=\"216\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-98.png\" alt=\"\" class=\"wp-image-862\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-98.png 216w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-98-100x100.png 100w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-98-150x150.png 150w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-98-32x32.png 32w\" sizes=\"(max-width: 216px) 100vw, 216px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-group\"><div class=\"wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained\">\n<p class=\"services-text-container wp-block-paragraph\">Creating simple motion graphics and animated illustrations</p>\n\n\n\n<figure class=\"wp-block-image size-full is-resized\"><img loading=\"lazy\" decoding=\"async\" width=\"130\" height=\"18\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-165.png\" alt=\"\" class=\"wp-image-822\" style=\"aspect-ratio:7.231638418079096;object-fit:cover;width:80px\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-165.png 130w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-165-32x4.png 32w\" sizes=\"(max-width: 130px) 100vw, 130px\" /></figure>\n</div></div>\n</div>\n</div>\n</div>\n</div>\n\n\n\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"217\" height=\"216\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-95.png\" alt=\"\" class=\"wp-image-861\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-95.png 217w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-95-100x100.png 100w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-95-150x150.png 150w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-95-32x32.png 32w\" sizes=\"(max-width: 217px) 100vw, 217px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-group\"><div class=\"wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained\">\n<p class=\"services-text-container wp-block-paragraph\">Producing illustrations using different styles</p>\n\n\n\n<figure class=\"wp-block-image size-full is-resized\"><img loading=\"lazy\" decoding=\"async\" width=\"130\" height=\"18\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162.png\" alt=\"\" class=\"wp-image-814\" style=\"width:80px\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162.png 130w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162-32x4.png 32w\" sizes=\"(max-width: 130px) 100vw, 130px\" /></figure>\n</div></div>\n</div>\n</div>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"216\" height=\"215\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/12/Group-166.png\" alt=\"\" class=\"wp-image-1329\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/12/Group-166.png 216w, https://marialetizia.netsons.org/wp-content/uploads/2025/12/Group-166-100x100.png 100w, https://marialetizia.netsons.org/wp-content/uploads/2025/12/Group-166-150x150.png 150w\" sizes=\"(max-width: 216px) 100vw, 216px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-group\"><div class=\"wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained\">\n<p class=\"services-text-container wp-block-paragraph\">Brand identity design: from logo to stationery and all brand essentials.</p>\n\n\n\n<figure class=\"wp-block-image size-full is-resized\"><img loading=\"lazy\" decoding=\"async\" width=\"130\" height=\"18\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-166.png\" alt=\"\" class=\"wp-image-823\" style=\"width:80px\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-166.png 130w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-166-32x4.png 32w\" sizes=\"(max-width: 130px) 100vw, 130px\" /></figure>\n</div></div>\n</div>\n</div>\n</div>\n</div>\n\n\n\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"217\" height=\"216\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-94.png\" alt=\"\" class=\"wp-image-865\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-94.png 217w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-94-100x100.png 100w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-94-150x150.png 150w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-94-32x32.png 32w\" sizes=\"(max-width: 217px) 100vw, 217px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-group services-text-container\"><div class=\"wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained\">\n<p class=\"wp-block-paragraph\">Design of advertising<br>and artistic posters</p>\n\n\n\n<figure class=\"wp-block-image size-full is-resized\"><img loading=\"lazy\" decoding=\"async\" width=\"130\" height=\"18\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162.png\" alt=\"\" class=\"wp-image-814\" style=\"aspect-ratio:7.231638418079096;width:80px\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162.png 130w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162-32x4.png 32w\" sizes=\"(max-width: 130px) 100vw, 130px\" /></figure>\n</div></div>\n</div>\n</div>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"215\" height=\"216\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/12/Group-167.png\" alt=\"\" class=\"wp-image-1330\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/12/Group-167.png 215w, https://marialetizia.netsons.org/wp-content/uploads/2025/12/Group-167-100x100.png 100w, https://marialetizia.netsons.org/wp-content/uploads/2025/12/Group-167-150x150.png 150w\" sizes=\"(max-width: 215px) 100vw, 215px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-group\"><div class=\"wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained\">\n<p class=\"services-text-container wp-block-paragraph\">Designing creative gift ideas</p>\n\n\n\n<figure class=\"wp-block-image size-full is-resized\"><img loading=\"lazy\" decoding=\"async\" width=\"130\" height=\"18\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162.png\" alt=\"\" class=\"wp-image-814\" style=\"aspect-ratio:7.231638418079096;width:80px\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162.png 130w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162-32x4.png 32w\" sizes=\"(max-width: 130px) 100vw, 130px\" /></figure>\n</div></div>\n</div>\n</div>\n</div>\n</div>\n"
+    },
+    "date": "2025-12-05T19:02:34",
+    "date_gmt": "2025-12-05T18:02:34",
+    "excerpt": {
+      "protected": false,
+      "rendered": "<p>Editorial design and print media services. Creating simple motion graphics and animated illustrations Producing illustrations using different styles Brand identity design: from logo to stationery and all brand essentials. Design of advertisingand artistic posters Designing creative gift ideas</p>\n"
+    },
+    "featured_media": 0,
+    "guid": {
+      "rendered": "https://marialetizia.netsons.org/services-copy/"
+    },
+    "id": 1094,
+    "link": "https://marialetizia.netsons.org/en/services-copy/",
+    "menu_order": 3,
+    "meta": {
+      "footnotes": "",
+      "translation_key": ""
+    },
+    "modified": "2026-01-07T18:40:32",
+    "modified_gmt": "2026-01-07T17:40:32",
+    "parent": 0,
+    "ping_status": "closed",
+    "polylang": {
+      "lang": "en",
+      "translations": {
+        "en": 1094,
+        "it": 811
+      }
+    },
+    "slug": "services-copy",
+    "status": "publish",
+    "template": "",
+    "title": {
+      "rendered": "Services"
+    },
+    "type": "page"
+  },
+  {
+    "_links": {
+      "about": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/users/1"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages"
+        }
+      ],
+      "curies": [
+        {
+          "href": "https://api.w.org/{rel}",
+          "name": "wp",
+          "templated": true
+        }
+      ],
+      "predecessor-version": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1093/revisions/1593",
+          "id": 1593
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/comments?post=1093"
+        }
+      ],
+      "self": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1093",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "version-history": [
+        {
+          "count": 2,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1093/revisions"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/media?parent=1093"
+        }
+      ]
+    },
+    "author": 1,
+    "class_list": [
+      "post-1093",
+      "page",
+      "type-page",
+      "status-publish",
+      "hentry"
+    ],
+    "comment_status": "closed",
+    "content": {
+      "protected": false,
+      "rendered": "\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full is-resized contactimage\"><img loading=\"lazy\" decoding=\"async\" width=\"215\" height=\"214\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-89.png\" alt=\"\" class=\"wp-image-863\" style=\"width:416px;height:auto\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-89.png 215w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-89-100x100.png 100w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-89-150x150.png 150w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-89-32x32.png 32w\" sizes=\"(max-width: 215px) 100vw, 215px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div>\n<a href=\"mailto:marialetiziacristina@gmail.com\" style=\"display-inline\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-envelope\" viewBox=\"0 0 16 16\">\n  <path d=\"M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z\"/>\n</svg>marialetiziacristina@gmail.com</a>\n</div>\n\n\n\n<div>\n<a href=\"tel:+393388538844\" style=\"display-inline\"><svg aria-hidden=\"true\" focusable=\"false\" class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\" width=\"1em\" height=\"1em\"><!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d=\"M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z\"/></svg>3388538844</a>\n</div>\n\n\n\n<div>\n<a href=\"https://www.instagram.com/marialetizia.cristina/\" style=\"display-inline\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-instagram\" viewBox=\"0 0 16 16\">\n  <path d=\"M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334\"/>\n</svg>marialetizia.cristina</a>\n</div>\n\n\n\n<div>\n<a href=\"https://www.behance.net/marialecristina1\" style=\"display-inline\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-behance\" viewBox=\"0 0 16 16\">\n  <path d=\"M4.654 3c.461 0 .887.035 1.278.14.39.07.711.216.996.391s.497.426.641.747c.14.32.216.711.216 1.137 0 .496-.106.922-.356 1.242-.215.32-.566.606-.997.817.606.176 1.067.496 1.348.922s.461.957.461 1.563c0 .496-.105.922-.285 1.278a2.3 2.3 0 0 1-.782.887c-.32.215-.711.39-1.137.496a5.3 5.3 0 0 1-1.278.176L0 12.803V3zm-.285 3.978c.39 0 .71-.105.957-.285.246-.18.355-.497.355-.887 0-.216-.035-.426-.105-.567a1 1 0 0 0-.32-.355 1.8 1.8 0 0 0-.461-.176c-.176-.035-.356-.035-.567-.035H2.17v2.31c0-.005 2.2-.005 2.2-.005zm.105 4.193c.215 0 .426-.035.606-.07.176-.035.356-.106.496-.216s.25-.215.356-.39c.07-.176.14-.391.14-.641 0-.496-.14-.852-.426-1.102-.285-.215-.676-.32-1.137-.32H2.17v2.734h2.305zm6.858-.035q.428.427 1.278.426c.39 0 .746-.106 1.032-.286q.426-.32.53-.64h1.74c-.286.851-.712 1.457-1.278 1.848-.566.355-1.243.566-2.06.566a4.1 4.1 0 0 1-1.527-.285 2.8 2.8 0 0 1-1.137-.782 2.85 2.85 0 0 1-.712-1.172c-.175-.461-.25-.957-.25-1.528 0-.531.07-1.032.25-1.493.18-.46.426-.852.747-1.207.32-.32.711-.606 1.137-.782a4 4 0 0 1 1.493-.285c.606 0 1.137.105 1.598.355.46.25.817.532 1.102.958.285.39.496.851.641 1.348.07.496.105.996.07 1.563h-5.15c0 .58.21 1.11.496 1.396m2.24-3.732c-.25-.25-.642-.391-1.103-.391-.32 0-.566.07-.781.176s-.356.25-.496.39a.96.96 0 0 0-.25.497c-.036.175-.07.32-.07.46h3.196c-.07-.526-.25-.882-.497-1.132zm-3.127-3.728h3.978v.957h-3.978z\"/>\n</svg>Marialetizia Cristina</a>\n</div>\n\n\n\n<div>\n<a href=\"https://www.linkedin.com/in/marialetizia-cristina/\" style=\"display-inline\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-linkedin\" viewBox=\"0 0 16 16\">\n  <path d=\"M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z\"/>\n</svg>Marialetizia Cristina</a>\n</div>\n</div>\n</div>\n</div>\n</div>\n\n\n\n<figure class=\"wp-block-image size-full absolute\"><img loading=\"lazy\" decoding=\"async\" width=\"1834\" height=\"748\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217.png\" alt=\"\" class=\"wp-image-850\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217.png 1834w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217-600x245.png 600w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217-150x61.png 150w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217-1536x626.png 1536w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217-1280x522.png 1280w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217-1024x418.png 1024w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217-768x313.png 768w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217-512x209.png 512w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217-265x108.png 265w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217-32x13.png 32w\" sizes=\"(max-width: 1834px) 100vw, 1834px\" /></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Tributo a Milton Glaser</p>\n"
+    },
+    "date": "2025-12-05T19:00:02",
+    "date_gmt": "2025-12-05T18:00:02",
+    "excerpt": {
+      "protected": false,
+      "rendered": "<p>marialetiziacristina@gmail.com 3388538844 marialetizia.cristina Marialetizia Cristina Marialetizia Cristina Tributo a Milton Glaser</p>\n"
+    },
+    "featured_media": 0,
+    "guid": {
+      "rendered": "https://marialetizia.netsons.org/contact-copy/"
+    },
+    "id": 1093,
+    "link": "https://marialetizia.netsons.org/contact-copy/",
+    "menu_order": 6,
+    "meta": {
+      "footnotes": "",
+      "translation_key": ""
+    },
+    "modified": "2026-01-08T10:28:08",
+    "modified_gmt": "2026-01-08T09:28:08",
+    "parent": 0,
+    "ping_status": "closed",
+    "polylang": {
+      "lang": "it",
+      "translations": {
+        "en": 810,
+        "it": 1093
+      }
+    },
+    "slug": "contact-copy",
+    "status": "publish",
+    "template": "",
+    "title": {
+      "rendered": "Contatti"
+    },
+    "type": "page"
+  },
+  {
+    "_links": {
+      "about": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/users/1"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages"
+        }
+      ],
+      "curies": [
+        {
+          "href": "https://api.w.org/{rel}",
+          "name": "wp",
+          "templated": true
+        }
+      ],
+      "predecessor-version": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1088/revisions/1645",
+          "id": 1645
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/comments?post=1088"
+        }
+      ],
+      "self": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1088",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "version-history": [
+        {
+          "count": 12,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/1088/revisions"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/media?parent=1088"
+        }
+      ]
+    },
+    "author": 1,
+    "class_list": [
+      "post-1088",
+      "page",
+      "type-page",
+      "status-publish",
+      "hentry"
+    ],
+    "comment_status": "closed",
+    "content": {
+      "protected": false,
+      "rendered": "\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"1106\" height=\"746\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Marialetizia_Cristina_img-mega-leggera.jpg\" alt=\"\" class=\"wp-image-848\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Marialetizia_Cristina_img-mega-leggera.jpg 1106w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Marialetizia_Cristina_img-mega-leggera-600x405.jpg 600w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Marialetizia_Cristina_img-mega-leggera-150x101.jpg 150w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Marialetizia_Cristina_img-mega-leggera-1024x691.jpg 1024w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Marialetizia_Cristina_img-mega-leggera-768x518.jpg 768w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Marialetizia_Cristina_img-mega-leggera-512x345.jpg 512w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Marialetizia_Cristina_img-mega-leggera-265x179.jpg 265w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Marialetizia_Cristina_img-mega-leggera-32x22.jpg 32w\" sizes=\"(max-width: 1106px) 100vw, 1106px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<h2 class=\"wp-block-heading\">GRAPHIC DESIGNER<br>E ILLUSTRATRICE</h2>\n\n\n\n<p class=\"wp-block-paragraph\">Amo poter esprimere la mia creatività disegnando, progettando, creando con le mie mani. <br>Porto sempre con me uno sketchbook così che possa trasferire su carta tutte le mie idee. <br>Mi affascina il mondo dell’editoria e della stampa. Dopo aver frequentato il <a href=\"https://istitutovoltapavia.edu.it/\">liceo artistico di Pavia</a>, <br>ho deciso di intraprendere la strada del graphic design frequentando la <a href=\"https://mohole.it/?utm_term=scuola%20mohole&amp;utm_campaign=00%20%7C%20Mohole%20%7C%20Brand&amp;utm_source=adwords&amp;utm_medium=ppc&amp;hsa_acc=9489743508&amp;hsa_cam=1370809837&amp;hsa_grp=58475458521&amp;hsa_ad=341532159070&amp;hsa_src=g&amp;hsa_tgt=kwd-335963068297&amp;hsa_kw=scuola%20mohole&amp;hsa_mt=e&amp;hsa_net=adwords&amp;hsa_ver=3&amp;gad_source=1&amp;gad_campaignid=1370809837&amp;gbraid=0AAAAAD_DnsmQvOxGyjrRchS8weqNNtWo1&amp;gclid=Cj0KCQiAoZDJBhC0ARIsAERP-F9uxihcr5caviq3Gw1_sV448-MJVMg7dnb1CJJQeTdwiohJE8Jew-waAqZqEALw_wcB\">Scuola Mohole a Milano</a>.</p>\n</div>\n</div>\n"
+    },
+    "date": "2025-12-05T18:17:55",
+    "date_gmt": "2025-12-05T17:17:55",
+    "excerpt": {
+      "protected": false,
+      "rendered": "<p>GRAPHIC DESIGNERE ILLUSTRATRICE Amo poter esprimere la mia creatività disegnando, progettando, creando con le mie mani. Porto sempre con me uno sketchbook così che possa trasferire su carta tutte le mie idee. Mi affascina il mondo dell’editoria e della stampa. Dopo aver frequentato il liceo artistico di Pavia, ho deciso di intraprendere la strada del [&hellip;]</p>\n"
+    },
+    "featured_media": 0,
+    "guid": {
+      "rendered": "https://marialetizia.netsons.org/about-me-copy/"
+    },
+    "id": 1088,
+    "link": "https://marialetizia.netsons.org/about-me-it/",
+    "menu_order": 7,
+    "meta": {
+      "footnotes": "",
+      "translation_key": ""
+    },
+    "modified": "2026-01-28T12:16:22",
+    "modified_gmt": "2026-01-28T11:16:22",
+    "parent": 0,
+    "ping_status": "closed",
+    "polylang": {
+      "lang": "it",
+      "translations": {
+        "en": 808,
+        "it": 1088
+      }
+    },
+    "slug": "about-me-it",
+    "status": "publish",
+    "template": "",
+    "title": {
+      "rendered": "Chi Sono"
+    },
+    "type": "page"
+  },
+  {
+    "_links": {
+      "about": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/users/1"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages"
+        }
+      ],
+      "curies": [
+        {
+          "href": "https://api.w.org/{rel}",
+          "name": "wp",
+          "templated": true
+        }
+      ],
+      "predecessor-version": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/811/revisions/1581",
+          "id": 1581
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/comments?post=811"
+        }
+      ],
+      "self": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/811",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "version-history": [
+        {
+          "count": 7,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/811/revisions"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/media?parent=811"
+        }
+      ]
+    },
+    "author": 1,
+    "class_list": [
+      "post-811",
+      "page",
+      "type-page",
+      "status-publish",
+      "hentry"
+    ],
+    "comment_status": "closed",
+    "content": {
+      "protected": false,
+      "rendered": "\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full is-resized\"><img loading=\"lazy\" decoding=\"async\" width=\"217\" height=\"216\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-96.png\" alt=\"\" class=\"wp-image-860\" style=\"aspect-ratio:1.0046339202965708;width:166px;height:auto\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-96.png 217w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-96-100x100.png 100w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-96-150x150.png 150w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-96-32x32.png 32w\" sizes=\"(max-width: 217px) 100vw, 217px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-group\"><div class=\"wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained\">\n<p class=\"services-text-container wp-block-paragraph\">Progettazione editoriale<br>e tutto ciò che riguarda il mondo<br>della stampa.</p>\n\n\n\n<figure class=\"wp-block-image size-full is-resized\"><img loading=\"lazy\" decoding=\"async\" width=\"130\" height=\"18\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162.png\" alt=\"\" class=\"wp-image-814\" style=\"aspect-ratio:7.231638418079096;object-fit:cover;width:80px\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162.png 130w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162-32x4.png 32w\" sizes=\"(max-width: 130px) 100vw, 130px\" /></figure>\n</div></div>\n</div>\n</div>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"216\" height=\"216\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-98.png\" alt=\"\" class=\"wp-image-862\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-98.png 216w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-98-100x100.png 100w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-98-150x150.png 150w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-98-32x32.png 32w\" sizes=\"(max-width: 216px) 100vw, 216px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-group\"><div class=\"wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained\">\n<p class=\"services-text-container wp-block-paragraph\">Realizzazione di semplici animazioni di motion graphics <br>o semplici illustrazioni animate</p>\n\n\n\n<figure class=\"wp-block-image size-full is-resized\"><img loading=\"lazy\" decoding=\"async\" width=\"130\" height=\"18\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-165.png\" alt=\"\" class=\"wp-image-822\" style=\"aspect-ratio:7.231638418079096;object-fit:cover;width:80px\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-165.png 130w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-165-32x4.png 32w\" sizes=\"(max-width: 130px) 100vw, 130px\" /></figure>\n</div></div>\n</div>\n</div>\n</div>\n</div>\n\n\n\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"217\" height=\"216\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-95.png\" alt=\"\" class=\"wp-image-861\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-95.png 217w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-95-100x100.png 100w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-95-150x150.png 150w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-95-32x32.png 32w\" sizes=\"(max-width: 217px) 100vw, 217px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-group\"><div class=\"wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained\">\n<p class=\"services-text-container wp-block-paragraph\">Realizzazione di illustrazioni<br>con stili differenti</p>\n\n\n\n<figure class=\"wp-block-image size-full is-resized\"><img loading=\"lazy\" decoding=\"async\" width=\"130\" height=\"18\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162.png\" alt=\"\" class=\"wp-image-814\" style=\"width:80px\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162.png 130w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162-32x4.png 32w\" sizes=\"(max-width: 130px) 100vw, 130px\" /></figure>\n</div></div>\n</div>\n</div>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"216\" height=\"215\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/12/Group-166.png\" alt=\"\" class=\"wp-image-1329\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/12/Group-166.png 216w, https://marialetizia.netsons.org/wp-content/uploads/2025/12/Group-166-100x100.png 100w, https://marialetizia.netsons.org/wp-content/uploads/2025/12/Group-166-150x150.png 150w\" sizes=\"(max-width: 216px) 100vw, 216px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-group\"><div class=\"wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained\">\n<p class=\"services-text-container wp-block-paragraph\">Progettazione della brand identity dal logo alla stationary e ciò che necessita il brand</p>\n\n\n\n<figure class=\"wp-block-image size-full is-resized\"><img loading=\"lazy\" decoding=\"async\" width=\"130\" height=\"18\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-166.png\" alt=\"\" class=\"wp-image-823\" style=\"width:80px\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-166.png 130w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-166-32x4.png 32w\" sizes=\"(max-width: 130px) 100vw, 130px\" /></figure>\n</div></div>\n</div>\n</div>\n</div>\n</div>\n\n\n\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"217\" height=\"216\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-94.png\" alt=\"\" class=\"wp-image-865\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-94.png 217w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-94-100x100.png 100w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-94-150x150.png 150w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-94-32x32.png 32w\" sizes=\"(max-width: 217px) 100vw, 217px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-group services-text-container\"><div class=\"wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained\">\n<p class=\"wp-block-paragraph\">Progettazione di poster/manifesti pubblicitari o artistici</p>\n\n\n\n<figure class=\"wp-block-image size-full is-resized\"><img loading=\"lazy\" decoding=\"async\" width=\"130\" height=\"18\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162.png\" alt=\"\" class=\"wp-image-814\" style=\"aspect-ratio:7.231638418079096;width:80px\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162.png 130w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162-32x4.png 32w\" sizes=\"(max-width: 130px) 100vw, 130px\" /></figure>\n</div></div>\n</div>\n</div>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"215\" height=\"216\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/12/Group-167.png\" alt=\"\" class=\"wp-image-1330\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/12/Group-167.png 215w, https://marialetizia.netsons.org/wp-content/uploads/2025/12/Group-167-100x100.png 100w, https://marialetizia.netsons.org/wp-content/uploads/2025/12/Group-167-150x150.png 150w\" sizes=\"(max-width: 215px) 100vw, 215px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-group\"><div class=\"wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained\">\n<p class=\"services-text-container wp-block-paragraph\">Progettazione di idee<br>regalo creative</p>\n\n\n\n<figure class=\"wp-block-image size-full is-resized\"><img loading=\"lazy\" decoding=\"async\" width=\"130\" height=\"18\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162.png\" alt=\"\" class=\"wp-image-814\" style=\"aspect-ratio:7.231638418079096;width:80px\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162.png 130w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-162-32x4.png 32w\" sizes=\"(max-width: 130px) 100vw, 130px\" /></figure>\n</div></div>\n</div>\n</div>\n</div>\n</div>\n\n\n\n<p class=\"wp-block-paragraph\"></p>\n"
+    },
+    "date": "2025-11-15T19:01:06",
+    "date_gmt": "2025-11-15T18:01:06",
+    "excerpt": {
+      "protected": false,
+      "rendered": "<p>Progettazione editorialee tutto ciò che riguarda il mondodella stampa. Realizzazione di semplici animazioni di motion graphics o semplici illustrazioni animate Realizzazione di illustrazionicon stili differenti Progettazione della brand identity dal logo alla stationary e ciò che necessita il brand Progettazione di poster/manifesti pubblicitari o artistici Progettazione di ideeregalo creative</p>\n"
+    },
+    "featured_media": 0,
+    "guid": {
+      "rendered": "https://marialetizia.netsons.org/?page_id=811"
+    },
+    "id": 811,
+    "link": "https://marialetizia.netsons.org/services/",
+    "menu_order": 4,
+    "meta": {
+      "footnotes": "",
+      "translation_key": ""
+    },
+    "modified": "2026-01-07T18:38:27",
+    "modified_gmt": "2026-01-07T17:38:27",
+    "parent": 0,
+    "ping_status": "closed",
+    "polylang": {
+      "lang": "it",
+      "translations": {
+        "en": 1094,
+        "it": 811
+      }
+    },
+    "slug": "services",
+    "status": "publish",
+    "template": "",
+    "title": {
+      "rendered": "Servizi"
+    },
+    "type": "page"
+  },
+  {
+    "_links": {
+      "about": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/users/1"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages"
+        }
+      ],
+      "curies": [
+        {
+          "href": "https://api.w.org/{rel}",
+          "name": "wp",
+          "templated": true
+        }
+      ],
+      "predecessor-version": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/810/revisions/1594",
+          "id": 1594
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/comments?post=810"
+        }
+      ],
+      "self": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/810",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "version-history": [
+        {
+          "count": 2,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/810/revisions"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/media?parent=810"
+        }
+      ]
+    },
+    "author": 1,
+    "class_list": [
+      "post-810",
+      "page",
+      "type-page",
+      "status-publish",
+      "hentry"
+    ],
+    "comment_status": "closed",
+    "content": {
+      "protected": false,
+      "rendered": "\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full is-resized contactimage\"><img loading=\"lazy\" decoding=\"async\" width=\"215\" height=\"214\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-89.png\" alt=\"\" class=\"wp-image-863\" style=\"width:416px;height:auto\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-89.png 215w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-89-100x100.png 100w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-89-150x150.png 150w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Group-89-32x32.png 32w\" sizes=\"(max-width: 215px) 100vw, 215px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div>\n<a href=\"mailto:marialetiziacristina@gmail.com\" style=\"display-inline\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-envelope\" viewBox=\"0 0 16 16\">\n  <path d=\"M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z\"/>\n</svg>marialetiziacristina@gmail.com</a>\n</div>\n\n\n\n<div>\n<a href=\"tel:+393388538844\" style=\"display-inline\"><svg aria-hidden=\"true\" focusable=\"false\" class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\" width=\"1em\" height=\"1em\"><!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d=\"M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z\"/></svg>3388538844</a>\n</div>\n\n\n\n<div>\n<a href=\"https://www.instagram.com/marialetizia.cristina/\" style=\"display-inline\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-instagram\" viewBox=\"0 0 16 16\">\n  <path d=\"M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334\"/>\n</svg>marialetizia.cristina</a>\n</div>\n\n\n\n<div>\n<a href=\"https://www.behance.net/marialecristina1\" style=\"display-inline\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-behance\" viewBox=\"0 0 16 16\">\n  <path d=\"M4.654 3c.461 0 .887.035 1.278.14.39.07.711.216.996.391s.497.426.641.747c.14.32.216.711.216 1.137 0 .496-.106.922-.356 1.242-.215.32-.566.606-.997.817.606.176 1.067.496 1.348.922s.461.957.461 1.563c0 .496-.105.922-.285 1.278a2.3 2.3 0 0 1-.782.887c-.32.215-.711.39-1.137.496a5.3 5.3 0 0 1-1.278.176L0 12.803V3zm-.285 3.978c.39 0 .71-.105.957-.285.246-.18.355-.497.355-.887 0-.216-.035-.426-.105-.567a1 1 0 0 0-.32-.355 1.8 1.8 0 0 0-.461-.176c-.176-.035-.356-.035-.567-.035H2.17v2.31c0-.005 2.2-.005 2.2-.005zm.105 4.193c.215 0 .426-.035.606-.07.176-.035.356-.106.496-.216s.25-.215.356-.39c.07-.176.14-.391.14-.641 0-.496-.14-.852-.426-1.102-.285-.215-.676-.32-1.137-.32H2.17v2.734h2.305zm6.858-.035q.428.427 1.278.426c.39 0 .746-.106 1.032-.286q.426-.32.53-.64h1.74c-.286.851-.712 1.457-1.278 1.848-.566.355-1.243.566-2.06.566a4.1 4.1 0 0 1-1.527-.285 2.8 2.8 0 0 1-1.137-.782 2.85 2.85 0 0 1-.712-1.172c-.175-.461-.25-.957-.25-1.528 0-.531.07-1.032.25-1.493.18-.46.426-.852.747-1.207.32-.32.711-.606 1.137-.782a4 4 0 0 1 1.493-.285c.606 0 1.137.105 1.598.355.46.25.817.532 1.102.958.285.39.496.851.641 1.348.07.496.105.996.07 1.563h-5.15c0 .58.21 1.11.496 1.396m2.24-3.732c-.25-.25-.642-.391-1.103-.391-.32 0-.566.07-.781.176s-.356.25-.496.39a.96.96 0 0 0-.25.497c-.036.175-.07.32-.07.46h3.196c-.07-.526-.25-.882-.497-1.132zm-3.127-3.728h3.978v.957h-3.978z\"/>\n</svg>Marialetizia Cristina</a>\n</div>\n\n\n\n<div>\n<a href=\"https://www.linkedin.com/in/marialetizia-cristina/\" style=\"display-inline\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-linkedin\" viewBox=\"0 0 16 16\">\n  <path d=\"M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z\"/>\n</svg>Marialetizia Cristina</a>\n</div>\n</div>\n</div>\n</div>\n</div>\n\n\n\n<figure class=\"wp-block-image size-full absolute\"><img loading=\"lazy\" decoding=\"async\" width=\"1834\" height=\"748\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217.png\" alt=\"\" class=\"wp-image-850\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217.png 1834w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217-600x245.png 600w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217-150x61.png 150w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217-1536x626.png 1536w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217-1280x522.png 1280w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217-1024x418.png 1024w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217-768x313.png 768w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217-512x209.png 512w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217-265x108.png 265w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Frame-217-32x13.png 32w\" sizes=\"(max-width: 1834px) 100vw, 1834px\" /></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Tribute to Milton Glaser</p>\n"
+    },
+    "date": "2025-11-15T19:00:54",
+    "date_gmt": "2025-11-15T18:00:54",
+    "excerpt": {
+      "protected": false,
+      "rendered": "<p>marialetiziacristina@gmail.com 3388538844 marialetizia.cristina Marialetizia Cristina Marialetizia Cristina Tribute to Milton Glaser</p>\n"
+    },
+    "featured_media": 0,
+    "guid": {
+      "rendered": "https://marialetizia.netsons.org/?page_id=810"
+    },
+    "id": 810,
+    "link": "https://marialetizia.netsons.org/en/contact/",
+    "menu_order": 5,
+    "meta": {
+      "footnotes": "",
+      "translation_key": ""
+    },
+    "modified": "2026-01-08T10:28:57",
+    "modified_gmt": "2026-01-08T09:28:57",
+    "parent": 0,
+    "ping_status": "closed",
+    "polylang": {
+      "lang": "en",
+      "translations": {
+        "en": 810,
+        "it": 1093
+      }
+    },
+    "slug": "contact",
+    "status": "publish",
+    "template": "",
+    "title": {
+      "rendered": "Contact"
+    },
+    "type": "page"
+  },
+  {
+    "_links": {
+      "about": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/users/1"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages"
+        }
+      ],
+      "curies": [
+        {
+          "href": "https://api.w.org/{rel}",
+          "name": "wp",
+          "templated": true
+        }
+      ],
+      "predecessor-version": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/808/revisions/1646",
+          "id": 1646
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/comments?post=808"
+        }
+      ],
+      "self": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/808",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "version-history": [
+        {
+          "count": 8,
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/pages/808/revisions"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://marialetizia.netsons.org/wp-json/wp/v2/media?parent=808"
+        }
+      ]
+    },
+    "author": 1,
+    "class_list": [
+      "post-808",
+      "page",
+      "type-page",
+      "status-publish",
+      "hentry"
+    ],
+    "comment_status": "closed",
+    "content": {
+      "protected": false,
+      "rendered": "\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"1106\" height=\"746\" src=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Marialetizia_Cristina_img-mega-leggera.jpg\" alt=\"\" class=\"wp-image-848\" srcset=\"https://marialetizia.netsons.org/wp-content/uploads/2025/11/Marialetizia_Cristina_img-mega-leggera.jpg 1106w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Marialetizia_Cristina_img-mega-leggera-600x405.jpg 600w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Marialetizia_Cristina_img-mega-leggera-150x101.jpg 150w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Marialetizia_Cristina_img-mega-leggera-1024x691.jpg 1024w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Marialetizia_Cristina_img-mega-leggera-768x518.jpg 768w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Marialetizia_Cristina_img-mega-leggera-512x345.jpg 512w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Marialetizia_Cristina_img-mega-leggera-265x179.jpg 265w, https://marialetizia.netsons.org/wp-content/uploads/2025/11/Marialetizia_Cristina_img-mega-leggera-32x22.jpg 32w\" sizes=\"(max-width: 1106px) 100vw, 1106px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<h2 class=\"wp-block-heading\">GRAPHIC DESIGNER<br>AND ILLUSTRATOR</h2>\n\n\n\n<p class=\"wp-block-paragraph\">I love express my creativity through drawing, designing, crafting things with my hands. <br>I always carry a sketchbook with me so that I can transfer all my ideas into paper. <br>I am fascinated by the world of publishing and printing. After attending the art <a href=\"https://istitutovoltapavia.edu.it/\">high school in Pavia</a>,<br>I decided to embark on the path of graphic design by attending <a href=\"https://mohole.it/?utm_term=scuola%20mohole&amp;utm_campaign=00%20%7C%20Mohole%20%7C%20Brand&amp;utm_source=adwords&amp;utm_medium=ppc&amp;hsa_acc=9489743508&amp;hsa_cam=1370809837&amp;hsa_grp=58475458521&amp;hsa_ad=341532159070&amp;hsa_src=g&amp;hsa_tgt=kwd-335963068297&amp;hsa_kw=scuola%20mohole&amp;hsa_mt=e&amp;hsa_net=adwords&amp;hsa_ver=3&amp;gad_source=1&amp;gad_campaignid=1370809837&amp;gbraid=0AAAAAD_DnsmQvOxGyjrRchS8weqNNtWo1&amp;gclid=Cj0KCQiAoZDJBhC0ARIsAERP-F9uxihcr5caviq3Gw1_sV448-MJVMg7dnb1CJJQeTdwiohJE8Jew-waAqZqEALw_wcB\">Scuola Mohole in Milan</a>.</p>\n</div>\n</div>\n"
+    },
+    "date": "2025-11-15T18:49:47",
+    "date_gmt": "2025-11-15T17:49:47",
+    "excerpt": {
+      "protected": false,
+      "rendered": "<p>GRAPHIC DESIGNERAND ILLUSTRATOR I love express my creativity through drawing, designing, crafting things with my hands. I always carry a sketchbook with me so that I can transfer all my ideas into paper. I am fascinated by the world of publishing and printing. After attending the art high school in Pavia,I decided to embark on [&hellip;]</p>\n"
+    },
+    "featured_media": 0,
+    "guid": {
+      "rendered": "https://marialetizia.netsons.org/?page_id=808"
+    },
+    "id": 808,
+    "link": "https://marialetizia.netsons.org/en/about-me/",
+    "menu_order": 8,
+    "meta": {
+      "footnotes": "",
+      "translation_key": ""
+    },
+    "modified": "2026-01-28T12:17:44",
+    "modified_gmt": "2026-01-28T11:17:44",
+    "parent": 0,
+    "ping_status": "closed",
+    "polylang": {
+      "lang": "en",
+      "translations": {
+        "en": 808,
+        "it": 1088
+      }
+    },
+    "slug": "about-me",
+    "status": "publish",
+    "template": "",
+    "title": {
+      "rendered": "About Me"
+    },
+    "type": "page"
+  }
+]
