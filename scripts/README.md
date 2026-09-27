@@ -28,4 +28,8 @@ Ogni richiesta ha timeout di 30 secondi. Errori HTTP, record invalidi, duplicati
 
 I file vengono preparati in una cartella temporanea e poi rinominati singolarmente. Errori del filesystem interrompono il job, che non deve fare commit: l'atomicità della pubblicazione dell'insieme è data dal successivo commit Git, non da una transazione locale sui quattro file. Non eseguire due sync contemporanei nella stessa cartella.
 
-I test usano risposte simulate e cartelle temporanee; non modificano WordPress né chiamano GitHub. Il frontend deve ancora essere collegato a questi JSON: finché usa le API attuali, la sua attesa rimane. Carrello, checkout, richieste e upload continuano a usare WordPress; prezzi e disponibilità dello snapshot sono informativi e vanno riconfermati dal backend all'acquisto.
+I test usano risposte simulate e cartelle temporanee; non modificano WordPress né chiamano GitHub.
+
+Il frontend legge ora `/data/wordpress/*.json` dallo stesso sito (rispettando il `BASE_URL` di Vite). Liste, dettagli e traduzioni condividono una cache in memoria durante la visita; le risposte fallite non vengono memorizzate e possono essere ritentate. Non esiste un fallback alle API WordPress per il catalogo. I file iniziali sono versionati in `public/data/wordpress/` e Vite li copia in `dist/data/wordpress/`. Dopo ogni sync occorre distribuire il commit aggiornato su Vercel: il dispatch da solo non aggiorna il sito. Le nuove visite rivalidano i JSON; una visita già aperta mantiene i dati caricati fino al reload.
+
+Carrello, checkout, richieste e upload continuano a usare WordPress; prezzi e disponibilità dello snapshot sono informativi e vanno riconfermati dal backend all'acquisto. Le immagini rimangono agli URL WordPress originali: il sync sposta i dati editoriali e commerciali, non i file multimediali né il rendering React sul server.
