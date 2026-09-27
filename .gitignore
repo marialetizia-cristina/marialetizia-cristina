@@ -16,7 +16,10 @@ release
 
 docs
 
-scripts
+scripts/*
+!scripts/sync-wordpress.ts
+!scripts/sync-wordpress.test.ts
+!scripts/README.md
 
 node_modules
 dist

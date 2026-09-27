@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "sync:wordpress": "node scripts/sync-wordpress.ts",
+    "test:sync": "node --test scripts/sync-wordpress.test.ts",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",

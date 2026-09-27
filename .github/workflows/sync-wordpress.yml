@@ -52,6 +52,8 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Sincronizza WordPress
+        env:
+          WORDPRESS_REST_URL: ${{ vars.WORDPRESS_REST_URL || 'https://marialetizia.netsons.org/wp-json' }}
         # Node 22 esegue TypeScript con sintassi eliminabile, senza tsx.
         # Lo script deve scrivere in SYNC_OUTPUT_DIR e fallire se il fetch
         # è incompleto, evitando di pubblicare snapshot parziali.
